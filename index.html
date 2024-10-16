@@ -29,81 +29,72 @@
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+</head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knight Fury - F1 in Schools</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
-/* Base Styles */
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #30023b57;
-    color: #ffffff;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    <style>
+        /* Add your styles here */
+        header img {
+    max-width: 120px;
+    height: auto;
+    vertical-align: middle;
 }
 
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(90deg, rgba(22, 6, 53, 1) 0%, rgba(148, 0, 255, 1) 100%);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 6px rgba(53, 13, 77, 0.6);
-    transition: background 0.3s ease;
+        html {
+  scroll-behavior: smooth;
 }
-
-header img {
-    width: 120px;
-    transition: transform 0.5s ease;
-}
-
-header img:hover {
-    transform: scale(1.1) rotate(5deg);
-}
-
-header.scrolled {
-    background: rgba(22, 6, 53, 0.9);
-}
-
-/* Navigation */
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 20px;
-    font-weight: 700;
-    padding: 10px;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-nav a:hover {
-    color: #FFD700;
-    transform: scale(1.2);
-}
-
-/* Button Styles */
-.btn {
-    background-color: #9400ff;
-    color: #ffffff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #FFD700;
-    color: #160635;
-}
+        .btn {
+            background-color: #9400ff;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #30023b57;
+            color: #ffffff;
+            overflow-x: hidden;
+            
+            
+        }
+       
 
 
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px;
+            background-color: #160635;
+            position: fixed;
+            width: 99%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(53, 13, 77, 0.6);
+        }
+
+        header img {
+            width: 80px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: color 0.9s ease;
+        }
+
+        nav a:hover {
+            color: #A020F0;
+            transform: scale(1.1);
+        }
 /* Improved Dropdown Menu Styling */
 .dropbtn {
     background-color: #6A0DAD; /* Darker purple for better contrast */
@@ -157,6 +148,7 @@ nav a:hover {
     background-color: #2E2E2E; /* Highlight active item with gold */
     color: #fffb00; /* Contrast text color */
 }
+
 
 /* General Styling for the Section */
 .why-work-section {
