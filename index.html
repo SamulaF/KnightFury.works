@@ -221,6 +221,52 @@ nav a:hover {
     background-color: #2E2E2E; /* Highlight active item with gold */
     color: #fffb00; /* Contrast text color */
 }
+              /* Intro video container */
+        #intro-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: black;
+        }
+
+        /* Main content hidden initially */
+        #main-content {
+            display: none;
+        }
+
+        /* Logo container and glowing "0" */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header-zero {
+            font-size: 4rem;
+            color: #6a0dad; /* Purple */
+            font-weight: bold;
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Glowing effect */
+        .glow {
+            text-shadow: 0 0 20px #6a0dad, 0 0 40px #6a0dad, 0 0 60px #6a0dad, 0 0 80px #6a0dad;
+            animation: glowEffect 1s infinite alternate;
+        }
+
+        @keyframes glowEffect {
+            0% {
+                text-shadow: 0 0 10px #6a0dad, 0 0 20px #6a0dad, 0 0 30px #6a0dad;
+            }
+            100% {
+                text-shadow: 0 0 20px #6a0dad, 0 0 40px #6a0dad, 0 0 60px #6a0dad, 0 0 80px #6a0dad;
+            }
+        }
 
 
 /* General Styling for the Section */
