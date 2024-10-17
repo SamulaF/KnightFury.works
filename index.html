@@ -73,6 +73,7 @@ body {
 }
 
 /* Styling the header and "0" next to the logo */
+/* Updated header with glowing logo */
 header {
     display: flex;
     justify-content: space-between;
@@ -87,10 +88,15 @@ header {
 }
 
 header img {
-    width: 80px;
+    width: 80px; /* Logo size */
+    filter: drop-shadow(0px 0px 12px rgba(160, 32, 240, 0.8)); /* Purple glow effect */
+    transition: filter 0.3s ease-in-out; /* Smooth transition for the glow effect */
 }
-
+header img:hover {
+    filter: drop-shadow(0px 0px 20px rgba(160, 32, 240, 1)); /* Brighter glow on hover */
+}
 /* Add Purple Zero Next to the Logo */
+/* Styling for the "0" next to the logo */
 .logo-container {
     display: flex;
     align-items: center;
@@ -103,7 +109,7 @@ header img {
 
 .header-zero {
     font-size: 80px; /* Same size as the logo */
-    color: #5D3FD3; /* Cold, icy blue color */
+    color: #00eaff; /* Cold, icy blue color */
     font-weight: bold;
     margin-left: 10px; /* Space between logo and "0" */
     text-shadow: 0px 4px 8px rgba(0, 255, 255, 0.75), 0px -2px 4px rgba(255, 255, 255, 0.5); /* Glowing effect */
@@ -112,12 +118,12 @@ header img {
     transform: scale(1.05); /* Slightly scale up for emphasis */
     transition: transform 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for hover effect */
 }
+
         /* Hover effect for extra cold glow */
 .header-zero:hover {
     transform: scale(1.1); /* Slightly increase size on hover */
     text-shadow: 0px 6px 12px rgba(0, 255, 255, 0.9), 0px -4px 6px rgba(255, 255, 255, 0.6); /* More intense glow */
 }
-
 nav a {
     color: #ffffff;
     text-decoration: none;
