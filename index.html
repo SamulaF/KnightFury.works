@@ -72,6 +72,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Styling the header and "0" next to the logo */
 header {
     display: flex;
     justify-content: space-between;
@@ -101,13 +102,20 @@ header img {
 }
 
 .header-zero {
-    font-size: 48px; /* Increase size of the "0" */
-    color: #9400ff; /* Purple color for the "0" */
-    font-weight: bold; /* Bold "0" */
+    font-size: 80px; /* Same size as the logo */
+    color: #00eaff; /* Cold, icy blue color */
+    font-weight: bold;
     margin-left: 10px; /* Space between logo and "0" */
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Add shadow for elegance */
-    opacity: 0.9; /* Slight transparency for exquisite effect */
-    letter-spacing: 1px; /* Slight spacing to make it look cold and sharp */
+    text-shadow: 0px 4px 8px rgba(0, 255, 255, 0.75), 0px -2px 4px rgba(255, 255, 255, 0.5); /* Glowing effect */
+    opacity: 0.95;
+    letter-spacing: 2px;
+    transform: scale(1.05); /* Slightly scale up for emphasis */
+    transition: transform 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+        /* Hover effect for extra cold glow */
+.header-zero:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
+    text-shadow: 0px 6px 12px rgba(0, 255, 255, 0.9), 0px -4px 6px rgba(255, 255, 255, 0.6); /* More intense glow */
 }
 
 nav a {
