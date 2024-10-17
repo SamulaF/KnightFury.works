@@ -42,106 +42,83 @@
     background-position: center;
     opacity: 0.8; /* Adjust transparency */
 }
-        /* Add your styles here */
+/* Add your styles here */
 header img {
     max-width: 120px;
     height: auto;
     vertical-align: middle;
 }
 
-        html {
-  scroll-behavior: smooth;
+html {
+    scroll-behavior: smooth;
 }
-        .btn {
-            background-color: #9400ff;
-            color: #ffffff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
-        }        /* Base Styles */
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #30023b57;
-            color: #ffffff;
-            overflow-x: hidden;
-            
-            
-        }
-       
 
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 10px;
-            background-color: #160635;
-            position: fixed;
-            width: 99%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(53, 13, 77, 0.6);
-        }
-
-        header img {
-            width: 80px;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 700;
-            transition: color 0.9s ease;
-        }
-
-        nav a:hover {
-            color: #A020F0;
-            transform: scale(1.1);
-        }
-        /* Header Styling */
-.site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #2c1438; /* Match header background color */
+.btn {
+    background-color: #9400ff;
+    color: #ffffff;
     padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
 }
 
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #30023b57;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #160635;
+    position: fixed;
+    width: 99%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(53, 13, 77, 0.6);
+}
+
+header img {
+    width: 80px;
+}
+
+/* Add Purple Zero Next to the Logo */
 .logo-container {
     display: flex;
     align-items: center;
 }
 
 .logo-image {
-    height: 50px; /* Adjust size as needed */
-    margin-right: 8px; /* Space between logo and "0" */
+    width: 80px;
+    height: auto;
 }
 
 .header-zero {
-    font-size: 48px; /* Size of the "0" */
+    font-size: 48px;
     color: #6a0dad; /* Match purple color of the "0" */
     font-weight: bold;
     opacity: 0.8; /* Slight transparency to blend with the header */
+    margin-left: 10px; /* Space between logo and zero */
 }
 
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-}
-
-.main-nav a {
-    color: white;
+nav a {
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 600;
+    margin: 0 15px;
+    font-weight: 700;
+    transition: color 0.9s ease;
 }
 
-.main-nav a:hover {
-    color: #d1b3ff; /* Lighter purple for hover effect */
+nav a:hover {
+    color: #A020F0;
+    transform: scale(1.1);
 }
 
 /* Improved Dropdown Menu Styling */
@@ -193,6 +170,7 @@ header img {
 .dropdown:hover .dropbtn {
     background-color: #4B0082; /* Matching hover color for button */
 }
+
 .dropdown-content a.active {
     background-color: #2E2E2E; /* Highlight active item with gold */
     color: #fffb00; /* Contrast text color */
