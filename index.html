@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knight Fury - F1 in Schools</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto+Mono:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Favicon and Touch Icons -->
     <link rel="icon" type="image/png" href="https://knightfury.works/favicon-48x48.png" sizes="48x48">
@@ -30,17 +31,31 @@
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-</head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knight Fury - F1 in Schools</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        
-html {
-  scroll-behavior: smooth;
-}
-.btn {
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: 'Oswald', sans-serif; /* Primary font */
+            background-color: #30023b57;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif; /* Headings font */
+            font-weight: 700;
+        }
+
+        p, a {
+            font-family: 'Roboto Mono', monospace; /* Secondary font for paragraphs and links */
+        }
+
+        .btn {
             background-color: #9400ff;
             color: #ffffff;
             padding: 10px 20px;
@@ -48,16 +63,8 @@ html {
             border-radius: 5px;
             font-weight: bold;
             display: inline-block;
-}        /* Base Styles */
-body {
-            margin: 0;
-            font-family: 'Oswald', sans-serif;
-            background-color: #30023b57;
-            color: #ffffff;
-            overflow-x: hidden;
-            
-            
-}
+            font-family: 'Oswald', sans-serif; /* Button font */
+        }
         
 /* Add your styles here */
 header img {
