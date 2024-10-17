@@ -1317,7 +1317,8 @@ header img {
         const video = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
     const mainContent = document.getElementById('main-content');
-
+    // Set the playback speed of the video
+    video.playbackRate = 2.0; // Increase this value to make the video play faster (e.g., 2.0 for double speed)
     video.onended = function() {
         // Hide the video container and show the main content when the video ends
         introContainer.style.display = 'none';
