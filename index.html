@@ -1157,10 +1157,6 @@ nav a:hover {
     </video>
 </div>
 
-<!-- The rest of your website content starts here -->
-<div id="main-content" style="display: none;">
-    <!-- All your main website content goes here -->
-</div>
 
 <header>
         <div class="logo-container">
@@ -1450,22 +1446,15 @@ nav a:hover {
 
     <script>
         const video = document.getElementById('intro-video');
-        const introContainer = document.getElementById('intro-video-container');
-        const mainContent = document.getElementById('main-content');
-        const zero = document.getElementById('glowing-zero');
-
-        // Set playback speed for the video
-        video.playbackRate = 2.7; // Adjust the speed as needed
-
-        // When the video ends, hide the video container and show the main content
-        video.onended = function() {
-            introContainer.style.display = 'none';
-            mainContent.style.display = 'block';
-
-            // Trigger the glow effect on the "0"
-            zero.style.opacity = '1';  // Make the zero visible
-            zero.classList.add('glow');  // Add the glowing class
-        };
+    const introContainer = document.getElementById('intro-video-container');
+    const mainContent = document.getElementById('main-content');
+    // Set the playback speed of the video
+    video.playbackRate = 2.7; // Increase this value to make the video play faster (e.g., 2.0 for double speed)
+    video.onended = function() {
+        // Hide the video container and show the main content when the video ends
+        introContainer.style.display = 'none';
+        mainContent.style.display = 'block';
+    };
     /* Preloader */
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
