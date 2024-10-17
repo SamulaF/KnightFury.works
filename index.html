@@ -1011,8 +1011,21 @@ header img {
     </style>
 </head>
 <body>
+    
 <div id="preloader">
     <div class="loader"></div>
+</div>
+    <!-- Video container for the intro -->
+<div id="intro-video-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: black;">
+    <video id="intro-video" autoplay muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="4664891-uhd_3840_2160_30fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<!-- The rest of your website content starts here -->
+<div id="main-content" style="display: none;">
+    <!-- All your main website content goes here -->
 </div>
 
 <header>
@@ -1299,7 +1312,15 @@ header img {
 
 
 <script>
-    
+        const video = document.getElementById('intro-video');
+    const introContainer = document.getElementById('intro-video-container');
+    const mainContent = document.getElementById('main-content');
+
+    video.onended = function() {
+        // Hide the video container and show the main content when the video ends
+        introContainer.style.display = 'none';
+        mainContent.style.display = 'block';
+    };
     /* Preloader */
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
