@@ -127,6 +127,30 @@ header img:hover {
     transform: scale(1.1); /* Slightly increase size on hover */
     text-shadow: 0px 6px 12px rgba(0, 255, 255, 0.9), 0px -4px 6px rgba(255, 255, 255, 0.6); /* More intense glow */
 }
+        /* 0 Container */
+        .zero-container {
+            position: absolute;
+            z-index: 2;
+            font-size: 10rem;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Glowing 0 effect */
+        .glow {
+            text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00, 0 0 80px #00ff00;
+            animation: glowEffect 1s infinite alternate;
+        }
+
+        /* Glow keyframes */
+        @keyframes glowEffect {
+            0% {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+            100% {
+                text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00, 0 0 80px #00ff00;
+            }
+        }
 
 nav a {
     color: #ffffff;
@@ -1373,17 +1397,24 @@ nav a:hover {
 <audio id="rocket-sound" src="c:\Users\HP\Downloads\mixkit-speeding-swoosh-1484.wav"></audio>
 
 
-<script>
+    <script>
         const video = document.getElementById('intro-video');
-    const introContainer = document.getElementById('intro-video-container');
-    const mainContent = document.getElementById('main-content');
-    // Set the playback speed of the video
-    video.playbackRate = 2.7; // Increase this value to make the video play faster (e.g., 2.0 for double speed)
-    video.onended = function() {
-        // Hide the video container and show the main content when the video ends
-        introContainer.style.display = 'none';
-        mainContent.style.display = 'block';
-    };
+        const introContainer = document.getElementById('intro-video-container');
+        const mainContent = document.getElementById('main-content');
+        const zero = document.getElementById('glowing-zero');
+
+        // Set playback speed for the video
+        video.playbackRate = 2.7; // Adjust the speed as needed
+
+        // When the video ends, hide the video container and show the main content
+        video.onended = function() {
+            introContainer.style.display = 'none';
+            mainContent.style.display = 'block';
+
+            // Trigger the glow effect on the "0"
+            zero.style.opacity = '1';  // Make the zero visible
+            zero.classList.add('glow');  // Add the glowing class
+        };
     /* Preloader */
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
