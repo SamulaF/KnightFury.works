@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Knight Fury - F1 in Schools</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
 
@@ -74,6 +75,7 @@ body {
 
 /* Styling the header and "0" next to the logo */
 /* Updated header with glowing logo */
+/* Updated header with glowing logo and sporty "0" */
 header {
     display: flex;
     justify-content: space-between;
@@ -92,14 +94,17 @@ header img {
     filter: drop-shadow(0px 0px 12px rgba(160, 32, 240, 0.8)); /* Purple glow effect */
     transition: filter 0.3s ease-in-out; /* Smooth transition for the glow effect */
 }
+
 header img:hover {
     filter: drop-shadow(0px 0px 20px rgba(160, 32, 240, 1)); /* Brighter glow on hover */
 }
 /* Add Purple Zero Next to the Logo */
 /* Styling for the "0" next to the logo */
+/* Styling for the "0" next to the logo */
 .logo-container {
     display: flex;
     align-items: center;
+    gap: 5px; /* Closer spacing between logo and "0" */
 }
 
 .logo-image {
@@ -109,9 +114,9 @@ header img:hover {
 
 .header-zero {
     font-size: 80px; /* Same size as the logo */
+    font-family: 'Orbitron', sans-serif; /* Sporty font */
     color: #00eaff; /* Cold, icy blue color */
     font-weight: bold;
-    margin-left: 10px; /* Space between logo and "0" */
     text-shadow: 0px 4px 8px rgba(0, 255, 255, 0.75), 0px -2px 4px rgba(255, 255, 255, 0.5); /* Glowing effect */
     opacity: 0.95;
     letter-spacing: 2px;
@@ -119,11 +124,11 @@ header img:hover {
     transition: transform 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for hover effect */
 }
 
-        /* Hover effect for extra cold glow */
 .header-zero:hover {
     transform: scale(1.1); /* Slightly increase size on hover */
     text-shadow: 0px 6px 12px rgba(0, 255, 255, 0.9), 0px -4px 6px rgba(255, 255, 255, 0.6); /* More intense glow */
 }
+
 nav a {
     color: #ffffff;
     text-decoration: none;
@@ -165,6 +170,7 @@ nav a:hover {
     z-index: 1;
 }
 
+
 .dropdown-content a {
     color: #fff; /* White text for contrast */
     padding: 12px 20px; /* More padding for better spacing */
@@ -173,6 +179,7 @@ nav a:hover {
     text-align: left;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 
 .dropdown-content a:hover {
     background-color: #4B0082; /* Indigo for hover effect */
