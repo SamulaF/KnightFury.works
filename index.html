@@ -35,6 +35,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
+                /* Fullscreen background video styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Content on top of the video */
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            padding-top: 20%;
+        }
         /* Add your styles here */
         header img {
     max-width: 120px;
@@ -1010,6 +1043,17 @@
     </style>
 </head>
 <body>
+    <div class="video-container">
+    <video autoplay muted loop>
+        <source src="your-video.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+</div>
+
+<div class="content">
+    <h1>Welcome to Knight Fury Works</h1>
+    <p>Premium Web Experience</p>
+</div>
 
 <div id="preloader">
     <div class="loader"></div>
