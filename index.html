@@ -55,6 +55,41 @@ p, a {
 }
 
     
+/* Base styles for all devices */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Flex container for layout */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    flex: 1 1 300px; /* Flex item to resize based on container size */
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments for tablets and larger phones */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+}
+
+/* Specific changes for smaller screens like smartphones */
+@media screen and (max-width: 480px) {
+    .item {
+        flex: 1 1 100%; /* Full-width items on small screens */
+        margin: 5px;
+    }
+}
 
         .btn {
             background-color: #9400ff;
