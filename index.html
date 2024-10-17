@@ -139,7 +139,19 @@ header img:hover {
     text-shadow: 0px 6px 12px rgba(0, 255, 255, 0.9), 0px -4px 6px rgba(255, 255, 255, 0.6); /* More intense glow */
 }
 
-/* Dropdown Menu Styling */
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: color 0.9s ease;
+        }
+
+        nav a:hover {
+            color: #A020F0;
+            transform: scale(1.1);
+        }
+/* Improved Dropdown Menu Styling */
 .dropbtn {
     background-color: #6A0DAD; /* Darker purple for better contrast */
     color: white;
@@ -187,6 +199,10 @@ header img:hover {
 
 .dropdown:hover .dropbtn {
     background-color: #4B0082; /* Matching hover color for button */
+}
+.dropdown-content a.active {
+    background-color: #2E2E2E; /* Highlight active item with gold */
+    color: #fffb00; /* Contrast text color */
 }
 
 
@@ -1081,27 +1097,27 @@ header img:hover {
     </div>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About F1 in Schools</a>
-        <a href="#team">Team Members</a>
-        <a href="#legacy">Our Legacy</a>
-        <a href="#car">Our Car Design</a>
-        <div class="dropdown">
-            <button class="dropbtn">Why Work With Us</button>
-            <div class="dropdown-content">
-                <a href="#proven-track-record">Proven Track Record</a>
-                <a href="#innovation-tech-focus">Innovation & Technology</a>
-                <a href="#diversity-inclusion">Diversity & Inclusion</a>
-                <a href="#stem-engagement">STEM Engagement</a>
-                <a href="#social-responsibility">Social Responsibility</a>
-                <a href="#long-term-vision">Long-Term Vision</a>
-                <a href="#global-recognition">Global Reach</a>
-                <a href="#collaborate">Collaborate with Us</a>
-            </div>
-        </div>
-        <a href="#contact-us">Contact</a>
-    </nav>
-</header>
+<a href="#home">Home</a>
+<a href="#about">About F1 in Schools</a>
+<a href="#team">Team Members</a>
+<a href="#legacy">Our Legacy</a>
+<a href="#car">Our Car Design</a>
+<div class="dropdown">
+<button class="dropbtn">Why Work With Us</button>
+                    <div class="dropdown-content">
+                        <a href="#proven-track-record">Proven Track Record</a>
+                        <a href="#innovation-tech-focus">Innovation & Technology</a>
+                        <a href="#diversity-inclusion">Diversity & Inclusion</a>
+                        <a href="#stem-engagement">STEM Engagement</a>
+                        <a href="#social-responsibility">Social Responsibility</a>
+                        <a href="#long-term-vision">Long-Term Vision</a>
+                        <a href="#global-recognition">Global Reach</a>
+                        <a href="#collaborate">Collaborate with Us</a>
+                    </div>
+<a href="#contact-us">Contact</a>
+                </div>
+            </nav>
+        </header>
 
 
 
