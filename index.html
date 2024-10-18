@@ -1626,8 +1626,7 @@ nav a:hover {
     sections.forEach(section => {
         observer.observe(section);
     });
-
-     let lastScrollTop = 0; // Track last scroll position
+let lastScrollTop = 0; // Track last scroll position
 const wheel = document.getElementById('wheel'); // Select the wheel element
 let rotation = 0; // Initialize rotation
 
@@ -1651,6 +1650,7 @@ window.addEventListener('scroll', function() {
 
 
 
+
     /* Floating Rocket Button Scroll to Top */
     const rocketBtn = document.getElementById('rocket-btn');
     const rocketSound = document.getElementById('rocket-sound');
@@ -1665,18 +1665,7 @@ window.addEventListener('scroll', function() {
     }
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".team-member-card", {
-        scrollTrigger: {
-            trigger: ".team-member-card",
-            start: "top 80%",
-            end: "top 30%",
-            toggleActions: "play none none reverse",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        ease: "power2.out"
-    });
+   
     document.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('.why-subsection');
     const menuItems = document.querySelectorAll('.dropdown-content a');
