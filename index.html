@@ -268,24 +268,27 @@ header img:hover {
     overflow: hidden;
     z-index: 1;
 }
-/* Glow effect keyframes */
-@keyframes glow {
+/* Updated glow effect keyframes for a subtle pulsing animation */
+@keyframes soft-glow {
     0% {
-        text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
-    }
-    50% {
-        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(150, 0, 255, 0.5), 0 0 15px rgba(150, 0, 255, 0.5);
     }
     100% {
-        text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(150, 0, 255, 0.6), 0 0 20px rgba(150, 0, 255, 0.7);
     }
 }
 
-/* Apply the glow effect to the text */
+/* Apply the refined glow effect to the text */
 .glow-text {
-    animation: glow 2s infinite alternate;
-    color: #fff; /* Ensure the text color is visible */
+    animation: soft-glow 3s ease-in-out infinite alternate;
+    color: #ffffff; /* Keep the text color white for clarity */
+    transition: text-shadow 0.5s ease-in-out; /* Smooth transition for hover effects */
 }
+/* Hover effect for a slightly more intense glow */
+.glow-text:hover {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(150, 0, 255, 0.8), 0 0 30px rgba(150, 0, 255, 0.9);
+}
+
 
 
 /* Decorative Gradients for Dynamic Background Effect */
@@ -1459,7 +1462,7 @@ header img:hover {
             mainContent.style.display = 'block';
         }
 
-        // Add glow effect to the header text
+        // Add glow effect to the header text elements
         const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
         headerTextElements.forEach(element => {
             element.classList.add('glow-text');
