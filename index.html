@@ -132,79 +132,79 @@ body {
     overflow-x: hidden;
 }
 
-/* Styling the header and "0" next to the logo */
-/* Updated header with glowing logo */
-/* Updated header with glowing logo and sporty "0" */
-/* Updated header with glowing logo and sporty "0" */
+/* Updated Header Styling with Cool Purple Aesthetics */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background-color: #160635;
+    background-color: #1E063A; /* Dark cool purple background */
     position: fixed;
     width: 99%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(53, 13, 77, 0.6);
+    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5); /* Soft purple shadow for depth */
 }
 
+/* Glowing Logo */
 header img {
     width: 80px; /* Logo size */
-    filter: drop-shadow(0px 0px 12px rgba(160, 32, 240, 0.8)); /* Purple glow effect */
-    transition: filter 0.3s ease-in-out; /* Smooth transition for the glow effect */
+    filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8)); /* Bright neon purple glow */
+    transition: filter 0.3s ease-in-out; /* Smooth transition for glow */
 }
 
 header img:hover {
-    filter: drop-shadow(0px 0px 20px rgba(160, 32, 240, 1)); /* Brighter glow on hover */
+    filter: drop-shadow(0px 0px 22px rgba(144, 19, 254, 1)); /* Brighter glow on hover */
 }
 
-/* Styling for the "0" next to the logo */
+/* Styling the "0" next to the logo with gradient and neon effect */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 5px; /* Closer spacing between logo and "0" */
+    gap: 8px; /* More pronounced spacing between logo and "0" */
 }
 
 .header-zero {
-    font-size: 80px; /* Same size as the logo */
+    font-size: 80px; /* Matching logo size */
     font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(90deg, #5D3FD3, #800080, #E91E63);
+    background: linear-gradient(90deg, #9B30FF, #5D3FD3, #8A2BE2);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Makes the gradient visible */
+    -webkit-text-fill-color: transparent; /* Gradient effect on text */
     font-weight: bold;
-    text-shadow: 0px 0px 8px rgba(93, 63, 211, 0.8), 
-                 0px 0px 16px rgba(128, 0, 128, 0.6), 
-                 0px 0px 24px rgba(233, 30, 99, 0.5); /* Layered neon glow effect */
+    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 
+                 0px 0px 20px rgba(144, 19, 254, 0.6), 
+                 0px 0px 30px rgba(233, 30, 99, 0.4); /* Neon purple glow */
     opacity: 0.95;
     letter-spacing: 2px;
-    transform: scale(1.05); /* Slightly scale up for emphasis */
-    transition: transform 0.3s ease, text-shadow 0.3s ease, background 0.3s ease; /* Smooth transitions */
+    transform: scale(1.05); /* Slightly scaled for emphasis */
+    transition: transform 0.3s ease, text-shadow 0.3s ease, background 0.3s ease; /* Smooth transition */
 }
 
 .header-zero:hover {
     transform: scale(1.1); /* Slightly larger on hover */
-    text-shadow: 0px 0px 12px rgba(93, 63, 211, 1), 
-                 0px 0px 24px rgba(128, 0, 128, 0.8), 
-                 0px 0px 36px rgba(233, 30, 99, 0.7); /* Intensify glow on hover */
-    background: linear-gradient(90deg, #E91E63, #800080, #5D3FD3); /* Reverse gradient on hover */
+    text-shadow: 0px 0px 16px rgba(93, 63, 211, 1), 
+                 0px 0px 32px rgba(144, 19, 254, 0.8), 
+                 0px 0px 40px rgba(233, 30, 99, 0.7); /* Enhanced glow on hover */
+    background: linear-gradient(90deg, #8A2BE2, #5D3FD3, #9B30FF); /* Subtle gradient shift */
 }
 
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 700;
-            transition: color 0.9s ease;
-        }
+/* Navigation Links */
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 700;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
 
-        nav a:hover {
-            color: #561286;
-            transform: scale(1.1);
-        }
-/* Improved Dropdown Menu Styling */
+nav a:hover {
+    color: #9B30FF; /* Cool purple hover effect */
+    transform: scale(1.1);
+}
+
+/* Dropdown Menu Styling */
 .dropbtn {
-    background-color: #561286; /* Darker purple for better contrast */
+    background-color: #5D3FD3; /* Sharp dark purple for button */
     color: white;
     padding: 12px 18px;
     font-size: 18px;
@@ -212,7 +212,7 @@ header img:hover {
     cursor: pointer;
     text-transform: uppercase;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dropdown {
@@ -223,16 +223,16 @@ header img:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #2E2E2E; /* Dark gray background for readability */
+    background-color: #32004B; /* Deep cold purple background for dropdown */
     border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    padding: 10px 0; /* Add padding for spacing */
+    box-shadow: 0 8px 16px rgba(93, 63, 211, 0.3);
+    padding: 10px 0;
     z-index: 1;
 }
 
 .dropdown-content a {
-    color: #fff; /* White text for contrast */
-    padding: 12px 20px; /* More padding for better spacing */
+    color: #ffffff; /* White text for contrast */
+    padding: 12px 20px;
     text-decoration: none;
     display: block;
     text-align: left;
@@ -240,8 +240,8 @@ header img:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #4B0082; /* Indigo for hover effect */
-    color: #bbff00; /* Gold color for text on hover */
+    background-color: #5D3FD3; /* Hover effect with lighter purple */
+    color: #E0BBE4; /* Soft lavender hover text */
 }
 
 .dropdown:hover .dropdown-content {
@@ -249,12 +249,15 @@ header img:hover {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #4B0082; /* Matching hover color for button */
+    background-color: #8A2BE2; /* Brighter purple for hover effect */
+    box-shadow: 0 4px 12px rgba(93, 63, 211, 0.6); /* Glow effect on hover */
 }
+
 .dropdown-content a.active {
-    background-color: #2E2E2E; /* Highlight active item with gold */
-    color: #fffb00; /* Contrast text color */
+    background-color: #9B30FF; /* Active link highlight */
+    color: #ffffff; /* White text on active */
 }
+
 
 
 
@@ -268,91 +271,6 @@ header img:hover {
     overflow: hidden;
     z-index: 1;
 }
- header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 10px;
-            background-color: #160635;
-            position: fixed;
-            width: 99%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(53, 13, 77, 0.6);
-        }
-
-        header img {
-            width: 80px;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 700;
-            transition: color 0.9s ease;
-        }
-
-        nav a:hover {
-            color: #20e2f0;
-            transform: scale(1.1);
-        }
-/* Improved Dropdown Menu Styling */
-.dropbtn {
-    background-color: #0d45ad; /* Darker purple for better contrast */
-    color: white;
-    padding: 12px 18px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #2E2E2E; /* Dark gray background for readability */
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    padding: 10px 0; /* Add padding for spacing */
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: #fff; /* White text for contrast */
-    padding: 12px 20px; /* More padding for better spacing */
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dropdown-content a:hover {
-    background-color: #4B0082; /* Indigo for hover effect */
-    color: #bbff00; /* Gold color for text on hover */
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #4B0082; /* Matching hover color for button */
-}
-.dropdown-content a.active {
-    background-color: #2E2E2E; /* Highlight active item with gold */
-    color: #fffb00; /* Contrast text color */
-}
-
-
-
 /* Decorative Gradients for Dynamic Background Effect */
 .why-work-section::before {
     content: '';
