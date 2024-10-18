@@ -108,17 +108,24 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background-color: #1E063A; /* Dark cool purple background */
+    background-color: #1E063A; /* Dark purple background */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5); /* Soft purple shadow for depth */
+    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5); /* Soft purple shadow */
+}
+
+/* Logo and speedometer side-by-side */
+.logo-speedometer {
+    display: flex;
+    align-items: center;
 }
 
 /* Glowing Logo */
 header img {
-    width: 80px;
+    width: 70px;
+    margin-right: 15px; /* Space between the logo and speedometer */
     filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8)); /* Bright neon purple glow */
     transition: filter 0.3s ease-in-out;
 }
@@ -133,14 +140,14 @@ header img:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
 }
 
 .speedometer {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: radial-gradient(circle at center, #2e003e, #160635);
   box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
@@ -168,10 +175,10 @@ header img:hover {
 .needle {
   position: absolute;
   width: 2px;
-  height: 40px;
+  height: 35px;
   background: #e91e63;
-  top: 20px;
-  left: 39px;
+  top: 17px;
+  left: 34px;
   transform-origin: bottom center;
   animation: needle-swing 3s infinite alternate ease-in-out;
 }
@@ -187,7 +194,7 @@ header img:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 48px;
+  font-size: 40px;
   font-family: 'Roboto Mono', monospace;
   background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
   -webkit-background-clip: text;
@@ -263,6 +270,7 @@ nav a:hover {
     background-color: #8A2BE2;
     box-shadow: 0 4px 12px rgba(93, 63, 211, 0.6);
 }
+
 
 
 
@@ -1141,17 +1149,21 @@ nav a:hover {
 
 
 <header>
-    <div class="logo-container">
+    <div class="logo-speedometer">
+        <!-- Knight Fury Logo -->
         <img src="logo.png" alt="Knight Fury Logo">
+
+        <!-- Speedometer and Glowing 0 -->
         <div class="header-zero-container">
             <div class="speedometer">
                 <div class="arc"></div>
                 <div class="needle"></div>
-                <span class="header-zero">0</span> <!-- The purple bold "0" -->
+                <span class="header-zero">0</span>
             </div>
         </div>
     </div>
     
+    <!-- Navigation Links -->
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About F1 in Schools</a>
@@ -1174,6 +1186,7 @@ nav a:hover {
         <a href="#contact-us">Contact</a>
     </nav>
 </header>
+
 
 
 
