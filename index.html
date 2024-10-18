@@ -268,25 +268,87 @@ header img:hover {
     overflow: hidden;
     z-index: 1;
 }
-/* Updated glow effect keyframes for a subtle pulsing animation */
-@keyframes soft-glow {
-    0% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(150, 0, 255, 0.5), 0 0 15px rgba(150, 0, 255, 0.5);
-    }
-    100% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(150, 0, 255, 0.6), 0 0 20px rgba(150, 0, 255, 0.7);
-    }
+ header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px;
+            background-color: #160635;
+            position: fixed;
+            width: 99%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(53, 13, 77, 0.6);
+        }
+
+        header img {
+            width: 80px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: color 0.9s ease;
+        }
+
+        nav a:hover {
+            color: #20e2f0;
+            transform: scale(1.1);
+        }
+/* Improved Dropdown Menu Styling */
+.dropbtn {
+    background-color: #0d45ad; /* Darker purple for better contrast */
+    color: white;
+    padding: 12px 18px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-/* Apply the refined glow effect to the text */
-.glow-text {
-    animation: soft-glow 3s ease-in-out infinite alternate;
-    color: #ffffff; /* Keep the text color white for clarity */
-    transition: text-shadow 0.5s ease-in-out; /* Smooth transition for hover effects */
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
-/* Hover effect for a slightly more intense glow */
-.glow-text:hover {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(150, 0, 255, 0.8), 0 0 30px rgba(150, 0, 255, 0.9);
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2E2E2E; /* Dark gray background for readability */
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    padding: 10px 0; /* Add padding for spacing */
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #fff; /* White text for contrast */
+    padding: 12px 20px; /* More padding for better spacing */
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #4B0082; /* Indigo for hover effect */
+    color: #bbff00; /* Gold color for text on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #4B0082; /* Matching hover color for button */
+}
+.dropdown-content a.active {
+    background-color: #2E2E2E; /* Highlight active item with gold */
+    color: #fffb00; /* Contrast text color */
 }
 
 
