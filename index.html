@@ -140,7 +140,7 @@ header {
     padding: 10px 10px;
     background-color: #1E063A; /* Dark cool purple background */
     position: fixed;
-    width: 99%;
+    width: 100%; /* Set to 100% for full screen */
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5); /* Soft purple shadow for depth */
@@ -258,78 +258,75 @@ nav a:hover {
     color: #ffffff; /* White text on active */
 }
 
-        /* Container to hold the speedometer */
+/* Speedometer Section */
 .header-zero-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
-  width: 80px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
 }
 
 .speedometer {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, #2e003e, #160635);
-  box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #2e003e, #160635);
+    box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
 }
 
 .arc {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 4px solid transparent;
-  border-top-color: #9b30ff;
-  border-right-color: #800080;
-  animation: rotate-arc 5s infinite linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: #9b30ff;
+    border-right-color: #800080;
+    animation: rotate-arc 5s infinite linear;
 }
 
 @keyframes rotate-arc {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* Needle in the center of speedometer */
 .needle {
-  position: absolute;
-  width: 2px;
-  height: 40px;
-  background: #e91e63;
-  top: 20px;
-  left: 39px;
-  transform-origin: bottom center;
-  animation: needle-swing 3s infinite alternate ease-in-out;
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: #e91e63;
+    top: 20px;
+    left: 39px;
+    transform-origin: bottom center;
+    animation: needle-swing 3s infinite alternate ease-in-out;
 }
 
 @keyframes needle-swing {
-  from { transform: rotate(45deg); }
-  to { transform: rotate(-45deg); }
+    from { transform: rotate(45deg); }
+    to { transform: rotate(-45deg); }
 }
 
-/* Glowing 0 in the center of speedometer */
 .zero {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 48px;
-  font-family: 'Roboto Mono', monospace;
-  background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 
-               0px 0px 20px rgba(128, 0, 128, 0.6), 
-               0px 0px 30px rgba(233, 30, 99, 0.5);
-  font-weight: bold;
-  opacity: 0.95;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-family: 'Roboto Mono', monospace;
+    background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 
+                 0px 0px 20px rgba(128, 0, 128, 0.6), 
+                 0px 0px 30px rgba(233, 30, 99, 0.5);
+    font-weight: bold;
+    opacity: 0.95;
 }
-
 
 
 
