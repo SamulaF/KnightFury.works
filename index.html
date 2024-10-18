@@ -271,9 +271,21 @@ header img:hover {
 /* Glow effect keyframes */
 @keyframes glow {
     0% {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff,0%{
-        30%;
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff,0 0 5px h20  }
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
+    }
+    50% {
+        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+    }
+    100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
+    }
+}
+
+/* Apply the glow effect to the text */
+.glow-text {
+    animation: glow 2s infinite alternate;
+    color: #fff; /* Ensure the text color is visible */
+}
 
 
 /* Decorative Gradients for Dynamic Background Effect */
@@ -1427,28 +1439,34 @@ header img:hover {
 <audio id="rocket-sound" src="c:\Users\HP\Downloads\mixkit-speeding-swoosh-1484.wav"></audio>
 
 
-    <script>
-        <script>
-// Detect when the intro video ends
-const introVideo = document.getElementById('intro-video');
-introVideo.onended = function() {
-    // Hide the video container
-    document.getElementById('intro-video-container').style.display = 'none';
 
-    // Add glow effect to the text
-    const headerText = document.querySelector('header h1, header .header-zero, header nav a');
-    headerText.classList.add('glow-text');
-};
-        const video = document.getElementById('intro-video');
+<script>
+    // Get references to necessary elements
+    const video = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
-    const mainContent = document.getElementById('main-content');
-    // Set the playback speed of the video
-    video.playbackRate = 2.7; // Increase this value to make the video play faster (e.g., 2.0 for double speed)
+    const mainContent = document.getElementById('main-content'); // Ensure you have a main-content ID in your HTML
+
+    // Set the playback speed of the intro video
+    video.playbackRate = 2.7; // Adjust the speed as needed
+
+    // Handle the end of the video
     video.onended = function() {
-        // Hide the video container and show the main content when the video ends
+        // Hide the video container
         introContainer.style.display = 'none';
-        mainContent.style.display = 'block';
+
+        // Show the main content after the intro video ends
+        if (mainContent) {
+            mainContent.style.display = 'block';
+        }
+
+        // Add glow effect to the header text
+        const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
+        headerTextElements.forEach(element => {
+            element.classList.add('glow-text');
+        });
     };
+
+
     /* Preloader */
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
