@@ -102,37 +102,7 @@ body, html {
             font-family: Arial, Helvetica, sans-serif;
         }
         
-/* Add your styles here */
-header img {
-    max-width: 120px;
-    height: auto;
-    vertical-align: middle;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-.btn {
-    background-color: #9400ff;
-    color: #ffffff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block;
-}
-
-/* Base Styles */
-body {
-    margin: 0;
-            font-family: 'Roboto Mono', monospace;
-    background-color: #30023b57;
-    color: #ffffff;
-    overflow-x: hidden;
-}
-
-/* Updated Header Styling with Cool Purple Aesthetics */
+/* Updated Header Styling */
 header {
     display: flex;
     justify-content: space-between;
@@ -140,7 +110,7 @@ header {
     padding: 10px 10px;
     background-color: #1E063A; /* Dark cool purple background */
     position: fixed;
-    width: 100%; /* Set to 100% for full screen */
+    width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5); /* Soft purple shadow for depth */
@@ -148,44 +118,85 @@ header {
 
 /* Glowing Logo */
 header img {
-    width: 80px; /* Logo size */
+    width: 80px;
     filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8)); /* Bright neon purple glow */
-    transition: filter 0.3s ease-in-out; /* Smooth transition for glow */
+    transition: filter 0.3s ease-in-out;
 }
 
 header img:hover {
     filter: drop-shadow(0px 0px 22px rgba(144, 19, 254, 1)); /* Brighter glow on hover */
 }
 
-/* Styling the "0" next to the logo with gradient and neon effect */
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* More pronounced spacing between logo and "0" */
+/* Styling for the zero and speedometer */
+.header-zero-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 80px;
 }
 
+.speedometer {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #2e003e, #160635);
+  box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
+}
+
+.arc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top-color: #9b30ff;
+  border-right-color: #800080;
+  animation: rotate-arc 5s infinite linear;
+}
+
+@keyframes rotate-arc {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Needle in the center of the speedometer */
+.needle {
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background: #e91e63;
+  top: 20px;
+  left: 39px;
+  transform-origin: bottom center;
+  animation: needle-swing 3s infinite alternate ease-in-out;
+}
+
+@keyframes needle-swing {
+  from { transform: rotate(45deg); }
+  to { transform: rotate(-45deg); }
+}
+
+/* Glowing 0 in the center */
 .header-zero {
-    font-size: 80px; /* Matching logo size */
-    font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(90deg, #9B30FF, #5D3FD3, #8A2BE2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Gradient effect on text */
-    font-weight: bold;
-    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 
-                 0px 0px 20px rgba(144, 19, 254, 0.6), 
-                 0px 0px 30px rgba(233, 30, 99, 0.4); /* Neon purple glow */
-    opacity: 0.95;
-    letter-spacing: 2px;
-    transform: scale(1.05); /* Slightly scaled for emphasis */
-    transition: transform 0.3s ease, text-shadow 0.3s ease, background 0.3s ease; /* Smooth transition */
-}
-
-.header-zero:hover {
-    transform: scale(1.1); /* Slightly larger on hover */
-    text-shadow: 0px 0px 16px rgba(93, 63, 211, 1), 
-                 0px 0px 32px rgba(144, 19, 254, 0.8), 
-                 0px 0px 40px rgba(233, 30, 99, 0.7); /* Enhanced glow on hover */
-    background: linear-gradient(90deg, #8A2BE2, #5D3FD3, #9B30FF); /* Subtle gradient shift */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-family: 'Roboto Mono', monospace;
+  background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 
+               0px 0px 20px rgba(128, 0, 128, 0.6), 
+               0px 0px 30px rgba(233, 30, 99, 0.5);
+  font-weight: bold;
+  opacity: 0.95;
 }
 
 /* Navigation Links */
@@ -198,13 +209,13 @@ nav a {
 }
 
 nav a:hover {
-    color: #9B30FF; /* Cool purple hover effect */
+    color: #9B30FF;
     transform: scale(1.1);
 }
 
-/* Dropdown Menu Styling */
+/* Dropdown Menu */
 .dropbtn {
-    background-color: #5D3FD3; /* Sharp dark purple for button */
+    background-color: #5D3FD3;
     color: white;
     padding: 12px 18px;
     font-size: 18px;
@@ -223,7 +234,7 @@ nav a:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #32004B; /* Deep cold purple background for dropdown */
+    background-color: #32004B;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(93, 63, 211, 0.3);
     padding: 10px 0;
@@ -231,7 +242,7 @@ nav a:hover {
 }
 
 .dropdown-content a {
-    color: #ffffff; /* White text for contrast */
+    color: #ffffff;
     padding: 12px 20px;
     text-decoration: none;
     display: block;
@@ -240,8 +251,8 @@ nav a:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #5D3FD3; /* Hover effect with lighter purple */
-    color: #E0BBE4; /* Soft lavender hover text */
+    background-color: #5D3FD3;
+    color: #E0BBE4;
 }
 
 .dropdown:hover .dropdown-content {
@@ -249,83 +260,8 @@ nav a:hover {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #8A2BE2; /* Brighter purple for hover effect */
-    box-shadow: 0 4px 12px rgba(93, 63, 211, 0.6); /* Glow effect on hover */
-}
-
-.dropdown-content a.active {
-    background-color: #9B30FF; /* Active link highlight */
-    color: #ffffff; /* White text on active */
-}
-
-/* Speedometer Section */
-.header-zero-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    width: 80px;
-}
-
-.speedometer {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: radial-gradient(circle at center, #2e003e, #160635);
-    box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
-}
-
-.arc {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 4px solid transparent;
-    border-top-color: #9b30ff;
-    border-right-color: #800080;
-    animation: rotate-arc 5s infinite linear;
-}
-
-@keyframes rotate-arc {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.needle {
-    position: absolute;
-    width: 2px;
-    height: 40px;
-    background: #e91e63;
-    top: 20px;
-    left: 39px;
-    transform-origin: bottom center;
-    animation: needle-swing 3s infinite alternate ease-in-out;
-}
-
-@keyframes needle-swing {
-    from { transform: rotate(45deg); }
-    to { transform: rotate(-45deg); }
-}
-
-.zero {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 48px;
-    font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 
-                 0px 0px 20px rgba(128, 0, 128, 0.6), 
-                 0px 0px 30px rgba(233, 30, 99, 0.5);
-    font-weight: bold;
-    opacity: 0.95;
+    background-color: #8A2BE2;
+    box-shadow: 0 4px 12px rgba(93, 63, 211, 0.6);
 }
 
 
@@ -1207,36 +1143,37 @@ nav a:hover {
 <header>
     <div class="logo-container">
         <img src="logo.png" alt="Knight Fury Logo">
-          <div class="header-zero-container">
-    <div class="speedometer">
-      <div class="arc"></div>
-      <div class="needle"></div>
-        <span class="header-zero">0</span> <!-- The purple bold "0" -->
-        
+        <div class="header-zero-container">
+            <div class="speedometer">
+                <div class="arc"></div>
+                <div class="needle"></div>
+                <span class="header-zero">0</span> <!-- The purple bold "0" -->
+            </div>
+        </div>
     </div>
-
+    
     <nav>
-<a href="#home">Home</a>
-<a href="#about">About F1 in Schools</a>
-<a href="#team">Team Members</a>
-<a href="#legacy">Our Legacy</a>
-<a href="#car">Our Car Design</a>
-<div class="dropdown">
-<button class="dropbtn">Why Work With Us</button>
-                    <div class="dropdown-content">
-                        <a href="#proven-track-record">Proven Track Record</a>
-                        <a href="#innovation-tech-focus">Innovation & Technology</a>
-                        <a href="#diversity-inclusion">Diversity & Inclusion</a>
-                        <a href="#stem-engagement">STEM Engagement</a>
-                        <a href="#social-responsibility">Social Responsibility</a>
-                        <a href="#long-term-vision">Long-Term Vision</a>
-                        <a href="#global-recognition">Global Reach</a>
-                        <a href="#collaborate">Collaborate with Us</a>
-                    </div>
-<a href="#contact-us">Contact</a>
-                </div>
-            </nav>
-        </header>
+        <a href="#home">Home</a>
+        <a href="#about">About F1 in Schools</a>
+        <a href="#team">Team Members</a>
+        <a href="#legacy">Our Legacy</a>
+        <a href="#car">Our Car Design</a>
+        <div class="dropdown">
+            <button class="dropbtn">Why Work With Us</button>
+            <div class="dropdown-content">
+                <a href="#proven-track-record">Proven Track Record</a>
+                <a href="#innovation-tech-focus">Innovation & Technology</a>
+                <a href="#diversity-inclusion">Diversity & Inclusion</a>
+                <a href="#stem-engagement">STEM Engagement</a>
+                <a href="#social-responsibility">Social Responsibility</a>
+                <a href="#long-term-vision">Long-Term Vision</a>
+                <a href="#global-recognition">Global Reach</a>
+                <a href="#collaborate">Collaborate with Us</a>
+            </div>
+        </div>
+        <a href="#contact-us">Contact</a>
+    </nav>
+</header>
 
 
 
