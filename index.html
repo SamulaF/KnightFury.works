@@ -268,14 +268,12 @@ header img:hover {
     overflow: hidden;
     z-index: 1;
 }
-        .watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.2; /* Low opacity for watermark effect */
-    z-index: -1; /* Keep it behind other elements */
-}
+/* Glow effect keyframes */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff,0%{
+        30%;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff,0 0 5px h20  }
 
 
 /* Decorative Gradients for Dynamic Background Effect */
@@ -1430,6 +1428,17 @@ header img:hover {
 
 
     <script>
+        <script>
+// Detect when the intro video ends
+const introVideo = document.getElementById('intro-video');
+introVideo.onended = function() {
+    // Hide the video container
+    document.getElementById('intro-video-container').style.display = 'none';
+
+    // Add glow effect to the text
+    const headerText = document.querySelector('header h1, header .header-zero, header nav a');
+    headerText.classList.add('glow-text');
+};
         const video = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
     const mainContent = document.getElementById('main-content');
