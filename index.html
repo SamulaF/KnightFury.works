@@ -169,19 +169,25 @@ header img:hover {
 .header-zero {
     font-size: 80px; /* Same size as the logo */
     font-family: 'Roboto Mono', monospace;
-    color: #5D3FD3; /* Purple color */
+    background: linear-gradient(90deg, #5D3FD3, #800080, #E91E63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the gradient visible */
     font-weight: bold;
-    text-shadow: 0px 4px 8px rgba(128, 0, 128, 0.75), 0px -2px 4px rgba(255, 255, 255, 0.5); /* Updated glowing effect with purple */
+    text-shadow: 0px 0px 8px rgba(93, 63, 211, 0.8), 
+                 0px 0px 16px rgba(128, 0, 128, 0.6), 
+                 0px 0px 24px rgba(233, 30, 99, 0.5); /* Layered neon glow effect */
     opacity: 0.95;
     letter-spacing: 2px;
     transform: scale(1.05); /* Slightly scale up for emphasis */
-    transition: transform 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for hover effect */
+    transition: transform 0.3s ease, text-shadow 0.3s ease, background 0.3s ease; /* Smooth transitions */
 }
 
-
 .header-zero:hover {
-    transform: scale(1.1); /* Slightly increase size on hover */
-    text-shadow: 0px 6px 12px rgba(0, 255, 255, 0.9), 0px -4px 6px rgba(255, 255, 255, 0.6); /* More intense glow */
+    transform: scale(1.1); /* Slightly larger on hover */
+    text-shadow: 0px 0px 12px rgba(93, 63, 211, 1), 
+                 0px 0px 24px rgba(128, 0, 128, 0.8), 
+                 0px 0px 36px rgba(233, 30, 99, 0.7); /* Intensify glow on hover */
+    background: linear-gradient(90deg, #E91E63, #800080, #5D3FD3); /* Reverse gradient on hover */
 }
 
         nav a {
