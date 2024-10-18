@@ -32,6 +32,113 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
+        @media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  body, p, a {
+    font-size: 1rem; /* Adjust to fit mobile */
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 480px) {
+  body, p, a {
+    font-size: 0.9rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements vertically on mobile */
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* Tablets and larger phones */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.5rem;
+  }
+  .content {
+    padding: 10px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.25rem;
+  }
+  .content {
+    padding: 5px;
+  }
+}
+        .navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin-right: 15px;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+  }
+  
+  .navbar li {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .menu-icon {
+    display: block; /* Shows hamburger menu */
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+/* Show the menu when toggled */
+.active {
+  display: block !important;
+}
+button, a {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+
 html {
             scroll-behavior: smooth;
 }
@@ -1134,7 +1241,17 @@ nav a:hover {
     </style>
 </head>
 <body>
-    
+    <header>
+  <nav class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul id="menu" class="hidden">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
 <div id="preloader">
     <div class="loader"></div>
 </div>
@@ -1580,6 +1697,43 @@ window.addEventListener('scroll', function() {
         }
     });
 });
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  menu.classList.toggle('active');
+}
+window.addEventListener('scroll', function() {
+    if (window.innerWidth > 768) { // Only apply wheel rotation on desktop
+        // Your wheel rotation logic here
+    }
+});
+window.addEventListener('scroll', function() {
+    if (window.innerWidth > 768) { // Apply only for desktop screens
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            rotation += 5; // Scroll down
+        } else {
+            rotation -= 5; // Scroll up
+        }
+        wheel.style.transform = `rotate(${rotation}deg)`;
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }
+});
+// Add touch event for scaling on mobile
+gsap.utils.toArray('.flip-card').forEach(card => {
+    card.addEventListener('touchstart', () => {
+        gsap.to(card, { scale: 1.05, duration: 0.3 });
+    });
+    card.addEventListener('touchend', () => {
+        gsap.to(card, { scale: 1, duration: 0.3 });
+    });
+});
+// Check if the device is mobile and skip video
+if (window.innerWidth <= 768) {
+    introContainer.style.display = 'none';
+    mainContent.style.display = 'block';
+} else {
+    // Your existing video play logic here
+}
 
 
 </script>
