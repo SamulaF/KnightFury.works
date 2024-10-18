@@ -1565,166 +1565,122 @@ nav a:hover {
 
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
     // Get references to necessary elements
     const video = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
-    const mainContent = document.getElementById('main-content'); // Ensure you have a main-content ID in your HTML
+    const mainContent = document.getElementById('main-content');
+    const wheel = document.getElementById('wheel');
+    const preloader = document.getElementById('preloader');
+    const rocketBtn = document.getElementById('rocket-btn');
+    const rocketSound = document.getElementById('rocket-sound');
+    
+    let lastScrollTop = 0; // Track last scroll position
+    let rotation = 0; // Initialize wheel rotation
 
-    // Set the playback speed of the intro video
-    video.playbackRate = 2.7; // Adjust the speed as needed
+    // Set playback speed of the intro video (desktop only)
+    if (window.innerWidth > 768 && video) {
+        video.playbackRate = 2.7;
 
-    // Handle the end of the video
-    video.onended = function() {
-        // Hide the video container
+        // Handle the end of the video
+        video.onended = function() {
+            introContainer.style.display = 'none'; // Hide intro video container
+            mainContent.style.display = 'block'; // Show main content
+
+            // Add glow effect to header text elements
+            const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
+            headerTextElements.forEach(element => element.classList.add('glow-text'));
+        };
+    } else {
+        // Skip video and show content directly on mobile
         introContainer.style.display = 'none';
+        mainContent.style.display = 'block';
+    }
 
-        // Show the main content after the intro video ends
-        if (mainContent) {
-            mainContent.style.display = 'block';
-        }
-
-        // Add glow effect to the header text elements
-        const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
-        headerTextElements.forEach(element => {
-            element.classList.add('glow-text');
-        });
-    };
-
-
-    /* Preloader */
+    // Hide the preloader when the window loads
     window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
         preloader.style.display = 'none';
     });
-        // GSAP Animations for Cards
-        gsap.utils.toArray('.flip-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card, { scale: 1.05, duration: 0.3 });
-        });
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, { scale: 1, duration: 0.3 });
-        });
+
+    // GSAP animations for cards (hover and touch)
+    gsap.utils.toArray('.flip-card').forEach(card => {
+        card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
+        card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, duration: 0.3 }));
+
+        // Add touch events for mobile
+        card.addEventListener('touchstart', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
+        card.addEventListener('touchend', () => gsap.to(card, { scale: 1, duration: 0.3 }));
     });
 
-
-
-    /* Intersection Observer for Smooth Fade-In Animations */
+    // Intersection Observer for smooth fade-in animations
     const sections = document.querySelectorAll('section');
-    const options = {
-        threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver(function(entries, observer) {
+    const observerOptions = { threshold: 0.1 };
+
+    const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target); // Animate only once
             }
         });
-    }, options);
-    
-    sections.forEach(section => {
-        observer.observe(section);
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Handle scroll events for wheel rotation (desktop only)
+    window.addEventListener('scroll', function() {
+        if (window.innerWidth > 768) { // Apply wheel rotation only on desktop
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Rotate the wheel based on scroll direction
+            if (scrollTop > lastScrollTop) {
+                rotation += 5; // Scroll down (rotate clockwise)
+            } else {
+                rotation -= 5; // Scroll up (rotate counter-clockwise)
+            }
+            wheel.style.transform = `rotate(${rotation}deg)`;
+
+            // Update last scroll position
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }
     });
-let lastScrollTop = 0; // Track last scroll position
-const wheel = document.getElementById('wheel'); // Select the wheel element
-let rotation = 0; // Initialize rotation
 
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down, rotate the wheel to the right (clockwise)
-        rotation += 5; // Increase rotation angle
-    } else {
-        // Scrolling up, rotate the wheel to the left (counter-clockwise)
-        rotation -= 5; // Decrease rotation angle
-    }
-    
-    // Apply the rotation to the wheel
-    wheel.style.transform = `rotate(${rotation}deg)`;
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative scrolling
-});
-
-
-
-
-
-    /* Floating Rocket Button Scroll to Top */
-    const rocketBtn = document.getElementById('rocket-btn');
-    const rocketSound = document.getElementById('rocket-sound');
-
-    function scrollToTop() {
+    // Floating rocket button scroll to top
+    rocketBtn.addEventListener('click', function() {
         rocketBtn.classList.add('takeoff');
         rocketSound.play();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        setTimeout(() => {
-            rocketBtn.classList.remove('takeoff');
-        }, 2000); // Reset the animation after 1 second
-    }
-    gsap.registerPlugin(ScrollTrigger);
 
-   
-    document.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('.why-subsection');
-    const menuItems = document.querySelectorAll('.dropdown-content a');
+        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000); // Reset animation after takeoff
+    });
 
-    let activeSection = null;
-    sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 50) {
-            activeSection = section;
-        }
-    });
-    
+    // Scroll-triggered section highlighting in menu
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.why-subsection');
+        const menuItems = document.querySelectorAll('.dropdown-content a');
+        let activeSection = null;
 
-    menuItems.forEach((item) => {
-        item.classList.remove('active');
-        if (activeSection && item.getAttribute('href').substring(1) === activeSection.id) {
-            item.classList.add('active');
-        }
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 50) {
+                activeSection = section;
+            }
+        });
+
+        menuItems.forEach((item) => {
+            item.classList.remove('active');
+            if (activeSection && item.getAttribute('href').substring(1) === activeSection.id) {
+                item.classList.add('active');
+            }
+        });
     });
-});
-function toggleMenu() {
-  const menu = document.getElementById('menu');
-  menu.classList.toggle('active');
-}
-window.addEventListener('scroll', function() {
-    if (window.innerWidth > 768) { // Only apply wheel rotation on desktop
-        // Your wheel rotation logic here
-    }
-});
-window.addEventListener('scroll', function() {
-    if (window.innerWidth > 768) { // Apply only for desktop screens
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            rotation += 5; // Scroll down
-        } else {
-            rotation -= 5; // Scroll up
-        }
-        wheel.style.transform = `rotate(${rotation}deg)`;
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }
-});
-// Add touch event for scaling on mobile
-gsap.utils.toArray('.flip-card').forEach(card => {
-    card.addEventListener('touchstart', () => {
-        gsap.to(card, { scale: 1.05, duration: 0.3 });
-    });
-    card.addEventListener('touchend', () => {
-        gsap.to(card, { scale: 1, duration: 0.3 });
+
+    // Toggle menu
+    const menu = document.getElementById('menu');
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+        menu.classList.toggle('active');
     });
 });
-// Check if the device is mobile and skip video
-if (window.innerWidth <= 768) {
-    introContainer.style.display = 'none';
-    mainContent.style.display = 'block';
-} else {
-    // Your existing video play logic here
-}
-
-
 </script>
 
 </body>
