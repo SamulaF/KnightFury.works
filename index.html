@@ -232,15 +232,15 @@ header {
 header img {
     width: 70px;
     margin-right: 15px; /* Space between the logo and speedometer */
-    filter: drop-shadow(0px 0px 14px rgba(98, 0, 185, 0.8)); /* Bright royal purple glow */
-    transition: filter 0.3s ease-in-out;
-}
-
+    filter: drop-shadow(0px 0px 14px rgba(128, 0, 255, 0.9)); /* Brighter purple */
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for both glow and scaling */
 }
 
 header img:hover {
     filter: drop-shadow(0px 0px 22px rgba(144, 19, 254, 1)); /* Brighter glow on hover */
+    transform: scale(1.1); /* Slightly enlarges the logo on hover */
 }
+
 
 /* Styling for the zero and speedometer */
 .header-zero-container {
