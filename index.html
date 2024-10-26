@@ -1875,41 +1875,44 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastScrollTop = 0; // Track last scroll position
     let rotation = 0; // Initialize wheel rotation
 
-    // Set playback speed of the intro video (desktop only)
+    // Hide the preloader if on mobile
+    if (window.innerWidth <= 768) {
+        preloader.style.display = 'none';
+        introContainer.style.display = 'none';
+        mainContent.style.display = 'block';
+    } else {
+        // Desktop behavior for preloader
+        window.addEventListener('load', () => {
+            preloader.style.display = 'none';
+        });
+    }
+
+    // Video playback speed for desktop only
     if (window.innerWidth > 768 && video) {
         video.playbackRate = 2.7;
 
         // Handle the end of the video
         video.onended = function() {
-            introContainer.style.display = 'none'; // Hide intro video container
-            mainContent.style.display = 'block'; // Show main content
+            introContainer.style.display = 'none';
+            mainContent.style.display = 'block';
 
             // Add glow effect to header text elements
             const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
             headerTextElements.forEach(element => element.classList.add('glow-text'));
         };
-    } else {
-        // Skip video and show content directly on mobile
-        introContainer.style.display = 'none';
-        mainContent.style.display = 'block';
     }
 
-    // Hide the preloader when the window loads
-    window.addEventListener('load', () => {
-        preloader.style.display = 'none';
-    });
-
-    // GSAP animations for cards (hover and touch)
+    // GSAP animations for cards
     gsap.utils.toArray('.flip-card').forEach(card => {
         card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, duration: 0.3 }));
 
-        // Add touch events for mobile
+        // Mobile touch events
         card.addEventListener('touchstart', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('touchend', () => gsap.to(card, { scale: 1, duration: 0.3 }));
     });
 
-    // Intersection Observer for smooth fade-in animations
+    // Intersection Observer for fade-in animations
     const sections = document.querySelectorAll('section');
     const observerOptions = { threshold: 0.1 };
 
@@ -1917,51 +1920,40 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Animate only once
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     sections.forEach(section => observer.observe(section));
 
-    // Handle scroll events for wheel rotation (desktop only)
+    // Wheel rotation on scroll (desktop only)
     window.addEventListener('scroll', function() {
-        if (window.innerWidth > 768) { // Apply wheel rotation only on desktop
+        if (window.innerWidth > 768) {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            // Rotate the wheel based on scroll direction
-            if (scrollTop > lastScrollTop) {
-                rotation += 5; // Scroll down (rotate clockwise)
-            } else {
-                rotation -= 5; // Scroll up (rotate counter-clockwise)
-            }
+            rotation += (scrollTop > lastScrollTop ? 5 : -5); // Rotate based on scroll
             wheel.style.transform = `rotate(${rotation}deg)`;
-
-            // Update last scroll position
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }
     });
 
-    // Floating rocket button scroll to top
+    // Rocket button scroll-to-top
     rocketBtn.addEventListener('click', function() {
         rocketBtn.classList.add('takeoff');
         rocketSound.play();
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000); // Reset animation after takeoff
+        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
     });
 
-    // Scroll-triggered section highlighting in menu
+    // Scroll-triggered menu highlighting
     window.addEventListener('scroll', function() {
         const sections = document.querySelectorAll('.why-subsection');
         const menuItems = document.querySelectorAll('.dropdown-content a');
         let activeSection = null;
 
         sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 50) {
-                activeSection = section;
-            }
+            if (window.scrollY >= section.offsetTop - 50) activeSection = section;
         });
 
         menuItems.forEach((item) => {
@@ -1971,35 +1963,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
-        function toggleMenu() {
-        const menu = document.getElementById('menu');
-        menu.classList.toggle('active');
-    }
-
-    // Toggle menu
-    const menu = document.getElementById('menu');
-    document.getElementById('menu-toggle').addEventListener('click', () => {
-        menu.classList.toggle('active');
-    });
 });
+
+// Section scroll animations
 document.addEventListener('scroll', () => {
     document.querySelectorAll('section').forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < window.innerHeight - 50) {
+        if (section.getBoundingClientRect().top < window.innerHeight - 50) {
             section.style.opacity = '1';
             section.style.transform = 'translateY(0)';
         }
     });
-});
-if (window.innerWidth <= 768) {
-    introContainer.style.display = 'none';
-    mainContent.style.display = 'block';
-}
-window.addEventListener('scroll', function() {
-    if (window.innerWidth > 768) {
-        // Wheel rotation code
-    }
 });
 
 </script>
