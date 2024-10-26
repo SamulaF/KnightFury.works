@@ -9,12 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Favicon and Icons -->
-<link rel="icon" type="image/png" href="https://knightfury.works/favicon-48x48.png" sizes="48x48" />
-<link rel="icon" type="image/svg+xml" href="https://knightfury.works/favicon.svg" />
-<link rel="shortcut icon" href="https://knightfury.works/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="https://knightfury.works/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="https://knightfury.works/favicon-48x48.png" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="https://knightfury.works/favicon.svg" />
+    <link rel="shortcut icon" href="https://knightfury.works/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://knightfury.works/apple-touch-icon.png" />
     <link rel="manifest" href="https://knightfury.works/site.webmanifest" />
-
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Knight Fury - F1 in Schools">
@@ -28,263 +27,169 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background: linear-gradient(120deg, #121212, #3e0066);
+            color: #ffffff;
+            overflow-x: hidden;
+            animation: backgroundShift 20s infinite alternate;
+        }
 
+        /* Smooth gradient animation */
+        @keyframes backgroundShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
 
+        /* Heading Styles */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Nunito Sans', sans-serif;
+            font-weight: 700;
+            color: #C0C0C0;
+            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2), 0px 0px 10px rgba(148, 0, 255, 0.4);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        h1:hover {
+            color: #C3E8FF;
+            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5), 0px 0px 15px rgba(148, 0, 255, 0.7);
+        }
+
+        /* Home Section Styling */
+        #home-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 120vh; /* Taller section */
+            width: 100vw; /* Full width of viewport */
+            background-image: url('path-to-your-background-image.jpg'); /* Placeholder for your image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 60px; /* Balanced padding */
+        }
+
+        /* Dim overlay for the background */
+        #home-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+            z-index: 1;
+        }
+
+        /* Home Section Content Styling */
+        #home-section h1 {
+            font-size: 5rem; /* Large font for emphasis */
+            color: #C3E8FF;
+            z-index: 2;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        #home-section p {
+            font-size: 1.6rem;
+            margin-top: 20px;
+            color: #D3D3D3;
+            z-index: 2;
+            animation: fadeInUp 1.8s ease-out;
+        }
+
+        #home-section .btn {
+            margin-top: 35px;
+            padding: 15px 30px;
+            font-size: 1.3rem;
+            background-color: #6200ea;
+            color: #ffffff;
+            border-radius: 10px;
+            z-index: 2;
+            animation: fadeInUp 2s ease-out;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #home-section .btn:hover {
+            background-color: #7d3cff;
+            box-shadow: 0px 5px 15px rgba(125, 60, 255, 0.4);
+        }
+
+        /* Responsive Adjustments for Larger Screens */
+        @media screen and (min-width: 1200px) {
+            #home-section {
+                padding: 100px 60px;
+                min-height: 140vh; /* More height for large screens */
+            }
+
+            #home-section h1 {
+                font-size: 6rem;
+            }
+
+            #home-section p {
+                font-size: 1.8rem;
+            }
+
+            #home-section .btn {
+                font-size: 1.4rem;
+                padding: 18px 35px;
+            }
+        }
+
+        /* Responsive Font Adjustments */
         @media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center;
-  }
-}
-@media (max-width: 768px) {
-  body, p, a {
-    font-size: 1rem; /* Adjust to fit mobile */
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.75rem;
-  }
-}
-@media (max-width: 480px) {
-  body, p, a {
-    font-size: 0.9rem;
-  }
-  h1 {
-    font-size: 1.5rem;
-  }
-  h2 {
-    font-size: 1.25rem;
-  }
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-.container {
-  display: flex;
-  flex-wrap: wrap; /* Allows wrapping for smaller screens */
-  justify-content: space-between;
-}
+            #home-section h1 {
+                font-size: 3.5rem;
+            }
+            #home-section p {
+                font-size: 1.3rem;
+            }
+        }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Stack elements vertically on mobile */
-  }
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-/* Tablets and larger phones */
-@media (max-width: 768px) {
-  .header {
-    font-size: 1.5rem;
-  }
-  .content {
-    padding: 10px;
-  }
-}
+        @media screen and (max-width: 480px) {
+            #home-section h1 {
+                font-size: 3rem;
+            }
+            #home-section p {
+                font-size: 1.2rem;
+            }
+        }
 
-/* Phones */
-@media (max-width: 480px) {
-  .header {
-    font-size: 1.25rem;
-  }
-  .content {
-    padding: 5px;
-  }
-}
-        .navbar ul {
-  list-style-type: none;
-  padding: 0;
-}
+        /* Smooth animations for content */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.navbar li {
-  display: inline;
-  margin-right: 15px;
-}
-
-@media (max-width: 768px) {
-  .navbar ul {
-    display: none; /* Hidden by default */
-    flex-direction: column;
-  }
-  
-  .navbar li {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .menu-icon {
-    display: block; /* Shows hamburger menu */
-    cursor: pointer;
-  }
-
-  .hidden {
-    display: none;
-  }
-}
-
-/* Show the menu when toggled */
-.active {
-  display: block !important;
-}
-button, a {
-  padding: 10px 20px;
-  font-size: 1rem;
-}
-
-
-html {
-            scroll-behavior: smooth;
-}
-
-/* Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Nunito Sans', sans-serif;
-    background: linear-gradient(120deg, #121212, #3e0066);
-    color: #ffffff;
-    overflow-x: hidden;
-    animation: backgroundShift 20s infinite alternate;
-}
-
-/* Smooth gradient animation */
-@keyframes backgroundShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
-}
-
-/* Heading Styles */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
-    color: #C0C0C0; /* Subtle metallic silver */
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4), 0px 0px 20px #9400ff;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-h1:hover {
-    color: #C3E8FF; /* Bright shimmer on hover */
-    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7), 0px 0px 30px #9400ff;
-}
-
-/* Home Section Styling */
-#home-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 100vh; /* 100% of the viewport height */
-    width: 100vw; /* Full width of the viewport */
-    background-image: url('path-to-your-background-image.jpg'); /* Placeholder for your image */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
-    padding: 60px 40px; /* Balanced padding */
-}
-
-/* Dim overlay for the background */
-#home-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
-    z-index: 1;
-}
-
-/* Home Section Content Styling */
-#home-section h1 {
-    font-size: 5rem; /* Larger font for emphasis */
-    color: #C3E8FF;
-    z-index: 2;
-    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-    animation: fadeInDown 1.5s ease-out;
-}
-
-#home-section p {
-    font-size: 1.6rem; /* Slightly larger text */
-    margin-top: 20px; /* Space between heading and paragraph */
-    color: #D3D3D3;
-    z-index: 2;
-    animation: fadeInUp 1.8s ease-out;
-}
-
-#home-section .btn {
-    margin-top: 35px;
-    padding: 15px 30px; /* Larger button for emphasis */
-    font-size: 1.3rem;
-    background-color: #6200ea;
-    color: #ffffff;
-    border-radius: 10px;
-    z-index: 2;
-    animation: fadeInUp 2s ease-out;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#home-section .btn:hover {
-    background-color: #7d3cff;
-    box-shadow: 0px 5px 15px rgba(125, 60, 255, 0.4);
-}
-
-/* Responsive Adjustments for Larger Screens */
-@media screen and (min-width: 1200px) {
-    #home-section {
-        padding: 100px 60px;
-        min-height: 120vh; /* Slightly taller for large screens */
-    }
-
-    #home-section h1 {
-        font-size: 6rem;
-    }
-
-    #home-section p {
-        font-size: 1.8rem;
-    }
-
-    #home-section .btn {
-        font-size: 1.4rem;
-        padding: 18px 35px;
-    }
-}
-
-/* Responsive Font Adjustments */
-@media screen and (max-width: 768px) {
-    #home-section h1 {
-        font-size: 3.5rem;
-    }
-    #home-section p {
-        font-size: 1.3rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    #home-section h1 {
-        font-size: 3rem;
-    }
-    #home-section p {
-        font-size: 1.2rem;
-    }
-}
-
-
-
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         
 /* Updated Header Styling */
 header {
