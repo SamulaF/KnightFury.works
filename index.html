@@ -1893,11 +1893,22 @@ document.addEventListener('DOMContentLoaded', function() {
         introContainer.style.display = 'none';
         mainContent.style.display = 'block';
     }
+document.addEventListener('DOMContentLoaded', function() {
+    const preloader = document.getElementById('preloader');
 
-    // Hide the preloader when the window loads
-    window.addEventListener('load', () => {
+    // Hide the preloader on mobile devices
+    if (window.innerWidth <= 768) {
         preloader.style.display = 'none';
+    }
+
+    // Hide preloader after window loads (desktop only)
+    window.addEventListener('load', () => {
+        if (window.innerWidth > 768) {
+            preloader.style.display = 'none';
+        }
     });
+});
+
 
     // GSAP animations for cards (hover and touch)
     gsap.utils.toArray('.flip-card').forEach(card => {
