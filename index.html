@@ -26,6 +26,31 @@
             color: #ffffff;
             overflow-x: hidden;
         }
+        html, body {
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    width: 100vw; /* Ensures body takes the full width */
+    max-width: 100%; /* Restricts width to prevent zooming out */
+}
+.container, .content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto; /* Center-aligns elements */
+    box-sizing: border-box; /* Includes padding and borders in element widths */
+}
+img {
+    max-width: 100%; /* Scales down but not beyond container */
+    height: auto;
+    display: block; /* Removes any inline space */
+}
+        html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative; /* Fix any possible shifts */
+}
+
+
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Nunito Sans', sans-serif;
@@ -1632,6 +1657,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
         function toggleMenu() {
         const menu = document.getElementById('menu');
         menu.classList.toggle('active');
@@ -1642,6 +1668,36 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('menu-toggle').addEventListener('click', () => {
         menu.classList.toggle('active');
     });
+           function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
+    .navbar ul {
+    display: none; /* Initially hidden on smaller screens */
+    flex-direction: column;
+    width: 100%; /* Ensure full width on small screens */
+}
+
+.navbar ul.active {
+    display: flex; /* Show menu when active */
+}
+
+.menu-icon {
+    display: block;
+    cursor: pointer;
+}
+
+@media (min-width: 769px) {
+    .navbar ul {
+        display: flex; /* Display horizontal menu on larger screens */
+        justify-content: space-around;
+    }
+
+    .menu-icon {
+        display: none; /* Hide the icon on larger screens */
+    }
+}
+
 });
 
 </script>
