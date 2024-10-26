@@ -34,6 +34,256 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
+/* Base Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #30023b57;
+    color: #ffffff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+}
+
+p, a {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #1E063A;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5);
+}
+
+header img {
+    width: 70px;
+    margin-right: 15px;
+    filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
+    transition: filter 0.3s ease-in-out;
+}
+
+header img:hover {
+    filter: drop-shadow(0px 0px 22px rgba(144, 19, 254, 1));
+}
+
+/* Navigation */
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 700;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    color: #9B30FF;
+    transform: scale(1.1);
+}
+
+/* Responsive Container */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    flex: 1 1 300px;
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Button */
+.btn {
+    background-color: #9400ff;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Sections */
+section {
+    padding: 90px 20px 60px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Team Section */
+.team-section img {
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0WBCYzE5EVPSRhEzpI0MmaBpiRYbRQ4WXhQ&s') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.5s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    body, p, a {
+        font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    header .logo-speedometer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    body, p, a {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .item {
+        flex: 1 1 100%;
+        margin: 5px;
+    }
+}
+
+/* Keyframe Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ffafbd, 0 0 20px #ffc3a0;
+    }
+    to {
+        text-shadow: 0 0 20px #ffafbd, 0 0 30px #ffc3a0;
+    }
+}
+
+@keyframes diagonal-glow {
+    from {
+        transform: translateY(0) rotate(45deg);
+    }
+    to {
+        transform: translateY(-100px) rotate(45deg);
+    }
+}
+
+@keyframes rotate-arc {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes needle-swing {
+    from {
+        transform: rotate(45deg);
+    }
+    to {
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Tooltip */
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: #290029;
+    color: #31285f;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+/* Wheel Navigation */
+section {
+    padding: 90px 20px 60px;
+    text-align: center;
+}
 
 
 
