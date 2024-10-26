@@ -142,7 +142,6 @@ html {
             scroll-behavior: smooth;
 }
 
-        /* Base Styles */
 /* Reset */
 * {
     margin: 0;
@@ -162,7 +161,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
-    color: #FFD700; /* Yellow color for headings */
+    color: #C0C0C0; /* Subtle metallic silver for professional look */
 }
 
 /* Container for Layout */
@@ -176,6 +175,12 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1 1 300px; /* Flex item to resize based on container size */
     margin: 10px;
     padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(148, 0, 255, 0.3); /* Adds hover effect */
 }
 
 /* Responsive Adjustments */
@@ -196,11 +201,18 @@ h1, h2, h3, h4, h5, h6 {
 .btn {
     background-color: #9400ff;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 12px 24px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
     display: inline-block;
+    font-family: 'Nunito Sans', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #b222ff; /* Lighter purple for hover */
+    transform: translateY(-3px); /* Slight raise on hover */
 }
 
 /* Home Section Styling */
@@ -209,21 +221,62 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100vh; /* Full screen height */
+    height: 110vh; /* Slightly larger for full look */
+    background-image: url('path-to-your-background-image.jpg'); /* Placeholder image path */
     background-size: cover;
     background-position: center;
-    padding: 50px 20px; /* Extra padding for larger look */
+    position: relative;
+    overflow: hidden;
+    padding: 60px 20px; /* Extra padding */
 }
 
+/* Dim overlay for the background */
+#home-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Subtle overlay */
+    z-index: 1;
+}
+
+/* Home Section Content Styling */
 #home-section h1 {
-    font-size: 3rem; /* Larger font size */
-    color: #FFD700; /* Yellow color for title */
+    font-size: 3.5rem; /* Larger, more prominent font */
+    color: #A3E4FF; /* Light, soft blue for text */
+    z-index: 2;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Soft shadow */
+    animation: fadeIn 1.5s ease;
 }
 
 #home-section p {
-    font-size: 1.2rem;
-    margin-top: 10px;
+    font-size: 1.3rem;
+    margin-top: 20px;
+    color: #E5E5E5; /* Light gray for paragraph */
+    z-index: 2;
+    animation: fadeIn 2s ease;
 }
+
+#home-section .btn {
+    margin-top: 25px;
+    z-index: 2;
+    animation: fadeIn 2.5s ease;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 
         
