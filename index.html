@@ -151,9 +151,20 @@ html {
 
 body {
     font-family: 'Nunito Sans', sans-serif;
-    background-color: #121212;
+    background: linear-gradient(120deg, #121212, #3e0066);
     color: #ffffff;
     overflow-x: hidden;
+    animation: backgroundShift 20s infinite alternate;
+}
+
+/* Smooth gradient animation */
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
 
 /* Heading Styles */
@@ -161,6 +172,13 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
     color: #C0C0C0; /* Subtle metallic silver */
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4), 0px 0px 20px #9400ff;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+h1:hover {
+    color: #C3E8FF; /* Bright shimmer on hover */
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7), 0px 0px 30px #9400ff;
 }
 
 /* Container Layout */
@@ -168,46 +186,141 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Item Styles */
 .item {
     flex: 1 1 300px;
     margin: 10px;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(148, 0, 255, 0.3);
+    transform: scale(1.07);
+    box-shadow: 0 15px 30px rgba(148, 0, 255, 0.4);
 }
 
 /* Button Styles */
 .btn {
     background-color: #9400ff;
     color: #ffffff;
-    padding: 12px 24px;
+    padding: 15px 30px;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: bold;
-    display: inline-block;
     font-family: 'Nunito Sans', sans-serif;
+    display: inline-block;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 10px 20px rgba(148, 0, 255, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Button Hover Effect with Pulse and Gradient */
 .btn:hover {
-    background-color: #b222ff;
-    transform: translateY(-3px);
-    box-shadow: 0px 8px 16px rgba(148, 0, 255, 0.3); /* Enhanced shadow on hover */
+    background: linear-gradient(135deg, #7d3cff, #b222ff);
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(125, 60, 255, 0.5);
 }
 
+/* Button Pulse Animation */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(148, 0, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s;
+    opacity: 0.8;
+}
+
+.btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Animation for Smooth Transitions */
+@media screen and (prefers-reduced-motion: no-preference) {
+    .btn,
+    .item,
+    h1,
+    body {
+        transition: all 0.3s ease;
+    }
+}
+
+/* Custom Shadow Effect */
+.item::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 70%;
+    height: 10px;
+    background: rgba(148, 0, 255, 0.5);
+    filter: blur(10px);
+    transition: width 0.3s;
+    transform: translateX(-50%);
+}
+
+.item:hover::after {
+    width: 90%;
+}
+
+/* Button Focus Styles */
+.btn:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6), 0px 0px 20px #9400ff;
+}
+
+/* Responsive Button and Text Size */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .btn {
+        padding: 12px 20px;
+    }
+}
 /* Home Section Styling */
 #home-section {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 100vh; /* Set minimum height to 100% of the viewport */
+    min-height: 130vh; /* Taller than the viewport */
     background-image: url('path-to-your-background-image.jpg'); /* Placeholder image path */
     background-size: cover;
     background-position: center top; /* Ensure the image aligns properly */
@@ -280,7 +393,6 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.1rem;
     }
 }
-
 
 
 
@@ -1409,6 +1521,7 @@ nav a:hover {
         <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
     </div>
 </section>
+
 
 
 
