@@ -174,15 +174,29 @@ body {
     background-color: #1a1a1a;
 }
 
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
 /* Hero Section */
 .hero-section {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('hero-bg.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('wheel-background.jpg') center/cover no-repeat;
     position: relative;
-    color: #ffffff;
     text-align: center;
 }
 
@@ -192,66 +206,65 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('wheel.png') center/contain no-repeat;
-    opacity: 0.2;
+    background: url('wheel.png') center/cover no-repeat;
+    opacity: 0.1;
     z-index: 1;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 80%;
-    margin: auto;
+    max-width: 700px;
+    padding: 20px;
     text-align: center;
+    color: #ffffff;
 }
 
 .hero-title {
-    font-size: 3.5em;
-    font-weight: bold;
-    color: #ffd700;
-    animation: fadeInDown 1.5s ease-in-out;
+    font-size: 4em;
+    font-weight: 700;
+    color: #8e44ad; /* Knight Fury purple */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: #dcdcdc; /* Light gray to contrast with purple */
 }
 
 .hero-subtitle {
     font-size: 1.2em;
-    margin-top: 10px;
-    color: #d3d3d3;
-    animation: fadeInUp 1.5s ease-in-out;
+    color: #bcbcbc;
+    margin-bottom: 30px;
 }
 
 .btn-primary {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 30px;
+    padding: 12px 36px;
+    background-color: #8e44ad; /* Primary purple color */
     color: #ffffff;
-    background-color: #ffd700;
-    border-radius: 5px;
-    text-decoration: none;
     font-weight: bold;
-    transition: transform 0.3s, background-color 0.3s;
-    animation: fadeIn 2s ease-in-out;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.4); /* Purple shadow */
 }
 
 .btn-primary:hover {
-    background-color: #ffaa00;
-    transform: scale(1.1);
+    background-color: #732d91; /* Darker purple for hover */
+    transform: translateY(-4px);
 }
 
 /* Animations */
-@keyframes fadeInDown {
-    0% { opacity: 0; transform: translateY(-20px); }
-    100% { opacity: 1; transform: translateY(0); }
+.hero-title, .hero-subtitle, .btn-primary {
+    animation: fadeInUp 1.5s ease-out;
 }
 
 @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
 
 /* Base styles for all devices */
 body, html {
@@ -1416,10 +1429,10 @@ nav a:hover {
 
 
 <section id="home" class="hero-section">
-    <div id="wheel" class="background-wheel"></div> <!-- The wheel in the background -->
+    <div id="wheel" class="background-wheel"></div> <!-- Background wheel graphic -->
     
     <div id="content" class="hero-content">
-        <h1 class="hero-title">Welcome to Knight Fury</h1>
+        <h1 class="hero-title">Welcome to <span class="highlight">Knight Fury</span></h1>
         <p class="hero-subtitle">The F1 in Schools Team from Ambience Public School</p>
         <a href="https://www.f1inschools.com/" class="btn btn-primary" target="_blank">Learn More</a>
     </div>
