@@ -181,152 +181,20 @@ h1:hover {
     text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7), 0px 0px 30px #9400ff;
 }
 
-/* Container Layout */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Item Styles */
-.item {
-    flex: 1 1 300px;
-    margin: 10px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(5px);
-    animation: popIn 0.5s ease-out;
-}
-
-@keyframes popIn {
-    0% {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.item:hover {
-    transform: scale(1.07);
-    box-shadow: 0 15px 30px rgba(148, 0, 255, 0.4);
-}
-
-/* Button Styles */
-.btn {
-    background-color: #9400ff;
-    color: #ffffff;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-family: 'Nunito Sans', sans-serif;
-    display: inline-block;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 10px 20px rgba(148, 0, 255, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Button Hover Effect with Pulse and Gradient */
-.btn:hover {
-    background: linear-gradient(135deg, #7d3cff, #b222ff);
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 25px rgba(125, 60, 255, 0.5);
-}
-
-/* Button Pulse Animation */
-.btn::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(148, 0, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.5s;
-    opacity: 0.8;
-}
-
-.btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-/* Animation for Smooth Transitions */
-@media screen and (prefers-reduced-motion: no-preference) {
-    .btn,
-    .item,
-    h1,
-    body {
-        transition: all 0.3s ease;
-    }
-}
-
-/* Custom Shadow Effect */
-.item::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    width: 70%;
-    height: 10px;
-    background: rgba(148, 0, 255, 0.5);
-    filter: blur(10px);
-    transition: width 0.3s;
-    transform: translateX(-50%);
-}
-
-.item:hover::after {
-    width: 90%;
-}
-
-/* Button Focus Styles */
-.btn:focus {
-    outline: none;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6), 0px 0px 20px #9400ff;
-}
-
-/* Responsive Button and Text Size */
-@media screen and (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    .btn {
-        padding: 12px 20px;
-    }
-}
 /* Home Section Styling */
 #home-section {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 160vh; /* Taller than the viewport */
-    background-image: url('path-to-your-background-image.jpg'); /* Placeholder image path */
+    min-height: 100vh; /* 100% of the viewport height */
+    width: 100vw; /* Full width of the viewport */
+    background-image: url('path-to-your-background-image.jpg'); /* Placeholder for your image */
     background-size: cover;
-    background-position: center top; /* Ensure the image aligns properly */
+    background-position: center;
     position: relative;
     overflow: hidden;
-    padding: 80px 20px; /* More padding for spacing */
+    padding: 60px 40px; /* Balanced padding */
 }
 
 /* Dim overlay for the background */
@@ -343,7 +211,7 @@ h1:hover {
 
 /* Home Section Content Styling */
 #home-section h1 {
-    font-size: 4.5rem; /* Larger font for emphasis */
+    font-size: 5rem; /* Larger font for emphasis */
     color: #C3E8FF;
     z-index: 2;
     text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -351,8 +219,8 @@ h1:hover {
 }
 
 #home-section p {
-    font-size: 1.5rem; /* Slightly larger text */
-    margin-top: 30px; /* More space between heading and paragraph */
+    font-size: 1.6rem; /* Slightly larger text */
+    margin-top: 20px; /* Space between heading and paragraph */
     color: #D3D3D3;
     z-index: 2;
     animation: fadeInUp 1.8s ease-out;
@@ -361,7 +229,7 @@ h1:hover {
 #home-section .btn {
     margin-top: 35px;
     padding: 15px 30px; /* Larger button for emphasis */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     background-color: #6200ea;
     color: #ffffff;
     border-radius: 10px;
@@ -373,6 +241,27 @@ h1:hover {
 #home-section .btn:hover {
     background-color: #7d3cff;
     box-shadow: 0px 5px 15px rgba(125, 60, 255, 0.4);
+}
+
+/* Responsive Adjustments for Larger Screens */
+@media screen and (min-width: 1200px) {
+    #home-section {
+        padding: 100px 60px;
+        min-height: 120vh; /* Slightly taller for large screens */
+    }
+
+    #home-section h1 {
+        font-size: 6rem;
+    }
+
+    #home-section p {
+        font-size: 1.8rem;
+    }
+
+    #home-section .btn {
+        font-size: 1.4rem;
+        padding: 18px 35px;
+    }
 }
 
 /* Responsive Font Adjustments */
@@ -390,7 +279,7 @@ h1:hover {
         font-size: 3rem;
     }
     #home-section p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 }
 
