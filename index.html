@@ -34,12 +34,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
-        /* For smaller screens */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column; /* Stacks them vertically on small screens */
-    }
-}
+     
         @media (max-width: 768px) {
     #preloader {
         display: none;
@@ -156,6 +151,12 @@ nav a:hover {
 .logo, .speedometer {
     max-width: 80px; /* Set a maximum width as needed */
     height: auto; /* Maintains aspect ratio */
+}
+           /* For smaller screens */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Stacks them vertically on small screens */
+    }
 }
 /* Responsive Container */
 .container {
