@@ -34,6 +34,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
+        /* Mobile Adjustments */
+@media (max-width: 768px) {
+    header img {
+        width: 50px;
+        margin-right: 10px;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        margin: 0 10px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .flip-card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body, p, a {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .item {
+        flex: 1 1 100%;
+        margin: 5px;
+    }
+}
+
 /* Base Styling */
 body, html {
     margin: 0;
@@ -1948,6 +1991,15 @@ document.addEventListener('scroll', () => {
             section.style.transform = 'translateY(0)';
         }
     });
+});
+if (window.innerWidth <= 768) {
+    introContainer.style.display = 'none';
+    mainContent.style.display = 'block';
+}
+window.addEventListener('scroll', function() {
+    if (window.innerWidth > 768) {
+        // Wheel rotation code
+    }
 });
 
 </script>
