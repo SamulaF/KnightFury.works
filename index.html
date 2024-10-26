@@ -214,20 +214,19 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #b222ff; /* Lighter purple for hover */
     transform: translateY(-3px); /* Slight raise on hover */
 }
-
 /* Home Section Styling */
 #home-section {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 110vh; /* Slightly larger for full look */
+    height: 120vh; /* Slightly larger height for a more expansive look */
     background-image: url('path-to-your-background-image.jpg'); /* Placeholder image path */
     background-size: cover;
     background-position: center;
     position: relative;
     overflow: hidden;
-    padding: 60px 20px; /* Extra padding */
+    padding: 70px 20px; /* Extra padding */
 }
 
 /* Dim overlay for the background */
@@ -238,35 +237,56 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Subtle overlay */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)); /* Gradient overlay */
     z-index: 1;
 }
 
 /* Home Section Content Styling */
 #home-section h1 {
-    font-size: 3.5rem; /* Larger, more prominent font */
-    color: #A3E4FF; /* Light, soft blue for text */
+    font-size: 4rem; /* Even larger font for a bold statement */
+    color: #C3E8FF; /* Softer blue for a professional contrast */
     z-index: 2;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Soft shadow */
-    animation: fadeIn 1.5s ease;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+    animation: fadeInDown 1.5s ease-out;
 }
 
 #home-section p {
-    font-size: 1.3rem;
-    margin-top: 20px;
-    color: #E5E5E5; /* Light gray for paragraph */
+    font-size: 1.4rem; /* Slightly larger text for readability */
+    margin-top: 25px;
+    color: #D3D3D3; /* Softer light gray */
     z-index: 2;
-    animation: fadeIn 2s ease;
+    animation: fadeInUp 1.8s ease-out;
 }
 
 #home-section .btn {
-    margin-top: 25px;
+    margin-top: 30px;
+    padding: 12px 25px; /* Larger padding for the button */
+    font-size: 1.1rem;
+    background-color: #6200ea; /* Deeper purple button for contrast */
+    color: #ffffff;
+    border-radius: 8px;
     z-index: 2;
-    animation: fadeIn 2.5s ease;
+    animation: fadeInUp 2s ease-out;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#home-section .btn:hover {
+    background-color: #7d3cff; /* Lighter purple on hover */
 }
 
 /* Animation Keyframes */
-@keyframes fadeIn {
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -276,6 +296,7 @@ h1, h2, h3, h4, h5, h6 {
         transform: translateY(0);
     }
 }
+
 
 
 
