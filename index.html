@@ -1940,6 +1940,15 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.classList.toggle('active');
     });
 });
+document.addEventListener('scroll', () => {
+    document.querySelectorAll('section').forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < window.innerHeight - 50) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }
+    });
+});
 
 </script>
 
