@@ -2,162 +2,206 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <title>Knight Fury - F1 in Schools</title>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight Fury - F1 in Schools</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Favicon and Touch Icons -->
-    <link rel="icon" href="https://knightfury.works/favicon-48x48.png" sizes="48x48">
+    <link rel="icon" type="image/png" href="https://knightfury.works/favicon-48x48.png" sizes="48x48">
+    <link rel="icon" type="image/svg+xml" href="https://knightfury.works/favicon.svg">
+    <link rel="shortcut icon" href="https://knightfury.works/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="https://knightfury.works/apple-touch-icon.png">
     <link rel="manifest" href="https://knightfury.works/site.webmanifest">
+
+    <!-- Additional Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="120x120" href="https://knightfury.works/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://knightfury.works/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="https://knightfury.works/apple-touch-icon-167x167.png">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Knight Fury - F1 in Schools">
+    <meta property="og:description" content="Knight Fury's Official Website - F1 in Schools team from Ambience Public School">
+    <meta property="og:image" content="https://knightfury.works/favicon-32x32.png">
+    <meta property="og:image" content="https://knightfury.works/android-chrome-512x512.png">
+    <meta property="og:url" content="https://knightfury.works">
+    <meta property="og:type" content="website">
 
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
-        /* Base Styles */
-        body {
-            margin: 0;
-            font-family: 'Nunito Sans', sans-serif;
-            background-color: #30023b57;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
 
 
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight: 700;
-        }
+        @media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  body, p, a {
+    font-size: 1rem; /* Adjust to fit mobile */
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 480px) {
+  body, p, a {
+    font-size: 0.9rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  justify-content: space-between;
+}
 
-        p, a {
-            font-family: 'Nunito Sans', sans-serif;
-        }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements vertically on mobile */
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* Tablets and larger phones */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.5rem;
+  }
+  .content {
+    padding: 10px;
+  }
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Flex container for layout */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .item {
-            flex: 1 1 300px;
-            margin: 10px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Navbar */
+/* Phones */
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.25rem;
+  }
+  .content {
+    padding: 5px;
+  }
+}
         .navbar ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            justify-content: space-between;
-        }
+  list-style-type: none;
+  padding: 0;
+}
 
-        .navbar li {
-            display: inline-block;
-            margin-right: 15px;
-        }
+.navbar li {
+  display: inline;
+  margin-right: 15px;
+}
 
-        /* Hide the menu on smaller screens, only show it when toggled */
-        @media (max-width: 768px) {
-            .navbar ul {
-                display: none;
-                flex-direction: column;
-            }
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+  }
+  
+  .navbar li {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .menu-icon {
+    display: block; /* Shows hamburger menu */
+    cursor: pointer;
+  }
 
-            .navbar li {
-                display: block;
-                margin-bottom: 10px;
-            }
+  .hidden {
+    display: none;
+  }
+}
 
-            .menu-icon {
-                display: block;
-                cursor: pointer;
-            }
-        }
+/* Show the menu when toggled */
+.active {
+  display: block !important;
+}
+button, a {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
 
-        /* Active class for mobile menu */
-        .active {
-            display: flex !important;
-        }
 
-        /* Responsive Font Sizes */
-        @media (max-width: 768px) {
-            body, p, a {
-                font-size: 1rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            h2 {
-                font-size: 1.75rem;
-            }
-        }
+html {
+            scroll-behavior: smooth;
+}
 
-        @media (max-width: 480px) {
-            body, p, a {
-                font-size: 0.9rem;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            h2 {
-                font-size: 1.25rem;
-            }
-        }
+        /* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #30023b57;
+    color: #ffffff;
+    overflow-x: hidden;
+}
 
-        /* Container adjustments for mobile */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                padding: 10px;
-            }
-        }
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+}
 
-        /* Adjustments for small phones */
-        @media (max-width: 480px) {
-            .item {
-                flex: 1 1 100%;
-                margin: 5px;
-            }
-            .content {
-                padding: 5px;
-            }
-        }
-<!-- Navigation -->
-<nav class="navbar">
-    <span class="menu-icon" onclick="toggleMenu()">☰</span>
-    <ul id="menu" class="hidden">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Car Design</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
+p, a {
+    font-family: 'Nunito Sans', sans-serif;
+}
 
-<!-- Container -->
-<div class="container">
-    <div class="item">Content Block 1</div>
-    <div class="item">Content Block 2</div>
-    <div class="item">Content Block 3</div>
-</div>
+    
+/* Base styles for all devices */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Flex container for layout */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    flex: 1 1 300px; /* Flex item to resize based on container size */
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments for tablets and larger phones */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+}
+
+/* Specific changes for smaller screens like smartphones */
+@media screen and (max-width: 480px) {
+    .item {
+        flex: 1 1 100%; /* Full-width items on small screens */
+        margin: 5px;
+    }
+}
 
         .btn {
             background-color: #9400ff;
