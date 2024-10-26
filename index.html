@@ -2,23 +2,30 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <title>Knight Fury - F1 in Schools</title>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight Fury - F1 in Schools</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Favicon and Icons -->
-    <link rel="icon" type="image/png" href="https://knightfury.works/favicon-48x48.png" sizes="48x48" />
-    <link rel="icon" type="image/svg+xml" href="https://knightfury.works/favicon.svg" />
-    <link rel="shortcut icon" href="https://knightfury.works/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://knightfury.works/apple-touch-icon.png" />
-    <link rel="manifest" href="https://knightfury.works/site.webmanifest" />
+    <!-- Favicon and Touch Icons -->
+    <link rel="icon" type="image/png" href="https://knightfury.works/favicon-48x48.png" sizes="48x48">
+    <link rel="icon" type="image/svg+xml" href="https://knightfury.works/favicon.svg">
+    <link rel="shortcut icon" href="https://knightfury.works/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://knightfury.works/apple-touch-icon.png">
+    <link rel="manifest" href="https://knightfury.works/site.webmanifest">
 
-    <!-- Open Graph Meta Tags -->
+    <!-- Additional Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="120x120" href="https://knightfury.works/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://knightfury.works/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="https://knightfury.works/apple-touch-icon-167x167.png">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Knight Fury - F1 in Schools">
     <meta property="og:description" content="Knight Fury's Official Website - F1 in Schools team from Ambience Public School">
-    <meta property="og:image" content="https://knightfury.works/logo.png">
+    <meta property="og:image" content="https://knightfury.works/favicon-32x32.png">
+    <meta property="og:image" content="https://knightfury.works/android-chrome-512x512.png">
     <meta property="og:url" content="https://knightfury.works">
     <meta property="og:type" content="website">
 
@@ -27,168 +34,184 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Nunito Sans', sans-serif;
-            background: linear-gradient(120deg, #121212, #3e0066);
-            color: #ffffff;
-            overflow-x: hidden;
-            animation: backgroundShift 20s infinite alternate;
-        }
 
-        /* Smooth gradient animation */
-        @keyframes backgroundShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
 
-        /* Heading Styles */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Nunito Sans', sans-serif;
-            font-weight: 700;
-            color: #C0C0C0;
-            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2), 0px 0px 10px rgba(148, 0, 255, 0.4);
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        h1:hover {
-            color: #C3E8FF;
-            text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.5), 0px 0px 15px rgba(148, 0, 255, 0.7);
-        }
-
-        /* Home Section Styling */
-        #home-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 120vh; /* Taller section */
-            width: 100vw; /* Full width of viewport */
-            background-image: url('path-to-your-background-image.jpg'); /* Placeholder for your image */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-            padding: 100px 60px; /* Balanced padding */
-        }
-
-        /* Dim overlay for the background */
-        #home-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
-            z-index: 1;
-        }
-
-        /* Home Section Content Styling */
-        #home-section h1 {
-            font-size: 5rem; /* Large font for emphasis */
-            color: #C3E8FF;
-            z-index: 2;
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1.5s ease-out;
-        }
-
-        #home-section p {
-            font-size: 1.6rem;
-            margin-top: 20px;
-            color: #D3D3D3;
-            z-index: 2;
-            animation: fadeInUp 1.8s ease-out;
-        }
-
-        #home-section .btn {
-            margin-top: 35px;
-            padding: 15px 30px;
-            font-size: 1.3rem;
-            background-color: #6200ea;
-            color: #ffffff;
-            border-radius: 10px;
-            z-index: 2;
-            animation: fadeInUp 2s ease-out;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #home-section .btn:hover {
-            background-color: #7d3cff;
-            box-shadow: 0px 5px 15px rgba(125, 60, 255, 0.4);
-        }
-
-        /* Responsive Adjustments for Larger Screens */
-        @media screen and (min-width: 1200px) {
-            #home-section {
-                padding: 100px 60px;
-                min-height: 140vh; /* More height for large screens */
-            }
-
-            #home-section h1 {
-                font-size: 6rem;
-            }
-
-            #home-section p {
-                font-size: 1.8rem;
-            }
-
-            #home-section .btn {
-                font-size: 1.4rem;
-                padding: 18px 35px;
-            }
-        }
-
-        /* Responsive Font Adjustments */
         @media screen and (max-width: 768px) {
-            #home-section h1 {
-                font-size: 3.5rem;
-            }
-            #home-section p {
-                font-size: 1.3rem;
-            }
-        }
+  .container {
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  body, p, a {
+    font-size: 1rem; /* Adjust to fit mobile */
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 480px) {
+  body, p, a {
+    font-size: 0.9rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  justify-content: space-between;
+}
 
-        @media screen and (max-width: 480px) {
-            #home-section h1 {
-                font-size: 3rem;
-            }
-            #home-section p {
-                font-size: 1.2rem;
-            }
-        }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements vertically on mobile */
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* Tablets and larger phones */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.5rem;
+  }
+  .content {
+    padding: 10px;
+  }
+}
 
-        /* Smooth animations for content */
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* Phones */
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.25rem;
+  }
+  .content {
+    padding: 5px;
+  }
+}
+        .navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+.navbar li {
+  display: inline;
+  margin-right: 15px;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+  }
+  
+  .navbar li {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .menu-icon {
+    display: block; /* Shows hamburger menu */
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+/* Show the menu when toggled */
+.active {
+  display: block !important;
+}
+button, a {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+
+html {
+            scroll-behavior: smooth;
+}
+
+        /* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #30023b57;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+}
+
+p, a {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+    
+/* Base styles for all devices */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Flex container for layout */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item {
+    flex: 1 1 300px; /* Flex item to resize based on container size */
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments for tablets and larger phones */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+}
+
+/* Specific changes for smaller screens like smartphones */
+@media screen and (max-width: 480px) {
+    .item {
+        flex: 1 1 100%; /* Full-width items on small screens */
+        margin: 5px;
+    }
+}
+
+        .btn {
+            background-color: #9400ff;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            font-family: Arial, Helvetica, sans-serif;
         }
         
 /* Updated Header Styling */
@@ -215,29 +238,13 @@ header {
 header img {
     width: 70px;
     margin-right: 15px; /* Space between the logo and speedometer */
-    filter: drop-shadow(0px 0px 14px rgba(128, 0, 255, 0.9)); /* Brighter purple */
-    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+    filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8)); /* Bright neon purple glow */
+    transition: filter 0.3s ease-in-out;
 }
 
 header img:hover {
-    animation: pulseRotate 0.6s ease-in-out forwards; /* Adds pulse and rotate effect */
-    filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1)); /* Intense glow on hover */
+    filter: drop-shadow(0px 0px 22px rgba(144, 19, 254, 1)); /* Brighter glow on hover */
 }
-
-/* Keyframes for hover effect */
-@keyframes pulseRotate {
-    0% {
-        transform: scale(1) rotate(0deg); /* Normal size and position */
-    }
-    50% {
-        transform: scale(1.2) rotate(10deg); /* Pulsing and slight rotation */
-    }
-    100% {
-        transform: scale(1) rotate(0deg); /* Back to original size and position */
-    }
-}
-
-
 
 /* Styling for the zero and speedometer */
 .header-zero-container {
@@ -375,7 +382,6 @@ nav a:hover {
     background-color: #8A2BE2;
     box-shadow: 0 4px 12px rgba(93, 63, 211, 0.6);
 }
-
 
 
 
