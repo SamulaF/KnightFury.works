@@ -34,6 +34,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
+        header {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #461B73; /* Initial background */
+}
+
+header.scrolled {
+    background-color: rgba(70, 27, 115, 0.8); /* Transparent background on scroll */
+    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.3);
+}
+
         .btn {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
