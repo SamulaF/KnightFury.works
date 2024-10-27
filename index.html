@@ -127,10 +127,6 @@ header {
     box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5);
 }
 
-header.scrolled {
-    background-color: rgba(70, 27, 115, 0.8); /* Slightly transparent dark purple */
-    box-shadow: 0 2px 4px rgba(93, 63, 211, 0.2); /* Softer shadow when scrolled */
-}
 header img {
     width: 70px;
     margin-right: 15px;
@@ -564,10 +560,6 @@ header a, header h1 {
 
 header a:hover {
     color: #FFD700; /* Gold color on hover for links */
-}
-        header.scrolled {
-    background-color: rgba(70, 27, 115, 0.8); /* Slightly transparent dark purple */
-    box-shadow: 0 2px 4px rgba(93, 63, 211, 0.2); /* Softer shadow when scrolled */
 }
 
 
@@ -1921,10 +1913,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     const rocketBtn = document.getElementById('rocket-btn');
     const rocketSound = document.getElementById('rocket-sound');
+    
     let lastScrollTop = 0; // Track last scroll position
     let rotation = 0; // Initialize wheel rotation
 
-    // Hide the preloader on mobile devices
+    // Hide the preloader if on mobile
     if (window.innerWidth <= 768) {
         preloader.style.display = 'none';
         introContainer.style.display = 'none';
@@ -1939,9 +1932,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Video playback speed for desktop only
     if (window.innerWidth > 768 && video) {
         video.playbackRate = 2.7;
+
+        // Handle the end of the video
         video.onended = function() {
             introContainer.style.display = 'none';
             mainContent.style.display = 'block';
+
             // Add glow effect to header text elements
             const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
             headerTextElements.forEach(element => element.classList.add('glow-text'));
@@ -1952,15 +1948,17 @@ document.addEventListener('DOMContentLoaded', function() {
     gsap.utils.toArray('.flip-card').forEach(card => {
         card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, duration: 0.3 }));
+
         // Mobile touch events
         card.addEventListener('touchstart', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('touchend', () => gsap.to(card, { scale: 1, duration: 0.3 }));
     });
 
-    // Intersection Observer for fade-in animations on sections
+    // Intersection Observer for fade-in animations
     const sections = document.querySelectorAll('section');
     const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
+
+    const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
@@ -1973,23 +1971,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Wheel rotation on scroll (desktop only)
     window.addEventListener('scroll', function() {
-        if (window.innerWidth > 768 && wheel) {
+        if (window.innerWidth > 768) {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             rotation += (scrollTop > lastScrollTop ? 5 : -5); // Rotate based on scroll
             wheel.style.transform = `rotate(${rotation}deg)`;
-            lastScrollTop = Math.max(scrollTop, 0);
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }
     });
 
-    // Rocket button scroll-to-top functionality
-    if (rocketBtn && rocketSound) {
-        rocketBtn.addEventListener('click', function() {
-            rocketBtn.classList.add('takeoff');
-            rocketSound.play();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
-        });
-    }
+    // Rocket button scroll-to-top
+    rocketBtn.addEventListener('click', function() {
+        rocketBtn.classList.add('takeoff');
+        rocketSound.play();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
+    });
 
     // Scroll-triggered menu highlighting
     window.addEventListener('scroll', function() {
@@ -2008,29 +2005,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+});
 
-    // Section scroll animations
-    document.addEventListener('scroll', () => {
-        document.querySelectorAll('section').forEach((section) => {
-            if (section.getBoundingClientRect().top < window.innerHeight - 50) {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }
-        });
-    });
-
-    // Transparent header on scroll
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) { // Adjust the scroll threshold as needed
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+// Section scroll animations
+document.addEventListener('scroll', () => {
+    document.querySelectorAll('section').forEach((section) => {
+        if (section.getBoundingClientRect().top < window.innerHeight - 50) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
         }
     });
 });
-</script>
 
+</script>
 
 </body>
 </html>
