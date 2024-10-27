@@ -34,15 +34,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
     <style>
-        header {
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    background-color: #461B73; /* Initial background */
-}
 
-header.scrolled {
-    background-color: rgba(70, 27, 115, 0.8); /* Transparent background on scroll */
-    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.3);
-}
 
         .btn {
     font-family: 'Roboto', sans-serif;
@@ -135,11 +127,13 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #461B73; /* Initial background */
 }
 
 header.scrolled {
-    background-color: rgba(70, 27, 115, 0.8); /* Slightly transparent dark purple */
-    box-shadow: 0 2px 4px rgba(93, 63, 211, 0.2); /* Softer shadow when scrolled */
+    background-color: rgba(70, 27, 115, 0.8); /* Transparent background on scroll */
+    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.3);
 }
 header img {
     width: 70px;
@@ -565,6 +559,13 @@ header {
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(92, 72, 191, 0.4); /* Slightly darker shadow for contrast */
     color: #FFFFFF; /* Ensure text is white for readability */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #461B73; /* Initial background */
+}
+
+header.scrolled {
+    background-color: rgba(70, 27, 115, 0.8); /* Transparent background on scroll */
+    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.3);
 }
 
 header a, header h1 {
