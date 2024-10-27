@@ -544,13 +544,24 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background-color: #461B73; /* Dark purple background */
+    background: linear-gradient(90deg, #5E4B92, #D4AF37); /* Cool purple to gold gradient */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(93, 63, 211, 0.5); /* Soft purple shadow */
+    box-shadow: 0 4px 8px rgba(92, 72, 191, 0.4); /* Slightly darker shadow for contrast */
+    color: #FFFFFF; /* Ensure text is white for readability */
 }
+
+header a, header h1 {
+    color: #FFFFFF; /* White text color for links and headings */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Soft shadow for better readability */
+}
+
+header a:hover {
+    color: #FFD700; /* Gold color on hover for links */
+}
+
 
 /* Logo and speedometer side-by-side */
 .logo-speedometer {
