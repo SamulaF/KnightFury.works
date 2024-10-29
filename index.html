@@ -1933,7 +1933,7 @@ nav a:hover {
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Get references to necessary elements
     const video = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
@@ -1942,112 +1942,100 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     const rocketBtn = document.getElementById('rocket-btn');
     const rocketSound = document.getElementById('rocket-sound');
-    
-    let lastScrollTop = 0; // Track last scroll position
-    let rotation = 0; // Initialize wheel rotation
+    const header = document.querySelector('header');
+    let lastScrollTop = 0;
+    let rotation = 0;
 
-    // Hide the preloader if on mobile
+    // Mobile-specific behavior: Hide preloader and intro
     if (window.innerWidth <= 768) {
         preloader.style.display = 'none';
         introContainer.style.display = 'none';
         mainContent.style.display = 'block';
     } else {
-        // Desktop behavior for preloader
+        // Desktop behavior: Hide preloader on page load
         window.addEventListener('load', () => {
             preloader.style.display = 'none';
         });
+
+        // Increase video playback speed and add end event
+        if (video) {
+            video.playbackRate = 2.7;
+            video.onended = function () {
+                introContainer.style.display = 'none';
+                mainContent.style.display = 'block';
+                document.querySelectorAll('header h1, header .header-zero, header nav a').forEach(element =>
+                    element.classList.add('glow-text')
+                );
+            };
+        }
     }
 
-    // Video playback speed for desktop only
-    if (window.innerWidth > 768 && video) {
-        video.playbackRate = 2.7;
-
-        // Handle the end of the video
-        video.onended = function() {
-            introContainer.style.display = 'none';
-            mainContent.style.display = 'block';
-
-            // Add glow effect to header text elements
-            const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
-            headerTextElements.forEach(element => element.classList.add('glow-text'));
-        };
-    }
-
-    // GSAP animations for cards
+    // GSAP animations for card scaling
     gsap.utils.toArray('.flip-card').forEach(card => {
         card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, duration: 0.3 }));
-
-        // Mobile touch events
         card.addEventListener('touchstart', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('touchend', () => gsap.to(card, { scale: 1, duration: 0.3 }));
     });
-/* JavaScript to track mouse movement */
-document.querySelector('header').addEventListener('mousemove', (e) => {
-    const rect = e.target.getBoundingClientRect();
-    e.target.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    e.target.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-});
-    // Intersection Observer for fade-in animations
-    const sections = document.querySelectorAll('section');
-    const observerOptions = { threshold: 0.1 };
 
-    const observer = new IntersectionObserver(function(entries) {
+    // Track mouse movement on header for radial gradient effect
+    header.addEventListener('mousemove', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        header.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        header.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+
+    // Set up Intersection Observer for fade-in animations
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); // Ensure each section animates only once
             }
         });
-    }, observerOptions);
-
+    }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
-    // Wheel rotation on scroll (desktop only)
-    window.addEventListener('scroll', function() {
+    // Unified scroll event listener
+    window.addEventListener('scroll', function () {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Wheel rotation on scroll (desktop only)
         if (window.innerWidth > 768) {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            rotation += (scrollTop > lastScrollTop ? 5 : -5); // Rotate based on scroll
+            rotation += (scrollTop > lastScrollTop ? 5 : -5);
             wheel.style.transform = `rotate(${rotation}deg)`;
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }
-    });
 
-    // Rocket button scroll-to-top
-    rocketBtn.addEventListener('click', function() {
-        rocketBtn.classList.add('takeoff');
-        rocketSound.play();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
-    });
-
-    // Scroll-triggered menu highlighting
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('.why-subsection');
+        // Scroll-triggered menu highlighting
         const menuItems = document.querySelectorAll('.dropdown-content a');
         let activeSection = null;
-
-        sections.forEach((section) => {
+        document.querySelectorAll('.why-subsection').forEach(section => {
             if (window.scrollY >= section.offsetTop - 50) activeSection = section;
         });
-
-        menuItems.forEach((item) => {
+        menuItems.forEach(item => {
             item.classList.remove('active');
             if (activeSection && item.getAttribute('href').substring(1) === activeSection.id) {
                 item.classList.add('active');
             }
         });
-    });
-});
 
-// Section scroll animations
-document.addEventListener('scroll', () => {
-    document.querySelectorAll('section').forEach((section) => {
-        if (section.getBoundingClientRect().top < window.innerHeight - 50) {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
-        }
+        // Fade-in for sections on scroll
+        sections.forEach(section => {
+            if (section.getBoundingClientRect().top < window.innerHeight - 50) {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }
+        });
+    });
+
+    // Rocket button scroll-to-top
+    rocketBtn.addEventListener('click', function () {
+        rocketBtn.classList.add('takeoff');
+        rocketSound.play();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
     });
 });
 
