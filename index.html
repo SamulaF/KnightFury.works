@@ -548,27 +548,27 @@ body, html {
             font-family: Arial, Helvetica, sans-serif;
         }
         
+/* Header styling */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10px;
-    background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6)); /* Transparent gradient from purple to gold */
+    padding: 10px;
+    background: transparent; /* Fully transparent by default */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
-    color: #FFFFFF; /* White text color for visibility */
-    backdrop-filter: blur(8px); /* Blurring effect */
-    -webkit-backdrop-filter: blur(8px); /* Safari support */
-    transition: background-color 0.3s, box-shadow 0.3s;
+    color: #FFFFFF; /* Ensure text color remains readable */
+    transition: background 0.4s ease; /* Smooth transition for gradient */
 }
 
+/* Text styling for header elements */
 header h1, header a {
-    color: #FFFFFF; /* Ensures text color is white */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Soft shadow for readability */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Shadow for readability */
 }
+
 
 header a:hover {
     color: #FFD700; /* Gold color on hover */
