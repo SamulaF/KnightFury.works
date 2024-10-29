@@ -547,28 +547,31 @@ body, html {
             display: inline-block;
             font-family: Arial, Helvetica, sans-serif;
         }
-        
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!      
+/* Header styling with radial gradient effect */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background: transparent; /* Fully transparent initially */
+    background: transparent; /* Fully transparent by default */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    color: #FFFFFF; /* White text color for visibility */
-    transition: background 0.3s, box-shadow 0.3s;
+    color: #FFFFFF; /* Ensures white text color */
     backdrop-filter: blur(8px); /* Adds blur to text */
     -webkit-backdrop-filter: blur(8px); /* Safari support */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
+    transition: background 0.4s ease;
 }
 
+/* Optional text styling */
 header h1, header a {
     color: #FFFFFF;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
+
+/* JavaScript for tracking pointer movement on header */
 
 header:hover {
     background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8) 80%); /* Radial gradient around pointer */
@@ -1946,13 +1949,13 @@ document.addEventListener('DOMContentLoaded', function () {
     let lastScrollTop = 0;
     let rotation = 0;
 
-    // Mobile-specific behavior: Hide preloader and intro
+    // Hide preloader and intro on mobile
     if (window.innerWidth <= 768) {
         preloader.style.display = 'none';
         introContainer.style.display = 'none';
         mainContent.style.display = 'block';
     } else {
-        // Desktop behavior: Hide preloader on page load
+        // Desktop behavior for hiding preloader on page load
         window.addEventListener('load', () => {
             preloader.style.display = 'none';
         });
@@ -1970,38 +1973,44 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Mouse move event to create radial gradient on the header
+    header.addEventListener('mousemove', (e) => {
+        const rect = header.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Apply radial gradient background centered on cursor position
+        header.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8) 80%)`;
+    });
+
+    // Reset background to transparent on mouse leave
+    header.addEventListener('mouseleave', () => {
+        header.style.background = 'transparent';
+    });
+
     // GSAP animations for card scaling
     gsap.utils.toArray('.flip-card').forEach(card => {
         card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, duration: 0.3 }));
-        card.addEventListener('touchstart', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
-        card.addEventListener('touchend', () => gsap.to(card, { scale: 1, duration: 0.3 }));
     });
 
-    // Track mouse movement on header for radial gradient effect
-    header.addEventListener('mousemove', (e) => {
-        const rect = e.target.getBoundingClientRect();
-        header.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-        header.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-    });
-
-    // Set up Intersection Observer for fade-in animations
+    // Intersection Observer for fade-in animations
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Ensure each section animates only once
+                observer.unobserve(entry.target); // Ensures each section animates only once
             }
         });
     }, { threshold: 0.1 });
     sections.forEach(section => observer.observe(section));
 
-    // Unified scroll event listener
+    // Scroll and menu highlighting
     window.addEventListener('scroll', function () {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Wheel rotation on scroll (desktop only)
+        // Rotate wheel on scroll for desktop only
         if (window.innerWidth > 768) {
             rotation += (scrollTop > lastScrollTop ? 5 : -5);
             wheel.style.transform = `rotate(${rotation}deg)`;
@@ -2021,7 +2030,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Fade-in for sections on scroll
+        // Fade-in sections on scroll
         sections.forEach(section => {
             if (section.getBoundingClientRect().top < window.innerHeight - 50) {
                 section.style.opacity = '1';
@@ -2038,8 +2047,8 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
     });
 });
-
 </script>
+
 
 </body>
 </html>
