@@ -547,52 +547,36 @@ body, html {
             display: inline-block;
             font-family: Arial, Helvetica, sans-serif;
         }
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!      
-/* Header styling with radial gradient effect */
+        
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background: transparent; /* Fully transparent by default */
+    background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6)); /* Transparent gradient from purple to gold */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    color: #FFFFFF; /* Ensures white text color */
-    backdrop-filter: blur(8px); /* Adds blur to text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
+    color: #FFFFFF; /* White text color for visibility */
+    backdrop-filter: blur(8px); /* Blurring effect */
     -webkit-backdrop-filter: blur(8px); /* Safari support */
-    transition: background 0.4s ease;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* Optional text styling */
 header h1, header a {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: #FFFFFF; /* Ensures text color is white */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Soft shadow for readability */
 }
 
-/* JavaScript for tracking pointer movement on header */
-
-header:hover {
-    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8) 80%); /* Radial gradient around pointer */
-}
-
-/* CSS to track mouse position and update custom properties */
-header {
-    --mouse-x: 50%;
-    --mouse-y: 50%;
+header a:hover {
+    color: #FFD700; /* Gold color on hover */
 }
 
 header:hover {
-    animation: gradientPulse 0.5s infinite; /* Optional subtle pulsing animation */
+    background: linear-gradient(90deg, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8)); /* Slightly darker gradient on hover */
 }
-
-@keyframes gradientPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-
 
 
 /* Logo and speedometer side-by-side */
@@ -1936,7 +1920,7 @@ nav a:hover {
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     // Get references to necessary elements
     const video = document.getElementById('intro-video');
     const introContainer = document.getElementById('intro-video-container');
@@ -1945,110 +1929,111 @@ document.addEventListener('DOMContentLoaded', function () {
     const preloader = document.getElementById('preloader');
     const rocketBtn = document.getElementById('rocket-btn');
     const rocketSound = document.getElementById('rocket-sound');
-    const header = document.querySelector('header');
-    let lastScrollTop = 0;
-    let rotation = 0;
+    
+    let lastScrollTop = 0; // Track last scroll position
+    let rotation = 0; // Initialize wheel rotation
 
-    // Hide preloader and intro on mobile
+    // Hide the preloader if on mobile
     if (window.innerWidth <= 768) {
         preloader.style.display = 'none';
         introContainer.style.display = 'none';
         mainContent.style.display = 'block';
     } else {
-        // Desktop behavior for hiding preloader on page load
+        // Desktop behavior for preloader
         window.addEventListener('load', () => {
             preloader.style.display = 'none';
         });
-
-        // Increase video playback speed and add end event
-        if (video) {
-            video.playbackRate = 2.7;
-            video.onended = function () {
-                introContainer.style.display = 'none';
-                mainContent.style.display = 'block';
-                document.querySelectorAll('header h1, header .header-zero, header nav a').forEach(element =>
-                    element.classList.add('glow-text')
-                );
-            };
-        }
     }
 
-    // Mouse move event to create radial gradient on the header
-    header.addEventListener('mousemove', (e) => {
-        const rect = header.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        // Apply radial gradient background centered on cursor position
-        header.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8) 80%)`;
-    });
+    // Video playback speed for desktop only
+    if (window.innerWidth > 768 && video) {
+        video.playbackRate = 2.7;
 
-    // Reset background to transparent on mouse leave
-    header.addEventListener('mouseleave', () => {
-        header.style.background = 'transparent';
-    });
+        // Handle the end of the video
+        video.onended = function() {
+            introContainer.style.display = 'none';
+            mainContent.style.display = 'block';
 
-    // GSAP animations for card scaling
+            // Add glow effect to header text elements
+            const headerTextElements = document.querySelectorAll('header h1, header .header-zero, header nav a');
+            headerTextElements.forEach(element => element.classList.add('glow-text'));
+        };
+    }
+
+    // GSAP animations for cards
     gsap.utils.toArray('.flip-card').forEach(card => {
         card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, duration: 0.3 }));
+
+        // Mobile touch events
+        card.addEventListener('touchstart', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
+        card.addEventListener('touchend', () => gsap.to(card, { scale: 1, duration: 0.3 }));
     });
 
     // Intersection Observer for fade-in animations
     const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
+    const observerOptions = { threshold: 0.1 };
+
+    const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Ensures each section animates only once
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
+
     sections.forEach(section => observer.observe(section));
 
-    // Scroll and menu highlighting
-    window.addEventListener('scroll', function () {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Rotate wheel on scroll for desktop only
+    // Wheel rotation on scroll (desktop only)
+    window.addEventListener('scroll', function() {
         if (window.innerWidth > 768) {
-            rotation += (scrollTop > lastScrollTop ? 5 : -5);
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            rotation += (scrollTop > lastScrollTop ? 5 : -5); // Rotate based on scroll
             wheel.style.transform = `rotate(${rotation}deg)`;
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }
+    });
 
-        // Scroll-triggered menu highlighting
+    // Rocket button scroll-to-top
+    rocketBtn.addEventListener('click', function() {
+        rocketBtn.classList.add('takeoff');
+        rocketSound.play();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
+    });
+
+    // Scroll-triggered menu highlighting
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.why-subsection');
         const menuItems = document.querySelectorAll('.dropdown-content a');
         let activeSection = null;
-        document.querySelectorAll('.why-subsection').forEach(section => {
+
+        sections.forEach((section) => {
             if (window.scrollY >= section.offsetTop - 50) activeSection = section;
         });
-        menuItems.forEach(item => {
+
+        menuItems.forEach((item) => {
             item.classList.remove('active');
             if (activeSection && item.getAttribute('href').substring(1) === activeSection.id) {
                 item.classList.add('active');
             }
         });
-
-        // Fade-in sections on scroll
-        sections.forEach(section => {
-            if (section.getBoundingClientRect().top < window.innerHeight - 50) {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }
-        });
-    });
-
-    // Rocket button scroll-to-top
-    rocketBtn.addEventListener('click', function () {
-        rocketBtn.classList.add('takeoff');
-        rocketSound.play();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setTimeout(() => rocketBtn.classList.remove('takeoff'), 2000);
     });
 });
-</script>
 
+// Section scroll animations
+document.addEventListener('scroll', () => {
+    document.querySelectorAll('section').forEach((section) => {
+        if (section.getBoundingClientRect().top < window.innerHeight - 50) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>
