@@ -549,21 +549,33 @@ body, html {
         }
         
 header {
-    background-color: rgba(0, 0, 0, 0.3); /* Fully transparent with slight tint */
-    color: white; /* Ensures text is visible on any background */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow to help readability */
-    backdrop-filter: blur(8px); /* Optional: Adds blur effect for coolness */
-    -webkit-backdrop-filter: blur(8px); /* For Safari support */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6)); /* Transparent gradient from purple to gold */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
+    color: #FFFFFF; /* White text color for visibility */
+    backdrop-filter: blur(8px); /* Blurring effect */
+    -webkit-backdrop-filter: blur(8px); /* Safari support */
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-header h1, header nav a {
-    color: white; /* Ensures header elements stay visible */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); /* Adds a subtle shadow for readability */
+header h1, header a {
+    color: #FFFFFF; /* Ensures text color is white */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Soft shadow for readability */
+}
+
+header a:hover {
+    color: #FFD700; /* Gold color on hover */
 }
 
 header:hover {
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darken on hover for effect */
+    background: linear-gradient(90deg, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8)); /* Slightly darker gradient on hover */
 }
 
 
