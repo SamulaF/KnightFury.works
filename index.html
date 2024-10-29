@@ -56,6 +56,16 @@
         width: 50px;
         margin-right: 10px;
     }
+    .logo, .speedometer {
+    max-width: 80px; /* Set a maximum width as needed */
+    height: auto; /* Maintains aspect ratio */
+}
+           /* For smaller screens */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Stacks them vertically on small screens */
+    }
+}
 
     nav a {
         font-size: 0.9rem;
