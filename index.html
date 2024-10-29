@@ -553,30 +553,43 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6)); /* Transparent gradient from purple to gold */
+    background: transparent; /* Fully transparent initially */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
     color: #FFFFFF; /* White text color for visibility */
-    backdrop-filter: blur(8px); /* Blurring effect */
+    transition: background 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(8px); /* Adds blur to text */
     -webkit-backdrop-filter: blur(8px); /* Safari support */
-    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
 }
 
 header h1, header a {
-    color: #FFFFFF; /* Ensures text color is white */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Soft shadow for readability */
-}
-
-header a:hover {
-    color: #FFD700; /* Gold color on hover */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 header:hover {
-    background: linear-gradient(90deg, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8)); /* Slightly darker gradient on hover */
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8) 80%); /* Radial gradient around pointer */
 }
+
+/* CSS to track mouse position and update custom properties */
+header {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+header:hover {
+    animation: gradientPulse 0.5s infinite; /* Optional subtle pulsing animation */
+}
+
+@keyframes gradientPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+
 
 
 /* Logo and speedometer side-by-side */
@@ -1969,7 +1982,12 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('touchstart', () => gsap.to(card, { scale: 1.05, duration: 0.3 }));
         card.addEventListener('touchend', () => gsap.to(card, { scale: 1, duration: 0.3 }));
     });
-
+/* JavaScript to track mouse movement */
+document.querySelector('header').addEventListener('mousemove', (e) => {
+    const rect = e.target.getBoundingClientRect();
+    e.target.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+    e.target.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+});
     // Intersection Observer for fade-in animations
     const sections = document.querySelectorAll('section');
     const observerOptions = { threshold: 0.1 };
