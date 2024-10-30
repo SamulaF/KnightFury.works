@@ -609,17 +609,18 @@ header:hover {
   width: 70px;
 }
 
+/* Updated Speedometer Styling */
 .speedometer {
   position: relative;
   width: 70px;
   height: 70px;
   border-radius: 50%;
   background: radial-gradient(circle at center, #2e003e, #160635);
-  box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
+  box-shadow: inset 0px 0px 10px rgba(50, 0, 75, 0.6), 0px 0px 15px rgba(128, 0, 128, 0.8);
   transition: box-shadow 0.3s;
 }
 
-/* Needle positioned in the center */
+/* Adjusted Needle Animation */
 .needle {
   position: absolute;
   width: 2px;
@@ -628,21 +629,22 @@ header:hover {
   top: 17px;
   left: 34px;
   transform-origin: bottom center;
-  animation: needle-pendulum 2s infinite ease-in-out;
+  animation: right-pendulum 2s infinite ease-in-out;
   transition: transform 1s ease-out;
 }
 
-/* Smooth pendulum-like swing for the needle */
-@keyframes needle-pendulum {
-  0% { transform: rotate(-45deg); }
-  50% { transform: rotate(45deg); }
-  100% { transform: rotate(-45deg); }
+/* Keep the needle on the right side with a slight oscillation */
+@keyframes right-pendulum {
+  0% { transform: rotate(80deg); }
+  50% { transform: rotate(85deg); }
+  100% { transform: rotate(80deg); }
 }
 
-/* Spike to 180 degrees and oscillate between 175 and 180 */
-.speedometer:hover .needle {
-  animation: spike-oscillate 1s forwards ease-out;
+/* Glow effect on hover */
+.speedometer:hover {
+  box-shadow: 0px 0px 30px rgba(233, 30, 99, 0.8), 0px 0px 40px rgba(212, 175, 55, 0.6);
 }
+
 
 /* Updated spike-oscillate keyframes for slight pendulum effect on the right */
 @keyframes spike-oscillate {
@@ -658,17 +660,19 @@ header:hover {
 }
 
 /* Logo Animation */
+/* Updated Logo Styling */
 header img {
   width: 70px;
   margin-right: 15px;
-  filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
+  filter: drop-shadow(0px 0px 18px rgba(144, 19, 254, 1));
   transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
 }
 
 header img:hover {
-  transform: rotate(360deg) scale(1.2); /* Full 360° rotation on hover */
-  filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
+  transform: scale(1.15); /* Slight scale-up on hover */
+  filter: drop-shadow(0px 0px 25px rgba(144, 19, 254, 1));
 }
+
 
 /* Center glowing 0 */
 .header-zero {
