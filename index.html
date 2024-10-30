@@ -620,7 +620,7 @@ header:hover {
   transition: box-shadow 0.3s;
 }
 
-/* Adjusted Needle Animation */
+/* Initial pendulum animation */
 .needle {
   position: absolute;
   width: 2px;
@@ -629,16 +629,29 @@ header:hover {
   top: 17px;
   left: 34px;
   transform-origin: bottom center;
-  animation: right-pendulum 2s infinite ease-in-out;
+  animation: initial-pendulum 2s infinite ease-in-out; /* Initial animation */
   transition: transform 1s ease-out;
 }
 
-/* Keep the needle on the right side with a slight oscillation */
+/* Initial full pendulum swing */
+@keyframes initial-pendulum {
+  0% { transform: rotate(-45deg); } /* Swing from -45 degrees */
+  50% { transform: rotate(45deg); } /* to 45 degrees */
+  100% { transform: rotate(-45deg); }
+}
+
+/* Hover effect with limited pendulum on the right */
+.speedometer:hover .needle {
+  animation: right-pendulum 1s infinite ease-in-out; /* Switch to right pendulum */
+}
+
+/* Pendulum effect on the right side (80-85 degrees) */
 @keyframes right-pendulum {
-  0% { transform: rotate(80deg); }
+  0% { transform: rotate(80deg); } /* Slight swing at 80 degrees */
   50% { transform: rotate(85deg); }
   100% { transform: rotate(80deg); }
 }
+
 
 /* Glow effect on hover */
 .speedometer:hover {
