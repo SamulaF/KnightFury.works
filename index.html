@@ -609,7 +609,6 @@ header:hover {
   width: 70px;
 }
 
-/* Speedometer styling */
 .speedometer {
   position: relative;
   width: 70px;
@@ -617,9 +616,10 @@ header:hover {
   border-radius: 50%;
   background: radial-gradient(circle at center, #2e003e, #160635);
   box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
-  transition: background-color 0.3s linear; /* Smooth color transition */
+  transition: box-shadow 0.3s;
 }
 
+/* Needle positioned in the center */
 .needle {
   position: absolute;
   width: 2px;
@@ -628,46 +628,28 @@ header:hover {
   top: 17px;
   left: 34px;
   transform-origin: bottom center;
-  transform: rotate(-45deg); /* Initial position */
-  transition: transform 0.3s ease-out;
+  animation: needle-pendulum 2s infinite ease-in-out;
+  transition: transform 1s ease-out;
 }
 
-
-/* Initial full pendulum animation */
-@keyframes initial-pendulum {
-  0% { transform: rotate(-45deg); } /* Swing from -45 degrees */
-  50% { transform: rotate(45deg); }  /* to 45 degrees */
+/* Smooth pendulum-like swing for the needle */
+@keyframes needle-pendulum {
+  0% { transform: rotate(-45deg); }
+  50% { transform: rotate(45deg); }
   100% { transform: rotate(-45deg); }
 }
 
-/* Hover effect: transition smoothly to 80 degrees, then start right pendulum */
+/* Spike to 180 degrees and oscillate between 175 and 180 */
 .speedometer:hover .needle {
-  animation: right-pendulum 1.2s infinite ease-in-out; /* Right pendulum animation */
-  transform: rotate(80deg); /* Smoothly move to 80 degrees */
+  animation: spike-oscillate 1s forwards ease-out;
 }
 
-/* Right-side pendulum effect (80-85 degrees) */
-@keyframes right-pendulum {
-  0% { transform: rotate(80deg); } /* Start at 80 degrees */
-  50% { transform: rotate(85deg); } /* Slight swing to 85 degrees */
-  100% { transform: rotate(80deg); }
-}
-
-
-
-/* Glow effect on hover */
-.speedometer:hover {
-  box-shadow: 0px 0px 30px rgba(233, 30, 99, 0.8), 0px 0px 40px rgba(212, 175, 55, 0.6);
-}
-
-
-/* Updated spike-oscillate keyframes for slight pendulum effect on the right */
 @keyframes spike-oscillate {
-  0% { transform: rotate(80deg); } /* Start near the right */
-  50% { transform: rotate(85deg); } /* Move slightly to the right */
-  100% { transform: rotate(80deg); } /* Back to starting position */
+  0% { transform: rotate(90deg); } /* Start at horizontal */
+  50% { transform: rotate(180deg); } /* Spike to 180 */
+  75% { transform: rotate(175deg); } /* Oscillate back to 175 */
+  100% { transform: rotate(180deg); } /* Back to 180 */
 }
-
 
 /* Glow effect on hover */
 .speedometer:hover {
@@ -675,19 +657,17 @@ header:hover {
 }
 
 /* Logo Animation */
-/* Updated Logo Styling */
 header img {
   width: 70px;
   margin-right: 15px;
-  filter: drop-shadow(0px 0px 18px rgba(144, 19, 254, 1));
+  filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
   transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
 }
 
 header img:hover {
-  transform: scale(1.15); /* Slight scale-up on hover */
-  filter: drop-shadow(0px 0px 25px rgba(144, 19, 254, 1));
+  transform: rotate(360deg) scale(1.2); /* Full 360° rotation on hover */
+  filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
 }
-
 
 /* Center glowing 0 */
 .header-zero {
@@ -1968,8 +1948,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     const rocketBtn = document.getElementById('rocket-btn');
     const rocketSound = document.getElementById('rocket-sound');
-    const speedometer = document.getElementById('speedometer');
-    const needle = speedometer.querySelector('.needle');
+    
     let lastScrollTop = 0; // Track last scroll position
     let rotation = 0; // Initialize wheel rotation
 
@@ -2071,39 +2050,6 @@ document.addEventListener('scroll', () => {
             section.style.transform = 'translateY(0)';
         }
     });
-});
-// Variables to track hold time and maximum angle
-let holdInterval;
-let currentAngle = -45;
-const maxAngle = 180;
-
-// Function to increase the angle and change background color
-function increaseAngle() {
-    if (currentAngle < maxAngle) {
-        currentAngle += 5; // Increase the angle gradually
-        needle.style.transform = `rotate(${currentAngle}deg)`;
-
-        // Calculate color transition based on the angle
-        const progress = (currentAngle + 45) / (maxAngle + 45);
-        const red = Math.min(255, Math.floor(93 + progress * (255 - 93)));
-        const green = Math.min(0, Math.floor(63 - progress * 63));
-        const blue = Math.min(0, Math.floor(211 - progress * 211));
-
-        speedometer.style.background = `rgb(${red}, ${green}, ${blue})`;
-    }
-}
-
-// Start increasing angle on mousedown
-speedometer.addEventListener('mousedown', () => {
-    holdInterval = setInterval(increaseAngle, 100);
-});
-
-// Reset needle and background on mouseup
-document.addEventListener('mouseup', () => {
-    clearInterval(holdInterval);
-    currentAngle = -45;
-    needle.style.transform = `rotate(${currentAngle}deg)`;
-    speedometer.style.background = 'radial-gradient(circle at center, #2e003e, #160635)';
 });
 
 </script>
