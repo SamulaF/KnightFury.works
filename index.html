@@ -585,6 +585,13 @@ header:hover {
     align-items: center;
 }
 
+/* Cool pulsing logo effect */
+header img {
+    width: 70px;
+    margin-right: 15px;
+    animation: logoPulse 3s infinite ease-in-out;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
 
 /* Logo animation keyframes */
 @keyframes logoPulse {
@@ -598,6 +605,11 @@ header:hover {
     }
 }
 
+/* Extra 3D spin on hover */
+header img:hover {
+    filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
+    transform: rotateY(360deg) scale(1.2);
+}
 
 /* Speedometer container */
 .header-zero-container {
@@ -628,45 +640,27 @@ header:hover {
   top: 17px;
   left: 34px;
   transform-origin: bottom center;
-  animation: needle-pendulum 2s infinite ease-in-out;
-  transition: transform 1s ease-out;
+  animation: needle-swing 2s infinite ease-in-out;
+  transition: transform 0.5s ease-out;
 }
 
 /* Smooth pendulum-like swing for the needle */
-@keyframes needle-pendulum {
+@keyframes needle-swing {
   0% { transform: rotate(-45deg); }
   50% { transform: rotate(45deg); }
   100% { transform: rotate(-45deg); }
 }
 
-/* Spike to 180 degrees and oscillate between 175 and 180 */
+/* Gradual horizontal stop at 90 degrees when hovered */
 .speedometer:hover .needle {
-  animation: spike-oscillate 1s forwards ease-out;
-}
-
-@keyframes spike-oscillate {
-  0% { transform: rotate(90deg); } /* Start at horizontal */
-  50% { transform: rotate(180deg); } /* Spike to 180 */
-  75% { transform: rotate(175deg); } /* Oscillate back to 175 */
-  100% { transform: rotate(180deg); } /* Back to 180 */
+  animation: none;
+  transition: transform 1s ease-out; /* Smooth stopping */
+  transform: rotate(90deg); /* Horizontal position */
 }
 
 /* Glow effect on hover */
 .speedometer:hover {
   box-shadow: 0px 0px 30px rgba(233, 30, 99, 0.8), 0px 0px 40px rgba(212, 175, 55, 0.6);
-}
-
-/* Logo Animation */
-header img {
-  width: 70px;
-  margin-right: 15px;
-  filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
-}
-
-header img:hover {
-  transform: rotate(360deg) scale(1.2); /* Full 360° rotation on hover */
-  filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
 }
 
 /* Center glowing 0 */
