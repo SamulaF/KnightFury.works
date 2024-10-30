@@ -614,12 +614,20 @@ header:hover {
   top: 17px;
   left: 34px;
   transform-origin: bottom center;
-  transform: rotate(45deg);
-  transition: transform 0.5s ease-in-out;
+  animation: needle-swing 2s infinite ease-in-out;
+  transition: transform 0.5s ease-out;
 }
 
-/* Needle spikes up on hover */
+/* Pendulum-like needle swing */
+@keyframes needle-swing {
+  0% { transform: rotate(-45deg); }
+  50% { transform: rotate(0deg); }
+  100% { transform: rotate(45deg); }
+}
+
+/* Needle spikes from 0 to max speed on hover */
 .speedometer:hover .needle {
+  animation: none; /* Stop the pendulum animation */
   transform: rotate(180deg); /* Move to max speed */
 }
 
@@ -710,6 +718,7 @@ nav a:hover {
     background: #8A2BE2;
     box-shadow: 0 4px 12px rgba(138, 43, 226, 0.5);
 }
+
 
 
 
