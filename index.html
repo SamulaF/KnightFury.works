@@ -585,6 +585,32 @@ header:hover {
     align-items: center;
 }
 
+/* Cool pulsing logo effect */
+header img {
+    width: 70px;
+    margin-right: 15px;
+    animation: logoPulse 3s infinite ease-in-out;
+    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+}
+
+/* Logo animation keyframes */
+@keyframes logoPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
+    }
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0px 0px 30px rgba(212, 175, 55, 0.8));
+    }
+}
+
+/* Extra 3D spin on hover */
+header img:hover {
+    filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
+    transform: rotateY(360deg) scale(1.2);
+}
+
 /* Speedometer container */
 .header-zero-container {
   position: relative;
@@ -618,17 +644,18 @@ header:hover {
   transition: transform 0.5s ease-out;
 }
 
-/* Pendulum-like needle swing */
+/* Smooth pendulum-like swing for the needle */
 @keyframes needle-swing {
   0% { transform: rotate(-45deg); }
-  50% { transform: rotate(0deg); }
-  100% { transform: rotate(45deg); }
+  50% { transform: rotate(45deg); }
+  100% { transform: rotate(-45deg); }
 }
 
-/* Needle spikes from 0 to max speed on hover */
+/* Gradual horizontal stop at 90 degrees when hovered */
 .speedometer:hover .needle {
-  animation: none; /* Stop the pendulum animation */
-  transform: rotate(180deg); /* Move to max speed */
+  animation: none;
+  transition: transform 1s ease-out; /* Smooth stopping */
+  transform: rotate(90deg); /* Horizontal position */
 }
 
 /* Glow effect on hover */
