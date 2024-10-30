@@ -549,35 +549,34 @@ body, html {
         }
         
 /* Header styling */
-        
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6)); /* Transparent gradient from purple to gold */
+    background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6));
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for readability */
-    color: #FFFFFF; /* White text color for visibility */
-    backdrop-filter: blur(8px); /* Blurring effect */
-    -webkit-backdrop-filter: blur(8px); /* Safari support */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 header h1, header a {
-    color: #FFFFFF; /* Ensures text color is white */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Soft shadow for readability */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 header a:hover {
-    color: #FFD700; /* Gold color on hover */
+    color: #FFD700;
 }
 
 header:hover {
-    background: linear-gradient(90deg, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8)); /* Slightly darker gradient on hover */
+    background: linear-gradient(90deg, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8));
 }
 
 /* Logo and speedometer side-by-side */
@@ -586,63 +585,7 @@ header:hover {
     align-items: center;
 }
 
-/* 3D Transform and Glow Animation for Logo */
-header img {
-    width: 70px;
-    margin-right: 15px;
-    filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
-    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
-}
-
-header img:hover {
-    filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
-    transform: rotateY(360deg) scale(1.2); /* 3D rotation and scale on hover */
-}
-/* Keyframe Animations for Extra Effects */
-@keyframes pulseGlow {
-    0%, 100% {
-        filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
-    }
-    50% {
-        filter: drop-shadow(0px 0px 30px rgba(212, 175, 55, 0.8)); /* Gold highlight */
-    }
-}
-
-@keyframes spinIn {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Keyframe Animations for Extra Effects */
-@keyframes pulseGlow {
-    0%, 100% {
-        filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
-    }
-    50% {
-        filter: drop-shadow(0px 0px 30px rgba(212, 175, 55, 0.8)); /* Gold highlight */
-    }
-}
-
-/* Keyframe for Single Rotation */
-@keyframes rotateOnce {
-    from {
-        transform: rotateY(0deg) scale(1.2);
-    }
-    to {
-        transform: rotateY(360deg) scale(1.2);
-    }
-}
-
-header img:active {
-    animation: spinIn 0.7s ease-out forwards, pulseGlow 1.5s infinite alternate; /* Pulse and spin on click */
-    transform: scale(1.1); /* Slight zoom on click */
-}
-
-/* Styling for the zero and speedometer */
+/* Speedometer container */
 .header-zero-container {
   position: relative;
   display: flex;
@@ -659,27 +602,10 @@ header img:active {
   border-radius: 50%;
   background: radial-gradient(circle at center, #2e003e, #160635);
   box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
+  transition: box-shadow 0.3s;
 }
 
-.arc {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 4px solid transparent;
-  border-top-color: #9b30ff;
-  border-right-color: #800080;
-  animation: rotate-arc 5s infinite linear;
-}
-
-@keyframes rotate-arc {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Needle in the center of the speedometer */
+/* Needle positioned in the center */
 .needle {
   position: absolute;
   width: 2px;
@@ -688,15 +614,21 @@ header img:active {
   top: 17px;
   left: 34px;
   transform-origin: bottom center;
-  animation: needle-swing 3s infinite alternate ease-in-out;
+  transform: rotate(45deg);
+  transition: transform 0.5s ease-in-out;
 }
 
-@keyframes needle-swing {
-  from { transform: rotate(45deg); }
-  to { transform: rotate(-45deg); }
+/* Needle spikes up on hover */
+.speedometer:hover .needle {
+  transform: rotate(180deg); /* Move to max speed */
 }
 
-/* Glowing 0 in the center */
+/* Glow effect on hover */
+.speedometer:hover {
+  box-shadow: 0px 0px 30px rgba(233, 30, 99, 0.8), 0px 0px 40px rgba(212, 175, 55, 0.6);
+}
+
+/* Center glowing 0 */
 .header-zero {
   position: absolute;
   top: 50%;
@@ -730,7 +662,7 @@ nav a:hover {
 
 /* Dropdown Menu */
 .dropbtn {
-    background: linear-gradient(135deg, #5E4B92, #D4AF37); /* Cool purple to gold gradient */
+    background: linear-gradient(135deg, #5E4B92, #D4AF37);
     color: white;
     padding: 12px 18px;
     font-size: 18px;
@@ -751,7 +683,7 @@ nav a:hover {
     position: absolute;
     background-color: #32004B;
     border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(50, 0, 75, 0.5); /* Darker purple shadow */
+    box-shadow: 0 8px 16px rgba(50, 0, 75, 0.5);
     padding: 10px 0;
     z-index: 1;
 }
@@ -766,8 +698,8 @@ nav a:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #D4AF37; /* Soft gold background */
-    color: #32004B; /* Dark purple text color */
+    background-color: #D4AF37;
+    color: #32004B;
 }
 
 .dropdown:hover .dropdown-content {
@@ -775,8 +707,8 @@ nav a:hover {
 }
 
 .dropdown:hover .dropbtn {
-    background: #8A2BE2; /* Slightly different purple shade on hover */
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.5); /* Darker shadow for effect */
+    background: #8A2BE2;
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.5);
 }
 
 
@@ -892,7 +824,7 @@ nav a:hover {
 /* Button Styling */
 .btn {
     background-color: #ff0080;
-    color: #FFF;
+    color: #FFF; 
     padding: 14px 30px;
     border-radius: 50px;
     margin-top: 30px;
