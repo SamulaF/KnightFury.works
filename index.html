@@ -598,6 +598,24 @@ header img:hover {
     filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
     transform: rotateY(360deg) scale(1.2); /* 3D rotation and scale on hover */
 }
+/* Keyframe Animations for Extra Effects */
+@keyframes pulseGlow {
+    0%, 100% {
+        filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
+    }
+    50% {
+        filter: drop-shadow(0px 0px 30px rgba(212, 175, 55, 0.8)); /* Gold highlight */
+    }
+}
+
+@keyframes spinIn {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 /* Keyframe Animations for Extra Effects */
 @keyframes pulseGlow {
