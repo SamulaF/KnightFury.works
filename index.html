@@ -644,12 +644,13 @@ header:hover {
   animation: spike-oscillate 1s forwards ease-out;
 }
 
+/* Updated spike-oscillate keyframes for slight pendulum effect on the right */
 @keyframes spike-oscillate {
-  0% { transform: rotate(90deg); } /* Start at horizontal */
-  50% { transform: rotate(180deg); } /* Spike to 180 */
-  75% { transform: rotate(175deg); } /* Oscillate back to 175 */
-  100% { transform: rotate(180deg); } /* Back to 180 */
+  0% { transform: rotate(80deg); } /* Start near the right */
+  50% { transform: rotate(85deg); } /* Move slightly to the right */
+  100% { transform: rotate(80deg); } /* Back to starting position */
 }
+
 
 /* Glow effect on hover */
 .speedometer:hover {
