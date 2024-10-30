@@ -609,19 +609,17 @@ header:hover {
   width: 70px;
 }
 
-/* Updated Speedometer Styling */
+/* Speedometer styling */
 .speedometer {
   position: relative;
   width: 70px;
   height: 70px;
   border-radius: 50%;
   background: radial-gradient(circle at center, #2e003e, #160635);
-  box-shadow: inset 0px 0px 10px rgba(50, 0, 75, 0.6), 0px 0px 15px rgba(128, 0, 128, 0.8);
-  transition: box-shadow 0.3s;
+  box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
+  transition: background-color 0.3s linear; /* Smooth color transition */
 }
 
-/* Initial pendulum animation */
-/* Initial full pendulum swing */
 .needle {
   position: absolute;
   width: 2px;
@@ -630,9 +628,10 @@ header:hover {
   top: 17px;
   left: 34px;
   transform-origin: bottom center;
-  animation: initial-pendulum 2s infinite ease-in-out; /* Initial animation */
-  transition: transform 0.8s ease-out; /* Smooth transition to 80 degrees */
+  transform: rotate(-45deg); /* Initial position */
+  transition: transform 0.3s ease-out;
 }
+
 
 /* Initial full pendulum animation */
 @keyframes initial-pendulum {
@@ -1969,7 +1968,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     const rocketBtn = document.getElementById('rocket-btn');
     const rocketSound = document.getElementById('rocket-sound');
-    
+    // JavaScript to handle the click-and-hold interaction
+const speedometer = document.getElementById('speedometer');
+const needle = speedometer.querySelector('.needle');
+
+// Variables to track hold time and maximum angle
+let holdInterval;
+let currentAngle = -45;
+const maxAngle = 180;
+
+// Function to increase the angle and change background color
+function increaseAngle() {
+    if (currentAngle < maxAngle) {
+        currentAngle += 5; // Increase the angle gradually
+        needle.style.transform = `rotate(${currentAngle}deg)`;
+
+        // Calculate color transition based on the angle
+        const progress = (currentAngle + 45) / (maxAngle + 45);
+        const red = Math.min(255, Math.floor(93 + progress * (255 - 93)));
+        const green = Math.min(0, Math.floor(63 - progress * 63));
+        const blue = Math.min(0, Math.floor(211 - progress * 211));
+
+        speedometer.style.background = `rgb(${red}, ${green}, ${blue})`;
+    }
+}
+
+// Start increasing angle on mousedown
+speedometer.addEventListener('mousedown', () => {
+    holdInterval = setInterval(increaseAngle, 100);
+});
+
+// Reset needle and background on mouseup
+document.addEventListener('mouseup', () => {
+    clearInterval(holdInterval);
+    currentAngle = -45;
+    needle.style.transform = `rotate(${currentAngle}deg)`;
+    speedometer.style.background = 'radial-gradient(circle at center, #2e003e, #160635)';
+});
+
     let lastScrollTop = 0; // Track last scroll position
     let rotation = 0; // Initialize wheel rotation
 
