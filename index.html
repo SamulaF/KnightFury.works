@@ -1968,44 +1968,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     const rocketBtn = document.getElementById('rocket-btn');
     const rocketSound = document.getElementById('rocket-sound');
-    // JavaScript to handle the click-and-hold interaction
-const speedometer = document.getElementById('speedometer');
-const needle = speedometer.querySelector('.needle');
-
-// Variables to track hold time and maximum angle
-let holdInterval;
-let currentAngle = -45;
-const maxAngle = 180;
-
-// Function to increase the angle and change background color
-function increaseAngle() {
-    if (currentAngle < maxAngle) {
-        currentAngle += 5; // Increase the angle gradually
-        needle.style.transform = `rotate(${currentAngle}deg)`;
-
-        // Calculate color transition based on the angle
-        const progress = (currentAngle + 45) / (maxAngle + 45);
-        const red = Math.min(255, Math.floor(93 + progress * (255 - 93)));
-        const green = Math.min(0, Math.floor(63 - progress * 63));
-        const blue = Math.min(0, Math.floor(211 - progress * 211));
-
-        speedometer.style.background = `rgb(${red}, ${green}, ${blue})`;
-    }
-}
-
-// Start increasing angle on mousedown
-speedometer.addEventListener('mousedown', () => {
-    holdInterval = setInterval(increaseAngle, 100);
-});
-
-// Reset needle and background on mouseup
-document.addEventListener('mouseup', () => {
-    clearInterval(holdInterval);
-    currentAngle = -45;
-    needle.style.transform = `rotate(${currentAngle}deg)`;
-    speedometer.style.background = 'radial-gradient(circle at center, #2e003e, #160635)';
-});
-
+    const speedometer = document.getElementById('speedometer');
+    const needle = speedometer.querySelector('.needle');
     let lastScrollTop = 0; // Track last scroll position
     let rotation = 0; // Initialize wheel rotation
 
@@ -2107,6 +2071,39 @@ document.addEventListener('scroll', () => {
             section.style.transform = 'translateY(0)';
         }
     });
+});
+// Variables to track hold time and maximum angle
+let holdInterval;
+let currentAngle = -45;
+const maxAngle = 180;
+
+// Function to increase the angle and change background color
+function increaseAngle() {
+    if (currentAngle < maxAngle) {
+        currentAngle += 5; // Increase the angle gradually
+        needle.style.transform = `rotate(${currentAngle}deg)`;
+
+        // Calculate color transition based on the angle
+        const progress = (currentAngle + 45) / (maxAngle + 45);
+        const red = Math.min(255, Math.floor(93 + progress * (255 - 93)));
+        const green = Math.min(0, Math.floor(63 - progress * 63));
+        const blue = Math.min(0, Math.floor(211 - progress * 211));
+
+        speedometer.style.background = `rgb(${red}, ${green}, ${blue})`;
+    }
+}
+
+// Start increasing angle on mousedown
+speedometer.addEventListener('mousedown', () => {
+    holdInterval = setInterval(increaseAngle, 100);
+});
+
+// Reset needle and background on mouseup
+document.addEventListener('mouseup', () => {
+    clearInterval(holdInterval);
+    currentAngle = -45;
+    needle.style.transform = `rotate(${currentAngle}deg)`;
+    speedometer.style.background = 'radial-gradient(circle at center, #2e003e, #160635)';
 });
 
 </script>
