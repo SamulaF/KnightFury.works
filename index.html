@@ -1074,7 +1074,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
     color: #fff;
     filter: brightness(1.2) saturate(1.3);
     padding-top: 100px;
@@ -1084,24 +1084,23 @@ nav a:hover {
 /* Animated Image Frame */
 #animated-images {
     position: absolute;
-    top: 10%; /* Adjusted to align better with the background */
-    right: 10%; /* Position to make it feel part of the background */
-    width: 45vw; /* Slightly smaller width for balance */
-    max-width: 500px;
-    height: 300px;
+    top: 10%; /* Adjust as needed */
+    right: 10%; /* Adjust as needed */
+    width: 640px;
+    height: 400px;
     overflow: hidden;
-    transform: rotate(-2deg); /* Subtle rotation for harmony */
+    transform: rotate(-2deg);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1; /* Lower z-index if it should sit behind the button */
+    z-index: 1;
 }
 
 .cycle-image {
     display: none; /* Hide initially */
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Maintain aspect ratio, fit within the frame */
 }
 
 /* Button Styling */
@@ -1132,7 +1131,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 20px; /* Adjust spacing as needed */
+    margin-top: 20px;
 }
 
 
