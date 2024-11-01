@@ -1072,7 +1072,6 @@ nav a:hover {
     background-size: cover;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #fff;
@@ -1081,11 +1080,18 @@ nav a:hover {
     position: relative;
 }
 
+/* Center Container */
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
 /* Animated Image Frame */
 #animated-images {
-    position: absolute;
-    top: 10%; /* Adjust as needed */
-    right: 10%; /* Adjust as needed */
     width: 640px;
     height: 400px;
     overflow: hidden;
@@ -1093,7 +1099,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    margin-bottom: 20px;
 }
 
 .cycle-image {
@@ -1117,7 +1123,6 @@ nav a:hover {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 2;
     text-align: center;
-    position: relative;
 }
 
 /* Hover effect */
@@ -1772,19 +1777,22 @@ nav a:hover {
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- Background wheel -->
 
-    <!-- Animated Image Frame on the Right -->
-    <div id="animated-images">
-        <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
-        <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
-        <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
-        <img src="KnightFury4.jpg" class="cycle-image" alt="Knight Fury 4">
-    </div>
+    <!-- Centered Animated Image Frame -->
+    <div class="center-container">
+        <div id="animated-images">
+            <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
+            <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
+            <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
+            <img src="KnightFury4.jpg" class="cycle-image" alt="Knight Fury 4">
+        </div>
 
-    <!-- Centered Learn More Button -->
-    <div class="learn-more-button-container">
-        <a href="https://www.f1inschools.com/" class="learn-more-button" target="_blank">Learn More</a>
+        <!-- Centered Learn More Button -->
+        <div class="learn-more-button-container">
+            <a href="https://www.f1inschools.com/" class="learn-more-button" target="_blank">Learn More</a>
+        </div>
     </div>
 </section>
+
 
 
 
