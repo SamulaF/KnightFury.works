@@ -1067,7 +1067,6 @@ nav a:hover {
 
 
 
-        
 .home-section {
     background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
     background-size: cover;
@@ -1093,16 +1092,18 @@ nav a:hover {
     width: 100%;
     height: auto;
     opacity: 0;
-    animation: cycleAnimation 9s infinite;
+    filter: brightness(1.2) contrast(1.2); /* Makes images more vibrant */
+    animation: cycleAnimation 4.5s infinite; /* Faster cycle */
+    transition: opacity 0.5s ease-in-out;
 }
 
 .cycle-image:nth-child(1) { animation-delay: 0s; }
-.cycle-image:nth-child(2) { animation-delay: 3s; }
-.cycle-image:nth-child(3) { animation-delay: 6s; }
+.cycle-image:nth-child(2) { animation-delay: 1.5s; }
+.cycle-image:nth-child(3) { animation-delay: 3s; }
 
 @keyframes cycleAnimation {
     0%, 100% { opacity: 0; }
-    20%, 40% { opacity: 1; }
+    30%, 70% { opacity: 1; }
 }
 
 
@@ -1120,18 +1121,7 @@ nav a:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-        
+       
 .video-background {
     position: absolute;
     top: 50%;
@@ -1749,6 +1739,7 @@ nav a:hover {
 
     <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
 </section>
+
 
 
 
