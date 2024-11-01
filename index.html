@@ -32,7 +32,7 @@
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-II
+
     <style>
         .btn {
     font-family: 'Roboto', sans-serif;
@@ -1059,91 +1059,16 @@ nav a:hover {
             transition: opacity 1s ease, transform 1s ease;
         }
 
-
-
-
-
-
-
-
-/* Home Section Styling */
-.home-section {
-    background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Center content vertically */
-    color: #fff;
-    filter: brightness(1.2) saturate(1.3);
-    padding-top: 100px;
-    position: relative;
-}
-
-/* Animated Image Frame */
-#animated-images {
-    position: absolute;
-    top: 10%; /* Adjusted to align better with the background */
-    right: 10%; /* Position to make it feel part of the background */
-    width: 45vw; /* Slightly smaller width for balance */
-    max-width: 500px;
-    height: 300px;
-    overflow: hidden;
-    transform: rotate(-2deg); /* Subtle rotation for harmony */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1; /* Lower z-index if it should sit behind the button */
-}
-
-.cycle-image {
-    display: none; /* Hide initially */
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Button Styling */
-.learn-more-button {
-    background: linear-gradient(135deg, #6A0DAD, #8E44AD);
-    color: white;
-    font-size: 1.2em;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    filter: brightness(1.1) contrast(1.2);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    text-align: center;
-    position: relative;
-}
-
-/* Hover effect */
-.learn-more-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Center the button container */
-.learn-more-button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px; /* Adjust spacing as needed */
-}
-
-
-
-
-
-
-
-
-
-        
+        .home-section {
+            background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #fff;
+        }
         .video-background-container {
     position: relative;
     width: 100%;
@@ -1151,19 +1076,6 @@ nav a:hover {
     overflow: hidden;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-        
 .video-background {
     position: absolute;
     top: 50%;
@@ -1771,19 +1683,12 @@ nav a:hover {
 
 
 <section id="home" class="home-section">
-    <div id="wheel"></div> <!-- Background wheel -->
+    <div id="wheel"></div> <!-- The wheel in the background -->
 
-    <!-- Animated Image Frame on the Right -->
-    <div id="animated-images">
-        <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
-        <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
-        <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
-        <img src="KnightFury4.jpg" class="cycle-image" alt="Knight Fury 4">
-    </div>
-
-    <!-- Centered Learn More Button -->
-    <div class="learn-more-button-container">
-        <a href="https://www.f1inschools.com/" class="learn-more-button" target="_blank">Learn More</a>
+    <div id="content">
+        <h1>Welcome to Knight Fury</h1>
+        <p>The F1 in Schools Team from Ambience Public School</p>
+        <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
     </div>
 </section>
 
@@ -2018,21 +1923,7 @@ nav a:hover {
         
     
 
- <script>
-    const images = document.querySelectorAll('.cycle-image');
-    let currentIndex = 0;
-
-    function cycleImages() {
-        images.forEach((img, index) => {
-            img.style.display = (index === currentIndex) ? 'block' : 'none';
-        });
-        currentIndex = (currentIndex + 1) % images.length;
-    }
-
-    // Cycle every 1 second for a fast-paced effect
-    setInterval(cycleImages, 1000);
-</script>
-       
+        
         
 
 <footer>
