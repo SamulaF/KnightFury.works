@@ -1076,7 +1076,7 @@ nav a:hover {
     justify-content: center;
     color: #fff;
     filter: brightness(1.2) saturate(1.3);
-    padding-top: 100px;
+    padding-top: 50px; /* Reduced padding */
     position: relative;
 }
 
@@ -1092,39 +1092,38 @@ nav a:hover {
 
 /* Animated Image Frame */
 #animated-images {
-    width: 640px;
-    height: 400px;
+    width: 680px; /* Adjusted width to fit text */
+    height: 320px; /* Reduced height */
     overflow: hidden;
-    transform: rotate(0deg);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10px; /* Reduced space */
+    position: relative;
 }
 
-.cycle-image {
-    display: none; /* Hide initially */
+/* Team Heading and Button Overlay */
+.overlay-content {
+    position: absolute;
+    bottom: 20px; /* Position text and button closer to the bottom */
+    text-align: center;
     width: 100%;
-    height: 100%;
-    object-fit: contain; /* Maintain aspect ratio, fit within the frame */
 }
 
-/* Team Heading Styling */
 .team-heading {
     font-size: 1.5em;
     font-weight: bold;
     color: #FFD700; /* Gold color for visibility */
-    margin-bottom: 15px; /* Space between heading and button */
-    font-family: 'Poppins', sans-serif; /* Choose any cool font here */
+    font-family: 'Poppins', sans-serif;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+    margin: 0; /* Remove extra margin */
 }
 
 /* Button Styling */
 .learn-more-button {
     background: linear-gradient(135deg, #6A0DAD, #8E44AD);
     color: white;
-    font-size: 1.2em;
-    padding: 10px 20px;
+    font-size: 1em; /* Adjust font size */
+    padding: 8px 16px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -1133,19 +1132,13 @@ nav a:hover {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 2;
     text-align: center;
+    margin-top: 10px; /* Small gap from heading */
 }
 
 /* Hover effect */
 .learn-more-button:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Center the button container */
-.learn-more-button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
 
 
@@ -1786,7 +1779,7 @@ nav a:hover {
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- Background wheel -->
 
-    <!-- Centered Animated Image Frame -->
+    <!-- Centered Animated Image Frame with Overlay Text and Button -->
     <div class="center-container">
         <div id="animated-images">
             <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
@@ -1795,15 +1788,14 @@ nav a:hover {
             <img src="KnightFury4.jpg" class="cycle-image" alt="Knight Fury 4">
         </div>
 
-        <!-- Heading for Team Description -->
-        <h2 class="team-heading">F1 in Schools' Team from Ambience Public School</h2>
-
-        <!-- Centered Learn More Button -->
-        <div class="learn-more-button-container">
+        <!-- Overlay Text and Button -->
+        <div class="overlay-content">
+            <h2 class="team-heading">F1 in Schools' Team from Ambience Public School</h2>
             <a href="https://www.f1inschools.com/" class="learn-more-button" target="_blank">Learn More</a>
         </div>
     </div>
 </section>
+
 
 
 
