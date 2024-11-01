@@ -1077,46 +1077,30 @@ nav a:hover {
     justify-content: flex-start;
     color: #fff;
     filter: brightness(1.2) saturate(1.3);
-    overflow: hidden;
-    position: relative;
-    padding-top: 100px; /* Extra padding to avoid header overlap */
-    z-index: 1;
+    padding-top: 100px;
 }
 
-/* Static Image Frame on the Right */
+/* Larger, Energetic Image Frame for Cycling Images */
 #animated-images {
     position: absolute;
-    top: 150px; /* Lowered to avoid header overlap */
-    right: 5%;
-    width: 30vw;
-    max-width: 400px;
-    height: 250px;
+    top: 150px; /* Position below header */
+    right: 2%;
+    width: 50vw; /* Increase width */
+    max-width: 600px; /* Maximum width */
+    height: 350px; /* Increase height for impact */
     overflow: hidden;
     transform: rotate(-5deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 2;
 }
 
-/* Comic Effect without Sliding */
 .cycle-image {
+    display: none; /* Hide initially */
     width: 100%;
     height: 100%;
-    position: absolute;
     object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    animation: fadeAnimation 16s infinite ease-in-out;
-}
-
-/* Sequence timing for each image */
-.cycle-image:nth-child(1) { animation-delay: 0s; opacity: 1; }
-.cycle-image:nth-child(2) { animation-delay: 4s; }
-.cycle-image:nth-child(3) { animation-delay: 8s; }
-.cycle-image:nth-child(4) { animation-delay: 12s; }
-
-/* Keyframes for Fade In/Out Effect */
-@keyframes fadeAnimation {
-    0%, 100% { opacity: 0; }
-    25%, 75% { opacity: 1; }
 }
 
 /* Centered Image */
@@ -1124,12 +1108,11 @@ nav a:hover {
     position: relative;
     width: 200px;
     height: auto;
-    margin-top: 300px;
+    margin-top: 40px;
     z-index: 3;
-    transform: translateY(-50px);
 }
 
-/* Learn More Button Styling */
+/* Button Styling */
 .learn-more-button {
     background: linear-gradient(135deg, #6A0DAD, #8E44AD);
     color: white;
@@ -1141,7 +1124,6 @@ nav a:hover {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     filter: brightness(1.1) contrast(1.2);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 3;
     margin-top: 20px;
 }
 
@@ -1149,6 +1131,7 @@ nav a:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
 }
+
 
 
 
@@ -1785,9 +1768,9 @@ nav a:hover {
 
 
 <section id="home" class="home-section">
-    <div id="wheel"></div> <!-- The background wheel -->
-    
-    <!-- Static Image Frame on the Right -->
+    <div id="wheel"></div> <!-- Background wheel -->
+
+    <!-- Animated Image Frame on the Right -->
     <div id="animated-images">
         <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
         <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
@@ -2032,7 +2015,21 @@ nav a:hover {
         
     
 
-        
+ <script>
+    const images = document.querySelectorAll('.cycle-image');
+    let currentIndex = 0;
+
+    function cycleImages() {
+        images.forEach((img, index) => {
+            img.style.display = (index === currentIndex) ? 'block' : 'none';
+        });
+        currentIndex = (currentIndex + 1) % images.length;
+    }
+
+    // Cycle every 1 second for a fast-paced effect
+    setInterval(cycleImages, 1000);
+</script>
+       
         
 
 <footer>
