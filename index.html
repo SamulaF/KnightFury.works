@@ -1079,6 +1079,22 @@ nav a:hover {
     justify-content: center;
     flex-direction: column;
     color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background wheel styling */
+#wheel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
+    background-size: contain;
+    opacity: 0.3; /* Adjust opacity for visibility */
+    z-index: 1;
 }
 
 /* Styling for the animated image container */
@@ -1091,6 +1107,7 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    z-index: 2; /* Places images above the wheel */
 }
 
 /* Styling for each image in the animation */
@@ -1128,13 +1145,14 @@ nav a:hover {
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s;
-    z-index: 2; /* Ensures button appears above everything */
+    z-index: 3; /* Ensures button appears above everything */
     position: relative;
 }
 
 .btn:hover {
     background-color: #5b0aad;
 }
+
 
 
 
@@ -1765,18 +1783,17 @@ nav a:hover {
 
 
 
-<section id="home" class="home-section">
-    <div id="wheel"></div> <!-- The wheel in the background -->
+    <section id="home" class="home-section">
+        <div id="wheel"></div> <!-- The wheel in the background -->
 
-     <div id="animated-images">
-        <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
-        <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
-        <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
-    </div>
+        <div id="animated-images">
+            <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
+            <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
+            <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
+        </div>
 
-    <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
-</section>
-
+        <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
+    </section>
 
 
 
