@@ -1067,6 +1067,8 @@ nav a:hover {
 
 
 
+        
+
 .home-section {
     background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
     background-size: cover;
@@ -1082,18 +1084,24 @@ nav a:hover {
     position: relative;
     width: 80%;
     max-width: 600px;
+    height: auto;
     margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .cycle-image {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     width: 100%;
     height: auto;
+    transform: translate(-50%, -50%); /* Ensures images are centered */
     opacity: 0;
-    filter: brightness(1.2) contrast(1.2); /* Makes images more vibrant */
-    animation: cycleAnimation 4.5s infinite; /* Faster cycle */
+    filter: brightness(1.2) contrast(1.2);
+    animation: cycleAnimation 4.5s infinite;
     transition: opacity 0.5s ease-in-out;
 }
 
