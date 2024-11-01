@@ -1069,6 +1069,7 @@ nav a:hover {
 
         
 
+/* Background and container styling */
 .home-section {
     background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
     background-size: cover;
@@ -1080,39 +1081,65 @@ nav a:hover {
     color: #fff;
 }
 
+/* Styling for the animated image container */
 #animated-images {
     position: relative;
-    width: 80%;
+    width: 60%; /* Adjust width as needed */
     max-width: 600px;
     height: auto;
-    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
 
+/* Styling for each image in the animation */
 .cycle-image {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100%;
     height: auto;
-    transform: translate(-50%, -50%); /* Ensures images are centered */
-    opacity: 0;
+    transform: translate(-50%, -50%); /* Center images */
+    opacity: 0; /* Hidden by default */
     filter: brightness(1.2) contrast(1.2);
-    animation: cycleAnimation 4.5s infinite;
+    animation: cycleAnimation 4.5s infinite; /* Animation cycles */
     transition: opacity 0.5s ease-in-out;
 }
 
+/* Animation delay for each image */
 .cycle-image:nth-child(1) { animation-delay: 0s; }
 .cycle-image:nth-child(2) { animation-delay: 1.5s; }
 .cycle-image:nth-child(3) { animation-delay: 3s; }
 
+/* Keyframes for cycling images */
 @keyframes cycleAnimation {
-    0%, 100% { opacity: 0; }
-    30%, 70% { opacity: 1; }
+    0%, 100% { opacity: 0; } /* Hidden at the start and end */
+    30%, 70% { opacity: 1; } /* Visible in the middle */
 }
+
+/* Styling for the "Learn More" button */
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6e0dd0;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #5b0aad;
+}
+
+
+
+
+
+
+        
 
 
 
@@ -1739,7 +1766,7 @@ nav a:hover {
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- The wheel in the background -->
 
-    <div id="animated-images">
+     <div id="animated-images">
         <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
         <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
         <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
