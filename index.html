@@ -1067,7 +1067,6 @@ nav a:hover {
 
 
 
-        
 .home-section {
     background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
     background-size: cover;
@@ -1084,7 +1083,9 @@ nav a:hover {
     position: relative;
     width: 80%;
     max-width: 600px;
-    margin: auto;
+    height: 300px; /* Adjust the height to create a frame */
+    overflow: hidden; /* Hide overflow to create a frame effect */
+    margin-bottom: 20px; /* Space above the "Learn More" button */
 }
 
 .cycle-image {
@@ -1092,19 +1093,18 @@ nav a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     opacity: 0;
-    animation: cycleAnimation 3s infinite; /* Faster cycle */
-    transition: opacity 0.5s ease-in-out; /* Smooth transition */
+    animation: cycleAnimation 6s infinite; /* Cycle through each image in 6 seconds */
 }
 
 .cycle-image:nth-child(1) { animation-delay: 0s; }
-.cycle-image:nth-child(2) { animation-delay: 3s; }
-.cycle-image:nth-child(3) { animation-delay: 6s; }
+.cycle-image:nth-child(2) { animation-delay: 6s; }
+.cycle-image:nth-child(3) { animation-delay: 12s; }
 
 @keyframes cycleAnimation {
     0%, 100% { opacity: 0; }
-    40%, 60% { opacity: 1; } /* Shorter display duration */
+    20%, 80% { opacity: 1; } /* Display each image for a longer period */
 }
 
 
