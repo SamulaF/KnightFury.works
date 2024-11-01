@@ -1059,16 +1059,59 @@ nav a:hover {
             transition: opacity 1s ease, transform 1s ease;
         }
 
-        .home-section {
-            background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: #fff;
-        }
+
+
+
+
+
+
+
+
+        
+.home-section {
+    background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+#animated-images {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.cycle-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    animation: cycleAnimation 9s infinite;
+}
+
+.cycle-image:nth-child(1) { animation-delay: 0s; }
+.cycle-image:nth-child(2) { animation-delay: 3s; }
+.cycle-image:nth-child(3) { animation-delay: 6s; }
+
+@keyframes cycleAnimation {
+    0%, 100% { opacity: 0; }
+    20%, 40% { opacity: 1; }
+}
+
+
+
+
+
+
+
+        
         .video-background-container {
     position: relative;
     width: 100%;
@@ -1076,6 +1119,19 @@ nav a:hover {
     overflow: hidden;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+        
 .video-background {
     position: absolute;
     top: 50%;
@@ -1685,11 +1741,13 @@ nav a:hover {
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- The wheel in the background -->
 
-    <div id="content">
-        <h1>Welcome to Knight Fury</h1>
-        <p>The F1 in Schools Team from Ambience Public School</p>
-        <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
+    <div id="animated-images">
+        <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
+        <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
+        <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
     </div>
+
+    <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
 </section>
 
 
