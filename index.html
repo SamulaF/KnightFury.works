@@ -1077,42 +1077,59 @@ nav a:hover {
     justify-content: flex-start;
     color: #fff;
     filter: brightness(1.2) saturate(1.3);
-    padding-top: 100px;
+    overflow: hidden;
+    position: relative;
+    padding-top: 100px; /* Extra padding to avoid overlap */
+    z-index: 1;
 }
 
-/* Larger, Energetic Image Frame for Cycling Images */
+/* Wheel Background Styling */
+#wheel {
+    position: absolute;
+    z-index: 0; /* Ensure it stays behind other elements */
+}
+
+/* Animated Image Frame */
 #animated-images {
     position: absolute;
-    top: 150px; /* Position below header */
-    right: 2%;
-    width: 50vw; /* Increase width */
-    max-width: 600px; /* Maximum width */
-    height: 350px; /* Increase height for impact */
+    top: 40px;
+    right: 5%;
+    width: 40vw; /* Increased width */
+    max-width: 500px; /* Allows for larger images */
+    height: 300px; /* Adjusted height */
     overflow: hidden;
-    transform: rotate(-5deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 2;
 }
 
+/* Cycle Images with Brightness */
 .cycle-image {
-    display: none; /* Hide initially */
     width: 100%;
     height: 100%;
+    position: absolute;
     object-fit: cover;
+    filter: brightness(1.5); /* Makes images lighter */
+    animation: slideAnimation 6s infinite linear; /* Faster animation */
 }
 
-/* Centered Image */
+/* Adjusted Keyframes */
+@keyframes slideAnimation {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    100% { transform: translateX(0); }
+}
+
+/* Centered Image Styling */
 #centered-image {
     position: relative;
     width: 200px;
     height: auto;
-    margin-top: 40px;
-    z-index: 3;
+    margin-top: 20px;
+    z-index: 3; /* Above the wheel */
 }
 
-/* Button Styling */
+/* Learn More Button Styling */
 .learn-more-button {
     background: linear-gradient(135deg, #6A0DAD, #8E44AD);
     color: white;
@@ -1124,6 +1141,7 @@ nav a:hover {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     filter: brightness(1.1) contrast(1.2);
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 4; /* Ensure it's above the wheel and images */
     margin-top: 20px;
 }
 
