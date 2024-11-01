@@ -1081,15 +1081,12 @@ nav a:hover {
 
 #animated-images {
     position: absolute;
-    top: 30%; /* Adjust top position for better alignment */
     right: 10%; /* Move it to the right */
-    width: 220px; /* Adjusted size */
-    height: 150px; /* Proportionate height */
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5);
-    background-color: rgba(0, 0, 0, 0.4); /* Slight dark overlay */
-    border: 2px solid #ffffff50;
+    top: 30%; /* Position vertically */
+    width: 50%; /* Adjust size for best fit */
+    max-width: 400px;
+    transform: rotate(-5deg); /* Add a slight tilt */
+    filter: brightness(1.2) contrast(1.3); /* Enhance visibility */
 }
 
 .cycle-image {
@@ -1097,18 +1094,40 @@ nav a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     opacity: 0;
-    animation: cycleAnimation 2s infinite linear;
+    animation: cycleAnimation 2.8s infinite; /* Slightly faster */
+    transition: opacity 0.4s ease-in-out;
 }
 
 .cycle-image:nth-child(1) { animation-delay: 0s; }
-.cycle-image:nth-child(2) { animation-delay: 2s; }
-.cycle-image:nth-child(3) { animation-delay: 4s; }
+.cycle-image:nth-child(2) { animation-delay: 2.8s; }
+.cycle-image:nth-child(3) { animation-delay: 5.6s; }
 
 @keyframes cycleAnimation {
-    0%, 100% { opacity: 0; }
-    25%, 75% { opacity: 1; }
+    0%, 20%, 100% { opacity: 0; }
+    40%, 60% { opacity: 1; } /* Display each image smoothly */
+}
+/* Learn More Button Styling */
+.learn-more-button {
+    position: relative;
+    top: 15px; /* Adjust position to fit under the frame */
+    background: linear-gradient(135deg, #6A0DAD, #8E44AD); /* Purple gradient */
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    filter: brightness(1.1) contrast(1.2); /* Enhance visibility */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+/* Hover Effect */
+.learn-more-button:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
 }
 
 
@@ -1748,13 +1767,13 @@ nav a:hover {
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- The background wheel -->
     
-    <div id="animated-images">
-        <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
-        <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
-        <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
-    </div>
+<div id="animated-images">
+    <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
+    <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
+    <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
+</div>
 
-    <button class="learn-more">LEARN MORE</button>
+    <a href="https://www.f1inschools.com/" class="btn" target="_blank">Learn More</a>
 </section>
 
 
