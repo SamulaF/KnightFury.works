@@ -1075,8 +1075,11 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     color: #fff;
-    filter: brightness(1) saturate(1.1);
-    padding-top: 50px; /* Reduced padding */
+    filter: brightness(1.1) saturate(1.2);
+    padding-top: 50px;
+    padding-left: 20px; /* Added padding for horizontal spacing */
+    padding-right: 20px;
+    box-sizing: border-box; /* Ensures padding doesn’t affect width */
     position: relative;
 }
 
@@ -1088,59 +1091,65 @@ nav a:hover {
     justify-content: center;
     position: relative;
     z-index: 1;
+    gap: 15px; /* Adds vertical spacing between elements */
 }
 
 /* Animated Image Frame */
 #animated-images {
-    width: 680px; /* Adjusted width to fit text */
-    height: 320px; /* Reduced height */
+    width: 700px;
+    height: 340px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 30px; /* Adds spacing below the image frame */
     position: relative;
 }
 
 /* Team Heading and Button Overlay */
 .overlay-content {
     position: absolute;
-    bottom: 40px; /* Increased distance from the bottom */
+    bottom: 60px; /* Increased distance from the bottom for breathing room */
     text-align: center;
     width: 100%;
+    padding: 0 20px; /* Adds side padding for better centering on smaller screens */
 }
 
 /* Team Heading */
 .team-heading {
-    font-size: 2em;
-    font-weight: 700;
-    color: #FBEC5D; /* Maize */
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #FFD700;
     font-family: 'Poppins', sans-serif;
-    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
-    margin-bottom: 15px;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    margin-top: 10px; /* Adds a little breathing space above the heading */
 }
 
 /* Button Styling */
 .learn-more-button {
-    background: linear-gradient(135deg, #8B00FF, #D4AF37); /* Rich purple and gold gradient */
+    background: linear-gradient(135deg, #B43AC1, #FFA500);
     color: white;
-    font-size: 1.1em;
-    padding: 12px 24px;
-    font-weight: 500;
+    font-size: 1.2em;
+    padding: 12px 28px;
+    font-weight: bold;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
     text-align: center;
-    margin-top: 15px;
-    text-transform: uppercase; /* Professional touch */
+    margin-top: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* Hover Effect */
 .learn-more-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.35);
+    transform: scale(1.08);
+    box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.4);
 }
+
 
 
 
