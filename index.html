@@ -482,12 +482,12 @@ body, html {
             font-family: Arial, Helvetica, sans-serif;
         }
         
-/* Header styling */
+/* Header Styling */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10px;
+    padding: 10px;
     background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6));
     position: fixed;
     width: 100%;
@@ -496,7 +496,6 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     color: #FFFFFF;
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -513,112 +512,90 @@ header:hover {
     background: linear-gradient(90deg, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8));
 }
 
-/* Logo and speedometer side-by-side */
+/* Logo and Speedometer */
 .logo-speedometer {
     display: flex;
     align-items: center;
 }
 
-
-/* Logo animation keyframes */
-@keyframes logoPulse {
-    0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
-    }
-    50% {
-        transform: scale(1.1);
-        filter: drop-shadow(0px 0px 30px rgba(212, 175, 55, 0.8));
-    }
-}
-
-
-/* Speedometer container */
-.header-zero-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  width: 70px;
-}
-
-.speedometer {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, #2e003e, #160635);
-  box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
-  transition: box-shadow 0.3s;
-}
-
-/* Needle positioned in the center */
-.needle {
-  position: absolute;
-  width: 2px;
-  height: 35px;
-  background: #e91e63;
-  top: 17px;
-  left: 34px;
-  transform-origin: bottom center;
-  animation: needle-pendulum 2s infinite ease-in-out;
-  transition: transform 1s ease-out;
-}
-
-/* Smooth pendulum-like swing for the needle */
-@keyframes needle-pendulum {
-  0% { transform: rotate(-45deg); }
-  50% { transform: rotate(45deg); }
-  100% { transform: rotate(-45deg); }
-}
-
-/* Spike to 180 degrees and oscillate between 175 and 180 */
-.speedometer:hover .needle {
-  animation: spike-oscillate 1s forwards ease-out;
-}
-
-@keyframes spike-oscillate {
-  0% { transform: rotate(90deg); } /* Start at horizontal */
-  50% { transform: rotate(180deg); } /* Spike to 180 */
-  75% { transform: rotate(175deg); } /* Oscillate back to 175 */
-  100% { transform: rotate(180deg); } /* Back to 180 */
-}
-
-/* Glow effect on hover */
-.speedometer:hover {
-  box-shadow: 0px 0px 30px rgba(233, 30, 99, 0.8), 0px 0px 40px rgba(212, 175, 55, 0.6);
-}
-
 /* Logo Animation */
 header img {
-  width: 70px;
-  margin-right: 15px;
-  filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
-  transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+    width: 70px;
+    margin-right: 15px;
+    filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
+    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
 }
 
 header img:hover {
-  transform: rotate(360deg) scale(1.2); /* Full 360° rotation on hover */
-  filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
+    transform: rotate(360deg) scale(1.2);
+    filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
 }
 
-/* Center glowing 0 */
+/* Speedometer Container */
+.header-zero-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
+}
+
+.speedometer {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #2e003e, #160635);
+    box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
+    transition: box-shadow 0.3s;
+}
+
+/* Needle Animation */
+.needle {
+    position: absolute;
+    width: 2px;
+    height: 35px;
+    background: #e91e63;
+    top: 17px;
+    left: 34px;
+    transform-origin: bottom center;
+    animation: needle-pendulum 2s infinite ease-in-out;
+    transition: transform 1s ease-out;
+}
+
+@keyframes needle-pendulum {
+    0% { transform: rotate(-45deg); }
+    50% { transform: rotate(45deg); }
+    100% { transform: rotate(-45deg); }
+}
+
+/* Speedometer Hover Animation */
+.speedometer:hover .needle {
+    animation: spike-oscillate 1s forwards ease-out;
+}
+
+@keyframes spike-oscillate {
+    0% { transform: rotate(90deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(175deg); }
+    100% { transform: rotate(180deg); }
+}
+
+/* Glowing "0" in Speedometer */
 .header-zero {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 40px;
-  font-family: 'Roboto Mono', monospace;
-  background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 
-               0px 0px 20px rgba(128, 0, 128, 0.6), 
-               0px 0px 30px rgba(233, 30, 99, 0.5);
-  font-weight: bold;
-  opacity: 0.95;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    font-family: 'Roboto Mono', monospace;
+    background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 0px 0px 20px rgba(128, 0, 128, 0.6), 0px 0px 30px rgba(233, 30, 99, 0.5);
+    font-weight: bold;
+    opacity: 0.95;
 }
 
 /* Navigation Links */
@@ -685,7 +662,6 @@ nav a:hover {
     background: #8A2BE2;
     box-shadow: 0 4px 12px rgba(138, 43, 226, 0.5);
 }
-
 
 
 
@@ -1020,7 +996,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 0;
 }
 
