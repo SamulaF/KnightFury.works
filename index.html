@@ -1066,19 +1066,7 @@ nav a:hover {
 
 
 
-/* Add blur only to background */
-.home-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Dark overlay */
-    z-index: 0;
-    filter: blur(5px); /* Blurs the background */
-}
-
+/* Home Section Styling */
 .home-section {
     background: url('https://images.unsplash.com/photo-1707569620487-1fcff5e22f9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fFBVUlBMRSUyMERSQUdPTnxlbnwwfHwwfHx8MA%3D%3D') no-repeat center center;
     background-size: cover;
@@ -1089,7 +1077,6 @@ nav a:hover {
     color: #fff;
     padding-top: 50px;
     position: relative;
-    filter: brightness(0.9) blur(2px); /* Adjust blur as needed */
 }
 
 /* Center Container */
@@ -1111,8 +1098,6 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 1; /* Place above the blurred background */
-    filter: none; /* Ensures images are clear */
 }
 
 /* Team Heading and Button Overlay */
@@ -1125,33 +1110,35 @@ nav a:hover {
 
 /* Team Heading */
 .team-heading {
+    font-size: 2em;
     font-weight: 700;
     color: #FBEC5D; /* Maize */
     font-family: 'Poppins', sans-serif;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
     margin-bottom: 15px;
-    font-size: clamp(1.5em, 4vw, 2em);
-
 }
 
+/* Button Styling */
 .learn-more-button {
-    background: linear-gradient(135deg, #8B00FF, #FFD700); /* Purple to gold gradient */
+    background: linear-gradient(135deg, #8B00FF, #FFD700); /* Purple to gold */
     color: white;
-    font-size: 1.2em; /* Slightly larger */
-    padding: 12px 24px; /* Increased padding */
-    font-weight: bold;
+    font-size: 1em;
+    padding: 10px 20px;
+    font-weight: 600;
     border: none;
-    border-radius: 12px; /* More rounded corners */
+    border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
     text-transform: uppercase;
 }
 
+
 /* Hover Effect */
 .learn-more-button:hover {
-    transform: scale(1.1); /* Increase scaling */
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 
