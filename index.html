@@ -1021,7 +1021,10 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: absolute; /* Positioned behind the text */
+    z-index: 1; /* Behind the text, above the background */
+    top: 50%; /* Adjust to your desired position */
+    transform: translateY(-50%);
     border-radius: 10px; /* Rounded corners for a modern look */
 }
 
