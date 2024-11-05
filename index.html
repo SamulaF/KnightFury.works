@@ -986,7 +986,7 @@ nav a:hover {
     justify-content: center;
     color: #fff;
     position: relative;
-    flex-direction: column; /* Center elements vertically */
+    flex-direction: column;
 }
 
 /* Background Overlay for Better Contrast */
@@ -997,7 +997,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better contrast */
+    background: rgba(0, 0, 0, 0.6);
     z-index: 0;
 }
 
@@ -1013,16 +1013,16 @@ nav a:hover {
 
 /* Animated Image Frame with Overlay */
 #animated-images {
-    width: 90%; /* Responsive size */
+    width: 90%;
     max-width: 680px;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: brightness(1.1) contrast(1.2); /* Makes images lighter and sharper */
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3); /* Shadow for better focus */
-    margin-bottom: 20px; /* Add spacing between images and text */
-    opacity: .7;
+    filter: brightness(1.1) contrast(1.2);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    opacity: 0.7;
 }
 
 /* Overlay Content for Text and Button */
@@ -1032,7 +1032,7 @@ nav a:hover {
     padding: 20px;
 }
 
-/* Team Heading Styling */
+/* Team Heading Styling with Background */
 .team-heading {
     font-size: 2em;
     font-weight: 700;
@@ -1040,13 +1040,16 @@ nav a:hover {
     font-family: 'Poppins', sans-serif;
     text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
     margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    padding: 5px 10px; /* Add padding */
+    border-radius: 4px; /* Rounded corners */
 }
 
 /* Button Styling with Hover Effects */
 .learn-more-button {
     background: linear-gradient(135deg, #8B00FF, #FFD700);
     color: white;
-    font-size: calc(0.8em + 0.5vw); /* Responsive font size */
+    font-size: calc(0.8em + 0.5vw);
     padding: 10px 20px;
     font-weight: 600;
     border: none;
@@ -1062,7 +1065,7 @@ nav a:hover {
 .learn-more-button:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.35);
-    background: linear-gradient(135deg, #9B00FF, #FFD700); /* Slightly brighter purple on hover */
+    background: linear-gradient(135deg, #9B00FF, #FFD700);
 }
 
 /* Responsive Adjustments */
@@ -1077,7 +1080,7 @@ nav a:hover {
     }
 
     #animated-images {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%;
         height: auto;
     }
 }
