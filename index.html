@@ -1308,141 +1308,46 @@ nav a:hover {
 .legacy-section {
     background: linear-gradient(135deg, #2b0847, #380c55);
     color: #ffffff;
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
     border-top: 1px solid #2f0b44;
     border-bottom: 1px solid #340f52;
-    box-shadow: 0 8px 20px rgba(42, 12, 97, 0.5);
+    box-shadow: 0 4px 15px rgba(42, 12, 97, 0.4);
     position: relative;
     overflow: hidden;
-    perspective: 1000px; /* Adds depth for 3D effects */
 }
 
-/* Title Styling with 3D Effect */
+/* Title Styling with Minimal Glow */
 .legacy-section h2 {
-    font-size: 5rem;
-    margin-bottom: 20px;
-    color: #ae03ff;
-    text-shadow: 0px 5px 15px rgba(91, 24, 94, 0.8), 0px -5px 15px rgba(91, 24, 94, 0.6);
-    animation: floatTitle 4s ease-in-out infinite;
-    transform-style: preserve-3d; /* Enables 3D rotation */
-}
-
-@keyframes floatTitle {
-    0%, 100% { transform: rotateX(0deg); }
-    50% { transform: rotateX(10deg) rotateY(10deg); }
-}
-
-/* Image Hover Effect with 3D and Color Accent */
-.legacy-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(58, 5, 88, 0.7);
-    transition: transform 0.6s ease, filter 0.4s ease;
-    transform-style: preserve-3d;
-}
-
-.legacy-image img:hover {
-    transform: scale(1.08) rotateY(10deg);
-    filter: brightness(1.25) saturate(1.1);
-    box-shadow: 0 12px 25px rgba(58, 5, 88, 0.8);
-}
-
-/* Achievement List with Hover Glow */
-.achievement-list li {
-    font-size: 1.2rem;
-    margin: 10px 0;
-    background: rgba(50, 50, 50, 0.7);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(42, 12, 99, 0.6);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.achievement-list li:hover {
-    box-shadow: 0 0 15px rgba(140, 72, 159, 0.8), 0 0 25px rgba(140, 72, 159, 0.6);
-    transform: translateY(-3px) scale(1.02);
-}
-
-/* Subtle Gradient Background Animation */
-.legacy-section::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(64, 10, 100, 0.4), transparent);
-    animation: backgroundMove 15s linear infinite;
-    z-index: 0;
-    pointer-events: none;
-}
-
-@keyframes backgroundMove {
-    0% { transform: translateX(0) translateY(0); }
-    50% { transform: translateX(25px) translateY(25px); }
-    100% { transform: translateX(0) translateY(0); }
-}
-
-/* Layer Elements Over Background Animation */
-.legacy-section * {
-    position: relative;
-    z-index: 1;
-}
-/* Enhanced Legacy Section Styling */
-.legacy-section {
-    background: linear-gradient(135deg, #2b0847, #380c55);
-    color: #ffffff;
-    padding: 60px 20px;
-    text-align: center;
-    border-top: 1px solid #2f0b44;
-    border-bottom: 1px solid #340f52;
-    box-shadow: 0 8px 20px rgba(42, 12, 97, 0.5);
-    position: relative;
-    overflow: hidden;
-    perspective: 1000px; /* Adds depth for 3D effects */
-}
-
-/* Title Styling with 3D Effect */
-.legacy-section h2 {
-    font-size: 5rem;
-    margin-bottom: 20px;
-    color: #ae03ff;
-    text-shadow: 0px 5px 15px rgba(91, 24, 94, 0.8), 0px -5px 15px rgba(91, 24, 94, 0.6);
-    animation: floatTitle 4s ease-in-out infinite;
-    transform-style: preserve-3d; /* Enables 3D rotation */
-}
-
-@keyframes floatTitle {
-    0%, 100% { transform: rotateX(0deg); }
-    50% { transform: rotateX(10deg) rotateY(10deg); }
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    color: #bb86fc;
+    text-shadow: 0 3px 10px rgba(91, 24, 94, 0.5);
+    font-weight: 600;
 }
 
 /* Legacy Grid with Flexible Layout */
 .legacy-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
-    align-items: center;
-    margin: 40px 0;
+    align-items: start;
+    margin: 50px 0;
 }
 
-/* Image Hover Effect with 3D and Color Accent */
+/* Image Hover Effect with Subtle Scale */
 .legacy-image img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(58, 5, 88, 0.7);
-    transition: transform 0.6s ease, filter 0.4s ease;
-    transform-style: preserve-3d;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(58, 5, 88, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .legacy-image img:hover {
-    transform: scale(1.08) rotateY(10deg);
-    filter: brightness(1.25) saturate(1.1);
-    box-shadow: 0 12px 25px rgba(58, 5, 88, 0.8);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(140, 72, 159, 0.8);
 }
 
 /* Text Styling */
@@ -1451,28 +1356,31 @@ nav a:hover {
     max-width: 800px;
     text-align: left;
     margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e5e5e5;
 }
 
-/* Achievement List with Hover Glow */
+/* Achievement List with Subtle Hover Effect */
 .achievement-list {
     list-style-type: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 .achievement-list li {
     font-size: 1.2rem;
-    margin: 10px 0;
-    background: rgba(50, 50, 50, 0.7);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(42, 12, 99, 0.6);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    margin: 12px 0;
+    background: rgba(50, 50, 50, 0.5);
+    padding: 18px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(42, 12, 99, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .achievement-list li:hover {
-    box-shadow: 0 0 15px rgba(140, 72, 159, 0.8), 0 0 25px rgba(140, 72, 159, 0.6);
-    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 15px rgba(140, 72, 159, 0.7);
+    transform: translateY(-5px);
 }
 
 /* Subtle Gradient Background Animation */
@@ -1483,16 +1391,16 @@ nav a:hover {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(64, 10, 100, 0.4), transparent);
-    animation: backgroundMove 15s linear infinite;
+    background: radial-gradient(circle at center, rgba(64, 10, 100, 0.3), transparent);
+    animation: backgroundShift 30s linear infinite;
     z-index: 0;
     pointer-events: none;
 }
 
-@keyframes backgroundMove {
-    0% { transform: translateX(0) translateY(0); }
-    50% { transform: translateX(25px) translateY(25px); }
-    100% { transform: translateX(0) translateY(0); }
+@keyframes backgroundShift {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(30px, 30px); }
+    100% { transform: translate(0, 0); }
 }
 
 /* Layer Elements Over Background Animation */
@@ -1500,6 +1408,7 @@ nav a:hover {
     position: relative;
     z-index: 1;
 }
+
 
 
 
