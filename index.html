@@ -559,7 +559,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(90deg, rgba(94, 75, 146, 0.6), rgba(212, 175, 55, 0.6));
+    background: linear-gradient(90deg, rgba(75, 0, 130, 0.6), rgba(218, 165, 32, 0.6));
     position: fixed;
     width: 100%;
     top: 0;
@@ -576,11 +576,11 @@ header h1, header a {
 }
 
 header a:hover {
-    color: #FFD700;
+    color: #FFD700; /* Gold highlight on hover */
 }
 
 header:hover {
-    background: linear-gradient(90deg, rgba(94, 75, 146, 0.8), rgba(212, 175, 55, 0.8));
+    background: linear-gradient(90deg, rgba(75, 0, 130, 0.8), rgba(218, 165, 32, 0.8));
 }
 
 /* Logo and Speedometer */
@@ -617,8 +617,8 @@ header img:hover {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #2e003e, #160635);
-    box-shadow: 0px 0px 15px rgba(128, 0, 128, 0.8);
+    background: radial-gradient(circle at center, #4B0082, #2e003e);
+    box-shadow: 0px 0px 15px rgba(75, 0, 130, 0.8);
     transition: box-shadow 0.3s;
 }
 
@@ -627,7 +627,7 @@ header img:hover {
     position: absolute;
     width: 2px;
     height: 35px;
-    background: #e91e63;
+    background: #FFD700; /* Gold needle */
     top: 17px;
     left: 34px;
     transform-origin: bottom center;
@@ -641,7 +641,6 @@ header img:hover {
     100% { transform: rotate(-45deg); }
 }
 
-/* Speedometer Hover Animation */
 .speedometer:hover .needle {
     animation: spike-oscillate 1s forwards ease-out;
 }
@@ -661,10 +660,10 @@ header img:hover {
     transform: translate(-50%, -50%);
     font-size: 40px;
     font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(90deg, #5d3fd3, #800080, #e91e63);
+    background: linear-gradient(90deg, #5d3fd3, #800080, #FFD700);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 0px 0px 20px rgba(128, 0, 128, 0.6), 0px 0px 30px rgba(233, 30, 99, 0.5);
+    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 0px 0px 20px rgba(128, 0, 128, 0.6), 0px 0px 30px rgba(255, 215, 0, 0.5);
     font-weight: bold;
     opacity: 0.95;
 }
@@ -679,13 +678,13 @@ nav a {
 }
 
 nav a:hover {
-    color: #9B30FF;
+    color: #DAA520; /* Soft gold on hover */
     transform: scale(1.1);
 }
 
 /* Dropdown Menu */
 .dropbtn {
-    background: linear-gradient(135deg, #5E4B92, #D4AF37);
+    background: linear-gradient(135deg, #4B0082, #FFD700);
     color: white;
     padding: 12px 18px;
     font-size: 18px;
@@ -721,7 +720,7 @@ nav a:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #D4AF37;
+    background-color: #FFD700;
     color: #32004B;
 }
 
