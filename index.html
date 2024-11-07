@@ -167,6 +167,45 @@ section * {
 }
 
 
+
+
+
+
+
+
+
+
+        
+/* Team Section */
+.team-section {
+    background: url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 90px 20px;
+    color: white; /* Optional for contrast */
+}
+/* Overlay to improve text readability */
+.team-section, .about-section {
+    position: relative;
+}
+
+.team-section::before, .about-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
+    z-index: 1;
+}
+
+/* Ensuring text is above the overlay */
+.team-section h2, .about-section h2,
+.team-section p, .about-section p {
+    position: relative;
+    z-index: 2;
+}
+
 /* Team Section */
 .team-section img {
     background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0WBCYzE5EVPSRhEzpI0MmaBpiRYbRQ4WXhQ&s') no-repeat center center;
@@ -1168,7 +1207,21 @@ nav a:hover {
             box-shadow: 0 8px 20px rgba(160, 32, 240, 0.7);
         }
 
+
+
+
+
+
+
+
+
+
+        
         .about-section {
+            background: url('https://www.aramcolife.com/-/media/aramco-life/publications/the-arabian-sun/articles/2021/week-24/f1-in-schools/20210609-f1-in-schools-main.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 90px 20px;
+            color: white; /* Optional for contrast */
             background-color: rgba(49, 1, 77, 0.8); /* Glassmorphism effect */
             backdrop-filter: blur(8px);
             padding: 60px;
