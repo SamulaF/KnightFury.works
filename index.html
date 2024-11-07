@@ -136,6 +136,15 @@ p, a {
     display: inline-block;
 }
 
+
+
+
+
+
+
+
+
+        
 /* Sections */
 section {
     padding: 90px 20px 60px;
@@ -145,11 +154,12 @@ section {
     transition: opacity 1s ease, transform 1s ease;
     background: url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') no-repeat center center;
     background-size: cover;
-    color: #fff; /* Makes text readable on dark background */
+    color: #fff; /* Text color for readability */
     position: relative;
+    filter: contrast(1.1); /* Slightly increase contrast */
 }
 
-/* Optional: Adding a dark overlay for text contrast */
+/* Lighter Overlay for Text Contrast */
 section::before {
     content: "";
     position: absolute;
@@ -157,7 +167,7 @@ section::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    background: rgba(0, 0, 0, 0.3); /* Reduced opacity for lighter overlay */
     z-index: 0;
 }
 
