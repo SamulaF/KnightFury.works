@@ -108,7 +108,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Nunito Sans', sans-serif;
-    background-color: #30023b57;
+    background-color: #1a0126; /* Darker purple */
     color: #ffffff;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -122,8 +122,6 @@ h1, h2, h3, h4, h5, h6 {
 p, a {
     font-family: 'Nunito Sans', sans-serif;
 }
-
-
 
 /* Button */
 .btn {
@@ -558,31 +556,30 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background: linear-gradient(90deg, rgba(75, 0, 130, 0.6), rgba(218, 165, 32, 0.6));
+    padding: 10px 20px;
+    background: linear-gradient(90deg, rgba(48, 25, 52, 0.85), rgba(153, 120, 40, 0.85));
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     color: #FFFFFF;
-    backdrop-filter: blur(8px);
-    transition: background-color 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(6px);
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 header h1, header a {
     color: #FFFFFF;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 header a:hover {
-    color: #FFD700; /* Gold highlight on hover */
+    color: #C5A52B; /* Subtle gold tone for hover */
 }
 
 header:hover {
-    background: linear-gradient(90deg, rgba(75, 0, 130, 0.8), rgba(218, 165, 32, 0.8));
+    background: linear-gradient(90deg, rgba(48, 25, 52, 0.9), rgba(153, 120, 40, 0.9));
 }
-
 /* Logo and Speedometer */
 .logo-speedometer {
     display: flex;
@@ -673,13 +670,13 @@ nav a {
     color: #ffffff;
     text-decoration: none;
     margin: 0 15px;
-    font-weight: 700;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
-    color: #DAA520; /* Soft gold on hover */
-    transform: scale(1.1);
+    color: #C5A52B;
 }
 
 /* Dropdown Menu */
