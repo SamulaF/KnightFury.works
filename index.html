@@ -1893,6 +1893,27 @@ nav a:hover {
     </div>
 </section>
 
+<!-- Statistics Section with Rolling Numbers -->
+<section id="knight-fury-stats" class="knight-fury-stats-section">
+    <div class="stats-container" style="background-color: #3D0075; color: #FFD700; text-align: center; padding: 50px 0;">
+        <h2 style="font-size: 2.5em; color: #FFD700; margin-bottom: 20px;">Our Knight Fury Achievements</h2>
+        
+        <div class="stats-item" style="display: inline-block; margin: 20px; max-width: 200px;">
+            <h3 style="font-size: 3em; color: #FFD700;"><span class="count" data-target="44">0</span>+</h3>
+            <p style="font-size: 1.2em; color: #FFFFFF;">Countries Conquered with Passion</p>
+        </div>
+        
+        <div class="stats-item" style="display: inline-block; margin: 20px; max-width: 200px;">
+            <h3 style="font-size: 3em; color: #FFD700;"><span class="count" data-target="20000000">0</span></h3>
+            <p style="font-size: 1.2em; color: #FFFFFF;">Competitors in our Global F1 Race</p>
+        </div>
+        
+        <div class="stats-item" style="display: inline-block; margin: 20px; max-width: 200px;">
+            <h3 style="font-size: 3em; color: #FFD700;"><span class="count" data-target="1">0</span></h3>
+            <p style="font-size: 1.2em; color: #FFFFFF;">Team with an Unstoppable Spirit</p>
+        </div>
+    </div>
+</section>
 
 <section id="team" class="team-section">
     <h2>Team Members</h2>
@@ -2137,7 +2158,48 @@ nav a:hover {
 
 <audio id="rocket-sound" src="c:\Users\HP\Downloads\mixkit-speeding-swoosh-1484.wav"></audio>
 
+<!-- JavaScript for Rolling Numbers -->
+<script>
+    // Function to animate the counting effect
+    function animateCountUp() {
+        const counters = document.querySelectorAll('.count');
+        const speed = 200; // Adjust speed here (smaller is faster)
 
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+
+                // Calculate increment
+                const increment = target / speed;
+
+                // Check if we've reached the target
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
+    }
+
+    // Trigger animation when the stats section is in view
+    function onScrollAnimate() {
+        const statsSection = document.getElementById('knight-fury-stats');
+        const sectionTop = statsSection.getBoundingClientRect().top;
+        const screenBottom = window.innerHeight;
+
+        if (sectionTop < screenBottom) {
+            animateCountUp();
+            window.removeEventListener('scroll', onScrollAnimate);
+        }
+    }
+
+    window.addEventListener('scroll', onScrollAnimate);
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
