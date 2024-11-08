@@ -1054,7 +1054,7 @@ nav a:hover {
     flex-direction: column;
 }
 
-/* Center Container for Content */
+/* Center Container for Content - Centered Vertically and Horizontally */
 .center-container {
     display: flex;
     flex-direction: column;
@@ -1064,8 +1064,10 @@ nav a:hover {
     z-index: 1;
     text-align: center;
     padding: 10px;
-    top: 10vh;
+    height: 100%; /* Takes full height of the section for perfect centering */
 }
+
+
 
 /* Sharp Background without Radiance */
 .home-section::after {
@@ -1079,14 +1081,14 @@ nav a:hover {
     z-index: 0;
 }
 
-/* Enhanced Image Frame without Border */
+/* Enhanced Image Frame without Border, Centered */
 #animated-images {
     width: 70%;
     max-width: 600px;
     height: auto;
     filter: brightness(1.2) contrast(1.3);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Soft shadow only */
-    margin-top: 10px;
+    margin: 20px 0; /* Adds space above and below */
     opacity: 0.9;
 }
 
@@ -1097,12 +1099,12 @@ nav a:hover {
     color: #ffffff;
     font-family: 'Roboto Condensed', sans-serif;
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
-    margin-bottom: 20px;
-    padding: 10px 15px;
+    margin: 20px 0; /* Adds space above and below */
     letter-spacing: 1px;
 }
 
-/* Clean Button Style without Neon Glow */
+
+/* Clean Button Style */
 .learn-more-button {
     background-color: #6b3ca3;
     color: white;
