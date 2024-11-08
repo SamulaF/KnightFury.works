@@ -1081,7 +1081,6 @@ nav a:hover {
     z-index: 0;
 }
 
-/* Image Styling */
 #animated-images {
     width: 70%;
     max-width: 600px;
@@ -1089,7 +1088,8 @@ nav a:hover {
     filter: brightness(1.2) contrast(1.3);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     opacity: 0.9;
-    margin: 20px 0;
+    margin: 20px auto; /* This centers the image horizontally */
+    display: block;    /* Ensures that the margin applies correctly */
 }
 
 /* Heading Styling */
