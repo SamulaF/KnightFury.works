@@ -1051,7 +1051,7 @@ nav a:hover {
     justify-content: center;
     position: relative;
     color: #fff;
-    text-align: center; /* Ensures text aligns centrally */
+    text-align: center;
     flex-direction: column;
 }
 
@@ -1065,12 +1065,11 @@ nav a:hover {
     z-index: 1;
     text-align: center;
     padding: 10px;
-    height: 100%; /* Takes full height of the section for perfect centering */
-    width: 100%; /* Ensures container width spans full section */
-    margin: auto; /* Additional alignment assurance */
+    height: 100%;
+    width: 100%;
 }
 
-/* Sharp Background without Radiance */
+/* Dark Overlay */
 .home-section::after {
     content: '';
     position: absolute;
@@ -1078,34 +1077,33 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Subtle dark overlay for contrast */
+    background: rgba(0, 0, 0, 0.5);
     z-index: 0;
 }
 
-/* Enhanced Image Frame without Border, Centered */
+/* Image Styling */
 #animated-images {
     width: 70%;
     max-width: 600px;
     height: auto;
     filter: brightness(1.2) contrast(1.3);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4); /* Soft shadow only */
-    margin: 20px 0 auto auto; /* Centers the image */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     opacity: 0.9;
+    margin: 20px 0;
 }
 
-/* Refined Team Heading Styling */
+/* Heading Styling */
 .team-heading {
     font-size: 2.5em;
     font-weight: 700;
     color: #ffffff;
     font-family: 'Roboto Condensed', sans-serif;
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
-    margin: 20px 0 auto auto; /* Centers the heading */
+    margin: 20px 0;
     letter-spacing: 1px;
-    text-align: center; /* Ensures text aligns centrally */
 }
 
-/* Clean Button Style */
+/* Button Styling */
 .learn-more-button {
     background-color: #6b3ca3;
     color: white;
@@ -1119,7 +1117,6 @@ nav a:hover {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
     text-transform: uppercase;
-    text-align: center; /* Centers button text */
 }
 
 .learn-more-button:hover {
@@ -1143,6 +1140,7 @@ nav a:hover {
         height: auto;
     }
 }
+
 
 
 
