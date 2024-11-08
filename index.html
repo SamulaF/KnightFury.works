@@ -1065,36 +1065,27 @@ nav a:hover {
     width: 50%; /* Take half of the screen width */
 }
 
-/* Right Section Styling - Race Flag Theme */
+/* Right Section - Animated Images and Race Flag */
 .right-section {
+    width: 50%; /* Takes the other half of the screen */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50%; /* Right half of the screen */
-    background: repeating-linear-gradient(
-        45deg,
-        #000000 0,
-        #000000 20px,
-        #ffffff 20px,
-        #ffffff 40px
-    ); /* Race flag pattern */
-    padding: 20px;
     position: relative;
-    overflow: hidden;
-    z-index: 1;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
+                url('race-track-flag-2035566_1280.jpg') no-repeat center center; /* Fading effect and image */
+    background-size: cover;
+    opacity: 0.8;
 }
 
-/* Animated Images Styling */
 #animated-images {
     width: 70%;
     max-width: 600px;
-    height: auto;
     filter: brightness(1.2) contrast(1.3);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     opacity: 0.9;
-    margin: 20px auto; /* Center the image */
-    display: block;
 }
+
 
 /* Heading Styling */
 .team-heading {
