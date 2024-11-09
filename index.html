@@ -52,7 +52,7 @@ II
 }
 /* Toggle button styling for mobile */
 .header-toggle {
-    display: block;
+    display: block; /* Make it visible on mobile */
     position: fixed;
     top: 10px;
     right: 10px;
@@ -68,12 +68,13 @@ II
     z-index: 1001;
 }
 
-/* Hide toggle button on screens larger than 768px */
-@media (min-width: 768px) {
+/* Forcefully hide the toggle button on larger screens */
+@media only screen and (min-width: 768px) {
     .header-toggle {
-        display: none;
+        display: none !important; /* Ensure it's hidden on desktop */
     }
 }
+
 
     header {
         display: flex; /* Ensures header displays normally on desktop */
@@ -169,27 +170,6 @@ p, a {
 
 
 
-    /* Show toggle button on mobile */
-    .header-toggle {
-        display: block;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 1001;
-        background: #32004B;
-        color: white;
-        padding: 10px;
-        font-size: 1.5em;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-}
-
-/* Hide toggle button on larger screens */
-.header-toggle {
-    display: none;
-}
 
 
 
