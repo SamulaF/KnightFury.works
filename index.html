@@ -1047,9 +1047,10 @@ nav a:hover {
     flex-direction: row; /* Horizontal layout to create left and right areas */
     background: url('photo-1707569620487-1fcff5e22f9f.avif') no-repeat center center;
     background-size: cover;
-    height: 100vh;
+    height: 110vh; /* Extends slightly beyond viewport height */
     position: relative;
     color: #fff;
+    overflow: hidden; /* Prevents scrollbars from appearing */
 }
 
 /* Left Section Styling - Center Container */
@@ -1067,13 +1068,15 @@ nav a:hover {
 
 /* Right Section - Race Flag with Blur and Fade Effect */
 .right-section {
-    width: 100%; /* Full width to cover the entire right section */
+    width: 100%;
     position: relative;
     background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
                 url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
     opacity: 0.9;
-    mask-image: linear-gradient(to right, transparent, black); /* Apply gradient mask */
+    mask-image: linear-gradient(to right, transparent, black);
+    height: 110vh; /* Matches the height of .home-section */
+    overflow: hidden;
 }
 
 /* Add a blur and glow effect */
@@ -1083,9 +1086,9 @@ nav a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 110vh; /* Ensures it covers full section height */
     background: inherit;
-    background-position: center right;
+    background-position: center center;
     background-size: cover;
     filter: blur(8px) brightness(1.2); /* Adjust blur and brightness */
     opacity: 0.7;
@@ -1093,7 +1096,7 @@ nav a:hover {
     z-index: -1; /* Ensure it stays behind main content */
 }
 
-
+/* Animated Images Styling */
 #animated-images {
     width: 70%;
     max-width: 600px;
@@ -1101,7 +1104,6 @@ nav a:hover {
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     opacity: 0.9;
 }
-
 
 /* Heading Styling */
 .team-heading {
@@ -1153,20 +1155,11 @@ nav a:hover {
 
     .home-section {
         flex-direction: column; /* Stack sections vertically */
+        height: auto; /* Allow full content height */
     }
 
     .right-section, .center-container {
         width: 100%;
-    }
-}
-   /* Responsive Adjustments */
-@media (max-width: 768px) {
-    .home-section {
-        flex-direction: column; /* Stack sections vertically */
-    }
-
-    .right-section, .center-container {
-        width: 100%; /* Full width for both sections on small screens */
     }
 }
 
