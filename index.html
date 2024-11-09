@@ -1067,9 +1067,11 @@ nav a:hover {
 
 /* Right Section - Race Flag with Full Coverage */
 .right-section {
-    width: 100%;
+    width: 50vw; /* Adjust width if you want it to only cover half of the screen */
     height: 100vh; /* Full viewport height */
-    position: relative;
+    position: absolute; /* Absolute positioning to avoid gaps */
+    top: 0;
+    right: 0;
     background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
                 url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
