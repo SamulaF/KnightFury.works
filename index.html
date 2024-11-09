@@ -57,35 +57,39 @@ II
         display: none;
     }
 }
-/* Hide header on mobile initially */
-header {
-    display: none;
-}
-
 /* Toggle button styling */
 .header-toggle {
     display: block;
     position: fixed;
     top: 10px;
     right: 10px;
-    width: 40px; /* Set width */
-    height: 40px; /* Set height for a square */
+    width: 40px;
+    height: 40px;
     background-color: #6b3ca3;
     color: white;
     font-size: 1.5em;
     text-align: center;
-    padding: 0; /* Remove padding */
+    padding: 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1001;
 }
 
-/* Hide toggle button on desktop */
+/* Hide toggle button and display header normally on desktop */
 @media (min-width: 768px) {
     .header-toggle {
-        display: none;
+        display: none; /* Ensures toggle is hidden on desktop */
     }
+    header {
+        display: flex; /* Ensures header displays normally on desktop */
+        justify-content: space-between;
+    }
+}
+
+/* Hide header initially on mobile */
+header {
+    display: none;
 }
 
 /* Show header when toggle is active */
@@ -100,17 +104,6 @@ header.active {
     position: fixed;
     top: 0;
     z-index: 1000;
-}
-
-/* Media Query to display header and hide toggle button on larger screens */
-@media (min-width: 768px) {
-    header {
-        display: flex;
-        justify-content: space-between;
-    }
-    .header-toggle {
-        display: none; /* Hide toggle button on desktop */
-    }
 }
 
     nav a {
@@ -2500,8 +2493,12 @@ document.addEventListener('scroll', () => {
 });
 document.getElementById('header-toggle').addEventListener('click', function () {
     const header = document.querySelector('header');
-    header.classList.toggle('active');
+    // Only toggle the header class on smaller screens
+    if (window.innerWidth < 768) {
+        header.classList.toggle('active');
+    }
 });
+
 
 
 </script>
