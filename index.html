@@ -1067,7 +1067,7 @@ nav a:hover {
 
 /* Right Section - Race Flag with Blur and Fade Effect */
 .right-section {
-    width: 50%; /* Adjusts width as needed */
+    width: 100%; /* Full width to cover the entire right section */
     position: relative;
     background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
                 url('race-track-flag-2035566_1280.jpg') no-repeat center center;
@@ -1157,6 +1157,16 @@ nav a:hover {
 
     .right-section, .center-container {
         width: 100%;
+    }
+}
+   /* Responsive Adjustments */
+@media (max-width: 768px) {
+    .home-section {
+        flex-direction: column; /* Stack sections vertically */
+    }
+
+    .right-section, .center-container {
+        width: 100%; /* Full width for both sections on small screens */
     }
 }
 
