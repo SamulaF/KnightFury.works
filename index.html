@@ -57,11 +57,27 @@ II
         display: none;
     }
 }
-@media (max-width: 768px) {
-    header {
-        display: none;
-    }
+/* Hide header on mobile initially */
+header {
+    display: none;
 }
+
+/* Toggle button styling */
+.header-toggle {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #6b3ca3;
+    color: white;
+    font-size: 1.5em;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
 /* Show header when toggle is active */
 header.active {
     display: flex;
@@ -76,7 +92,7 @@ header.active {
     z-index: 1000;
 }
 
-/* Media Query to display header and hide toggle on larger screens */
+/* Media Query to display header and hide toggle button on larger screens */
 @media (min-width: 768px) {
     header {
         display: flex;
@@ -84,22 +100,6 @@ header.active {
     }
     .header-toggle {
         display: none; /* Hide toggle button on desktop */
-    }
-}
-        /* Mobile Adjustments */
-@media (max-width: 768px) {
-    header img {
-        width: 50px;
-        margin-right: 10px;
-    }
-    .logo, .speedometer {
-    max-width: 80px; /* Set a maximum width as needed */
-    height: auto; /* Maintains aspect ratio */
-}
-           /* For smaller screens */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column; /* Stacks them vertically on small screens */
     }
 }
 
@@ -2488,19 +2488,11 @@ document.addEventListener('scroll', () => {
         }
     });
 });
-document.getElementById('header-toggle').addEventListener('click', function() {
-    const header = document.querySelector('header');
-    if (header.style.display === 'flex' || header.style.display === '') {
-        header.style.display = 'none';
-    } else {
-        header.style.display = 'flex';
-    }
-});
-// JavaScript to handle header toggle
 document.getElementById('header-toggle').addEventListener('click', function () {
     const header = document.querySelector('header');
     header.classList.toggle('active');
 });
+
 
 </script>
 
