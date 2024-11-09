@@ -34,6 +34,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 II
     <style>
+    <!-- Toggle Button for Mobile -->
+<button id="header-toggle" class="header-toggle">☰</button>
+
+<header>
+<button id="header-toggle" class="header-toggle">☰</button>
+
+</header>
+
         .btn {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -54,7 +62,30 @@ II
         display: none;
     }
 }
+/* Show header when toggle is active */
+header.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(48, 25, 52, 0.85), rgba(153, 120, 40, 0.85));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
 
+/* Media Query to display header and hide toggle on larger screens */
+@media (min-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .header-toggle {
+        display: none; /* Hide toggle button on desktop */
+    }
+}
         /* Mobile Adjustments */
 @media (max-width: 768px) {
     header img {
@@ -141,7 +172,27 @@ p, a {
 
 
 
+    /* Show toggle button on mobile */
+    .header-toggle {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1001;
+        background: #32004B;
+        color: white;
+        padding: 10px;
+        font-size: 1.5em;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
 
+/* Hide toggle button on larger screens */
+.header-toggle {
+    display: none;
+}
 
 
 
@@ -1910,16 +1961,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     </style>
 </head>
 <body>
-    <header>
-  <nav class="navbar">
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <ul id="menu" class="hidden">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+
 
 <div id="preloader">
     <div class="loader"></div>
@@ -1933,7 +1975,8 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     </video>
 </div>
 
-
+<!-- Toggle Button for Mobile -->
+<button id="header-toggle" class="header-toggle">☰</button>
 <header>
     <div class="logo-speedometer">
         <!-- Knight Fury Logo -->
@@ -2445,8 +2488,22 @@ document.addEventListener('scroll', () => {
         }
     });
 });
+document.getElementById('header-toggle').addEventListener('click', function() {
+    const header = document.querySelector('header');
+    if (header.style.display === 'flex' || header.style.display === '') {
+        header.style.display = 'none';
+    } else {
+        header.style.display = 'flex';
+    }
+});
+// JavaScript to handle header toggle
+document.getElementById('header-toggle').addEventListener('click', function () {
+    const header = document.querySelector('header');
+    header.classList.toggle('active');
+});
 
 </script>
 
 </body>
+    
 </html>
