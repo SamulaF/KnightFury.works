@@ -1116,6 +1116,8 @@ nav a:hover {
     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
     margin: 20px 0;
     letter-spacing: 1px;
+    position: relative;
+    left: 20px; /* Adjust this value to shift the heading right */
 }
 
 /* Button Styling */
@@ -1132,6 +1134,8 @@ nav a:hover {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
     text-transform: uppercase;
+    position: relative;
+    left: 20px; /* Adjust this value to shift the button right */
 }
 
 .learn-more-button:hover {
@@ -1143,12 +1147,16 @@ nav a:hover {
 @media (max-width: 768px) {
     .team-heading {
         font-size: 1.8em;
+        left: 10px; /* Adjust this value as needed for smaller screens */
     }
 
     .learn-more-button {
         font-size: 0.9em;
         padding: 10px 20px;
+        left: 10px; /* Adjust this value as needed for smaller screens */
     }
+}
+
 
     #animated-images {
         width: 80%;
