@@ -1117,6 +1117,45 @@ nav a:hover {
     margin: 20px 0;
     letter-spacing: 1px;
 }
+/* Container for Car Button */
+.car-button {
+    position: absolute;
+    top: 40%; /* Adjust to center on left wheel */
+    left: 20%; /* Adjust based on exact placement */
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* Car Image Styling */
+.car-button img {
+    width: 120px; /* Adjust size based on visual fit */
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-button img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover Text Styling */
+.hover-text {
+    display: none;
+    position: absolute;
+    top: 50%; /* Centered over the car */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.car-button:hover .hover-text {
+    display: block;
+}
 
 /* Button Styling */
 .learn-more-button {
@@ -1546,7 +1585,43 @@ nav a:hover {
 #content {
     position: relative;
     z-index: 1; /* Above the wheel */
-    }        /* Buttons */
+    }   
+/* Car button styling */
+.car-button {
+    position: relative;
+    display: inline-block;
+}
+
+.car-button img {
+    width: 150px; /* Adjust size to fit in the center of the wheel */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.car-button .hover-text {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+/* Hover effect */
+.car-button:hover img {
+    transform: scale(1.1);
+}
+
+.car-button:hover .hover-text {
+    opacity: 1;
+}/* Buttons */
             .btn {
             background-color: #A020F0;
             color: white;
@@ -1885,12 +1960,17 @@ nav a:hover {
 
 
 <section id="home" class="home-section">
-    <div id="wheel"></div> <!-- Background wheel -->
+    <!-- Background wheel with car button -->
+    <div id="wheel">
+        <div class="car-button">
+            <img src="transparent-number-2-yellow-and-black-formula-one-racing-1710850409036.webp" alt="Learn More" />
+            <span class="hover-text">Learn More</span>
+        </div>
+    </div>
 
-    <!-- Left content with text and button -->
+    <!-- Left content with heading -->
     <div class="center-container">
         <h1 class="team-heading">F1 in Schools' Team from Ambience Public School</h1>
-        <a href="https://www.f1inschools.com/" class="learn-more-button" target="_blank">Learn More</a>
     </div>
 
     <!-- Right content with animated images and race flag background -->
@@ -1907,6 +1987,7 @@ nav a:hover {
         </div>
     </div>
 </section>
+
 
 
 
