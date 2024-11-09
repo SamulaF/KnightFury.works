@@ -1173,7 +1173,46 @@ nav a:hover {
         width: 100%; /* Full width for both sections on small screens */
     }
 }
+/* Car Image as Button */
+.learn-more-car {
+    position: absolute;
+    bottom: 320px; /* Adjust for centering on wheel */
+    left: 320px;   /* Adjust for centering on wheel */
+    z-index: 2;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
 
+.learn-more-car img {
+    width: 120px; /* Adjust size */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Text Styling */
+.learn-more-car .hover-text {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Hover Effects */
+.learn-more-car:hover .hover-text {
+    display: block;
+}
+
+.learn-more-car:hover img {
+    transform: scale(1.05);
+}
 
 
 
@@ -1887,10 +1926,15 @@ nav a:hover {
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- Background wheel -->
 
-    <!-- Left content with text and button -->
+    <!-- Left content with text and car button -->
     <div class="center-container">
         <h1 class="team-heading">F1 in Schools' Team from Ambience Public School</h1>
-        <a href="https://www.f1inschools.com/" class="learn-more-button" target="_blank">Learn More</a>
+
+        <!-- Car Button Image replacing 'Learn More' -->
+        <a href="https://www.f1inschools.com" target="_blank" class="learn-more-car">
+            <img src="transparent-number-2-yellow-and-black-formula-one-racing-car65e6f6a25336d2.1573781517096352343409.png" alt="Learn More Car">
+            <span class="hover-text">Learn More</span>
+        </a>
     </div>
 
     <!-- Right content with animated images and race flag background -->
@@ -1907,6 +1951,7 @@ nav a:hover {
         </div>
     </div>
 </section>
+
 
 
 
