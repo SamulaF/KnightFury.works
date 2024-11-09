@@ -1065,18 +1065,34 @@ nav a:hover {
     width: 50%; /* Take half of the screen width */
 }
 
-/* Right Section - Animated Images and Race Flag */
+/* Right Section - Race Flag with Blur and Fade Effect */
 .right-section {
-    width: 50%; /* Takes the other half of the screen */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 50%; /* Adjusts width as needed */
     position: relative;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), 
-                url('race-track-flag-2035566_1280.jpg') no-repeat center center; /* Fading effect and image */
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+                url('race-track-flag-2035566_1280.jpg') no-repeat center right;
     background-size: cover;
-    opacity: 0.8;
+    opacity: 0.9;
+    mask-image: linear-gradient(to right, transparent, black); /* Apply gradient mask */
 }
+
+/* Add a blur and glow effect */
+.right-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-position: center right;
+    background-size: cover;
+    filter: blur(8px) brightness(1.2); /* Adjust blur and brightness */
+    opacity: 0.7;
+    mask-image: linear-gradient(to right, transparent, black); /* Mask to fade */
+    z-index: -1; /* Ensure it stays behind main content */
+}
+
 
 #animated-images {
     width: 70%;
