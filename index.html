@@ -1173,48 +1173,7 @@ nav a:hover {
         width: 100%; /* Full width for both sections on small screens */
     }
 }
-/* Car Container Styling */
-.car-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 15; /* In front of the wheel */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-/* Car Image Styling */
-.car-image {
-    width: 150px; /* Adjust size as needed */
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-/* Hover effect for the car */
-.car-image:hover {
-    transform: scale(1.05);
-}
-
-/* Hover text styling */
-.hover-text {
-    position: absolute;
-    font-size: 1em;
-    color: white;
-    font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 8px 12px;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    text-transform: uppercase;
-}
-
-/* Display text on hover */
-.car-container:hover .hover-text {
-    opacity: 1;
-}
 
 
 
@@ -1501,48 +1460,6 @@ nav a:hover {
     position: relative;
     z-index: 1; /* Above the wheel */
 }
-/* Car Container Styling */
-.car-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 15; /* In front of the wheel */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Car Image Styling */
-.car-image {
-    width: 150px; /* Adjust size as needed */
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-/* Hover effect for the car */
-.car-image:hover {
-    transform: scale(1.05);
-}
-
-/* Hover text styling */
-.hover-text {
-    position: absolute;
-    font-size: 1em;
-    color: white;
-    font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 8px 12px;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    text-transform: uppercase;
-}
-
-/* Display text on hover */
-.car-container:hover .hover-text {
-    opacity: 1;
-}
 
 
 
@@ -1629,50 +1546,7 @@ nav a:hover {
 #content {
     position: relative;
     z-index: 1; /* Above the wheel */
-    }   
-/* Car Container Styling */
-.car-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 15; /* In front of the wheel */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Car Image Styling */
-.car-image {
-    width: 150px; /* Adjust size as needed */
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-/* Hover effect for the car */
-.car-image:hover {
-    transform: scale(1.05);
-}
-
-/* Hover text styling */
-.hover-text {
-    position: absolute;
-    font-size: 1em;
-    color: white;
-    font-weight: 600;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 8px 12px;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    text-transform: uppercase;
-}
-
-/* Display text on hover */
-.car-container:hover .hover-text {
-    opacity: 1;
-}
-/* Buttons */
+    }        /* Buttons */
             .btn {
             background-color: #A020F0;
             color: white;
@@ -2011,20 +1885,12 @@ nav a:hover {
 
 
 <section id="home" class="home-section">
-    <div id="wheel">
-        <!-- Car image used as the "Learn More" button in the center of the wheel -->
-        <a href="https://www.f1inschools.com/" target="_blank" class="car-link">
-            <div class="car-container">
-                <img src="transparent-number-2-yellow-and-black-formula-one-racing-car65e6f6a25336d2.1573781517096352343409.png" 
-                     alt="Formula One Racing Car" class="car-image">
-                <span class="hover-text">Learn More</span>
-            </div>
-        </a>
-    </div> <!-- End of the wheel with car button -->
+    <div id="wheel"></div> <!-- Background wheel -->
 
-    <!-- Left content with heading text -->
+    <!-- Left content with text and button -->
     <div class="center-container">
         <h1 class="team-heading">F1 in Schools' Team from Ambience Public School</h1>
+        <a href="https://www.f1inschools.com/" class="learn-more-button" target="_blank">Learn More</a>
     </div>
 
     <!-- Right content with animated images and race flag background -->
@@ -2039,7 +1905,7 @@ nav a:hover {
             <img src="KnightFury7.jpg" class="cycle-image" alt="Knight Fury 7">
             <img src="KnightFury8.jpg" class="cycle-image" alt="Knight Fury 8">
         </div>
-    </div> <!-- End of right section with images -->
+    </div>
 </section>
 
 
