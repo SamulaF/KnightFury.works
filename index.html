@@ -57,7 +57,7 @@ II
         display: none;
     }
 }
-/* Toggle button styling */
+/* Toggle button styling for mobile */
 .header-toggle {
     display: block;
     position: fixed;
@@ -69,18 +69,19 @@ II
     color: white;
     font-size: 1.5em;
     text-align: center;
-    padding: 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1001;
 }
 
-/* Hide toggle button and display header normally on desktop */
+/* Hide toggle button on screens larger than 768px */
 @media (min-width: 768px) {
     .header-toggle {
-        display: none; /* Ensures toggle is hidden on desktop */
+        display: none;
     }
+}
+
     header {
         display: flex; /* Ensures header displays normally on desktop */
         justify-content: space-between;
@@ -2493,11 +2494,19 @@ document.addEventListener('scroll', () => {
 });
 document.getElementById('header-toggle').addEventListener('click', function () {
     const header = document.querySelector('header');
-    // Only toggle the header class on smaller screens
     if (window.innerWidth < 768) {
         header.classList.toggle('active');
     }
 });
+
+// Optional: Reset header display when resizing to desktop
+window.addEventListener('resize', function () {
+    const header = document.querySelector('header');
+    if (window.innerWidth >= 768) {
+        header.classList.remove('active'); // Ensures header is visible on desktop
+    }
+});
+
 
 
 
