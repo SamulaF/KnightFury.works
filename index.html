@@ -52,7 +52,7 @@ II
 }
 /* Toggle button styling for mobile */
 .header-toggle {
-    display: block; /* Make it visible on mobile */
+    display: block;
     position: fixed;
     top: 10px;
     right: 10px;
@@ -68,37 +68,40 @@ II
     z-index: 1001;
 }
 
-/* Forcefully hide the toggle button on larger screens */
-@media only screen and (min-width: 768px) {
+/* Hide toggle button on screens larger than 768px */
+@media (min-width: 768px) {
     .header-toggle {
-        display: none !important; /* Ensure it's hidden on desktop */
+        display: none;
     }
 }
 
-
-    header {
-        display: flex; /* Ensures header displays normally on desktop */
-        justify-content: space-between;
-    }
-}
-
-/* Hide header initially on mobile */
+/* Header styling for desktop */
 header {
-    display: none;
-}
-
-/* Show header when toggle is active */
-header.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    display: flex; /* Ensures header displays normally on desktop */
+    justify-content: space-between;
     background: linear-gradient(90deg, rgba(48, 25, 52, 0.85), rgba(153, 120, 40, 0.85));
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
+    width: 100%;
     z-index: 1000;
+}
+
+/* Hide header initially on mobile */
+@media (max-width: 768px) {
+    header {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Show header when active class is applied on mobile */
+@media (max-width: 768px) {
+    header.active {
+        display: flex !important;
+    }
 }
 
     nav a {
@@ -2465,19 +2468,10 @@ document.addEventListener('scroll', () => {
         }
     });
 });
+// JavaScript to toggle header visibility on mobile
 document.getElementById('header-toggle').addEventListener('click', function () {
     const header = document.querySelector('header');
-    if (window.innerWidth < 768) {
-        header.classList.toggle('active');
-    }
-});
-
-// Optional: Reset header display when resizing to desktop
-window.addEventListener('resize', function () {
-    const header = document.querySelector('header');
-    if (window.innerWidth >= 768) {
-        header.classList.remove('active'); // Ensures header is visible on desktop
-    }
+    header.classList.toggle('active'); // Toggle 'active' class to show/hide header on mobile
 });
 
 
