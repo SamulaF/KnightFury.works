@@ -1047,7 +1047,7 @@ nav a:hover {
     height: 100vh;
     position: relative;
     color: #fff;
-    padding-top: 100px; /* Increased to prevent animated images overlapping header */
+    padding-top: 100px; /* Increased to ensure animated images don't overlap header */
 }
 
 @media (max-width: 768px) {
@@ -1091,6 +1091,7 @@ header {
     width: 50%;
     position: relative;
     z-index: 1;
+    margin-top: -100px; /* Aligns with the header height for a clean look */
 }
 
 @media (max-width: 768px) {
@@ -1099,16 +1100,18 @@ header {
     }
 }
 
-/* Right Section - Race Flag with Full Coverage */
+/* Right Section - Race Flag with Full Coverage and Enhanced Fading */
 .right-section {
     width: 50vw;
     height: 100vh;
     position: absolute;
     top: 0;
     right: 0;
-    background: url('race-track-flag-2035566_1280.jpg') no-repeat center center;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+                url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
     opacity: 0.9;
+    mask-image: linear-gradient(to right, transparent, black);
     overflow: hidden;
 }
 
@@ -1117,38 +1120,54 @@ header {
         position: relative;
         width: 100%;
         height: auto;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+                    url('race-track-flag-2035566_1280.jpg') no-repeat center center;
         background-size: cover;
+        mask-image: none;
     }
 }
 
-/* Adjusted Bottom Styling for Right Section to Appear Seamless */
+.right-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent);
+    opacity: 0.9;
+    z-index: 1;
+}
+
 .right-section::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px; /* Stronger bottom fade */
+    height: 100px; /* Extend to create a stronger fade at the bottom */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    filter: blur(12px);
+    filter: blur(12px); /* Increased blur for a smoother finish */
+    z-index: 1;
     opacity: 0.9;
 }
 
 /* Animated Images Styling */
 #animated-images {
     position: relative;
-    width: 40%;
-    max-width: 400px;
+    width: 70%;
+    max-width: 600px;
     filter: brightness(1.2) contrast(1.3);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-    margin-left: auto; /* Positioned to the right of the car */
-    z-index: 2;
+    z-index: 2; /* Ensure it appears above other elements */
+    margin-top: 50px; /* Add some spacing below the header */
 }
 
 @media (max-width: 768px) {
     #animated-images {
         width: 80%;
-        margin: 0 auto;
+        top: 0;
     }
 }
 
@@ -1197,14 +1216,15 @@ header {
     }
 }
 
-/* Car Image as Button Positioned to the Right of Text */
+/* Car Image as Button */
 .learn-more-car {
-    position: relative;
-    margin-top: 20px;
-    margin-left: 20px;
+    position: absolute;
+    bottom: 320px;
+    left: 320px;
+    z-index: 2;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
+    text-align: center;
+    text-decoration: none;
 }
 
 .learn-more-car img {
