@@ -1076,7 +1076,7 @@ header {
     }
 }
 
-/* Right Section - Race Flag with Full Coverage and Enhanced Bottom Fade */
+/* Right Section - Race Flag with Full Coverage and Enhanced Fading */
 .right-section {
     width: 50vw;
     height: 100vh; /* Full viewport height */
@@ -1100,13 +1100,26 @@ header {
     }
 }
 
+.right-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent); /* Gradual fade effect on all sides */
+    opacity: 0.9;
+    z-index: 1;
+}
+
 .right-section::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 20%; /* Adjust the height of the fade effect */
+    height: 20%; /* Adjust the height of the bottom fade effect */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     filter: blur(10px); /* Increase blur for a softer fade */
     z-index: 1;
