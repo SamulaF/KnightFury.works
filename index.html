@@ -1041,20 +1041,20 @@ nav a:hover {
 /* Main Section Styling */
 .home-section {
     display: flex;
-    flex-direction: row; /* Horizontal layout for desktop */
+    flex-direction: row;
     background: url('photo-1707569620487-1fcff5e22f9f.avif') no-repeat center center;
     background-size: cover;
     height: 100vh;
     position: relative;
     color: #fff;
-    padding-top: 70px; /* Space below the header to avoid overlap */
+    padding-top: 100px; /* Increased to ensure animated images don't overlap header */
 }
 
 @media (max-width: 768px) {
     .home-section {
-        flex-direction: column; /* Stack sections vertically on mobile */
-        height: auto; /* Allow it to expand with content */
-        padding-top: 60px; /* Adjust for mobile header height */
+        flex-direction: column;
+        height: auto;
+        padding-top: 60px;
     }
 }
 
@@ -1064,19 +1064,19 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 10; /* Make sure the header is above other content */
-    background-color: #663399; /* Ensuring header background remains visible */
+    z-index: 10;
+    background-color: #663399;
 }
 
 @media (max-width: 768px) {
     header {
-        height: 60px; /* Thinner header on mobile only */
+        height: 60px;
     }
 }
 
 @media (min-width: 769px) {
     header {
-        height: 100px; /* Thick header on desktop */
+        height: 100px;
     }
 }
 
@@ -1091,18 +1091,19 @@ header {
     width: 50%;
     position: relative;
     z-index: 1;
+    margin-top: -100px; /* Aligns with the header height for a clean look */
 }
 
 @media (max-width: 768px) {
     .center-container {
-        width: 100%; /* Full width on mobile */
+        width: 100%;
     }
 }
 
 /* Right Section - Race Flag with Full Coverage and Enhanced Fading */
 .right-section {
     width: 50vw;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
     position: absolute;
     top: 0;
     right: 0;
@@ -1110,19 +1111,19 @@ header {
                 url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
     opacity: 0.9;
-    mask-image: linear-gradient(to right, transparent, black); /* Right edge fading effect */
+    mask-image: linear-gradient(to right, transparent, black);
     overflow: hidden;
 }
 
 @media (max-width: 768px) {
     .right-section {
-        position: relative; /* Remove absolute positioning on mobile */
-        width: 100%; /* Full width on mobile */
-        height: auto; /* Allow it to expand with content */
+        position: relative;
+        width: 100%;
+        height: auto;
         background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
                     url('race-track-flag-2035566_1280.jpg') no-repeat center center;
         background-size: cover;
-        mask-image: none; /* Remove mask for a complete view on mobile */
+        mask-image: none;
     }
 }
 
@@ -1134,7 +1135,7 @@ header {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent); /* Gradual fade effect */
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent);
     opacity: 0.9;
     z-index: 1;
 }
@@ -1145,11 +1146,11 @@ header {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 20%; /* Adjust the height of the bottom fade effect */
+    height: 100px; /* Extend to create a stronger fade at the bottom */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    filter: blur(10px); /* Increase blur for a softer fade */
+    filter: blur(12px); /* Increased blur for a smoother finish */
     z-index: 1;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* Animated Images Styling */
@@ -1159,12 +1160,14 @@ header {
     max-width: 600px;
     filter: brightness(1.2) contrast(1.3);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    z-index: 2; /* Ensure it appears above other elements */
+    margin-top: 50px; /* Add some spacing below the header */
 }
 
 @media (max-width: 768px) {
     #animated-images {
         width: 80%;
-        top: 0; /* Remove extra top padding on mobile */
+        top: 0;
     }
 }
 
@@ -1181,7 +1184,7 @@ header {
 
 @media (max-width: 768px) {
     .team-heading {
-        font-size: 1.8em; /* Adjust font size for mobile */
+        font-size: 1.8em;
     }
 }
 
@@ -1209,7 +1212,7 @@ header {
 @media (max-width: 768px) {
     .learn-more-button {
         font-size: 0.9em;
-        padding: 10px 20px; /* Smaller button size for mobile */
+        padding: 10px 20px;
     }
 }
 
@@ -1254,9 +1257,9 @@ header {
 
 @media (max-width: 768px) {
     .learn-more-car {
-        position: static; /* Remove absolute positioning for mobile */
+        position: static;
         margin-top: 20px;
-        text-align: center; /* Center on mobile */
+        text-align: center;
     }
 }
 
