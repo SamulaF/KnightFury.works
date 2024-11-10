@@ -34,7 +34,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 II
     <style>
+@media (max-width: 768px) {
+    header {
+        height: 60px; /* Thinner header only on mobile */
+    }
+}
 
+/* Desktop Header */
+@media (min-width: 769px) {
+    header {
+        height: 100px; /* Keep header thick on desktop */
+    }
+}
         .btn {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -1047,14 +1058,26 @@ nav a:hover {
     }
 }
 
-/* Header Styling (Add this if not already present) */
+/* Header Styling */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10; /* Make sure the header is above other content */
-    height: 60px; /* Set a specific height for the header */
+    background-color: #663399; /* Ensuring header background remains visible */
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 60px; /* Thinner header on mobile only */
+    }
+}
+
+@media (min-width: 769px) {
+    header {
+        height: 100px; /* Thick header on desktop */
+    }
 }
 
 /* Left Section Styling - Center Container */
@@ -1087,9 +1110,8 @@ header {
                 url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
     opacity: 0.9;
-    mask-image: linear-gradient(to right, transparent, black);
+    mask-image: linear-gradient(to right, transparent, black); /* Right edge fading effect */
     overflow: hidden;
-    padding-top: 60px; /* Ensure alignment with the header */
 }
 
 @media (max-width: 768px) {
@@ -1097,6 +1119,10 @@ header {
         position: relative; /* Remove absolute positioning on mobile */
         width: 100%; /* Full width on mobile */
         height: auto; /* Allow it to expand with content */
+        background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+                    url('race-track-flag-2035566_1280.jpg') no-repeat center center;
+        background-size: cover;
+        mask-image: none; /* Remove mask for a complete view on mobile */
     }
 }
 
@@ -1108,7 +1134,7 @@ header {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent); /* Gradual fade effect on all sides */
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent); /* Gradual fade effect */
     opacity: 0.9;
     z-index: 1;
 }
