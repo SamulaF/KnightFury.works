@@ -1036,13 +1036,25 @@ nav a:hover {
     height: 100vh;
     position: relative;
     color: #fff;
+    padding-top: 70px; /* Space below the header to avoid overlap */
 }
 
 @media (max-width: 768px) {
     .home-section {
         flex-direction: column; /* Stack sections vertically on mobile */
         height: auto; /* Allow it to expand with content */
+        padding-top: 60px; /* Adjust for mobile header height */
     }
+}
+
+/* Header Styling (Add this if not already present) */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Make sure the header is above other content */
+    height: 60px; /* Set a specific height for the header */
 }
 
 /* Left Section Styling - Center Container */
@@ -1077,6 +1089,15 @@ nav a:hover {
     opacity: 0.9;
     mask-image: linear-gradient(to right, transparent, black);
     overflow: hidden;
+    padding-top: 60px; /* Ensure alignment with the header */
+}
+
+@media (max-width: 768px) {
+    .right-section {
+        position: relative; /* Remove absolute positioning on mobile */
+        width: 100%; /* Full width on mobile */
+        height: auto; /* Allow it to expand with content */
+    }
 }
 
 .right-section::after {
@@ -1092,18 +1113,9 @@ nav a:hover {
     opacity: 0.8;
 }
 
-@media (max-width: 768px) {
-    .right-section {
-        position: relative; /* Remove absolute positioning on mobile */
-        width: 100%; /* Full width on mobile */
-        height: auto; /* Allow it to expand with content */
-    }
-}
-
 /* Animated Images Styling */
 #animated-images {
     position: relative;
-    top: 70px; /* Adjusted to stay below the header */
     width: 70%;
     max-width: 600px;
     filter: brightness(1.2) contrast(1.3);
