@@ -554,7 +554,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 12px 25px;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(25, 25, 25, 0.85));
+    background: linear-gradient(90deg, rgba(20, 0, 60, 0.85), rgba(50, 0, 100, 0.85));
     position: fixed;
     width: 100%;
     top: 0;
@@ -563,7 +563,7 @@ header {
     color: #FFFFFF;
     backdrop-filter: blur(8px);
     transition: background 0.3s, box-shadow 0.3s;
-    border-bottom: 2px solid #FFD700;
+    border-bottom: 2px solid #FFD700; /* Yellow border for contrast */
 }
 
 header h1, header a {
@@ -572,12 +572,12 @@ header h1, header a {
 }
 
 header a:hover {
-    color: #FFD700; /* Bright gold for hover */
+    color: #FFD700; /* Bright yellow for hover */
     text-shadow: 1px 1px 8px #FFD700;
 }
 
 header:hover {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(25, 25, 25, 0.9));
+    background: linear-gradient(90deg, rgba(30, 0, 80, 0.9), rgba(60, 0, 120, 0.9));
 }
 
 /* Logo and Speedometer */
@@ -590,13 +590,13 @@ header:hover {
 header img {
     width: 80px;
     margin-right: 18px;
-    filter: drop-shadow(0px 0px 20px rgba(255, 0, 0, 0.9)); /* Red glow for energy */
+    filter: drop-shadow(0px 0px 20px rgba(150, 0, 255, 0.9)); /* Purple glow for energy */
     transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
 }
 
 header img:hover {
     transform: rotate(360deg) scale(1.15);
-    filter: drop-shadow(0px 0px 35px rgba(255, 0, 0, 1));
+    filter: drop-shadow(0px 0px 35px rgba(150, 0, 255, 1));
 }
 
 /* Speedometer Container */
@@ -614,8 +614,8 @@ header img:hover {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #1c1c1c, #000);
-    box-shadow: 0px 0px 18px rgba(255, 0, 0, 0.9);
+    background: radial-gradient(circle at center, #2a002a, #1a001a);
+    box-shadow: 0px 0px 18px rgba(150, 0, 255, 0.9);
     transition: box-shadow 0.3s;
 }
 
@@ -624,7 +624,7 @@ header img:hover {
     position: absolute;
     width: 2px;
     height: 40px;
-    background: #FFD700; /* Gold needle for elegance */
+    background: #FFD700; /* Yellow needle for contrast */
     top: 20px;
     left: 39px;
     transform-origin: bottom center;
@@ -656,10 +656,10 @@ header img:hover {
     transform: translate(-50%, -50%);
     font-size: 42px;
     font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(90deg, #FFD700, #FF4500, #FF0000);
+    background: linear-gradient(90deg, #FFD700, #FFDD00, #FFE600);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8), 0px 0px 25px rgba(255, 69, 0, 0.6), 0px 0px 35px rgba(255, 0, 0, 0.5);
+    text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8), 0px 0px 25px rgba(255, 223, 0, 0.6), 0px 0px 35px rgba(255, 230, 0, 0.5);
     font-weight: bold;
     opacity: 0.95;
 }
@@ -675,13 +675,13 @@ nav a {
 }
 
 nav a:hover {
-    color: #FFD700;
+    color: #FFD700; /* Yellow highlight */
     text-shadow: 0 0 8px #FFD700;
 }
 
 /* Dropdown Menu */
 .dropbtn {
-    background: linear-gradient(135deg, #FF0000, #FFD700);
+    background: linear-gradient(135deg, #4B0082, #FFD700); /* Purple and yellow gradient */
     color: white;
     padding: 12px 18px;
     font-size: 18px;
@@ -700,9 +700,9 @@ nav a:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #1c1c1c;
+    background-color: #2a002a;
     border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 8px 20px rgba(150, 0, 255, 0.6);
     padding: 12px 0;
     z-index: 1;
 }
@@ -718,7 +718,7 @@ nav a:hover {
 
 .dropdown-content a:hover {
     background-color: #FFD700;
-    color: #1c1c1c;
+    color: #2a002a;
 }
 
 .dropdown:hover .dropdown-content {
@@ -726,8 +726,8 @@ nav a:hover {
 }
 
 .dropdown:hover .dropbtn {
-    background: #FF4500;
-    box-shadow: 0 4px 14px rgba(255, 69, 0, 0.7);
+    background: #FFD700;
+    box-shadow: 0 4px 14px rgba(255, 215, 0, 0.7);
 }
 
 
