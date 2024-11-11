@@ -1042,12 +1042,15 @@ nav a:hover {
 .home-section {
     display: flex;
     flex-direction: row;
-    background: url('photo-1707569620487-1fcff5e22f9f.avif') no-repeat center center;
+    background: #2d2d2d; /* Dark matte background */
+    background-image: url('photo-1707569620487-1fcff5e22f9f.avif');
     background-size: cover;
+    background-position: center;
     height: 100vh;
     position: relative;
     color: #fff;
-    padding-top: 100px; /* Increased to avoid overlap with header */
+    padding-top: 100px; /* Avoid overlap with header */
+    filter: brightness(0.9) contrast(1.1); /* Enhances the matte look */
 }
 
 @media (max-width: 768px) {
@@ -1065,7 +1068,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 10;
-    background-color: #663399;
+    background-color: rgba(51, 51, 51, 0.9); /* Dark matte with slight transparency */
 }
 
 @media (max-width: 768px) {
@@ -1091,7 +1094,7 @@ header {
     width: 50%;
     position: relative;
     z-index: 1;
-    margin-top: -100px; /* Aligns with the header height for a clean look */
+    margin-top: -100px;
 }
 
 @media (max-width: 768px) {
@@ -1100,18 +1103,19 @@ header {
     }
 }
 
-/* Right Section - Race Flag with Full Coverage and Enhanced Fading */
+/* Right Section - Darker Flag Background with Full Coverage */
 .right-section {
     width: 50vw;
     height: 150vh;
     position: absolute;
     top: 0;
     right: 0;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
                 url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
     opacity: 0.9;
     mask-image: linear-gradient(to right, transparent, black);
+    filter: brightness(0.8) contrast(1.1); /* Darker matte effect */
     overflow: hidden;
 }
 
@@ -1127,6 +1131,7 @@ header {
     }
 }
 
+/* Enhanced Fading for Right Section */
 .right-section::before {
     content: '';
     position: absolute;
@@ -1136,7 +1141,6 @@ header {
     width: 100%;
     height: 100%;
     background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent);
-    opacity: 0.9;
     z-index: 1;
 }
 
@@ -1146,13 +1150,14 @@ header {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px; /* Increased for smoother fade */
+    height: 150px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    filter: blur(20px); /* Enhanced blur for smooth fade */
+    filter: blur(20px);
     z-index: 1;
     opacity: 0.9;
 }
 
+/* Image Animation Container */
 #animated-images {
     position: absolute;
     bottom: 50px;
@@ -1160,7 +1165,7 @@ header {
     transform: translateX(-50%);
     width: 70%;
     max-width: 600px;
-    filter: brightness(1.2) contrast(1.3);
+    filter: brightness(1.2) contrast(1.3); /* Keeps image quality while enhancing colors */
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     z-index: 2;
     margin-top: 50px;
@@ -1171,9 +1176,6 @@ header {
         position: relative;
         width: 80%;
         margin: 0 auto;
-        top: 1;
-        left: 0;
-        transform: none;
     }
 }
 @media (min-width: 768px) {
