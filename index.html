@@ -1108,7 +1108,7 @@ header {
     width: 50%;
     height: 100vh;
     background: url('race-track-flag-2035566_1280.jpg') no-repeat center center;
-    background-size: cover;
+    background-size: contain; /* Keep the flag image uncropped */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1121,19 +1121,27 @@ header {
         width: 100%;
         height: 50vh;
         padding-bottom: 10px;
+        background-size: cover; /* Mobile adjustment to cover the section */
     }
 }
 
+/* Animated Images Styling */
 #animated-images {
-    display: flex;
     position: absolute;
-    bottom: 10px; /* Adjust to align with the flag/car image */
+    bottom: 30px; /* Bring images closer to the flag */
     width: 80%;
     max-width: 600px;
+    transform: rotate(-5deg); /* Tilt 5 degrees left */
     filter: brightness(1.2) contrast(1.3);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
     z-index: 1;
     margin: 0 auto;
+}
+@media (max-width: 768px) {
+    #animated-images {
+        width: 100%;
+        transform: rotate(-3deg); /* Slightly reduce tilt on smaller screens */
+    }
 }
 
 /* Button Styling */
