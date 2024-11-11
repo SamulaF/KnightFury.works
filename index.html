@@ -1038,17 +1038,47 @@ nav a:hover {
 
 
 
-//* Main Section Styling */
+/* Main Section Styling with Animated Background */
 .home-section {
     display: flex;
     flex-direction: row;
-    background: #2d2d2d;
+    background-size: cover;
+    background-position: center;
     height: 100vh;
     position: relative;
     color: #fff;
-    padding-top: 100px;
-    filter: brightness(0.9) contrast(1.1);
-    overflow: hidden;
+    padding-top: 100px; /* Avoid overlap with header */
+    animation: backgroundSlide 40s infinite;
+}
+
+@keyframes backgroundSlide {
+    0% {
+        background-image: url('KnightFury1.jpg');
+    }
+    12.5% {
+        background-image: url('KnightFury2.jpg');
+    }
+    25% {
+        background-image: url('KnightFury3.jpg');
+    }
+    37.5% {
+        background-image: url('KnightFury4.jpg');
+    }
+    50% {
+        background-image: url('KnightFury5.jpg');
+    }
+    62.5% {
+        background-image: url('KnightFury6.jpg');
+    }
+    75% {
+        background-image: url('KnightFury7.jpg');
+    }
+    87.5% {
+        background-image: url('KnightFury8.jpg');
+    }
+    100% {
+        background-image: url('KnightFury1.jpg');
+    }
 }
 
 @media (max-width: 768px) {
@@ -1059,6 +1089,7 @@ nav a:hover {
     }
 }
 
+
 /* Header Styling */
 header {
     position: fixed;
@@ -1066,7 +1097,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 10;
-    background-color: rgba(51, 51, 51, 0.9);
+    background-color: rgba(51, 51, 51, 0.9); /* Dark matte with slight transparency */
 }
 
 @media (max-width: 768px) {
@@ -1081,7 +1112,7 @@ header {
     }
 }
 
-/* Center Container Styling */
+/* Left Section Styling - Center Container */
 .center-container {
     display: flex;
     flex-direction: column;
@@ -1098,56 +1129,46 @@ header {
 @media (max-width: 768px) {
     .center-container {
         width: 100%;
-        margin-top: 0;
     }
 }
 
-/* Right Section Styling */
+/* Right Section Styling - Contains Flag Image */
 .right-section {
-    width: 50%;
-    height: 100vh;
+    position: relative;
+    width: 50%; /* Adjust as needed */
+    height: 100vh; /* Full height of the viewport */
     background: url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 0;
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom */
+    justify-content: center;
+    padding-bottom: 20px; /* Space for animated images */
 }
+
+
 
 @media (max-width: 768px) {
     .right-section {
         position: relative;
         width: 100%;
-        height: 50vh;
+        height: 50vh; /* Or another height for mobile */
+        background-size: cover;
     }
 }
 
-/* Animated Background Images */
-#animated-images {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    animation: cycleImages 24s infinite;
-    background-size: cover;
-    background-position: center;
-}
 
-@keyframes cycleImages {
-    0% { background-image: url('KnightFury1.jpg'); }
-    12.5% { background-image: url('KnightFury2.jpg'); }
-    25% { background-image: url('KnightFury3.jpg'); }
-    37.5% { background-image: url('KnightFury4.jpg'); }
-    50% { background-image: url('KnightFury5.jpg'); }
-    62.5% { background-image: url('KnightFury6.jpg'); }
-    75% { background-image: url('KnightFury7.jpg'); }
-    87.5% { background-image: url('KnightFury8.jpg'); }
-    100% { background-image: url('KnightFury1.jpg'); }
-}
 
-/* Headline Styling */
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+    .right-section {
+        width: 100%;
+        height: 50vh;
+        padding-bottom: 10px;
+    }
+
+
+/* Heading Styling */
 .team-heading {
     font-size: 2.5em;
     font-weight: 700;
@@ -1192,12 +1213,12 @@ header {
     }
 }
 
-/* Car Image Button */
+/* Car Image as Button */
 .learn-more-car {
     position: absolute;
-    bottom: 50px;
-    right: 30%;
-    z-index: 2;
+    bottom: 50px; /* Adjusted to align with text */
+    right: 30%; /* Positioned to avoid text overlap */
+    z-index: 20;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -1946,8 +1967,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     </video>
 </div>
 
-<!-- Toggle Button for Mobile -->
-<button id="header-toggle" class="header-toggle">☰</button>
+
 <header>
     <div class="logo-speedometer">
         <!-- Knight Fury Logo -->
@@ -2004,8 +2024,11 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </a>
     </div>
 
-    <!-- Right content with animated images and race flag background -->
+    <!-- Right section with race flag and animated images below -->
     <div class="right-section">
+        <!-- Background flag image in right-section div -->
+
+        <!-- Animated images positioned at the bottom of right-section -->
         <div id="animated-images">
             <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
             <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
@@ -2018,6 +2041,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </div>
     </div>
 </section>
+
 
 
 
