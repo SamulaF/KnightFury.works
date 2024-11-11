@@ -553,33 +553,30 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 25px;
-    background: linear-gradient(90deg, rgba(20, 0, 60, 0.85), rgba(50, 0, 100, 0.85));
+    padding: 10px 20px;
+    background: linear-gradient(90deg, rgba(48, 25, 52, 0.85), rgba(153, 120, 40, 0.85));
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     color: #FFFFFF;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
     transition: background 0.3s, box-shadow 0.3s;
-    border-bottom: 2px solid #FFD700; /* Yellow border for contrast */
 }
 
 header h1, header a {
     color: #FFFFFF;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 header a:hover {
-    color: #FFD700; /* Bright yellow for hover */
-    text-shadow: 1px 1px 8px #FFD700;
+    color: #C5A52B; /* Subtle gold tone for hover */
 }
 
 header:hover {
-    background: linear-gradient(90deg, rgba(30, 0, 80, 0.9), rgba(60, 0, 120, 0.9));
+    background: linear-gradient(90deg, rgba(48, 25, 52, 0.9), rgba(153, 120, 40, 0.9));
 }
-
 /* Logo and Speedometer */
 .logo-speedometer {
     display: flex;
@@ -588,15 +585,15 @@ header:hover {
 
 /* Logo Animation */
 header img {
-    width: 80px;
-    margin-right: 18px;
-    filter: drop-shadow(0px 0px 20px rgba(150, 0, 255, 0.9)); /* Purple glow for energy */
-    transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
+    width: 70px;
+    margin-right: 15px;
+    filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
+    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
 }
 
 header img:hover {
-    transform: rotate(360deg) scale(1.15);
-    filter: drop-shadow(0px 0px 35px rgba(150, 0, 255, 1));
+    transform: rotate(360deg) scale(1.2);
+    filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
 }
 
 /* Speedometer Container */
@@ -605,17 +602,17 @@ header img:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
 }
 
 .speedometer {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #2a002a, #1a001a);
-    box-shadow: 0px 0px 18px rgba(150, 0, 255, 0.9);
+    background: radial-gradient(circle at center, #4B0082, #2e003e);
+    box-shadow: 0px 0px 15px rgba(75, 0, 130, 0.8);
     transition: box-shadow 0.3s;
 }
 
@@ -623,13 +620,13 @@ header img:hover {
 .needle {
     position: absolute;
     width: 2px;
-    height: 40px;
-    background: #FFD700; /* Yellow needle for contrast */
-    top: 20px;
-    left: 39px;
+    height: 35px;
+    background: #FFD700; /* Gold needle */
+    top: 17px;
+    left: 34px;
     transform-origin: bottom center;
-    animation: needle-pendulum 1.5s infinite ease-in-out;
-    transition: transform 0.8s ease-out;
+    animation: needle-pendulum 2s infinite ease-in-out;
+    transition: transform 1s ease-out;
 }
 
 @keyframes needle-pendulum {
@@ -639,12 +636,13 @@ header img:hover {
 }
 
 .speedometer:hover .needle {
-    animation: spike-oscillate 0.8s forwards ease-out;
+    animation: spike-oscillate 1s forwards ease-out;
 }
 
 @keyframes spike-oscillate {
     0% { transform: rotate(90deg); }
-    50% { transform: rotate(160deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(175deg); }
     100% { transform: rotate(180deg); }
 }
 
@@ -654,34 +652,33 @@ header img:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 42px;
+    font-size: 40px;
     font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(90deg, #FFD700, #FFDD00, #FFE600);
+    background: linear-gradient(90deg, #5d3fd3, #800080, #FFD700);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8), 0px 0px 25px rgba(255, 223, 0, 0.6), 0px 0px 35px rgba(255, 230, 0, 0.5);
+    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 0px 0px 20px rgba(128, 0, 128, 0.6), 0px 0px 30px rgba(255, 215, 0, 0.5);
     font-weight: bold;
     opacity: 0.95;
 }
 
 /* Navigation Links */
 nav a {
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
-    margin: 0 18px;
-    font-weight: 700;
-    font-size: 18px;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 16px;
     transition: color 0.2s ease;
 }
 
 nav a:hover {
-    color: #FFD700; /* Yellow highlight */
-    text-shadow: 0 0 8px #FFD700;
+    color: #C5A52B;
 }
 
 /* Dropdown Menu */
 .dropbtn {
-    background: linear-gradient(135deg, #4B0082, #FFD700); /* Purple and yellow gradient */
+    background: linear-gradient(135deg, #4B0082, #FFD700);
     color: white;
     padding: 12px 18px;
     font-size: 18px;
@@ -700,15 +697,15 @@ nav a:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #2a002a;
+    background-color: #32004B;
     border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(150, 0, 255, 0.6);
-    padding: 12px 0;
+    box-shadow: 0 8px 16px rgba(50, 0, 75, 0.5);
+    padding: 10px 0;
     z-index: 1;
 }
 
 .dropdown-content a {
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 12px 20px;
     text-decoration: none;
     display: block;
@@ -718,7 +715,7 @@ nav a:hover {
 
 .dropdown-content a:hover {
     background-color: #FFD700;
-    color: #2a002a;
+    color: #32004B;
 }
 
 .dropdown:hover .dropdown-content {
@@ -726,63 +723,9 @@ nav a:hover {
 }
 
 .dropdown:hover .dropbtn {
-    background: #FFD700;
-    box-shadow: 0 4px 14px rgba(255, 215, 0, 0.7);
+    background: #8A2BE2;
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.5);
 }
-
-/* Call-to-Action Button */
-.cta-button {
-    background-color: #FFD700;
-    color: #4B0082;
-    padding: 10px 20px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #FFC300;
-    transform: scale(1.05);
-}
-
-/* Background Banner Text */
-.banner-text {
-    position: relative;
-    font-size: 36px;
-    color: #FFFFFF;
-    font-family: Arial, sans-serif;
-    font-weight: 700;
-    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.7);
-    background: rgba(75, 0, 130, 0.8); /* Dark purple overlay */
-    padding: 20px;
-    max-width: 90%;
-    margin: 0 auto;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* Footer Styling */
-footer {
-    background-color: #4B0082;
-    color: #FFFFFF;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
-    border-top: 2px solid #FFD700;
-}
-
-footer a {
-    color: #FFD700;
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: #FFFFFF;
-}
-
-
 
 
 
