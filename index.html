@@ -553,30 +553,33 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background: linear-gradient(90deg, rgba(48, 25, 52, 0.85), rgba(153, 120, 40, 0.85));
+    padding: 12px 25px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(25, 25, 25, 0.85));
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     color: #FFFFFF;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
     transition: background 0.3s, box-shadow 0.3s;
+    border-bottom: 2px solid #FFD700;
 }
 
 header h1, header a {
     color: #FFFFFF;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
 }
 
 header a:hover {
-    color: #C5A52B; /* Subtle gold tone for hover */
+    color: #FFD700; /* Bright gold for hover */
+    text-shadow: 1px 1px 8px #FFD700;
 }
 
 header:hover {
-    background: linear-gradient(90deg, rgba(48, 25, 52, 0.9), rgba(153, 120, 40, 0.9));
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(25, 25, 25, 0.9));
 }
+
 /* Logo and Speedometer */
 .logo-speedometer {
     display: flex;
@@ -585,15 +588,15 @@ header:hover {
 
 /* Logo Animation */
 header img {
-    width: 70px;
-    margin-right: 15px;
-    filter: drop-shadow(0px 0px 14px rgba(144, 19, 254, 0.8));
-    transition: transform 0.5s ease-in-out, filter 0.3s ease-in-out;
+    width: 80px;
+    margin-right: 18px;
+    filter: drop-shadow(0px 0px 20px rgba(255, 0, 0, 0.9)); /* Red glow for energy */
+    transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
 }
 
 header img:hover {
-    transform: rotate(360deg) scale(1.2);
-    filter: drop-shadow(0px 0px 30px rgba(144, 19, 254, 1));
+    transform: rotate(360deg) scale(1.15);
+    filter: drop-shadow(0px 0px 35px rgba(255, 0, 0, 1));
 }
 
 /* Speedometer Container */
@@ -602,17 +605,17 @@ header img:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
 }
 
 .speedometer {
     position: relative;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #4B0082, #2e003e);
-    box-shadow: 0px 0px 15px rgba(75, 0, 130, 0.8);
+    background: radial-gradient(circle at center, #1c1c1c, #000);
+    box-shadow: 0px 0px 18px rgba(255, 0, 0, 0.9);
     transition: box-shadow 0.3s;
 }
 
@@ -620,13 +623,13 @@ header img:hover {
 .needle {
     position: absolute;
     width: 2px;
-    height: 35px;
-    background: #FFD700; /* Gold needle */
-    top: 17px;
-    left: 34px;
+    height: 40px;
+    background: #FFD700; /* Gold needle for elegance */
+    top: 20px;
+    left: 39px;
     transform-origin: bottom center;
-    animation: needle-pendulum 2s infinite ease-in-out;
-    transition: transform 1s ease-out;
+    animation: needle-pendulum 1.5s infinite ease-in-out;
+    transition: transform 0.8s ease-out;
 }
 
 @keyframes needle-pendulum {
@@ -636,13 +639,12 @@ header img:hover {
 }
 
 .speedometer:hover .needle {
-    animation: spike-oscillate 1s forwards ease-out;
+    animation: spike-oscillate 0.8s forwards ease-out;
 }
 
 @keyframes spike-oscillate {
     0% { transform: rotate(90deg); }
-    50% { transform: rotate(180deg); }
-    75% { transform: rotate(175deg); }
+    50% { transform: rotate(160deg); }
     100% { transform: rotate(180deg); }
 }
 
@@ -652,33 +654,34 @@ header img:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 40px;
+    font-size: 42px;
     font-family: 'Roboto Mono', monospace;
-    background: linear-gradient(90deg, #5d3fd3, #800080, #FFD700);
+    background: linear-gradient(90deg, #FFD700, #FF4500, #FF0000);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 10px rgba(93, 63, 211, 0.8), 0px 0px 20px rgba(128, 0, 128, 0.6), 0px 0px 30px rgba(255, 215, 0, 0.5);
+    text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8), 0px 0px 25px rgba(255, 69, 0, 0.6), 0px 0px 35px rgba(255, 0, 0, 0.5);
     font-weight: bold;
     opacity: 0.95;
 }
 
 /* Navigation Links */
 nav a {
-    color: #ffffff;
+    color: #FFFFFF;
     text-decoration: none;
-    margin: 0 15px;
-    font-weight: 600;
-    font-size: 16px;
+    margin: 0 18px;
+    font-weight: 700;
+    font-size: 18px;
     transition: color 0.2s ease;
 }
 
 nav a:hover {
-    color: #C5A52B;
+    color: #FFD700;
+    text-shadow: 0 0 8px #FFD700;
 }
 
 /* Dropdown Menu */
 .dropbtn {
-    background: linear-gradient(135deg, #4B0082, #FFD700);
+    background: linear-gradient(135deg, #FF0000, #FFD700);
     color: white;
     padding: 12px 18px;
     font-size: 18px;
@@ -697,15 +700,15 @@ nav a:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #32004B;
+    background-color: #1c1c1c;
     border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(50, 0, 75, 0.5);
-    padding: 10px 0;
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.6);
+    padding: 12px 0;
     z-index: 1;
 }
 
 .dropdown-content a {
-    color: #ffffff;
+    color: #FFFFFF;
     padding: 12px 20px;
     text-decoration: none;
     display: block;
@@ -715,7 +718,7 @@ nav a:hover {
 
 .dropdown-content a:hover {
     background-color: #FFD700;
-    color: #32004B;
+    color: #1c1c1c;
 }
 
 .dropdown:hover .dropdown-content {
@@ -723,9 +726,10 @@ nav a:hover {
 }
 
 .dropdown:hover .dropbtn {
-    background: #8A2BE2;
-    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.5);
+    background: #FF4500;
+    box-shadow: 0 4px 14px rgba(255, 69, 0, 0.7);
 }
+
 
 
 
