@@ -1103,20 +1103,20 @@ header {
     }
 }
 
-/* Right Section - Darker Flag Background with Full Coverage */
 .right-section {
-    width: 50vw;
-    height: 150vh;
+    aspect-ratio: auto;
     position: absolute;
     top: 0;
     right: 0;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
                 url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
-    opacity: 1; /* Set to full visibility */
+    opacity: 1;
     overflow: hidden;
-    filter: brightness(0.9) contrast(1.1); /* Enhances the visibility */
+    filter: brightness(0.9) contrast(1.1);
+    aspect-ratio: 16 / 9;
 }
+
 
 
 @media (max-width: 768px) {
