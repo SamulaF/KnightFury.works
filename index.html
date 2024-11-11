@@ -1104,17 +1104,13 @@ header {
 }
 
 .right-section {
-    aspect-ratio: auto;
     position: absolute;
     top: 0;
     right: 0;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)),
-                url('race-track-flag-2035566_1280.jpg') no-repeat center center;
+    width: 50%; /* Adjust as needed */
+    height: 100vh; /* Full height of the viewport */
+    background: url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
-    opacity: 1;
-    overflow: hidden;
-    filter: brightness(0.9) contrast(1.1);
-    aspect-ratio: 16 / 9;
 }
 
 
@@ -1123,39 +1119,11 @@ header {
     .right-section {
         position: relative;
         width: 100%;
-        height: auto;
-        background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
-                    url('race-track-flag-2035566_1280.jpg') no-repeat center center;
+        height: 50vh; /* Or another height for mobile */
         background-size: cover;
-        mask-image: none;
     }
 }
 
-/* Enhanced Fading for Right Section */
-.right-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.6), transparent);
-    z-index: 1;
-}
-
-.right-section::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-    filter: blur(20px);
-    z-index: 1;
-    opacity: 0.9;
-}
 
 /* Image Animation Container */
 #animated-images {
