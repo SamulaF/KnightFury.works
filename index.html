@@ -1042,15 +1042,15 @@ nav a:hover {
 .home-section {
     display: flex;
     flex-direction: row;
-    background: #2d2d2d; /* Dark matte background */
+    background: #2d2d2d;
     background-image: url('photo-1707569620487-1fcff5e22f9f.avif');
     background-size: cover;
     background-position: center;
     height: 100vh;
     position: relative;
     color: #fff;
-    padding-top: 100px; /* Avoid overlap with header */
-    filter: brightness(0.9) contrast(1.1); /* Enhances the matte look */
+    padding-top: 100px;
+    filter: brightness(0.9) contrast(1.1);
 }
 
 @media (max-width: 768px) {
@@ -1068,7 +1068,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 10;
-    background-color: rgba(51, 51, 51, 0.9); /* Dark matte with slight transparency */
+    background-color: rgba(51, 51, 51, 0.9);
 }
 
 @media (max-width: 768px) {
@@ -1083,7 +1083,6 @@ header {
     }
 }
 
-/* Left Section Styling - Center Container */
 .center-container {
     display: flex;
     flex-direction: column;
@@ -1091,10 +1090,10 @@ header {
     justify-content: center;
     text-align: center;
     padding: 10px;
-    width: 50%;
+    width: 100%;
     position: relative;
     z-index: 1;
-    margin-top: -100px;
+    margin-top: -50px;
 }
 
 @media (max-width: 768px) {
@@ -1103,71 +1102,35 @@ header {
     }
 }
 
-/* Right Section Styling - Contains Flag Image */
+/* Right Section Styling */
 .right-section {
     position: relative;
-    width: 50%; /* Adjust as needed */
-    height: 100vh; /* Full height of the viewport */
+    width: 50%;
+    height: 100vh;
     background: url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
-    align-items: flex-end; /* Align items to the bottom */
+    align-items: flex-end;
     justify-content: center;
-    padding-bottom: 20px; /* Space for animated images */
+    padding-bottom: 20px;
 }
 
-
-
-@media (max-width: 768px) {
-    .right-section {
-        position: relative;
-        width: 100%;
-        height: 50vh; /* Or another height for mobile */
-        background-size: cover;
-    }
-}
-
-
-/* Image Animation Container - Now Positioned within Right Section */
-#animated-images {
-    position: relative;
-    width: 80%; /* Adjust width as needed */
-    max-width: 600px;
-    filter: brightness(1.2) contrast(1.3); /* Enhances colors */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-    z-index: 1; /* Ensure this is above the right-section background */
-    margin-top: 20px; /* Adds space between flag and images */
-}
-
-/* Media Queries for Mobile */
 @media (max-width: 768px) {
     .right-section {
         width: 100%;
         height: 50vh;
         padding-bottom: 10px;
     }
-    #animated-images {
-        width: 80%;
-        margin: 0 auto;
-    }
 }
 
-
-/* Heading Styling */
-.team-heading {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #ffffff;
-    font-family: 'Roboto Condensed', sans-serif;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
-    margin: 20px 0;
-    letter-spacing: 1px;
-}
-
-@media (max-width: 768px) {
-    .team-heading {
-        font-size: 1.8em;
-    }
+#animated-images {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    filter: brightness(1.2) contrast(1.3);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    margin: 20px auto;
 }
 
 /* Button Styling */
@@ -1198,15 +1161,12 @@ header {
     }
 }
 
-/* Car Image as Button */
+/* "Learn More Car" positioned below animated images */
 .learn-more-car {
-    position: absolute;
-    bottom: 50px; /* Adjusted to align with text */
-    right: 30%; /* Positioned to avoid text overlap */
-    z-index: 2;
-    cursor: pointer;
+    margin-top: 20px;
+    display: block;
     text-align: center;
-    text-decoration: none;
+    cursor: pointer;
 }
 
 .learn-more-car img {
@@ -1235,14 +1195,6 @@ header {
 
 .learn-more-car:hover img {
     transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-    .learn-more-car {
-        position: static;
-        margin-top: 20px;
-        text-align: center;
-    }
 }
 
 
@@ -1998,22 +1950,9 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- Background wheel -->
 
-    <!-- Left content with text and car button -->
+    <!-- Left content with animated images and car button -->
     <div class="center-container">
-        <h1 class="team-heading">F1 in Schools' Team from Ambience Public School</h1>
-
-        <!-- Car Button Image replacing 'Learn More' -->
-        <a href="https://www.f1inschools.com" target="_blank" class="learn-more-car">
-            <img src="kisspng-digital-art-deviantart-photo-manipulation-vehicle-lewis-hamilton-5b3ff794527550.3024297915309188043378.png" alt="Learn More Car">
-            <span class="hover-text">Learn More</span>
-        </a>
-    </div>
-
-    <!-- Right section with race flag and animated images below -->
-    <div class="right-section">
-        <!-- Background flag image in right-section div -->
-
-        <!-- Animated images positioned at the bottom of right-section -->
+        <!-- Animated images replacing the header text -->
         <div id="animated-images">
             <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
             <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
@@ -2024,6 +1963,17 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             <img src="KnightFury7.jpg" class="cycle-image" alt="Knight Fury 7">
             <img src="KnightFury8.jpg" class="cycle-image" alt="Knight Fury 8">
         </div>
+
+        <!-- Car Button Image as the 'Learn More' link -->
+        <a href="https://www.f1inschools.com" target="_blank" class="learn-more-car">
+            <img src="kisspng-digital-art-deviantart-photo-manipulation-vehicle-lewis-hamilton-5b3ff794527550.3024297915309188043378.png" alt="Learn More Car">
+            <span class="hover-text">Learn More</span>
+        </a>
+    </div>
+
+    <!-- Right section with race flag -->
+    <div class="right-section">
+        <!-- Background flag image in right-section div -->
     </div>
 </section>
 
