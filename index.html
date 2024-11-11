@@ -1103,14 +1103,17 @@ header {
     }
 }
 
+/* Right Section Styling - Contains Flag Image */
 .right-section {
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: relative;
     width: 50%; /* Adjust as needed */
     height: 100vh; /* Full height of the viewport */
     background: url('race-track-flag-2035566_1280.jpg') no-repeat center center;
     background-size: cover;
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom */
+    justify-content: center;
+    padding-bottom: 20px; /* Space for animated images */
 }
 
 
@@ -1125,37 +1128,30 @@ header {
 }
 
 
-/* Image Animation Container */
+/* Image Animation Container - Now Positioned within Right Section */
 #animated-images {
-    position: relative; /* Changed from absolute to avoid overlap with the header */
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
+    position: relative;
+    width: 80%; /* Adjust width as needed */
     max-width: 600px;
-    filter: brightness(1.2) contrast(1.3); /* Keeps image quality while enhancing colors */
+    filter: brightness(1.2) contrast(1.3); /* Enhances colors */
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
-    z-index: 10;
-    margin-top: 150px; /* Adjusted top margin to be clear of the header */
+    z-index: 1; /* Ensure this is above the right-section background */
+    margin-top: 20px; /* Adds space between flag and images */
 }
 
+/* Media Queries for Mobile */
 @media (max-width: 768px) {
+    .right-section {
+        width: 100%;
+        height: 50vh;
+        padding-bottom: 10px;
+    }
     #animated-images {
-        position: relative;
         width: 80%;
         margin: 0 auto;
     }
 }
-@media (min-width: 768px) {
-    #animated-images {
-        position: relative;
-        width: 80%;
-        margin: 0 auto;
-        top: 1;
-        left: 0;
-        transform: none;
-    }
-}
+
 
 /* Heading Styling */
 .team-heading {
@@ -1956,8 +1952,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     </video>
 </div>
 
-<!-- Toggle Button for Mobile -->
-<button id="header-toggle" class="header-toggle">☰</button>
+
 <header>
     <div class="logo-speedometer">
         <!-- Knight Fury Logo -->
@@ -2014,8 +2009,11 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </a>
     </div>
 
-    <!-- Right content with animated images and race flag background -->
+    <!-- Right section with race flag and animated images below -->
     <div class="right-section">
+        <!-- Background flag image in right-section div -->
+
+        <!-- Animated images positioned at the bottom of right-section -->
         <div id="animated-images">
             <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
             <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
@@ -2028,6 +2026,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </div>
     </div>
 </section>
+
 
 
 
