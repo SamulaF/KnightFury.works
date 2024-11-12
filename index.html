@@ -1038,13 +1038,14 @@ nav a:hover {
 
 
 
-/* Main Section Styling */
+/* Main Section Styling with Gradient Background */
 .home-section {
     display: flex;
     flex-direction: row;
-    background: #2d2d2d;
-    background-image: url('race-track-flag-2035566_1280.jpg');
-    background-size: cover;
+    background: linear-gradient(135deg, #6b3ca3, #ffd700), 
+                url('race-track-flag-2035566_1280.jpg');
+    background-size: cover, cover;
+    background-blend-mode: overlay; /* Blends the gradient with the image */
     background-position: center;
     height: 100vh;
     position: relative;
