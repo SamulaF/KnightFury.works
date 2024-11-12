@@ -1366,10 +1366,10 @@ header {
     flex-wrap: wrap;
     gap: 20px;
 }
-/* Legacy Section with Racing Background */
+/* Adjusted Legacy Section with Racing Background */
 .legacy-section {
     position: relative;
-    background: linear-gradient(rgba(43, 8, 71, 0.7), rgba(56, 12, 85, 0.7)), 
+    background: linear-gradient(rgba(43, 8, 71, 0.85), rgba(56, 12, 85, 0.85)), 
                 url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQESfqjSKHaR6z2CpYaR0tfiBNIYi_sxivwqqiy0GnrPJKbJS478m0FD4yevqWALzjYxAk&usqp=CAU') 
                 no-repeat center center / cover;
     color: #ffffff;
@@ -1389,10 +1389,11 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(43, 8, 71, 0.5); /* Purple overlay */
+    background: rgba(43, 8, 71, 0.6); /* Darker overlay */
     z-index: 0;
     pointer-events: none;
 }
+
 .legacy-section::after {
     content: "";
     position: absolute;
@@ -1400,8 +1401,8 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('kisspng-2012-formula-one-world-championship-f1-2012-f1-rac-5af162b7cca188.1956753315257688878382.png') no-repeat center center / contain;
-    opacity: 0.5; /* Adjust opacity as needed */
+    background: url('path/to/your/kisspng-image.png') no-repeat center center / contain;
+    opacity: 0.3; /* Reduced opacity for the overlay image */
     z-index: 1;
     pointer-events: none;
 }
@@ -1409,21 +1410,21 @@ header {
 /* Ensuring Content Layers Over the Background */
 .legacy-section * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+}
+
+/* Title Styling - Enhanced Readability */
+.legacy-section h2 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    color: #ffd700; /* Gold accent color */
+    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.8); /* Darker shadow for contrast */
+    animation: swoopIn 1s forwards;
 }
     /* Zoom Animation */
     @keyframes zoomBackground {
         from { transform: scale(1); }
         to { transform: scale(1.05); }
-    }
-
-    /* Title Styling */
-    .legacy-section h2 {
-        font-size: 4rem;
-        margin-bottom: 30px;
-        color: #ffd700; /* Gold accent color */
-        text-shadow: 0px 5px 15px rgba(91, 24, 94, 0.7);
-        animation: swoopIn 1s forwards;
     }
 
     /* Title Swoop-In Effect */
