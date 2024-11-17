@@ -2334,7 +2334,23 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     window.addEventListener('scroll', onScrollAnimate);
 </script>
+<script>
+    // Get references to the video and container elements
+    const video = document.getElementById('intro-video');
+    const container = document.getElementById('intro-video-container');
 
+    // Set the playback speed of the video (optional)
+    video.playbackRate = 1.0;
+
+    // Add an event listener to hide the video container when the video ends
+    video.addEventListener('ended', function () {
+        container.style.display = 'none'; // Hide the video container
+        document.body.style.overflow = 'auto'; // Enable scrolling on the website
+    });
+
+    // Prevent scrolling while the intro video is playing
+    document.body.style.overflow = 'hidden';
+</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Get references to necessary elements
