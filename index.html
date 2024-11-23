@@ -304,35 +304,46 @@ section button:hover {
         
 /* Team Section */
 .team-section {
+    position: relative;
     background: url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') no-repeat center center;
     background-size: cover;
     padding: 90px 20px;
     color: white; /* Optional for contrast */
-}
-/* Overlay to improve text readability */
-.team-section, .about-section {
-    position: relative;
+    overflow: hidden;
 }
 
-.team-section::before, .about-section::before {
-    content: "";
+/* Overlay dragon image */
+.team-section::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4); /* Dark overlay for contrast */
+    width: 100%;
+    height: 100%;
+    background: url('kisspng-fenghuang-cartoon-clip-art-hand-painted-dragon-5aa6f82286be85.4864792515208919385519.png') no-repeat center center / contain;
+    opacity: 0.7; /* Adjust opacity for visibility */
     z-index: 1;
 }
 
-/* Ensuring text is above the overlay */
-.team-section h2, .about-section h2,
-.team-section p, .about-section p {
-    position: relative;
+/* Dark overlay for readability */
+.team-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Optional: Adjust the darkness */
     z-index: 2;
 }
 
-/* Team Section */
+/* Ensure text and other content stay above overlays */
+.team-section * {
+    position: relative;
+    z-index: 3;
+}
+
+/* Team Member Styling */
 .team-section img {
     background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0WBCYzE5EVPSRhEzpI0MmaBpiRYbRQ4WXhQ&s') no-repeat center center;
     background-size: cover;
@@ -358,6 +369,7 @@ section button:hover {
 .team-member:hover {
     transform: translateY(-10px);
 }
+
 
 /* Responsiveness */
 @media (max-width: 768px) {
