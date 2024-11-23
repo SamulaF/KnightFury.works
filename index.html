@@ -142,27 +142,23 @@ p, a {
         
 /* General Section Styles */
 section {
-    padding: 80px 20px 50px;
+    padding: 90px 20px 60px;
     text-align: center;
-    opacity: 0; /* Start hidden for scroll effect */
-    transform: translateY(20px); /* Gentle movement */
-    transition: opacity 0.8s ease, transform 0.8s ease; /* Smooth fade-in and movement */
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.3)
-    ),
-    url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') 
-    no-repeat center center;
-    background-size: cover;
-    color: #eaeaea; /* Neutral text color for professional tone */
-    border-radius: 15px; /* Softer corners */
-    margin: 30px 10px; /* Balanced spacing */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(30px); /* Slight vertical movement */
+    transition: opacity 1s ease, transform 1s ease; /* Smooth fade and movement */
+    background: url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') 
+                no-repeat center center;
+    background-size: cover; /* Ensure full coverage */
+    color: #fff; /* Text color for readability */
     position: relative;
-    overflow: hidden; /* For modern overlay effects */
+    filter: contrast(1.1); /* Slightly increase contrast */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-radius: 20px; /* Rounded corners for a softer look */
+    margin: 40px 10px; /* Add spacing between sections */
 }
 
-/* Lighter Overlay for Gradient */
+/* Lighter Overlay for Text Contrast */
 section::before {
     content: "";
     position: absolute;
@@ -170,10 +166,9 @@ section::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.03); /* Barely-there overlay for elegance */
-    z-index: 0;
-    transition: background 0.4s ease; /* Subtle change */
-    border-radius: inherit; /* Keep overlay consistent with section shape */
+    background: rgba(0, 0, 0, 0.4); /* Reduced opacity overlay */
+    z-index: 0; /* Behind text */
+    border-radius: 20px; /* Match the section's border radius */
 }
 
 /* Text and Elements inside the Section */
@@ -182,88 +177,80 @@ section * {
     z-index: 1;
 }
 
-/* Trigger Animation on Scroll */
+/* Fade-In Animation Trigger */
 section.in-view {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Typography: Polished Look */
+/* Responsive Typography */
 section h1, section h2, section p {
     margin-bottom: 20px;
 }
 
 section h1 {
-    font-size: 2.2rem; /* Balanced size for readability */
-    font-weight: 600;
-    text-transform: capitalize; /* Modern typography choice */
-    color: #ffffff; /* Crisp contrast */
-    letter-spacing: 1.5px; /* Adds subtle refinement */
+    font-size: 2.5rem; /* Adjust for readability */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 section p {
-    font-size: 1.1rem; /* Legible yet compact */
-    line-height: 1.7;
-    color: #d1d1d1; /* Softer contrast for paragraph text */
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
 
-/* Section Hover Effect */
-section:hover::before {
-    background: rgba(255, 255, 255, 0.1); /* Gentle hover highlight */
-    transition: background 0.3s ease;
-}
-
+/* Add dynamic background effects for liveliness */
 section:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slight depth increase */
-    transition: box-shadow 0.3s ease;
+    filter: brightness(1.1);
+    transform: scale(1.02); /* Slight zoom on hover */
+    transition: all 0.5s ease;
 }
 
-/* Buttons: Modern Look */
+/* Smooth Transition on Scroll with Intersection Observer */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Buttons for Interaction */
 section button {
-    padding: 12px 24px;
-    background: #ff6700; /* Professional accent color */
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff8008, #ffc837); /* Modern gradient */
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     color: white;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 section button:hover {
-    background: #e65b00; /* Slightly darker for hover */
-    transform: translateY(-2px); /* Subtle interaction */
+    background: linear-gradient(45deg, #ffc837, #ff8008); /* Reverse gradient */
+    transform: scale(1.1);
 }
 
 /* Responsive Adjustments */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     section h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     section p {
         font-size: 1rem;
     }
-    section {
-        padding: 60px 15px;
-    }
-}
-
-@media (max-width: 768px) {
-    section h1 {
-        font-size: 1.6rem;
-    }
-
-    section p {
-        font-size: 0.95rem;
-    }
 
     section {
-        padding: 50px 10px;
+        padding: 70px 10px;
     }
 }
-
 
 
 
@@ -2374,23 +2361,8 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Cycle every 1 second for a fast-paced effect
     setInterval(cycleImages, 400);
 </script>
-<script>
-        document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("in-view");
-                }
-            });
-        },
-        { threshold: 0.15 } // Trigger when 15% is visible
-    );
-
-    sections.forEach((section) => observer.observe(section));
-});
-</script>
+       
+        
 
 <footer>
     <p>&copy; 2024 Knight Fury | Ambience Public School</p>
@@ -2444,25 +2416,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     window.addEventListener('scroll', onScrollAnimate);
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("in-view");
-                }
-            });
-        },
-        { threshold: 0.15 } // Trigger when 15% is visible
-    );
-
-    sections.forEach((section) => observer.observe(section));
-});
-
-
- </script>   
 <script>
     // Get references to the video and container elements
     const video = document.getElementById('intro-video');
