@@ -1487,7 +1487,18 @@ header {
     flex-wrap: wrap;
     gap: 20px;
 }
-/* Adjusted Legacy Section with Racing Background */
+
+
+
+
+
+
+
+
+
+
+
+        
 .legacy-section {
     position: relative;
     background: linear-gradient(rgba(43, 8, 71, 0.85), rgba(56, 12, 85, 0.85)), 
@@ -1502,17 +1513,21 @@ header {
     overflow: hidden;
 }
 
-/* Overlay Layer for Readability */
 .legacy-section::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(43, 8, 71, 0.6); /* Darker overlay */
-    z-index: 0;
-    pointer-events: none;
+    background: url('fc5245df1644508ff2b819e346a20910.png') no-repeat center center / cover;
+    opacity: 0.6; /* Adjust opacity to balance visibility */
+    z-index: 1;
+}
+
+.legacy-section * {
+    position: relative;
+    z-index: 2;
 }
 
 .legacy-section::after {
@@ -1528,11 +1543,7 @@ header {
     pointer-events: none;
 }
 
-/* Ensuring Content Layers Over the Background */
-.legacy-section * {
-    position: relative;
-    z-index: 2;
-}
+
 
 /* Title Styling - Enhanced Readability */
 .legacy-section h2 {
