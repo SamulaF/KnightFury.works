@@ -2422,11 +2422,11 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         counters.forEach(counter => {
             const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
+                const target = parseInt(counter.getAttribute('data-target'), 10);
+                const count = parseInt(counter.innerText, 10);
 
                 // Calculate increment
-                const increment = target / speed;
+                const increment = Math.max(target / speed, 1); // Ensure increment is at least 1
 
                 // Check if we've reached the target
                 if (count < target) {
@@ -2444,17 +2444,26 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Trigger animation when the stats section is in view
     function onScrollAnimate() {
         const statsSection = document.getElementById('knight-fury-stats');
+        if (!statsSection) return; // Safety check
+
         const sectionTop = statsSection.getBoundingClientRect().top;
         const screenBottom = window.innerHeight;
 
-        if (sectionTop < screenBottom) {
+        if (sectionTop <= screenBottom) {
             animateCountUp();
-            window.removeEventListener('scroll', onScrollAnimate);
+            window.removeEventListener('scroll', onScrollAnimate); // Remove listener after triggering
         }
     }
 
+    // Attach scroll event listener
     window.addEventListener('scroll', onScrollAnimate);
+
+    // Optional: Trigger on load for testing purposes
+    document.addEventListener('DOMContentLoaded', () => {
+        onScrollAnimate(); // Check if already in view on load
+    });
 </script>
+
 <script>
     // Get references to the video and container elements
     const video = document.getElementById('intro-video');
