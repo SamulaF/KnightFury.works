@@ -160,18 +160,19 @@ section {
     overflow: hidden; /* To clip animated background layers */
 }
 
-/* Animated Light Beam Overlay */
+/* Animated Wave Background Overlay */
 section::before {
     content: "";
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-    transform: rotate(45deg);
-    animation: moveLight 6s infinite linear;
+    opacity: 0.3;
+    animation: wave 8s infinite linear;
     z-index: 0;
+    pointer-events: none; /* Prevent interaction */
 }
 
 /* Text Styling */
@@ -188,7 +189,7 @@ section h1 {
     background: linear-gradient(90deg, #ff8008, #ffc837, #ff0040);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: glowText 2s infinite alternate;
+    animation: fadeInText 2s ease-in-out;
 }
 
 section p {
@@ -196,13 +197,7 @@ section p {
     line-height: 2;
     margin-bottom: 30px;
     color: rgba(255, 255, 255, 0.8);
-}
-
-/* Neon Glow Hover */
-section:hover {
-    filter: brightness(1);
-    box-shadow: 0 20px 50px rgba(255, 150, 50, 0.6);
-    transform: scale(1.03);
+    animation: fadeInText 2.5s ease-in-out;
 }
 
 /* Buttons */
@@ -215,42 +210,31 @@ section button {
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
-    animation: pulseButton 2s infinite alternate;
+    transition: all 0.3s ease;
 }
 
 section button:hover {
     background: linear-gradient(90deg, #ffc837, #ff0040);
-    transform: scale(1.1) rotate(-2deg);
-    box-shadow: 0 0 15px rgba(255, 200, 100, 0.8);
 }
 
 /* Animations */
-@keyframes glowText {
+@keyframes wave {
     from {
-        text-shadow: 0 0 10px #ff8008, 0 0 20px #ffc837, 0 0 30px #ff0040;
+        transform: translate(-50%, -50%) rotate(0deg);
     }
     to {
-        text-shadow: 0 0 20px #ffc837, 0 0 40px #ff0040, 0 0 60px #ff8008;
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
-@keyframes moveLight {
+@keyframes fadeInText {
     from {
-        transform: rotate(0deg);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes pulseButton {
-    from {
-        transform: scale(1);
-        box-shadow: 0 0 10px rgba(255, 100, 100, 0.8);
-    }
-    to {
-        transform: scale(1.1);
-        box-shadow: 0 0 20px rgba(255, 200, 200, 1);
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
