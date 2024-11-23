@@ -141,6 +141,7 @@ p, a {
 
         
 /* General Section Styles */
+/* General Section Styles */
 section {
     padding: 80px 20px 50px;
     text-align: center;
@@ -2443,6 +2444,24 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     window.addEventListener('scroll', onScrollAnimate);
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in-view");
+                }
+            });
+        },
+        { threshold: 0.15 } // Trigger when 15% is visible
+    );
+
+    sections.forEach((section) => observer.observe(section));
+});
+
+ </script>   
 <script>
     // Get references to the video and container elements
     const video = document.getElementById('intro-video');
