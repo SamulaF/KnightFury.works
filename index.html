@@ -140,14 +140,14 @@ p, a {
 
 
         
-/* General Section Styles */
+/* Updated Section Styles with Shadow Animation */
 section {
     padding: 100px 30px 80px;
     text-align: center;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s ease, transform 1s ease, filter 0.8s ease;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), 
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
                 url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') 
                 no-repeat center center;
     background-size: cover;
@@ -157,9 +157,44 @@ section {
     border-radius: 20px;
     margin: 50px 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    overflow: hidden; /* To clip animated background layers */
+    overflow: hidden;
+    animation: shadowPulse 3s infinite ease-in-out;
 }
-
+/* Animated Shadow Effect */
+@keyframes shadowPulse {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 128, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 64, 64, 0.5);
+    }
+}
+/* Floating Shadow Elements for Extra Flair */
+section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 128, 0, 0.2), transparent);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: floatGlow 6s infinite ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+/* Floating Glow Animation */
+@keyframes floatGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
 /* Animated Wave Background Overlay */
 section::before {
     content: "";
@@ -175,7 +210,7 @@ section::before {
     pointer-events: none; /* Prevent interaction */
 }
 
-/* Text Styling */
+/* Text Styling (Relative to Animated Glow) */
 section h1, section p {
     position: relative;
     z-index: 2;
