@@ -944,19 +944,21 @@ nav a:hover {
     overflow: hidden;
     z-index: 1;
 }
-/* Decorative Gradients for Dynamic Background Effect */
+/* Replace the tilted rectangle with the uploaded image */
 .why-work-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -150px;
-    width: 400px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    transform: rotate(45deg);
+    top: 50%;
+    left: 50%;
+    width: 500px; /* Adjust based on your image dimensions */
+    height: auto;
+    background: url('kisspng-automotive-lighting-line-angle-radio-controlled-to-ferrari-2017-f1-car-5b0ccf738cfc25.1661212015275661955775.png') no-repeat center center; /* Replace with the correct path */
+    background-size: contain; /* Ensures the image fits within the container */
+    transform: translate(-50%, -50%) rotate(45deg); /* Keeps the tilted appearance */
     z-index: 0;
-    animation: diagonal-glow 5s linear infinite;
+    opacity: 0.7; /* Adjust for transparency effect */
 }
+
 
 @keyframes diagonal-glow {
     from { transform: translateY(0) rotate(45deg); }
