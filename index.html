@@ -160,15 +160,7 @@ section {
     overflow: hidden;
     animation: shadowPulse 3s infinite ease-in-out;
 }
-/* Animated Shadow Effect */
-@keyframes shadowPulse {
-    0%, 100% {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 128, 0, 0.3);
-    }
-    50% {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 64, 64, 0.5);
-    }
-}
+
 /* Floating Shadow Elements for Extra Flair */
 section::after {
     content: '';
@@ -210,6 +202,79 @@ section::before {
     pointer-events: none; /* Prevent interaction */
 }
 
+/* Updated Section Styles with Shadow Animation */
+section {
+    padding: 100px 30px 80px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease, filter 0.8s ease;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+                url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') 
+                no-repeat center center;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.9); /* White with 90% opacity */
+    position: relative;
+    filter: brightness(0.9) contrast(1.1) saturate(1.1);
+    border-radius: 20px;
+    margin: 50px 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    animation: shadowPulse 3s infinite ease-in-out;
+}
+
+/* Floating Shadow Elements for Extra Flair */
+section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 128, 0, 0.2), transparent);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: floatGlow 6s infinite ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+/* Floating Glow Animation - Counter-clockwise */
+@keyframes floatGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(-180deg); /* Counter-clockwise */
+    }
+}
+
+/* Animated Wave Background Overlay */
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0.3;
+    animation: wave 8s infinite linear;
+    z-index: 0;
+    pointer-events: none; /* Prevent interaction */
+}
+
+/* Wave Animation - Counter-clockwise */
+@keyframes wave {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(-360deg) scale(1); /* Counter-clockwise */
+    }
+}
 /* Text Styling (Relative to Animated Glow) */
 section h1, section p {
     position: relative;
@@ -231,7 +296,7 @@ section p {
     font-size: 1.3rem;
     line-height: 2;
     margin-bottom: 30px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9); /* Increased opacity for better visibility */
     animation: fadeInText 2.5s ease-in-out;
 }
 
@@ -250,6 +315,7 @@ section button {
 
 section button:hover {
     background: linear-gradient(90deg, #ffc837, #ff0040);
+    transform: scale(1.1);
 }
 
 /* Animations */
@@ -258,7 +324,16 @@ section button:hover {
         transform: translate(-50%, -50%) rotate(0deg);
     }
     to {
-        transform: translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(-360deg); /* Counter-clockwise */
+    }
+}
+
+@keyframes floatGlow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(-180deg); /* Counter-clockwise */
     }
 }
 
@@ -284,10 +359,6 @@ section button:hover {
     section {
         padding: 80px 15px;
     }
-}
-section button:hover {
-    background: linear-gradient(90deg, #ffc837, #ff0040);
-    transform: scale(1.1);
 }
 
 
