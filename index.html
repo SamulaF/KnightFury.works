@@ -2041,6 +2041,150 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         color: #FFD700;
     }
     </style>
+    <style>
+/* Triangular Section Styling */
+.triangular-section {
+    position: relative;
+    padding: 100px 30px;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 50px auto;
+    width: 90%;
+    max-width: 1200px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Triangular Animated Shadow Grid */
+.triangular-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+            60deg,
+            rgba(255, 255, 255, 0.03) 0px,
+            rgba(255, 255, 255, 0.03) 3px,
+            transparent 3px,
+            transparent 6px
+        ),
+        repeating-linear-gradient(
+            -60deg,
+            rgba(255, 255, 255, 0.03) 0px,
+            rgba(255, 255, 255, 0.03) 3px,
+            transparent 3px,
+            transparent 6px
+        );
+    opacity: 0.8;
+    animation: triangularMove 6s infinite linear;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Rotating Glow Overlay */
+.triangular-section::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 128, 0, 0.1), transparent);
+    opacity: 0.2;
+    animation: waveRotate 8s infinite linear;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* Text and Button Styling */
+.triangular-section .content {
+    position: relative;
+    z-index: 2;
+}
+
+.triangular-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff8008, #ffc837, #ff0040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    animation: fadeInText 1.5s ease-in-out;
+}
+
+.triangular-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
+    animation: fadeInText 2s ease-in-out;
+}
+
+.triangular-section button {
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #ff0040, #ff8008, #ffc837);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInText 2.5s ease-in-out;
+}
+
+.triangular-section button:hover {
+    background: linear-gradient(90deg, #ffc837, #ff0040);
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes triangularMove {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    50% {
+        transform: translate(-20px, -20px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes waveRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .triangular-section h1 {
+        font-size: 2rem;
+    }
+    .triangular-section p {
+        font-size: 1rem;
+    }
+}
+</style>
 </head>
 <body>
 
@@ -2054,7 +2198,13 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     video.playbackRate = 1.0; // Increase this value to make the video play faster (e.g., 2.0 for double speed)
     </video>
 </div>
-
+<section class="triangular-section">
+    <div class="content">
+        <h1>Unleash the Knight Fury</h1>
+        <p>Breaking boundaries and redefining speed in the F1 world.</p>
+        <button>Join the Race</button>
+    </div>
+</section>
 
 <header>
     <div class="logo-speedometer">
