@@ -2145,12 +2145,13 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 #3d-container {
     width: 100%;
-    height: 600px; /* Adjust based on your design */
-    background-color: black; /* Fallback color */
+    height: 600px; /* Adjust height as needed */
+    background-color: black; /* Fallback background */
     position: relative;
     overflow: hidden;
     z-index: 1;
 }
+
 
 
 
@@ -2555,7 +2556,7 @@ loader.load('lowpolyf1.glb', (gltf) => {
     car.scale.set(2.5, 2.5, 2.5); // Scale the car larger
     scene.add(car);
 
-    // Animation Loop
+    // Start Animation Loop
     const animate = () => {
         requestAnimationFrame(animate);
         renderer.render(scene, camera);
@@ -2565,35 +2566,31 @@ loader.load('lowpolyf1.glb', (gltf) => {
     console.error('Error loading model:', error);
 });
 
-// Adjust Camera Position
+// Camera and Controls
 camera.position.set(0, 1.5, 7);
-
-// Orbit Controls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; // Smooth controls
 controls.dampingFactor = 0.05;
 controls.enablePan = false; // Disable panning
-controls.enabled = false; // Disable controls initially
+controls.enabled = false; // Initially disable controls
 
 // Raycaster Setup
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
-let isInteracting = false; // Track if the user is interacting with the car
+let isInteracting = false;
 
 // Mouse Down Event: Check if the car is clicked
 container.addEventListener('mousedown', (event) => {
-    // Get mouse position in normalized device coordinates
     mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
     mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
 
-    // Cast a ray from the camera to the mouse position
     raycaster.setFromCamera(mouse, camera);
 
-    // Check for intersections with the car
-    const intersects = raycaster.intersectObject(car, true); // 'true' to include child meshes
+    // Check if the click intersects the car
+    const intersects = raycaster.intersectObject(car, true);
     if (intersects.length > 0) {
-        isInteracting = true; // Start interaction
-        controls.enabled = true; // Enable controls only when the car is clicked
+        isInteracting = true;
+        controls.enabled = true; // Enable controls when car is clicked
     }
 });
 
@@ -2608,6 +2605,13 @@ window.addEventListener('resize', () => {
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     camera.aspect = container.offsetWidth / container.offsetHeight;
     camera.updateProjectionMatrix();
+});
+
+// Prevent Scrolling When Interacting
+container.addEventListener('wheel', (event) => {
+    if (isInteracting) {
+        event.preventDefault(); // Prevent page scrolling while interacting
+    }
 });
 
 </script>
