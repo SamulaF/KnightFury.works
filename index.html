@@ -2584,7 +2584,7 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let isInteracting = false;
 
-// Event: Detect Car Interaction
+// Event: Detect Car Interaction (Mouse Down)
 container.addEventListener('mousedown', (event) => {
     mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
     mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
@@ -2595,18 +2595,36 @@ container.addEventListener('mousedown', (event) => {
         const intersects = raycaster.intersectObject(car, true);
         if (intersects.length > 0) {
             isInteracting = true;
-            controls.enabled = true; // Enable orbit controls only during interaction
+            controls.enabled = true; // Enable orbit controls when interacting with the car
         }
     }
 });
 
-// Event: Stop Interaction
+// Event: Stop Interaction (Mouse Up)
 container.addEventListener('mouseup', () => {
-    isInteracting = false;
-    controls.enabled = false; // Disable orbit controls after interaction
+    if (isInteracting) {
+        isInteracting = false;
+        controls.enabled = false; // Disable orbit controls after interaction ends
+    }
 });
 
-// Prevent Scroll During Interaction
+// Event: Handle Double Click for Persistent Interactivity
+container.addEventListener('dblclick', (event) => {
+    mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
+    mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    if (car) {
+        const intersects = raycaster.intersectObject(car, true);
+        if (intersects.length > 0) {
+            isInteracting = true;
+            controls.enabled = true; // Reactivate orbit controls on double click
+        }
+    }
+});
+
+// Event: Prevent Scrolling During Interaction
 container.addEventListener('wheel', (event) => {
     if (isInteracting) {
         event.preventDefault();
@@ -2619,6 +2637,10 @@ window.addEventListener('resize', () => {
     camera.aspect = container.offsetWidth / container.offsetHeight;
     camera.updateProjectionMatrix();
 });
+
+// Debugging (Optional): Log Interaction State
+container.addEventListener('mousedown', () => console.log('Mouse Down: Interacting?', isInteracting));
+container.addEventListener('mouseup', () => console.log('Mouse Up: Interacting?', isInteracting));
 
 </script>
 
