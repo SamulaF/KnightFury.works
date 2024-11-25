@@ -29,11 +29,10 @@
     <meta property="og:url" content="https://knightfury.works">
     <meta property="og:type" content="website">
 
-    <!-- Import Three.js -->
+    <!-- Import Three.js and OrbitControls -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.1/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.158.1/examples/js/loaders/JSONLoader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> <!-- Three.js from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.1/examples/js/loaders/JSONLoader.js"></script>
 
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -2159,6 +2158,16 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
               canvas {
             display: block;
         }
+        
+        /* Viewer container styles */
+        #car-viewer-container {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        canvas {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -2362,15 +2371,10 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         </div>
     </div>
 </section>
-
-    <!-- New Section: 3D Car Viewer -->
-    <section id="car-viewer">
-        <div id="viewer"></div>
-    </section>
+    
 
     <!-- 3D Viewer Container -->
     <div id="car-viewer-container"></div>
-
 
 
 <section id="car" class="car-section">
@@ -2589,7 +2593,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     });
 </script>
     <script>
-        // Initialize Three.js scene, camera, and renderer
+        // === Initialize Scene, Camera, and Renderer ===
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(
             75, // Field of view
@@ -2597,78 +2601,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             0.1, // Near clipping plane
             1000 // Far clipping plane
         );
-        camera.position.set(0, 2, 5); // Position camera to view the car
-
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x000000, 1); // Black background
-        document.body.appendChild(renderer.domElement);
-
-        // Add a directional light
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(5, 10, 7.5);
-        scene.add(light);
-
-        // Add ambient light
-        const ambientLight = new THREE.AmbientLight(0x404040, 2); // Soft light
-        scene.add(ambientLight);
-
-        // Load the car model using the JSON loader
-        const loader = new THREE.ObjectLoader();
-        loader.load(
-            'KNIGHTCAR.json', // Path to your model
-            function (object) {
-                const material = new THREE.MeshStandardMaterial({
-                    color: 0xffaa00, // Car color
-                    metalness: 0.8,
-                    roughness: 0.4
-                });
-
-                // Create a mesh and apply material
-                const carModel = object;
-                carModel.traverse(function (child) {
-                    if (child.isMesh) {
-                        child.material = material; // Apply material to all meshes
-                    }
-                });
-
-                // Adjust car size and position
-                carModel.scale.set(0.5, 0.5, 0.5); // Make it smaller
-                carModel.rotation.y = Math.PI; // Rotate to face forward
-                carModel.position.set(0, -0.5, 0); // Slightly adjust position
-
-                scene.add(carModel);
-            },
-            undefined,
-            function (error) {
-                console.error('An error occurred loading the car model:', error);
-            }
-        );
-
-        // Handle resizing of the window
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        });
-
-        // Animate and render the scene
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
-        <script>
-        // === Initialize Three.js Scene ===
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(
-            75, // Field of view
-            window.innerWidth / window.innerHeight, // Aspect ratio
-            0.1, // Near clipping plane
-            1000 // Far clipping plane
-        );
-        camera.position.set(0, 2, 5); // Position camera
+        camera.position.set(0, 2, 5); // Initial camera position
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -2677,25 +2610,33 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         // === Add Lighting ===
         const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(5, 10, 7.5);
+        light.position.set(5, 10, 7.5); // Above and to the side of the model
         scene.add(light);
 
-        const ambientLight = new THREE.AmbientLight(0x404040, 2); // Soft light
+        const ambientLight = new THREE.AmbientLight(0x404040, 2); // Soft ambient light
         scene.add(ambientLight);
 
-        // === Load 3D Model (KNIGHTCAR.json) ===
+        // === Add OrbitControls for interaction ===
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // Smooth movement
+        controls.dampingFactor = 0.05;
+        controls.minDistance = 2; // Minimum zoom distance
+        controls.maxDistance = 10; // Maximum zoom distance
+        controls.maxPolarAngle = Math.PI / 2; // Prevent flipping under the model
+
+        // === Load the 3D Car Model ===
         const loader = new THREE.ObjectLoader();
         loader.load(
-            'KNIGHTCAR.json', // Path to your model
+            'KNIGHTCAR.json', // Path to your 3D model JSON file
             function (object) {
-                // Material for the car
+                // Apply a material to the car
                 const material = new THREE.MeshStandardMaterial({
-                    color: 0xffaa00, // Customize car color
+                    color: 0xffaa00, // Car's color
                     metalness: 0.8,
                     roughness: 0.4
                 });
 
-                // Apply material to the model
+                // Traverse the object and apply the material to all meshes
                 object.traverse(function (child) {
                     if (child.isMesh) {
                         child.material = material;
@@ -2703,11 +2644,12 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 });
 
                 // Adjust car size, rotation, and position
-                object.scale.set(0.5, 0.5, 0.5);
-                object.rotation.y = Math.PI; // Rotate to face forward
-                object.position.set(0, -0.5, 0);
+                object.scale.set(0.5, 0.5, 0.5); // Scale down
+                object.rotation.y = Math.PI; // Face forward
+                object.position.set(0, -0.5, 0); // Adjust ground level
 
-                scene.add(object); // Add the car model to the scene
+                // Add car to the scene
+                scene.add(object);
             },
             undefined,
             function (error) {
@@ -2715,7 +2657,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
         );
 
-        // === Handle Resizing ===
+        // === Handle Window Resizing ===
         window.addEventListener('resize', () => {
             renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = window.innerWidth / window.innerHeight;
@@ -2725,13 +2667,10 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // === Animation Loop ===
         function animate() {
             requestAnimationFrame(animate);
+            controls.update(); // Update OrbitControls damping
             renderer.render(scene, camera);
         }
         animate();
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.05;
-
     </script>
 <script>
     // Get references to the video and container elements
