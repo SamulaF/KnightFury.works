@@ -2534,135 +2534,98 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
 
 <script>
-    const container = document.getElementById('3d-container');
+const container = document.getElementById('3d-container');
 
-    // Create the Scene
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Enable alpha for transparent background
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-    container.appendChild(renderer.domElement);
+// Create the Scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Enable alpha for transparent background
+renderer.setSize(container.offsetWidth, container.offsetHeight);
+container.appendChild(renderer.domElement);
 
-    // Add Lighting to Highlight the Car
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Soft ambient light
-    scene.add(ambientLight);
+// Add Lighting to Highlight the Car
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Soft ambient light
+scene.add(ambientLight);
 
-    const spotLight = new THREE.SpotLight(0xffffff, 1);
-    spotLight.position.set(5, 10, 10);
-    spotLight.castShadow = true;
-    scene.add(spotLight);
+const spotLight = new THREE.SpotLight(0xffffff, 1);
+spotLight.position.set(5, 10, 10);
+spotLight.castShadow = true;
+scene.add(spotLight);
 
-    // Add Floor for Visual Context
-    const floorGeometry = new THREE.PlaneGeometry(20, 20);
-    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x202020 });
-    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-    floor.rotation.x = -Math.PI / 2; // Rotate to lay flat
-    floor.position.y = -1.5; // Position below the car
-    scene.add(floor);
+// Add Floor for Visual Context
+const floorGeometry = new THREE.PlaneGeometry(20, 20);
+const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x202020 });
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2; // Rotate to lay flat
+floor.position.y = -1.5; // Position below the car
+scene.add(floor);
 
-    // Load the Car Model
-    let car; // Variable to store the car object
-    const loader = new THREE.GLTFLoader();
-    loader.load('lowpolyf1.glb', (gltf) => {
-        car = gltf.scene;
-        car.position.set(0, -1.5, 0); // Adjust position
-        car.scale.set(2.5, 2.5, 2.5); // Scale the car
-        scene.add(car);
+// Load the Car Model
+let car; // Variable to store the car object
+const loader = new THREE.GLTFLoader();
+loader.load('lowpolyf1.glb', (gltf) => {
+    car = gltf.scene;
+    car.position.set(0, -1.5, 0); // Adjust position
+    car.scale.set(2.5, 2.5, 2.5); // Scale the car
+    scene.add(car);
 
-        // Start Animation Loop
-        const animate = () => {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        };
-        animate();
-    }, undefined, (error) => {
-        console.error('Error loading model:', error);
-    });
+    // Start Animation Loop
+    const animate = () => {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    };
+    animate();
+}, undefined, (error) => {
+    console.error('Error loading model:', error);
+});
 
-    // Camera and OrbitControls
-    camera.position.set(0, 2, 7); // Adjust camera for a better view
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // Smooth camera controls
-    controls.dampingFactor = 0.05;
+// Camera and OrbitControls
+camera.position.set(0, 2, 7); // Adjust camera for a better view
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Smooth camera controls
+controls.dampingFactor = 0.05;
 
-    // Focus Interaction Only on the Car
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-    let isInteracting = false;
+// Focus Interaction Only on the Car
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let isInteracting = false;
 
-    // Event: Detect Car Interaction (Mouse Down)
-    container.addEventListener('mousedown', (event) => {
-        mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
-        mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
+// Event: Detect Car Interaction
+container.addEventListener('mousedown', (event) => {
+    mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
+    mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
 
-        raycaster.setFromCamera(mouse, camera);
+    raycaster.setFromCamera(mouse, camera);
 
-        if (car) {
-            const intersects = raycaster.intersectObject(car, true);
-            if (intersects.length > 0) {
-                isInteracting = true;
-                controls.enabled = true; // Enable orbit controls when interacting with the car
-            }
+    if (car) {
+        const intersects = raycaster.intersectObject(car, true);
+        if (intersects.length > 0) {
+            isInteracting = true;
+            controls.enabled = true; // Enable orbit controls only during interaction
         }
-    });
+    }
+});
 
-    // Event: Stop Interaction (Mouse Up)
-    container.addEventListener('mouseup', () => {
-        if (isInteracting) {
-            isInteracting = false;
-            controls.enabled = false; // Disable orbit controls after interaction ends
-        }
-    });
+// Event: Stop Interaction
+container.addEventListener('mouseup', () => {
+    isInteracting = false;
+    controls.enabled = false; // Disable orbit controls after interaction
+});
 
-    // Event: Handle Double Click for Persistent Interactivity
-    container.addEventListener('dblclick', (event) => {
-        mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
-        mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
-
-        raycaster.setFromCamera(mouse, camera);
-
-        if (car) {
-            const intersects = raycaster.intersectObject(car, true);
-            if (intersects.length > 0) {
-                isInteracting = true;
-                controls.enabled = true; // Reactivate orbit controls on double click
-            }
-        }
-    });
-
-    // Adjusted Event for Zoom and Scroll
-    container.addEventListener('wheel', (event) => {
-        mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
-        mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
-
-        raycaster.setFromCamera(mouse, camera);
-
-        if (car) {
-            const intersects = raycaster.intersectObject(car, true);
-            if (intersects.length > 0) {
-                // Zoom in/out when scrolling over the car
-                const zoomFactor = event.deltaY * 0.01; // Adjust zoom speed
-                camera.position.z += zoomFactor;
-                camera.position.z = Math.max(1, Math.min(20, camera.position.z)); // Limit zoom range
-            } else {
-                return; // Allow default scroll behavior outside the car
-            }
-        }
-
-        // Prevent default scrolling behavior only when interacting with the car
+// Prevent Scroll During Interaction
+container.addEventListener('wheel', (event) => {
+    if (isInteracting) {
         event.preventDefault();
-    });
+    }
+});
 
-    // Handle Window Resize
-    window.addEventListener('resize', () => {
-        renderer.setSize(container.offsetWidth, container.offsetHeight);
-        camera.aspect = container.offsetWidth / container.offsetHeight;
-        camera.updateProjectionMatrix();
-    });
+// Handle Window Resize
+window.addEventListener('resize', () => {
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    camera.aspect = container.offsetWidth / container.offsetHeight;
+    camera.updateProjectionMatrix();
+});
 
-    // Debugging (Optional): Log Interaction State
-    container.addEventListener('mousedown', () => console.log('Mouse Down: Interacting?', isInteracting));
-    container.addEventListener('mouseup', () => console.log('Mouse Up: Interacting?', isInteracting));
 </script>
 
 
