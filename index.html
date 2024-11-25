@@ -2146,9 +2146,11 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #3d-container {
     width: 100%;
     height: 600px; /* Adjust height as needed */
-    background-color: black;
-    overflow: hidden; /* Prevent overflow */
+    background-color: black; /* Fallback if background texture doesn't load */
+    position: relative;
+    overflow: hidden; /* Prevent unnecessary overflow */
 }
+
 
 
     </style>
@@ -2530,6 +2532,10 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 container.appendChild(renderer.domElement);
 
+// Add Background
+const backgroundTexture = new THREE.TextureLoader().load('background.jpg'); // Replace 'background.jpg' with your background image
+scene.background = backgroundTexture;
+
 // Add Lighting
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
@@ -2541,18 +2547,18 @@ scene.add(directionalLight);
 // Load the Model
 const loader = new THREE.GLTFLoader();
 loader.load('lowpolyf1.glb', (gltf) => {
-    console.log('Model Loaded Successfully!');
     const car = gltf.scene;
     scene.add(car);
 
     // Adjust the size and position
-    car.position.set(0, 0, 0); // Center the car
-    car.scale.set(2.5, 2.5, 2.5); // Make the car larger initially
+    car.position.set(0, -1.5, 0); // Center the car vertically
+    car.scale.set(2.5, 2.5, 2.5); // Scale the car larger
 
-    // Animate the Model (Optional)
+    // Animate the Model
     const animate = () => {
         requestAnimationFrame(animate);
-        car.rotation.y += 0.01; // Rotate the model
+        car.rotation.y += 0.01; // Slowly rotate the car
+        controls.update();
         renderer.render(scene, camera);
     };
     animate();
@@ -2561,7 +2567,22 @@ loader.load('lowpolyf1.glb', (gltf) => {
 });
 
 // Adjust Camera Position
-camera.position.set(0, 1.5, 7); // Position the camera further back to fit the larger model
+camera.position.set(0, 1.5, 7); // Back the camera to fit the model
+
+// Orbit Controls
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Smooth controls
+controls.dampingFactor = 0.05;
+controls.enablePan = false; // Disable panning
+controls.screenSpacePanning = false;
+
+// Prevent OrbitControls from affecting page scroll
+controls.addEventListener('start', () => {
+    document.body.style.overflow = 'hidden'; // Disable scrolling when interacting with the model
+});
+controls.addEventListener('end', () => {
+    document.body.style.overflow = 'auto'; // Enable scrolling when done interacting
+});
 
 // Handle Window Resize
 window.addEventListener('resize', () => {
@@ -2569,20 +2590,6 @@ window.addEventListener('resize', () => {
     camera.aspect = container.offsetWidth / container.offsetHeight;
     camera.updateProjectionMatrix();
 });
-
-// Orbit Controls
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; // Enable smooth controls
-controls.dampingFactor = 0.05;
-controls.enablePan = false; // Disable panning
-controls.screenSpacePanning = false; // Prevent interaction affecting the layout
-controls.update();
-
-// Prevent Scroll Interference
-container.addEventListener('wheel', (event) => {
-    event.stopPropagation();
-}, { passive: false });
-
 
 </script>
 
