@@ -2143,11 +2143,13 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         border-radius: 10px;
         color: #FFD700;
     }
-    #3d-container {
+#3d-container {
     width: 100%;
-    height: 500px;
-    background-color: black; /* Helps visualize the rendering area */
+    height: 600px; /* Adjust height as needed */
+    background-color: black;
+    overflow: hidden; /* Prevent overflow */
 }
+
 
     </style>
 </head>
@@ -2542,8 +2544,9 @@ loader.load('lowpolyf1.glb', (gltf) => {
     const car = gltf.scene;
     scene.add(car);
 
-    car.position.set(0, -1.5, 0);
-    car.scale.set(1.5, 1.5, 1.5);
+    // Adjust the size and position
+    car.position.set(0, 0, 0); // Center the car
+    car.scale.set(2.5, 2.5, 2.5); // Make the car larger initially
 
     // Animate the Model (Optional)
     const animate = () => {
@@ -2557,7 +2560,7 @@ loader.load('lowpolyf1.glb', (gltf) => {
 });
 
 // Adjust Camera Position
-camera.position.set(0, 2, 5);
+camera.position.set(0, 1.5, 7); // Position the camera further back to fit the larger model
 
 // Handle Window Resize
 window.addEventListener('resize', () => {
@@ -2568,9 +2571,17 @@ window.addEventListener('resize', () => {
 
 // Orbit Controls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
+controls.enableDamping = true; // Enable smooth controls
 controls.dampingFactor = 0.05;
+controls.enablePan = false; // Disable panning
+controls.screenSpacePanning = false; // Prevent interaction affecting the layout
 controls.update();
+
+// Prevent Scroll Interference
+container.addEventListener('wheel', (event) => {
+    event.stopPropagation();
+}, { passive: false });
+
 
 </script>
 
