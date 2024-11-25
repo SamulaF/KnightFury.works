@@ -32,6 +32,9 @@
     <!-- Import Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.1/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.158.1/examples/js/loaders/JSONLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> <!-- Three.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -2365,6 +2368,8 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         <div id="viewer"></div>
     </section>
 
+    <!-- 3D Viewer Container -->
+    <div id="car-viewer-container"></div>
 
 
 
@@ -2521,7 +2526,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     setInterval(cycleImages, 400);
 </script>
        
-        
+    
 
 <footer>
     <p>&copy; 2024 Knight Fury | Ambience Public School</p>
@@ -2653,6 +2658,80 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             renderer.render(scene, camera);
         }
         animate();
+    </script>
+        <script>
+        // === Initialize Three.js Scene ===
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+            75, // Field of view
+            window.innerWidth / window.innerHeight, // Aspect ratio
+            0.1, // Near clipping plane
+            1000 // Far clipping plane
+        );
+        camera.position.set(0, 2, 5); // Position camera
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 1); // Black background
+        document.getElementById('car-viewer-container').appendChild(renderer.domElement);
+
+        // === Add Lighting ===
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 10, 7.5);
+        scene.add(light);
+
+        const ambientLight = new THREE.AmbientLight(0x404040, 2); // Soft light
+        scene.add(ambientLight);
+
+        // === Load 3D Model (KNIGHTCAR.json) ===
+        const loader = new THREE.ObjectLoader();
+        loader.load(
+            'KNIGHTCAR.json', // Path to your model
+            function (object) {
+                // Material for the car
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0xffaa00, // Customize car color
+                    metalness: 0.8,
+                    roughness: 0.4
+                });
+
+                // Apply material to the model
+                object.traverse(function (child) {
+                    if (child.isMesh) {
+                        child.material = material;
+                    }
+                });
+
+                // Adjust car size, rotation, and position
+                object.scale.set(0.5, 0.5, 0.5);
+                object.rotation.y = Math.PI; // Rotate to face forward
+                object.position.set(0, -0.5, 0);
+
+                scene.add(object); // Add the car model to the scene
+            },
+            undefined,
+            function (error) {
+                console.error('Error loading the car model:', error);
+            }
+        );
+
+        // === Handle Resizing ===
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+
+        // === Animation Loop ===
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+
     </script>
 <script>
     // Get references to the video and container elements
