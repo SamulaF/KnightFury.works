@@ -2624,10 +2624,17 @@ container.addEventListener('dblclick', (event) => {
     }
 });
 
-// Event: Prevent Scrolling During Interaction
+// Event: Prevent Scrolling During Interaction Only Inside the Container
 container.addEventListener('wheel', (event) => {
-    if (isInteracting) {
-        event.preventDefault();
+    const rect = container.getBoundingClientRect();
+    const isInside =
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom;
+
+    if (isInside) {
+        event.preventDefault(); // Prevent scrolling only inside the 3D container
     }
 });
 
