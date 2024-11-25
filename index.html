@@ -2145,11 +2145,13 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 #3d-container {
     width: 100%;
-    height: 600px; /* Adjust height as needed */
-    background-color: black; /* Fallback if background texture doesn't load */
+    height: 600px; /* Adjust based on your design */
+    background-color: black; /* Fallback color */
     position: relative;
-    overflow: hidden; /* Prevent unnecessary overflow */
+    overflow: hidden;
+    z-index: 1;
 }
+
 
 
 
@@ -2533,7 +2535,7 @@ renderer.setSize(container.offsetWidth, container.offsetHeight);
 container.appendChild(renderer.domElement);
 
 // Add Background
-const backgroundTexture = new THREE.TextureLoader().load('Frap.jpg'); // Replace 'background.jpg' with your background image
+const backgroundTexture = new THREE.TextureLoader().load('background.jpg'); // Replace with your background image
 scene.background = backgroundTexture;
 
 // Add Lighting
@@ -2545,20 +2547,17 @@ directionalLight.position.set(5, 10, 7.5);
 scene.add(directionalLight);
 
 // Load the Model
+let car; // Store reference to the car for raycasting
 const loader = new THREE.GLTFLoader();
 loader.load('lowpolyf1.glb', (gltf) => {
-    const car = gltf.scene;
-    scene.add(car);
-
-    // Adjust the size and position
+    car = gltf.scene;
     car.position.set(0, -1.5, 0); // Center the car vertically
     car.scale.set(2.5, 2.5, 2.5); // Scale the car larger
+    scene.add(car);
 
-    // Animate the Model
+    // Animation Loop
     const animate = () => {
         requestAnimationFrame(animate);
-        car.rotation.y += 0.01; // Slowly rotate the car
-        controls.update();
         renderer.render(scene, camera);
     };
     animate();
@@ -2567,21 +2566,41 @@ loader.load('lowpolyf1.glb', (gltf) => {
 });
 
 // Adjust Camera Position
-camera.position.set(0, 1.5, 7); // Back the camera to fit the model
+camera.position.set(0, 1.5, 7);
 
 // Orbit Controls
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; // Smooth controls
 controls.dampingFactor = 0.05;
 controls.enablePan = false; // Disable panning
-controls.screenSpacePanning = false;
+controls.enabled = false; // Disable controls initially
 
-// Prevent OrbitControls from affecting page scroll
-controls.addEventListener('start', () => {
-    document.body.style.overflow = 'hidden'; // Disable scrolling when interacting with the model
+// Raycaster Setup
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let isInteracting = false; // Track if the user is interacting with the car
+
+// Mouse Down Event: Check if the car is clicked
+container.addEventListener('mousedown', (event) => {
+    // Get mouse position in normalized device coordinates
+    mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
+    mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
+
+    // Cast a ray from the camera to the mouse position
+    raycaster.setFromCamera(mouse, camera);
+
+    // Check for intersections with the car
+    const intersects = raycaster.intersectObject(car, true); // 'true' to include child meshes
+    if (intersects.length > 0) {
+        isInteracting = true; // Start interaction
+        controls.enabled = true; // Enable controls only when the car is clicked
+    }
 });
-controls.addEventListener('end', () => {
-    document.body.style.overflow = 'auto'; // Enable scrolling when done interacting
+
+// Mouse Up Event: Stop interaction
+container.addEventListener('mouseup', () => {
+    isInteracting = false;
+    controls.enabled = false; // Disable controls after interaction
 });
 
 // Handle Window Resize
