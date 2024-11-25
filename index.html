@@ -2343,7 +2343,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
-
+    <div id="viewer"></div>
 <section id="car" class="car-section">
     <div class="video-background-container">
         <video autoplay muted playsinline loop class="video-background">
@@ -2577,6 +2577,65 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Prevent scrolling while the intro video is playing
     document.body.style.overflow = 'hidden';
 </script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.1/three.min.js"></script>
+    <!-- JSONLoader -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.1/examples/js/loaders/JSONLoader.js"></script>
+
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('viewer').appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0x404040); // Soft ambient light
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(5, 10, 7.5).normalize();
+        scene.add(directionalLight);
+
+        // Load 3D JSON model
+        const loader = new THREE.JSONLoader();
+        loader.load(
+            'assets/models/KNIGHTCAR.json', // Path to your JSON file
+            function (geometry, materials) {
+                const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+                const carModel = new THREE.Mesh(geometry, material);
+                scene.add(carModel);
+
+                // Adjust car positioning
+                carModel.rotation.y = Math.PI; // Rotate if necessary
+                carModel.position.set(0, 0, 0); // Set model at the center
+            },
+            function (xhr) {
+                console.log(`Model loading progress: ${(xhr.loaded / xhr.total * 100).toFixed(2)}%`);
+            },
+            function (error) {
+                console.error('An error occurred while loading the model:', error);
+            }
+        );
+
+        // Camera positioning
+        camera.position.set(0, 1, 5);
+
+        // Render loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Adjust scene on window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Get references to necessary elements
