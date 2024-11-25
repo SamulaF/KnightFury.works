@@ -29,12 +29,6 @@
     <meta property="og:url" content="https://knightfury.works">
     <meta property="og:type" content="website">
 
-     <!-- Import Three.js and OrbitControls -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.1/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.158.1/examples/js/loaders/GLTFLoader.js"></script>
-
-
     <!-- GSAP Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -2142,34 +2136,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         border-radius: 10px;
         color: #FFD700;
     }
-            /* 3D Car Viewer Section */
-/* Viewer container styling */
-#car-viewer-container {
-    width: 100vw;
-    height: 100vh;
-}
-
-canvas {
-    display: block;
-}
-        /* 3D Viewer Section */
-        #car-viewer-section {
-            height: 100vh;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #car-viewer-container {
-            width: 80vw;
-            height: 80vh;
-            border: 2px solid white;
-        }
-
-        canvas {
-            display: block;
-        }
     </style>
 </head>
 <body>
@@ -2372,9 +2338,12 @@ canvas {
         </div>
     </div>
 </section>
-    
 
-    
+
+
+
+
+
 <section id="car" class="car-section">
     <div class="video-background-container">
         <video autoplay muted playsinline loop class="video-background">
@@ -2528,7 +2497,7 @@ canvas {
     setInterval(cycleImages, 400);
 </script>
        
-    
+        
 
 <footer>
     <p>&copy; 2024 Knight Fury | Ambience Public School</p>
@@ -2590,83 +2559,7 @@ canvas {
         onScrollAnimate(); // Check if already in view on load
     });
 </script>
-<script>
-        // === Initialize Scene, Camera, and Renderer ===
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(
-            75, // Field of view
-            window.innerWidth / window.innerHeight, // Aspect ratio
-            0.1, // Near clipping plane
-            1000 // Far clipping plane
-        );
-        camera.position.set(0, 2, 5); // Initial camera position
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x000000, 1); // Black background
-        document.getElementById('car-viewer-container').appendChild(renderer.domElement);
-
-        // === Add Lighting ===
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(5, 10, 7.5); // Above and to the side of the model
-        scene.add(light);
-
-        const ambientLight = new THREE.AmbientLight(0x404040, 2); // Soft ambient light
-        scene.add(ambientLight);
-
-        // === Add OrbitControls for interaction ===
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true; // Smooth movement
-        controls.dampingFactor = 0.05;
-        controls.minDistance = 2; // Minimum zoom distance
-        controls.maxDistance = 10; // Maximum zoom distance
-        controls.maxPolarAngle = Math.PI / 2; // Prevent flipping under the model
-
-        // === Load the 3D Car Model (.glb) ===
-        const loader = new THREE.GLTFLoader();
-        loader.load(
-            'lowpolyf1.glb', // Path to your 3D model GLB file
-            function (gltf) {
-                const carModel = gltf.scene; // Extract the scene (car model)
-
-                // Customize materials (if needed)
-                carModel.traverse(function (child) {
-                    if (child.isMesh) {
-                        child.material.color.set(0xffaa00); // Set color
-                        child.material.metalness = 0.8; // Add metallic finish
-                        child.material.roughness = 0.4; // Adjust roughness
-                    }
-                });
-
-                // Adjust car size, rotation, and position
-                carModel.scale.set(0.5, 0.5, 0.5); // Scale down
-                carModel.rotation.y = Math.PI; // Face forward
-                carModel.position.set(0, -0.5, 0); // Adjust ground level
-
-                // Add car to the scene
-                scene.add(carModel);
-            },
-            undefined,
-            function (error) {
-                console.error('Error loading the car model:', error);
-            }
-        );
-
-        // === Handle Window Resizing ===
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        });
-
-        // === Animation Loop ===
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update(); // Update OrbitControls damping
-            renderer.render(scene, camera);
-        }
-        animate();
-</script>
 <script>
     // Get references to the video and container elements
     const video = document.getElementById('intro-video');
