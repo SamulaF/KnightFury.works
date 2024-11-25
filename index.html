@@ -33,6 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.134/examples/js/loaders/GLTFLoader.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.134/examples/js/controls/OrbitControls.js"></script>
 
     
     <!-- GSAP Scripts -->
@@ -2529,8 +2530,10 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     loader.load('lowpolyf1.glb', (gltf) => {
         const car = gltf.scene;
         scene.add(car);
-        car.position.set(0, -1, 0);
-        car.scale.set(0.5, 0.5, 0.5);
+car.position.set(0, -1.5, 0); // Adjust Y position to lift the car if needed
+car.scale.set(1.5, 1.5, 1.5); // Increase the size of the car model
+car.geometry.center(); // Center the geometry of the model
+
 
         // Animate the model (Optional)
         const animate = () => {
@@ -2550,6 +2553,10 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         camera.aspect = container.offsetWidth / container.offsetHeight;
         camera.updateProjectionMatrix();
     });
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Smooth controls
+controls.dampingFactor = 0.05;
+
 </script>
 
 
