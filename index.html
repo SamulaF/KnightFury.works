@@ -2712,15 +2712,30 @@ const animate = () => {
     // Set the playback speed of the video (optional)
     video.playbackRate = 1.0;
 
-    // Add an event listener to hide the video container when the video ends
+    // Add an event listener to detect when the video ends
     video.addEventListener('ended', function () {
         container.style.display = 'none'; // Hide the video container
         document.body.style.overflow = 'auto'; // Enable scrolling on the website
     });
 
-    // Prevent scrolling while the intro video is playing
+    // Ensure the video plays on user interaction for mobile compatibility
+    const ensurePlayback = () => {
+        video.play();
+        document.body.style.overflow = 'hidden'; // Prevent scrolling while playing
+        container.removeEventListener('click', ensurePlayback);
+    };
+
+    // Attach a click event to ensure video playback starts on mobile
+    container.addEventListener('click', ensurePlayback);
+
+    // Fallback to prevent scrolling in case the video fails to autoplay
     document.body.style.overflow = 'hidden';
+
+    // Optional: Debugging logs to check mobile playback
+    video.addEventListener('play', () => console.log('Video is playing'));
+    video.addEventListener('pause', () => console.log('Video is paused'));
 </script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Get references to necessary elements
