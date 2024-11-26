@@ -2572,56 +2572,55 @@ camera.position.set(0, 2, 7);
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
+controls.enabled = false; // OrbitControls disabled by default
 
 // Raycaster for Interaction
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-// Detect Click on Car or Floor
-const onMouseClick = (event) => {
-    // Update mouse position
+let interactionTimeout = null; // Timer for detecting long press
+let isInteracting = false; // Flag to track interaction state
+
+// Handle Mouse Down (Start of Interaction)
+const onMouseDown = (event) => {
     mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
     mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
 
-    // Cast a ray from the camera to the mouse position
     raycaster.setFromCamera(mouse, camera);
 
-    // Only check interactions with the car and the floor
-    const objectsToTest = [car, floor].filter(Boolean); // Ensure car is loaded
+    const objectsToTest = [car].filter(Boolean); // Ensure car is loaded
     const intersects = raycaster.intersectObjects(objectsToTest, true);
 
     if (intersects.length > 0) {
-        // Interaction logic (e.g., highlight object)
-        const clickedObject = intersects[0].object;
-        if (clickedObject === car || car?.children.includes(clickedObject)) {
-            console.log('Car clicked!');
-            car.traverse((child) => {
-                if (child.isMesh) {
-                    child.material.color.set(0xff0000); // Highlight car in red
-                }
-            });
-        } else if (clickedObject === floor) {
-            console.log('Floor clicked!');
-            floor.material.color.set(0x00ff00); // Highlight floor in green
-        }
+        // Start a timer for click-and-hold detection
+        interactionTimeout = setTimeout(() => {
+            isInteracting = true; // Enable interaction
+            controls.enabled = true; // Enable OrbitControls
+        }, 200); // Hold duration threshold (200ms)
     }
 };
 
-// Reset Colors After Interaction
+// Handle Mouse Up (End of Interaction)
 const onMouseUp = () => {
-    if (car) {
-        car.traverse((child) => {
-            if (child.isMesh) {
-                child.material.color.set(0xffffff); // Reset car color
-            }
-        });
+    clearTimeout(interactionTimeout); // Clear the timer
+    if (isInteracting) {
+        isInteracting = false; // Reset interaction state
+        controls.enabled = false; // Disable OrbitControls
     }
-    floor.material.color.set(0x202020); // Reset floor color
+};
+
+// Prevent Scroll During Active Interaction
+const onWheel = (event) => {
+    if (isInteracting) {
+        event.preventDefault(); // Block scroll only during interaction
+    }
 };
 
 // Add Event Listeners
-container.addEventListener('click', onMouseClick);
+container.addEventListener('mousedown', onMouseDown);
 container.addEventListener('mouseup', onMouseUp);
+container.addEventListener('mouseleave', onMouseUp); // Stop interaction if mouse leaves the container
+container.addEventListener('wheel', onWheel);
 
 // Handle Resize
 window.addEventListener('resize', () => {
