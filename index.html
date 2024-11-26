@@ -2579,58 +2579,65 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 let isDragging = false; // Track if user is dragging
-let dragStart = false; // Detect drag gesture
+let touchStartTime = 0; // For tap vs. drag detection
 
-// Handle Mouse Down (Start of Drag)
-const onMouseDown = (event) => {
-    dragStart = true; // Potential start of drag
-
-    // Get mouse position
-    mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
-    mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
+// Utility: Check if Interaction is on Car
+const isCarTouched = (event) => {
+    const rect = container.getBoundingClientRect();
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
 
-    // Check if the car is clicked
     const objectsToTest = [car].filter(Boolean); // Ensure car is loaded
     const intersects = raycaster.intersectObjects(objectsToTest, true);
+    return intersects.length > 0;
+};
 
-    if (intersects.length > 0) {
-        isDragging = true; // Enable dragging interaction
+// Mouse / Touch Start (Begin Interaction)
+const onStartInteraction = (event) => {
+    touchStartTime = Date.now();
+    isDragging = isCarTouched(event); // Enable dragging only if car is touched
+    if (isDragging) {
         controls.enabled = true; // Enable OrbitControls
     }
 };
 
-// Handle Mouse Move (Drag Detection)
-const onMouseMove = (event) => {
-    if (dragStart && isDragging) {
-        // Drag detected; keep OrbitControls active
-        controls.enabled = true;
+// Mouse / Touch Move (Drag Detection)
+const onMoveInteraction = (event) => {
+    if (isDragging) {
+        controls.enabled = true; // Keep controls active during dragging
     } else {
         controls.enabled = false; // Disable controls if no dragging
     }
 };
 
-// Handle Mouse Up (End of Drag)
-const onMouseUp = () => {
-    dragStart = false; // Reset drag start
+// Mouse / Touch End (Finish Interaction)
+const onEndInteraction = () => {
+    const touchDuration = Date.now() - touchStartTime;
+    if (isDragging && touchDuration < 200) {
+        // Short tap: Not a drag, so reset controls
+        controls.enabled = false;
+    }
     isDragging = false; // Reset dragging state
-    controls.enabled = false; // Disable OrbitControls
 };
 
-// Allow Scroll Without Interference
-const onWheel = (event) => {
+// Prevent Scroll When Dragging
+const onPreventScroll = (event) => {
     if (isDragging) {
-        event.preventDefault(); // Block scroll only during active dragging
+        event.preventDefault();
     }
 };
 
 // Add Event Listeners
-container.addEventListener('mousedown', onMouseDown);
-container.addEventListener('mousemove', onMouseMove);
-container.addEventListener('mouseup', onMouseUp);
-container.addEventListener('mouseleave', onMouseUp); // Handle mouse leaving the container
-container.addEventListener('wheel', onWheel);
+container.addEventListener('mousedown', onStartInteraction);
+container.addEventListener('mousemove', onMoveInteraction);
+container.addEventListener('mouseup', onEndInteraction);
+container.addEventListener('mouseleave', onEndInteraction);
+container.addEventListener('touchstart', onStartInteraction, { passive: false });
+container.addEventListener('touchmove', onMoveInteraction, { passive: false });
+container.addEventListener('touchend', onEndInteraction);
+container.addEventListener('wheel', onPreventScroll, { passive: false });
 
 // Handle Resize
 window.addEventListener('resize', () => {
