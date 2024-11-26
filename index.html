@@ -2621,122 +2621,147 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 </script>
 
     
-<script>
-    // References to DOM elements
-    const interactionButton = document.getElementById('interaction-button');
-    const carElement = document.getElementById('car-model'); // Ensure you have this ID in your HTML
-    const container = document.getElementById('3d-container');
+<script> 
+const button = document.getElementById('interaction-button');
 
-    // Sound Elements
-    const activateSound = document.createElement('audio');
-    activateSound.src = 'activate.mp3';
-    const deactivateSound = document.createElement('audio');
-    deactivateSound.src = 'deactivate.mp3';
-
-    // Toast Function
-    function showToast(message) {
-        const toast = document.createElement('div');
-        toast.textContent = message;
-        toast.style.position = 'fixed';
-        toast.style.bottom = '20px';
-        toast.style.left = '50%';
-        toast.style.transform = 'translateX(-50%)';
-        toast.style.padding = '10px 20px';
-        toast.style.backgroundColor = '#333';
-        toast.style.color = '#fff';
-        toast.style.borderRadius = '5px';
-        toast.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        button.classList.remove('active');
+        button.textContent = 'ACTIVATE CAR INTERACTION';
+    } else {
+        button.classList.add('active');
+        button.textContent = 'DEACTIVATE CAR INTERACTION';
     }
+});
 
-    // Interaction Button Event
-    interactionButton.addEventListener('click', () => {
-        const isActive = interactionButton.classList.toggle('active');
-        interactionButton.textContent = isActive
-            ? 'Deactivate Car Interaction'
-            : 'Activate Car Interaction';
-
-        // Play sound based on state
-        if (isActive) {
-            activateSound.play();
-            showToast('Car interaction activated.');
-        } else {
-            deactivateSound.play();
-            showToast('Car interaction deactivated.');
-        }
-
-        // Transform car element
-        if (carElement) {
-            carElement.style.transform = isActive ? 'scale(1.2)' : 'scale(1)';
-        }
-
-        // Enable or disable OrbitControls
-        if (controls) controls.enabled = isActive;
-    });
-
-    // Create Three.js Scene
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(container.offsetWidth, container.offsetHeight);
-    container.appendChild(renderer.domElement);
-
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-    scene.add(ambientLight);
-
-    const spotLight = new THREE.SpotLight(0xffffff, 1);
-    spotLight.position.set(5, 10, 10);
-    spotLight.castShadow = true;
-    scene.add(spotLight);
-
-    // Floor
-    const floorGeometry = new THREE.PlaneGeometry(20, 20);
-    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x202020 });
-    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-    floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -1.5;
-    scene.add(floor);
-
-    // Load Car Model
-    let car;
-    const loader = new THREE.GLTFLoader();
-    loader.load(
-        'lowpolyf1.glb',
-        (gltf) => {
-            car = gltf.scene;
-            car.position.set(0, -1.5, 0);
-            car.scale.set(2.5, 2.5, 2.5);
-            scene.add(car);
-            animate(); // Start animation loop after model loads
-        },
-        undefined,
-        (error) => {
-            console.error('Error loading model:', error);
-        }
-    );
-
-    // Camera Controls
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.enabled = false; // Initially disabled
-
-    // Resize Event Listener
-    window.addEventListener('resize', () => {
-        renderer.setSize(container.offsetWidth, container.offsetHeight);
-        camera.aspect = container.offsetWidth / container.offsetHeight;
-        camera.updateProjectionMatrix();
-    });
-
-    // Animation Loop
-    const animate = () => {
-        requestAnimationFrame(animate);
-        controls.update(); // Smooth camera controls
-        renderer.render(scene, camera);
-    };
 </script>
+<script>
+<audio id="activate-sound" src="activate.mp3"></audio>
+<audio id="deactivate-sound" src="deactivate.mp3"></audio>
+<script>
+const activateSound = document.getElementById('activate-sound');
+const deactivateSound = document.getElementById('deactivate-sound');
+
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        deactivateSound.play();
+    } else {
+        activateSound.play();
+    }
+});
+</script>
+
+</script>
+<script>
+const carElement = document.getElementById('car-model');
+
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        carElement.style.transform = 'scale(1)';
+    } else {
+        carElement.style.transform = 'scale(1.2)';
+    }
+});
+
+</script>
+<script>
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.position = 'absolute';
+    toast.style.bottom = '20px';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.padding = '10px 20px';
+    toast.style.backgroundColor = '#333';
+    toast.style.color = '#fff';
+    toast.style.borderRadius = '5px';
+    toast.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        showToast('Car interaction deactivated.');
+    } else {
+        showToast('Car interaction activated.');
+    }
+});
+
+</script>
+<script>
+const container = document.getElementById('3d-container');
+const interactionButton = document.getElementById('interaction-button');
+const instructions = document.getElementById('instructions');
+
+// Create the Scene
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(container.offsetWidth, container.offsetHeight);
+container.appendChild(renderer.domElement);
+
+// Add Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+
+const spotLight = new THREE.SpotLight(0xffffff, 1);
+spotLight.position.set(5, 10, 10);
+spotLight.castShadow = true;
+scene.add(spotLight);
+
+// Add Floor
+const floorGeometry = new THREE.PlaneGeometry(20, 20);
+const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x202020 });
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = -1.5;
+scene.add(floor);
+
+// Load Car Model
+let car;
+const loader = new THREE.GLTFLoader();
+loader.load('lowpolyf1.glb', (gltf) => {
+    car = gltf.scene;
+    car.position.set(0, -1.5, 0);
+    car.scale.set(2.5, 2.5, 2.5);
+    scene.add(car);
+    animate(); // Start animation loop after the car is loaded
+}, undefined, (error) => {
+    console.error('Error loading model:', error);
+});
+
+// Camera and Controls
+camera.position.set(0, 2, 7);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
+controls.enabled = false; // OrbitControls disabled by default
+
+// Toggle Interaction with Button
+interactionButton.addEventListener('click', () => {
+    controls.enabled = !controls.enabled;
+    interactionButton.textContent = controls.enabled
+        ? "Deactivate Car Interaction"
+        : "Activate Car Interaction";
+});
+
+// Handle Resize
+window.addEventListener('resize', () => {
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    camera.aspect = container.offsetWidth / container.offsetHeight;
+    camera.updateProjectionMatrix();
+});
+
+// Animation Loop
+const animate = () => {
+    requestAnimationFrame(animate);
+    controls.update(); // Smooth camera controls
+    renderer.render(scene, camera);
+};
+</script> fix all this to work
+
 
 
 
