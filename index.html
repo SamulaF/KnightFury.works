@@ -2539,12 +2539,12 @@ const container = document.getElementById('3d-container');
 // Create the Scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Enable alpha for transparent background
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(container.offsetWidth, container.offsetHeight);
 container.appendChild(renderer.domElement);
 
-// Add Lighting to Highlight the Car
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6); // Soft ambient light
+// Add Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
 const spotLight = new THREE.SpotLight(0xffffff, 1);
@@ -2552,71 +2552,61 @@ spotLight.position.set(5, 10, 10);
 spotLight.castShadow = true;
 scene.add(spotLight);
 
-// Add Floor for Visual Context
+// Add Floor
 const floorGeometry = new THREE.PlaneGeometry(20, 20);
 const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x202020 });
 const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-floor.rotation.x = -Math.PI / 2; // Rotate to lay flat
-floor.position.y = -1.5; // Position below the car
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = -1.5;
 scene.add(floor);
 
-// Load the Car Model
-let car; // Variable to store the car object
+// Load Car Model
+let car;
 const loader = new THREE.GLTFLoader();
 loader.load('lowpolyf1.glb', (gltf) => {
     car = gltf.scene;
-    car.position.set(0, -1.5, 0); // Adjust position
-    car.scale.set(2.5, 2.5, 2.5); // Scale the car
+    car.position.set(0, -1.5, 0);
+    car.scale.set(2.5, 2.5, 2.5);
     scene.add(car);
-
-    // Start Animation Loop
-    const animate = () => {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-    };
-    animate();
+    animate(); // Start animation loop once car is loaded
 }, undefined, (error) => {
     console.error('Error loading model:', error);
 });
 
-// Camera and OrbitControls
-camera.position.set(0, 2, 7); // Adjust camera for a better view
+// Camera Controls
+camera.position.set(0, 2, 7);
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; // Smooth camera controls
+controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-// Focus Interaction Only on the Car
+// Interaction Setup
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
-let isInteracting = false;
 
-// Event: Detect Car Interaction
-container.addEventListener('mousedown', (event) => {
+// Detect Car Interaction
+const onMouseDown = (event) => {
     mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
     mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
-
     if (car) {
         const intersects = raycaster.intersectObject(car, true);
         if (intersects.length > 0) {
-            isInteracting = true;
-            controls.enabled = true; // Enable orbit controls only during interaction
+            controls.enabled = true;
         }
     }
-});
+};
 
-// Event: Stop Interaction
-container.addEventListener('mouseup', () => {
-    isInteracting = false;
-    controls.enabled = false; // Disable orbit controls after interaction
-});
+// Detect Interaction End
+const onMouseUp = () => {
+    controls.enabled = false; // Reset interaction
+};
 
-// Prevent Scroll During Interaction
-container.addEventListener('wheel', (event) => {
-    if (isInteracting) {
-        event.preventDefault();
-    }
+// Allow Scroll While Interacting
+container.addEventListener('mousedown', onMouseDown);
+container.addEventListener('mouseup', onMouseUp);
+container.addEventListener('mousemove', () => {
+    controls.update();
 });
 
 // Handle Window Resize
@@ -2626,10 +2616,16 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
 });
 
+// Animation Loop
+const animate = () => {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+};
 </script>
 
 
-
+    
 <footer>
     <p>&copy; 2024 Knight Fury | Ambience Public School</p>
 </footer>
