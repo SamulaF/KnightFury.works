@@ -2578,48 +2578,58 @@ controls.enabled = false; // OrbitControls disabled by default
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-let interactionTimeout = null; // Timer for detecting long press
-let isInteracting = false; // Flag to track interaction state
+let isDragging = false; // Track if user is dragging
+let dragStart = false; // Detect drag gesture
 
-// Handle Mouse Down (Start of Interaction)
+// Handle Mouse Down (Start of Drag)
 const onMouseDown = (event) => {
+    dragStart = true; // Potential start of drag
+
+    // Get mouse position
     mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
     mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
 
+    // Check if the car is clicked
     const objectsToTest = [car].filter(Boolean); // Ensure car is loaded
     const intersects = raycaster.intersectObjects(objectsToTest, true);
 
     if (intersects.length > 0) {
-        // Start a timer for click-and-hold detection
-        interactionTimeout = setTimeout(() => {
-            isInteracting = true; // Enable interaction
-            controls.enabled = true; // Enable OrbitControls
-        }, 200); // Hold duration threshold (200ms)
+        isDragging = true; // Enable dragging interaction
+        controls.enabled = true; // Enable OrbitControls
     }
 };
 
-// Handle Mouse Up (End of Interaction)
+// Handle Mouse Move (Drag Detection)
+const onMouseMove = (event) => {
+    if (dragStart && isDragging) {
+        // Drag detected; keep OrbitControls active
+        controls.enabled = true;
+    } else {
+        controls.enabled = false; // Disable controls if no dragging
+    }
+};
+
+// Handle Mouse Up (End of Drag)
 const onMouseUp = () => {
-    clearTimeout(interactionTimeout); // Clear the timer
-    if (isInteracting) {
-        isInteracting = false; // Reset interaction state
-        controls.enabled = false; // Disable OrbitControls
-    }
+    dragStart = false; // Reset drag start
+    isDragging = false; // Reset dragging state
+    controls.enabled = false; // Disable OrbitControls
 };
 
-// Prevent Scroll During Active Interaction
+// Allow Scroll Without Interference
 const onWheel = (event) => {
-    if (isInteracting) {
-        event.preventDefault(); // Block scroll only during interaction
+    if (isDragging) {
+        event.preventDefault(); // Block scroll only during active dragging
     }
 };
 
 // Add Event Listeners
 container.addEventListener('mousedown', onMouseDown);
+container.addEventListener('mousemove', onMouseMove);
 container.addEventListener('mouseup', onMouseUp);
-container.addEventListener('mouseleave', onMouseUp); // Stop interaction if mouse leaves the container
+container.addEventListener('mouseleave', onMouseUp); // Handle mouse leaving the container
 container.addEventListener('wheel', onWheel);
 
 // Handle Resize
@@ -2636,6 +2646,7 @@ const animate = () => {
     renderer.render(scene, camera);
 };
 </script>
+
 
 
 
