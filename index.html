@@ -2578,8 +2578,8 @@ controls.enabled = false; // OrbitControls disabled by default
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
+let lastTapTime = 0; // Track time of the last tap
 let isDragging = false; // Track if user is dragging
-let touchStartTime = 0; // For tap vs. drag detection
 
 // Utility: Check if Interaction is on Car
 const isCarTouched = (event) => {
@@ -2594,35 +2594,32 @@ const isCarTouched = (event) => {
     return intersects.length > 0;
 };
 
-// Mouse / Touch Start (Begin Interaction)
-const onStartInteraction = (event) => {
-    touchStartTime = Date.now();
-    isDragging = isCarTouched(event); // Enable dragging only if car is touched
-    if (isDragging) {
+// Double-Tap Detection
+const onDoubleTap = (event) => {
+    const currentTime = Date.now();
+    if (currentTime - lastTapTime < 300) { // Check for double-tap within 300ms
+        if (isCarTouched(event)) {
+            controls.enabled = true; // Enable OrbitControls only on double-tap
+        }
+    }
+    lastTapTime = currentTime;
+};
+
+// Mouse Down (Single Click for Mouse Users)
+const onMouseDown = (event) => {
+    if (isCarTouched(event)) {
         controls.enabled = true; // Enable OrbitControls
+        isDragging = true;
     }
 };
 
-// Mouse / Touch Move (Drag Detection)
-const onMoveInteraction = (event) => {
-    if (isDragging) {
-        controls.enabled = true; // Keep controls active during dragging
-    } else {
-        controls.enabled = false; // Disable controls if no dragging
-    }
+// Mouse Up (Disable Drag)
+const onMouseUp = () => {
+    isDragging = false;
+    controls.enabled = false; // Disable controls
 };
 
-// Mouse / Touch End (Finish Interaction)
-const onEndInteraction = () => {
-    const touchDuration = Date.now() - touchStartTime;
-    if (isDragging && touchDuration < 200) {
-        // Short tap: Not a drag, so reset controls
-        controls.enabled = false;
-    }
-    isDragging = false; // Reset dragging state
-};
-
-// Prevent Scroll When Dragging
+// Prevent Scroll During Interaction
 const onPreventScroll = (event) => {
     if (isDragging) {
         event.preventDefault();
@@ -2630,13 +2627,9 @@ const onPreventScroll = (event) => {
 };
 
 // Add Event Listeners
-container.addEventListener('mousedown', onStartInteraction);
-container.addEventListener('mousemove', onMoveInteraction);
-container.addEventListener('mouseup', onEndInteraction);
-container.addEventListener('mouseleave', onEndInteraction);
-container.addEventListener('touchstart', onStartInteraction, { passive: false });
-container.addEventListener('touchmove', onMoveInteraction, { passive: false });
-container.addEventListener('touchend', onEndInteraction);
+container.addEventListener('mousedown', onMouseDown);
+container.addEventListener('mouseup', onMouseUp);
+container.addEventListener('touchend', onDoubleTap); // Double-tap for touch
 container.addEventListener('wheel', onPreventScroll, { passive: false });
 
 // Handle Resize
@@ -2653,7 +2646,6 @@ const animate = () => {
     renderer.render(scene, camera);
 };
 </script>
-
 
 
 
