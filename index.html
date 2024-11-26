@@ -2144,6 +2144,21 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         color: #FFD700;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 #3d-container {
     width: 100%;
     height: 600px; /* Adjust based on your layout */
@@ -2173,7 +2188,21 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     font-size: 16px;
     cursor: pointer;
     z-index: 10;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
+
+#interaction-button:hover {
+    background-color: #ffeb3b;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+}
+
+#interaction-button.active {
+    background-color: #d32f2f;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(211, 47, 47, 0.8);
+}
+
 
 #instructions {
     position: absolute;
@@ -2188,8 +2217,32 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    }
+}
+
+#interaction-button {
+    animation: pulse 2s infinite;
+}
 
 
+
+
+
+
+
+        
 
 
 
@@ -2568,7 +2621,75 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Cycle every 1 second for a fast-paced effect
     setInterval(cycleImages, 400);
 </script>
-       
+<script> 
+const button = document.getElementById('interaction-button');
+
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        button.classList.remove('active');
+        button.textContent = 'ACTIVATE CAR INTERACTION';
+    } else {
+        button.classList.add('active');
+        button.textContent = 'DEACTIVATE CAR INTERACTION';
+    }
+});
+
+</script>
+<script>
+<audio id="activate-sound" src="activate.mp3"></audio>
+<audio id="deactivate-sound" src="deactivate.mp3"></audio>
+<script>
+const activateSound = document.getElementById('activate-sound');
+const deactivateSound = document.getElementById('deactivate-sound');
+
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        deactivateSound.play();
+    } else {
+        activateSound.play();
+    }
+});
+</script>
+
+</script>
+<script>
+const carElement = document.getElementById('car-model');
+
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        carElement.style.transform = 'scale(1)';
+    } else {
+        carElement.style.transform = 'scale(1.2)';
+    }
+});
+
+</script>
+<script>
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.position = 'absolute';
+    toast.style.bottom = '20px';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.padding = '10px 20px';
+    toast.style.backgroundColor = '#333';
+    toast.style.color = '#fff';
+    toast.style.borderRadius = '5px';
+    toast.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+button.addEventListener('click', () => {
+    if (button.classList.contains('active')) {
+        showToast('Car interaction deactivated.');
+    } else {
+        showToast('Car interaction activated.');
+    }
+});
+
+</script>
 <script>
 const container = document.getElementById('3d-container');
 const interactionButton = document.getElementById('interaction-button');
