@@ -2527,12 +2527,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     setInterval(cycleImages, 400);
 </script>
        
-<div id="3d-container" style="width: 100%; height: 100vh;"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
-
 <script>
 const container = document.getElementById('3d-container');
 
@@ -2568,48 +2562,61 @@ loader.load('lowpolyf1.glb', (gltf) => {
     car.position.set(0, -1.5, 0);
     car.scale.set(2.5, 2.5, 2.5);
     scene.add(car);
-    animate(); // Start animation loop once car is loaded
+    animate(); // Start animation loop after the car is loaded
 }, undefined, (error) => {
     console.error('Error loading model:', error);
 });
 
-// Camera Controls
+// Camera and Controls
 camera.position.set(0, 2, 7);
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
+controls.enabled = true; // Always allow smooth orbiting
 
-// Interaction Setup
+// Raycaster for Interaction
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-// Detect Car Interaction
-const onMouseDown = (event) => {
+// Handle Mouse Events
+const onMouseClick = (event) => {
+    // Update mouse position
     mouse.x = (event.clientX / container.offsetWidth) * 2 - 1;
     mouse.y = -(event.clientY / container.offsetHeight) * 2 + 1;
 
+    // Cast a ray from the camera to the mouse position
     raycaster.setFromCamera(mouse, camera);
+
     if (car) {
         const intersects = raycaster.intersectObject(car, true);
         if (intersects.length > 0) {
-            controls.enabled = true;
+            // Perform some interaction logic (e.g., log or change color)
+            console.log('Car clicked:', intersects[0]);
+            car.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.color.set(0xff0000); // Highlight the car in red
+                }
+            });
         }
     }
 };
 
-// Detect Interaction End
+// Reset Car Color on Mouse Up (for visual feedback)
 const onMouseUp = () => {
-    controls.enabled = false; // Reset interaction
+    if (car) {
+        car.traverse((child) => {
+            if (child.isMesh) {
+                child.material.color.set(0xffffff); // Reset color to white
+            }
+        });
+    }
 };
 
-// Allow Scroll While Interacting
-container.addEventListener('mousedown', onMouseDown);
+// Add Event Listeners
+container.addEventListener('click', onMouseClick);
 container.addEventListener('mouseup', onMouseUp);
-container.addEventListener('mousemove', () => {
-    controls.update();
-});
 
-// Handle Window Resize
+// Resize Event
 window.addEventListener('resize', () => {
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     camera.aspect = container.offsetWidth / container.offsetHeight;
@@ -2619,7 +2626,7 @@ window.addEventListener('resize', () => {
 // Animation Loop
 const animate = () => {
     requestAnimationFrame(animate);
-    controls.update();
+    controls.update(); // Update camera controls
     renderer.render(scene, camera);
 };
 </script>
