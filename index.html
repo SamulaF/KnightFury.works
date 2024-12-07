@@ -2568,7 +2568,159 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Cycle every 1 second for a fast-paced effect
     setInterval(cycleImages, 400);
 </script>
-       
+<script>
+    // Video Playback Logic
+    const video = document.getElementById('intro-video');
+    const videoContainer = document.getElementById('intro-video-container');
+
+    // Set the playback speed of the video (optional)
+    video.playbackRate = 1.0;
+
+    // Ensure video plays on user interaction for mobile compatibility
+    const ensurePlayback = () => {
+        video.play().catch(err => console.error("Video playback failed:", err));
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        videoContainer.removeEventListener('click', ensurePlayback);
+    };
+
+    // Add event listener to ensure playback starts on mobile
+    videoContainer.addEventListener('click', ensurePlayback);
+
+    // Detect when the video ends
+    video.addEventListener('ended', () => {
+        videoContainer.style.display = 'none'; // Hide video container
+        document.body.style.overflow = 'auto'; // Enable scrolling
+    });
+
+    // Prevent body scroll initially
+    document.body.style.overflow = 'hidden';
+
+    // Debugging logs for mobile playback (optional)
+    video.addEventListener('play', () => console.log('Video is playing'));
+    video.addEventListener('pause', () => console.log('Video is paused'));
+</script>
+
+<script>
+    // 3D Car Interaction Logic
+    const container = document.getElementById('3d-container');
+    const interactionButton = document.getElementById('interaction-button');
+    const instructions = document.getElementById('instructions');
+
+    // Create the Scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    container.appendChild(renderer.domElement);
+
+    // Add Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+
+    const spotLight = new THREE.SpotLight(0xffffff, 1);
+    spotLight.position.set(5, 10, 10);
+    spotLight.castShadow = true;
+    scene.add(spotLight);
+
+    // Add Floor
+    const floorGeometry = new THREE.PlaneGeometry(20, 20);
+    const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x202020 });
+    const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -1.5;
+    scene.add(floor);
+
+    // Load Car Model
+    let car;
+    const loader = new THREE.GLTFLoader();
+    loader.load('lowpolyf1.glb', (gltf) => {
+        car = gltf.scene;
+        car.position.set(0, -1.5, 0);
+        car.scale.set(2.5, 2.5, 2.5);
+        scene.add(car);
+        animate(); // Start animation loop after the car is loaded
+    }, undefined, (error) => {
+        console.error('Error loading model:', error);
+    });
+
+    // Camera and Controls
+    camera.position.set(0, 2, 7);
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.enabled = false; // OrbitControls disabled by default
+
+    // Toggle Interaction with Button
+    interactionButton.addEventListener('click', () => {
+        controls.enabled = !controls.enabled;
+        interactionButton.textContent = controls.enabled
+            ? "Deactivate Car Interaction"
+            : "Activate Car Interaction";
+
+        // Toggle pointer events and body scrolling
+        if (!controls.enabled) {
+            renderer.domElement.style.pointerEvents = 'none';
+            document.body.style.overflow = 'auto';
+        } else {
+            renderer.domElement.style.pointerEvents = 'all';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        camera.aspect = container.offsetWidth / container.offsetHeight;
+        camera.updateProjectionMatrix();
+    });
+
+    // Animation Loop
+    const animate = () => {
+        requestAnimationFrame(animate);
+        controls.update(); // Smooth camera controls
+        renderer.render(scene, camera);
+    };
+</script>
+
+<style>
+    /* Ensure mobile responsiveness */
+    #3d-container {
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden; /* Prevent accidental scroll */
+    }
+
+    @media (max-width: 768px) {
+        #3d-container {
+            height: 80vh; /* Adjust for smaller devices */
+            overflow: auto; /* Allow scrolling when interaction is disabled */
+        }
+    }
+
+    /* Ensure canvas does not block scroll when inactive */
+    canvas {
+        touch-action: none; /* Prevent unintended scrolling during interaction */
+    }
+
+    /* Video container styling (example) */
+    #intro-video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        z-index: 1000;
+    }
+
+    #intro-video {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+
 <script>
 const container = document.getElementById('3d-container');
 const interactionButton = document.getElementById('interaction-button');
