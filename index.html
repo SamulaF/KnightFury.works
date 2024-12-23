@@ -2206,10 +2206,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 <div id="intro-video-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: black;">
-    <video id="intro-video" autoplay muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-        <source src="knightfury88" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <img src="knightfury88" alt="Knight Fury Intro" style="width: 100%; height: 100%; object-fit: cover;">
 </div>
 <header>
     <div class="logo-speedometer">
@@ -2570,6 +2567,16 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Cycle every 1 second for a fast-paced effect
     setInterval(cycleImages, 400);
 </script>
+<script>
+    // Hide the intro container after 3 seconds (adjust the duration as needed)
+    setTimeout(() => {
+        const introContainer = document.getElementById('intro-video-container');
+        if (introContainer) {
+            introContainer.style.display = 'none';
+        }
+    }, 3000); // 3000 milliseconds = 3 seconds
+</script>
+
 <script>
     // Video Playback Logic
     const video = document.getElementById('intro-video');
