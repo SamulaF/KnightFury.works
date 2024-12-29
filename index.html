@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -372,6 +373,14 @@ section button:hover {
 
 
 
+#snow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
 
 
 
@@ -2253,6 +2262,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- Background wheel -->
+<div id="snow"></div>
 
     <!-- Center container with car button only -->
     <div class="center-container">
@@ -2689,6 +2699,17 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         controls.update(); // Smooth camera controls
         renderer.render(scene, camera);
     };
+</script>
+<script>
+  particlesJS("snow", {
+    "particles": {
+      "number": { "value": 200 },
+      "shape": { "type": "circle" },
+      "size": { "value": 3 },
+      "move": { "direction": "bottom", "speed": 2 },
+      "opacity": { "value": 0.7 }
+    }
+  });
 </script>
 
 <style>
