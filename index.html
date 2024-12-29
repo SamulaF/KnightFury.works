@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,7 +127,22 @@ h1, h2, h3, h4, h5, h6 {
 p, a {
     font-family: 'Nunito Sans', sans-serif;
 }
+    /* Snowflake styles */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: inherit !important;
+      font-size: 10px;
+      opacity: 0.7;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
 
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
 /* Button */
 .btn {
     background-color: #9400ff;
@@ -373,14 +387,6 @@ section button:hover {
 
 
 
-#snow {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
 
 
 
@@ -2262,7 +2268,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- Background wheel -->
-<div id="snow"></div>
 
     <!-- Center container with car button only -->
     <div class="center-container">
@@ -2306,6 +2311,9 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         <h2>About F1 in Schools</h2>
         <p>F1 in Schools is an international STEM competition for secondary school students (aged 11–19), in which groups of 3–6 students design and manufacture a miniature F1 car using CAD/CAM and CAE design tools.</p>
     </div>
+      <p>
+    <a href="https://www.sdavidprince.space">S David Prince</a> 🎄🎁🎉🥳
+  </p>
     <div class="about-img">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0LozHjr4qzW03RycGLZ-ttXDgJVb06lj02w&s" alt="F1 in Schools Image">
     </div>
@@ -2700,18 +2708,28 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         renderer.render(scene, camera);
     };
 </script>
-<script>
-  particlesJS("snow", {
-    "particles": {
-      "number": { "value": 200 },
-      "shape": { "type": "circle" },
-      "size": { "value": 3 },
-      "move": { "direction": "bottom", "speed": 2 },
-      "opacity": { "value": 0.7 }
-    }
-  });
-</script>
+  <script>
+    function createSnowflakes() {
+      const numFlakes = 50; 
+      const colors = ['#ffffff', '#d4f1f9', '#e8f8ff']; 
 
+      for (let i = 0; i < numFlakes; i++) {
+        const flake = document.createElement('div');
+        flake.classList.add('snowflake');
+        flake.innerHTML = '❄'; 
+        document.body.appendChild(flake);
+
+        const size = Math.random() * 10 + 10 + 'px';
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.fontSize = size;
+        flake.style.color = colors[Math.floor(Math.random() * colors.length)];
+        flake.style.animationDuration = Math.random() * 3 + 2 + 's';
+        flake.style.animationDelay = Math.random() * 5 + 's';
+      }
+    }
+
+    createSnowflakes();
+  </script>
 <style>
     /* Ensure mobile responsiveness */
     #3d-container {
