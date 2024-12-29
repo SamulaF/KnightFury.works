@@ -157,130 +157,7 @@ p, a {
 
 
 
- /* Base reset */
-.santa-wrapper * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
-/* Santa Wrapper */
-.santa-wrapper {
-  position: fixed;
-  bottom: 20px; /* Santa placed at the bottom */
-  right: 20px; /* Aligned to the right */
-  width: 150px;
-  height: 200px;
-  z-index: 9999;
-  cursor: pointer;
-}
-
-/* Santa Character */
-.santa-character {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* Santa's Face */
-.santa-face {
-  position: absolute;
-  top: 20px;
-  left: 35px;
-  width: 60px;
-  height: 60px;
-  background-color: #fad2af;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Santa's Hat */
-.santa-hat {
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  width: 70px;
-  height: 40px;
-  background-color: #e84701;
-  border-radius: 50% 50% 0 0;
-}
-.santa-hat:before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: 5px;
-  width: 15px;
-  height: 15px;
-  background-color: #ffffff;
-  border-radius: 50%;
-}
-
-/* Santa's Eyes */
-.santa-eyes {
-  position: absolute;
-  top: 25px;
-  left: 15px;
-  width: 10px;
-  height: 10px;
-  background-color: #000000;
-  border-radius: 50%;
-  box-shadow: 20px 0 0 #000000;
-}
-
-/* Santa's Beard */
-.santa-beard {
-  position: absolute;
-  bottom: -10px;
-  left: -5px;
-  width: 70px;
-  height: 40px;
-  background-color: #ffffff;
-  border-radius: 0 0 50% 50%;
-}
-
-/* Santa's Body */
-.santa-body {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100px;
-  height: 120px;
-  background-color: #e84701;
-  border-radius: 0 0 20px 20px;
-}
-
-/* Santa's Hands */
-.santa-hand-l {
-  position: absolute;
-  top: 90px;
-  left: -15px;
-  width: 20px;
-  height: 20px;
-  background-color: #fad2af;
-  border-radius: 50%;
-}
-
-.santa-hand-r {
-  position: absolute;
-  top: 90px;
-  right: -15px;
-  width: 20px;
-  height: 20px;
-  background-color: #fad2af;
-  border-radius: 50%;
-  animation: wave-hand 1.5s infinite;
-  transform-origin: top left;
-}
-
-@keyframes wave-hand {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(15deg);
-  }
-}
 
 
 
@@ -2416,19 +2293,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             <img src="KnightFury7.jpg" class="cycle-image" alt="Knight Fury 7">
             <img src="KnightFury8.jpg" class="cycle-image" alt="Knight Fury 8">
         </div>
-<div class="santa-wrapper" onmouseover="santaWave()" onmouseout="santaStopWaving()">
-  <div class="santa-character">
-    <div class="santa-hand-l"></div>
-    <div class="santa-hand-r"></div>
-    <div class="santa-hat"></div>
-    <div class="santa-face">
-      <div class="santa-beard"></div>
-      <div class="santa-eyes"></div>
     </div>
-    <div class="santa-body"></div>
-  </div>
-</div>
-
 </section>
 
 
@@ -2859,18 +2724,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         flake.style.animationDelay = Math.random() * 5 + 's';
       }
     }
-      function santaWave() {
-  // Start waving animation
-  const santaHandR = document.querySelector('.santa-hand-r');
-  santaHandR.style.animationPlayState = 'running';
-}
-
-function santaStopWaving() {
-  // Stop waving animation
-  const santaHandR = document.querySelector('.santa-hand-r');
-  santaHandR.style.animationPlayState = 'paused';
-}
-
 
     createSnowflakes();
   </script>
