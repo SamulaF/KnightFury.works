@@ -157,7 +157,130 @@ p, a {
 
 
 
+ /* Base reset */
+  .santa-peeking * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
 
+  /* Santa Section Container */
+  .santa-peeking {
+    position: fixed;
+    right: 0; /* Anchored to the right */
+    top: 50%; /* Centered vertically */
+    transform: translateY(-50%); /* Adjusted to center */
+    width: 200px; /* Width of Santa */
+    height: 220px; /* Height of Santa */
+    z-index: 9999; /* Make sure it's on top */
+  }
+
+  /* Santa Character */
+  .santa-character {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #e84701; /* Santa body color */
+    border-radius: 0 50% 50% 0; /* Rounded look peeking */
+  }
+
+  /* Santa's Face */
+  .santa-face {
+    position: absolute;
+    top: 30px;
+    right: -30px; /* Adjusted for peeking look */
+    width: 80px;
+    height: 80px;
+    background-color: #fad2af; /* Skin tone */
+    border: 4px solid #f2e6da;
+    border-radius: 50%; /* Circular face */
+  }
+
+  /* Santa's Hat */
+  .santa-hat {
+    position: absolute;
+    top: -20px;
+    right: -40px;
+    width: 50px;
+    height: 30px;
+    background-color: #e84701;
+    border-radius: 50% 50% 0 0;
+  }
+  .santa-hat:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    top: -10px;
+    right: 5px;
+  }
+
+  /* Santa's Beard */
+  .santa-beard {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 0 0 50% 50%;
+  }
+
+  /* Santa's Eyes */
+  .santa-eyes {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: #0078ca;
+    border-radius: 50%;
+    box-shadow: 15px 0 #0078ca; /* Second eye */
+  }
+
+  /* Santa's Hand */
+  .santa-hand-l {
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    width: 20px;
+    height: 20px;
+    background-color: #fad2af;
+    border-radius: 50%;
+  }
+
+  .santa-hand-r {
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    width: 20px;
+    height: 20px;
+    background-color: #fad2af;
+    border-radius: 50%;
+  }
+
+  /* Santa's Belt */
+  .santa-belt {
+    position: absolute;
+    bottom: 10px;
+    right: -10px;
+    width: 40px;
+    height: 10px;
+    background-color: #000000;
+  }
+
+  /* Santa's Shoe */
+  .santa-shoe {
+    position: absolute;
+    bottom: -5px;
+    right: -20px;
+    width: 15px;
+    height: 10px;
+    background-color: #000000;
+    border-radius: 0 0 50% 50%;
+  }
 
 
 
@@ -2268,7 +2391,20 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 <section id="home" class="home-section">
     <div id="wheel"></div> <!-- Background wheel -->
-
+<!-- Add this section to your website -->
+<div class="santa-peeking">
+  <div class="santa-character">
+    <div class="santa-hand-l"></div>
+    <div class="santa-hand-r"></div>
+    <div class="santa-hat"></div>
+    <div class="santa-face">
+      <div class="santa-beard"></div>
+      <div class="santa-eyes"></div>
+    </div>
+    <div class="santa-belt"></div>
+    <div class="santa-shoe"></div>
+  </div>
+</div>
     <!-- Center container with car button only -->
     <div class="center-container">
         <!-- Car Button Image as the 'Learn More' link -->
