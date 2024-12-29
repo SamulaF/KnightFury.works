@@ -464,101 +464,132 @@ section button:hover {
 }
 
 /* Scenery at the bottom of the team section */
+/* Scenery at the bottom of the team section */
 .scenery {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 200px; /* Adjust based on the desired height */
+    height: 250px; /* Increased for a more prominent effect */
     z-index: 2; /* Below content but above the background */
     overflow: hidden;
+    background: linear-gradient(to top, #3c3f41, #2b2d2e); /* Subtle gradient for better visuals */
+}
+
+/* Hills */
+.scenery .hill {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .scenery .hill span {
     position: absolute;
+    bottom: 0;
     width: 0;
     height: 0;
 }
 
 .scenery .hill span:nth-child(1) {
-    left: 30%;
-    border-left: 150px solid transparent;
-    border-right: 150px solid transparent;
+    left: 20%;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
     border-bottom: 150px solid #6c757d;
 }
 
 .scenery .hill span:nth-child(2) {
-    left: 60%;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 100px solid #868e96;
+    left: 50%;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 120px solid #868e96;
     z-index: 1;
 }
 
 .scenery .hill span:nth-child(3) {
-    left: 45%;
-    border-left: 200px solid transparent;
-    border-right: 200px solid transparent;
+    left: 70%;
+    border-left: 250px solid transparent;
+    border-right: 250px solid transparent;
     border-bottom: 200px solid #adb5bd;
+}
+
+/* Trees */
+.scenery .tree {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .scenery .tree span {
     position: absolute;
     width: 20px;
-    bottom: 0;
     background-color: #495057;
     z-index: 3;
+    bottom: 0;
 }
 
 .scenery .tree span:nth-child(1) {
     height: 100px;
-    left: 35%;
+    left: 15%;
 }
 
 .scenery .tree span:nth-child(2) {
     height: 150px;
-    left: 50%;
+    left: 40%;
 }
 
 .scenery .tree span:nth-child(3) {
     height: 75px;
-    left: 60%;
+    left: 65%;
 }
 
 .scenery .tree span:nth-child(4) {
     height: 120px;
-    left: 70%;
+    left: 85%;
 }
 
 .scenery .tree span::before,
 .scenery .tree span::after {
     content: "";
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-color: #6c757d;
-    z-index: 2;
 }
 
-.scenery .tree span:nth-child(1)::before {
-    bottom: 90px;
-    left: -40px;
-}
-
-.scenery .tree span:nth-child(2)::before {
-    bottom: 140px;
-    left: -50px;
-}
-
-.scenery .tree span:nth-child(3)::before {
-    bottom: 65px;
+.scenery .tree span::before {
+    bottom: 100%;
     left: -30px;
 }
 
-.scenery .tree span:nth-child(4)::before {
-    bottom: 110px;
-    left: -40px;
+.scenery .tree span::after {
+    bottom: 100%;
+    left: 10px;
 }
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .scenery {
+        height: 200px;
+    }
+
+    .scenery .hill span {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-bottom-width: 80px;
+    }
+
+    .scenery .tree span {
+        height: 50px;
+        width: 15px;
+    }
+
+    .scenery .tree span::before,
+    .scenery .tree span::after {
+        width: 50px;
+        height: 50px;
+    }
+}
+
 
 /* Responsiveness */
 @media (max-width: 768px) {
