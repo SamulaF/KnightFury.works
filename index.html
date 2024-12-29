@@ -1315,11 +1315,11 @@ nav a:hover {
     filter: brightness(0.9) contrast(1.1);
 }
 .penguin-container {
-  position: fixed;
-  bottom: 5%;
-  right: 5%;
-  z-index: 10; /* Ensures it appears above other content */
-  transform: scale(0.8); /* Adjust size to fit better if needed */
+    position: absolute; /* Matches the positioning style of #animated-images */
+    bottom: 150px; /* Adjust height to place it above #animated-images */
+    left: 10%; /* Align horizontally, similar to #animated-images */
+    z-index: 3; /* Ensure it stays above the #animated-images */
+    transform: scale(0.8); /* Adjust size for balance */
 }
 
 .head {
