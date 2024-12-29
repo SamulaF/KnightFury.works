@@ -400,6 +400,22 @@ section {
     overflow: hidden;
     animation: shadowPulse 3s infinite ease-in-out;
 }
+/* Mountains at the Bottom */
+section .mountains {
+    position: fixed; /* Ensure it stays fixed at the bottom */
+    bottom: 0;       /* Attach to the bottom of the viewport */
+    left: 0;
+    width: 100%;     /* Span the entire width of the screen */
+    height: 150px;
+    background: linear-gradient(
+        158deg,
+        rgba(190, 231, 232, 1) 0%,
+        rgba(255, 212, 201, 1) 55%
+    );
+    clip-path: polygon(0% 100%, 25% 50%, 50% 100%, 75% 50%, 100% 100%);
+    z-index: 0;       /* Ensure it's behind all other content */
+    pointer-events: none; /* Prevent interaction with the element */
+}
 
 /* Add Mountains at the Bottom of Sections */
 section .mountains-wrapper {
