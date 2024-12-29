@@ -1287,6 +1287,103 @@ nav a:hover {
     padding-top: 100px;
     filter: brightness(0.9) contrast(1.1);
 }
+.penguin-container {
+  position: fixed;
+  bottom: 20%;
+  right: 5%;
+  z-index: 10; /* Ensures it appears above other content */
+}
+
+.head {
+  background-color: black;
+  width: 270px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  position: absolute;
+  border-radius: 60% 55% 30% 30%;
+}
+
+.santa-hat {
+  background-color: #e60519;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+  height: 120px;
+  border-radius: 10% 60% 30% 30%;
+  top: -18%;
+  left: 5%;
+}
+
+.santa {
+  display: inline-block;
+  position: absolute;
+  top: -19%;
+  left: -10%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 2;
+  box-shadow: 5px 5px 40px #696969;
+}
+
+.head2 {
+  background-color: white;
+  width: 230px;
+  height: 260px;
+  top: 9%;
+  left: 8%;
+  display: inline-block;
+  position: absolute;
+  border-radius: 55% 55% 30% 30%;
+}
+
+.eye-left {
+  position: absolute;
+  background: black;
+  width: 10%;
+  height: 10%;
+  top: 35%;
+  left: 31%;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.eye-right {
+  position: absolute;
+  background: black;
+  width: 10%;
+  height: 10%;
+  top: 35%;
+  right: 31%;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.pupil {
+  position: absolute;
+  width: 38%;
+  height: 35%;
+  top: 35%;
+  left: 20%;
+  border-radius: 50%;
+  background: white;
+}
+
+.nose {
+  width: 55px;
+  height: 30px;
+  background-color: #feb236;
+  border-radius: 90% 90% 80% 90%;
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  z-index: 1;
+}
+
 
 @media (max-width: 768px) {
     .home-section {
@@ -2277,7 +2374,21 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             <span class="hover-text">Learn More</span>
         </a>
     </div>
-
+<div class="penguin-container">
+  <div class="head">
+    <div class="santa-hat">
+      <div class="santa"></div>
+    </div>
+    <div class="head2"></div>
+    <div class="eye-left">
+      <div class="pupil"></div>
+    </div>
+    <div class="eye-right">
+      <div class="pupil"></div>
+    </div>
+    <div class="nose"></div>
+  </div>
+</div>
     <!-- Right section with race flag and animated images -->
     <div class="right-section">
         <!-- Background flag image -->
