@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2375,12 +2372,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 <div id="intro-video-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: black;">
-    <video id="intro-video" autoplay muted style="width: 100%; height: 100%; object-fit: cover;">
-        <source src="knightfury7.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
+    <img src="knightfury88" alt="Knight Fury Intro" style="width: 100%; height: 100%; object-fit: cover;">
 </div>
 <header>
     <div class="logo-speedometer">
@@ -2758,34 +2750,48 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     setInterval(cycleImages, 400);
 </script>
 <script>
-    // Get references to the video and container elements
+    // Hide the intro container after 3 seconds (adjust the duration as needed)
+    setTimeout(() => {
+        const introContainer = document.getElementById('intro-video-container');
+        if (introContainer) {
+            introContainer.style.display = 'none';
+        }
+    }, 14000); // 3000 milliseconds = 3 seconds
+</script>
+
+<script>
+    // Video Playback Logic
     const video = document.getElementById('intro-video');
-    const container = document.getElementById('intro-video-container');
+    const videoContainer = document.getElementById('intro-video-container');
+
+    // Set the playback speed of the video (optional)
+    video.playbackRate = 1.0;
 
     // Ensure video plays on user interaction for mobile compatibility
     const ensurePlayback = () => {
-        video.play().catch(err => console.error("Playback error:", err));
-        document.body.style.overflow = 'hidden'; // Prevent scrolling during playback
-        container.removeEventListener('click', ensurePlayback); // Remove after first interaction
+        video.play().catch(err => console.error("Video playback failed:", err));
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        videoContainer.removeEventListener('click', ensurePlayback);
     };
 
-    // Ensure playback on first click for mobile devices
-    container.addEventListener('click', ensurePlayback);
+    // Add event listener to ensure playback starts on mobile
+    videoContainer.addEventListener('click', ensurePlayback);
 
-    // Stop looping when video ends and restore scrolling
+    // Detect when the video ends
     video.addEventListener('ended', () => {
-        document.body.style.overflow = 'auto'; // Enable scrolling after video ends
+        videoContainer.style.display = 'none'; // Hide video container
+        document.body.style.overflow = 'auto'; // Enable scrolling
     });
 
-    // Prevent body scrolling initially
+    // Prevent body scroll initially
     document.body.style.overflow = 'hidden';
+
+    // Debugging logs for mobile playback (optional)
+    video.addEventListener('play', () => console.log('Video is playing'));
+    video.addEventListener('pause', () => console.log('Video is paused'));
 </script>
 
-
 <script>
-    let container; // Declare once
-container = document.getElementById('3d-container'); // Reassign if needed
-
     // 3D Car Interaction Logic
     const container = document.getElementById('3d-container');
     const interactionButton = document.getElementById('interaction-button');
@@ -2866,7 +2872,28 @@ container = document.getElementById('3d-container'); // Reassign if needed
         renderer.render(scene, camera);
     };
 </script>
-  
+  <script>
+    function createSnowflakes() {
+      const numFlakes = 50; 
+      const colors = ['#ffffff', '#d4f1f9', '#e8f8ff']; 
+
+      for (let i = 0; i < numFlakes; i++) {
+        const flake = document.createElement('div');
+        flake.classList.add('snowflake');
+        flake.innerHTML = '❄'; 
+        document.body.appendChild(flake);
+
+        const size = Math.random() * 10 + 10 + 'px';
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.fontSize = size;
+        flake.style.color = colors[Math.floor(Math.random() * colors.length)];
+        flake.style.animationDuration = Math.random() * 3 + 2 + 's';
+        flake.style.animationDelay = Math.random() * 5 + 's';
+      }
+    }
+
+    createSnowflakes();
+  </script>
 <style>
     /* Ensure mobile responsiveness */
     #3d-container {
@@ -3041,6 +3068,37 @@ const animate = () => {
     });
 </script>
 
+<script>
+    // Get references to the video and container elements
+    const video = document.getElementById('intro-video');
+    const container = document.getElementById('intro-video-container');
+
+    // Set the playback speed of the video (optional)
+    video.playbackRate = 1.0;
+
+    // Add an event listener to detect when the video ends
+    video.addEventListener('ended', function () {
+        container.style.display = 'none'; // Hide the video container
+        document.body.style.overflow = 'auto'; // Enable scrolling on the website
+    });
+
+    // Ensure the video plays on user interaction for mobile compatibility
+    const ensurePlayback = () => {
+        video.play();
+        document.body.style.overflow = 'hidden'; // Prevent scrolling while playing
+        container.removeEventListener('click', ensurePlayback);
+    };
+
+    // Attach a click event to ensure video playback starts on mobile
+    container.addEventListener('click', ensurePlayback);
+
+    // Fallback to prevent scrolling in case the video fails to autoplay
+    document.body.style.overflow = 'hidden';
+
+    // Optional: Debugging logs to check mobile playback
+    video.addEventListener('play', () => console.log('Video is playing'));
+    video.addEventListener('pause', () => console.log('Video is paused'));
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
