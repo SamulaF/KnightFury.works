@@ -789,7 +789,7 @@ body, html {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-        /* Statue Container - Fixed to the Right */
+        /* Penguin Container - Fixed to the Right (Replacing Statue) */
         .statue-container {
             position: fixed;
             top: 0;
@@ -804,6 +804,14 @@ body, html {
             transition: filter 0.5s ease-out, opacity 0.5s ease-out;
         }
 
+        .penguin-container {
+            height: 100vh;
+            max-width: 28vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.8);
+        }
         /* The Engraved Statue */
         .statue-container img {
             height: 100vh;
@@ -2417,11 +2425,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 </head>
 <body>
 
-    <!-- Statue on the Right Side -->
-    <div class="statue-container">
-        <img src="Man.png" alt="Statue" id="statue">
-    </div>
-
+ 
 
 
 
@@ -2476,55 +2480,55 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     </nav>
 </header>
 
+    <!-- Penguin on the Right Side (Replacing the Statue) -->
+    <div class="statue-container">
+        <div class="penguin-container">
+            <div class="head">
+                <div class="santa-hat">
+                    <div class="santa"></div>
+                </div>
+                <div class="head2"></div>
+                <div class="eye-left">
+                    <div class="pupil"></div>
+                </div>
+                <div class="eye-right">
+                    <div class="pupil"></div>
+                </div>
+                <div class="nose"></div>
+            </div>
+        </div>
+    </div>
+    
 
 
+    <section id="home" class="home-section">
+        <div id="wheel"></div> <!-- Background wheel -->
 
-<section id="home" class="home-section">
-    <div id="wheel"></div> <!-- Background wheel -->
-
-    <!-- Center container with car button only -->
-    <div class="center-container">
-        <!-- Car Button Image as the 'Learn More' link -->
-        <a href="https://www.f1inschools.com" target="_blank" class="learn-more-car">
-            <img src="kisspng-formula-1-wall-decal-sticker-auto-racing-stickers-f1-stylized-art-stick-5bacf597360349.0323012515380617192212.png" alt="Learn More Car">
-            <span class="hover-text">Learn More</span>
-        </a>
-    </div>
-<div class="penguin-container">
-  <div class="head">
-    <div class="santa-hat">
-      <div class="santa"></div>
-    </div>
-    <div class="head2"></div>
-    <div class="eye-left">
-      <div class="pupil"></div>
-    </div>
-    <div class="eye-right">
-      <div class="pupil"></div>
-    </div>
-    <div class="nose"></div>
-  </div>
-</div>
-    <!-- Right section with race flag and animated images -->
-    <div class="right-section">
-        <!-- Background flag image -->
+        <!-- Center container with car button only -->
+        <div class="center-container">
+            <!-- Car Button Image as the 'Learn More' link -->
+            <a href="https://www.f1inschools.com" target="_blank" class="learn-more-car">
+                <img src="kisspng-formula-1-wall-decal-sticker-auto-racing-stickers-f1-stylized-art-stick-5bacf597360349.0323012515380617192212.png" alt="Learn More Car">
+                <span class="hover-text">Learn More</span>
+            </a>
+        </div>
         
-        <!-- Animated images positioned as part of the flag/car overlay -->
-        <div id="animated-images">
-            <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
-            <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
-            <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
-            <img src="KnightFury4.jpg" class="cycle-image" alt="Knight Fury 4">
-            <img src="KnightFury5.jpg" class="cycle-image" alt="Knight Fury 5">
-            <img src="KnightFury6.jpg" class="cycle-image" alt="Knight Fury 6">
-            <img src="KnightFury7.jpg" class="cycle-image" alt="Knight Fury 7">
-            <img src="KnightFury8.jpg" class="cycle-image" alt="Knight Fury 8">
+        <!-- Right section with race flag and animated images -->
+        <div class="right-section">
+            <div id="animated-images">
+                <img src="KnightFury1.jpg" class="cycle-image" alt="Knight Fury 1">
+                <img src="KnightFury2.jpg" class="cycle-image" alt="Knight Fury 2">
+                <img src="KnightFury3.jpg" class="cycle-image" alt="Knight Fury 3">
+                <img src="KnightFury4.jpg" class="cycle-image" alt="Knight Fury 4">
+                <img src="KnightFury5.jpg" class="cycle-image" alt="Knight Fury 5">
+                <img src="KnightFury6.jpg" class="cycle-image" alt="Knight Fury 6">
+                <img src="KnightFury7.jpg" class="cycle-image" alt="Knight Fury 7">
+                <img src="KnightFury8.jpg" class="cycle-image" alt="Knight Fury 8">
+            </div>
+            <div class="mountains"></div>
         </div>
-        <div class="mountains">
-        </div>
-    </div>
-</section>
-
+    </section>
+    
 
 
 
