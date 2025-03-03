@@ -182,9 +182,18 @@ body {
     bottom: 0; /* Ensures it stays at the bottom */
     left: 5%; /* Adjust for alignment */
     z-index: 5; /* Keeps it visible */
-    height: 600px; /* Ensures the exact height */
+    height: 800px; /* Ensures the exact height */
     width: auto; /* Maintains aspect ratio */
     pointer-events: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+    
+    /* Gradient Overlay */
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    padding-right: 20px; /* Adds spacing from the edge */
+}
 }
 
 /* Statue Image - Proper Sizing */
@@ -194,6 +203,9 @@ body {
     object-fit: contain;
     filter: drop-shadow(-15px 5px 20px rgba(0, 0, 0, 1)); /* Stronger shadow */
     opacity: 1;
+        filter: drop-shadow(-10px 0px 10px rgba(0, 0, 0, 0.7)); /* Deep shadow */
+    opacity: 0.8; /* Starts slightly faded */
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 /* Engraving Effect - Extra Depth */
