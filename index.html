@@ -248,7 +248,7 @@ section::before {
     pointer-events: none; /* Prevent interaction */
 }
 
-/* Beautiful Holiday-Themed Mountains */
+/* Warm-Toned Grunge Mountains */
 section .mountains {
     position: absolute;
     bottom: 0;
@@ -257,15 +257,24 @@ section .mountains {
     height: 200px;
     background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.9) 0%,
-        rgba(200, 230, 255, 0.8) 50%,
-        rgba(150, 200, 255, 0.7) 100%
+        rgba(90, 60, 30, 0.9) 0%,
+        rgba(140, 100, 50, 0.8) 50%,
+        rgba(180, 140, 80, 0.7) 100%
     );
-    clip-path: polygon(0% 100%, 15% 60%, 30% 90%, 50% 50%, 70% 90%, 85% 60%, 100% 100%);
+    clip-path: polygon(0% 100%, 10% 70%, 25% 85%, 40% 60%, 60% 75%, 75% 55%, 90% 80%, 100% 100%);
     z-index: 2;
-    box-shadow: 0px -5px 15px rgba(255, 255, 255, 0.5);
-    animation: snowfall 10s infinite linear;
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.5);
+    filter: contrast(1.2) brightness(0.9);
+    opacity: 0.95;
+    animation: dust-wave 5s infinite ease-in-out alternate;
 }
+
+/* Subtle Dusty Animation */
+@keyframes dust-wave {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-5px); }
+}
+
 
 /* Text Styling (Relative to Animated Glow) */
 section h1, section p {
