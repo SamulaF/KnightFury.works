@@ -176,26 +176,26 @@ body {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-/* Statue Container - Proper Grounding */
+/* Statue Container - Enlarged to Wheel Size */
 .statue-container {
     position: absolute;
-    bottom: 20px; /* Adjusted to sit on the ground */
-    left: 8%; /* Centered slightly under the wheel */
-    z-index: 4; /* Keeps it above the background */
-    transform: scale(1.4); /* Adjusted to be slightly smaller than the wheel */
+    bottom: 20px; /* Keeps it grounded */
+    left: 8%; /* Perfect placement under the wheel */
+    z-index: 4; /* Ensures visibility */
+    transform: scale(2); /* Increased to match the wheel size */
     pointer-events: none;
 }
 
-/* Statue Image - Correct Sizing */
+/* Statue Image - Bigger & Balanced */
 .statue-container img {
     height: auto;
-    max-height: 65vh; /* Large but controlled */
-    max-width: 20vw; /* Adjusted width for balance */
+    max-height: 80vh; /* Now as tall as the wheel */
+    max-width: 25vw; /* Wider to keep proportions */
     object-fit: contain;
     filter: drop-shadow(-12px 0px 12px rgba(0, 0, 0, 0.8)); /* Deep shadow */
     opacity: 1;
 }
-k
+
 
 /* Engraving Effect - Extra Depth */
 .statue-engraved {
