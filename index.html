@@ -1769,7 +1769,6 @@ header {
 
 
         
-       /* Ensuring .about-section stays separate */
 .about-container {
     display: flex;
     justify-content: center;
@@ -1781,45 +1780,46 @@ header {
     background: url('https://www.aramcolife.com/-/media/aramco-life/publications/the-arabian-sun/articles/2021/week-24/f1-in-schools/20210609-f1-in-schools-main.jpg') 
                 no-repeat center center;
     background-size: cover;
-    position: relative; /* Keeps effects inside */
+    position: relative;
     
-    padding: 60px 20px;
-    color: white;
-    border-radius: 20px;
-    margin: 20px;
+    padding: 50px 20px;
+    color: black; /* Default text color */
+    border-radius: 10px;
+    margin: 20px auto;
     
-    /* Glassmorphism Effect */
-    background-color: rgba(49, 1, 77, 0.85); 
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 10px rgba(102, 6, 121, 0.5);
-    
-    /* Ensuring no interference from other sections */
+    /* Removed overlay, blur, and extra effects */
+    background-color: transparent; 
+    box-shadow: none;
     max-width: 1000px;
-    transition: transform 0.6s ease;
+    
+    /* Subtle hover effect */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .about-section:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Light shadow on hover */
 }
 
-/* Left-Aligned Text */
+/* Standard Left-Aligned Text */
 .about-text {
     text-align: left;
     font-size: 1rem;
     line-height: 1.5;
     max-width: 600px;
+    color: black; /* Ensuring text is normal */
 }
 
-/* Image Styling */
+/* Image Styling - Hover Stays */
 .about-img img {
     max-width: 100%;
-    border-radius: 12px;
+    border-radius: 10px;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .about-img img:hover {
-    transform: scale(1.08);
-    filter: brightness(1.2);
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
 
