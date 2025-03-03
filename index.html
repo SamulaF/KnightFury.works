@@ -281,14 +281,6 @@ section button:hover {
     }
 }
 
-@keyframes snowfall {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 200px;
-    }
-}
 
 @keyframes fadeInText {
     from {
@@ -2882,28 +2874,7 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         renderer.render(scene, camera);
     };
 </script>
-  <script>
-    function createSnowflakes() {
-      const numFlakes = 50; 
-      const colors = ['#ffffff', '#d4f1f9', '#e8f8ff']; 
-
-      for (let i = 0; i < numFlakes; i++) {
-        const flake = document.createElement('div');
-        flake.classList.add('snowflake');
-        flake.innerHTML = '❄'; 
-        document.body.appendChild(flake);
-
-        const size = Math.random() * 10 + 10 + 'px';
-        flake.style.left = Math.random() * 100 + 'vw';
-        flake.style.fontSize = size;
-        flake.style.color = colors[Math.floor(Math.random() * colors.length)];
-        flake.style.animationDuration = Math.random() * 3 + 2 + 's';
-        flake.style.animationDelay = Math.random() * 5 + 's';
-      }
-    }
-
-    createSnowflakes();
-  </script>
+ 
 <style>
     /* Ensure mobile responsiveness */
     #3d-container {
