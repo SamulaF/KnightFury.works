@@ -176,41 +176,37 @@ body {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-        /* Statue Container - Fixed to the Right */
-        .statue-container {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100vh;
-            width: auto;
-            z-index: 999;
-            pointer-events: none;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            transition: filter 0.5s ease-out, opacity 0.5s ease-out;
-        }
+/* Statue - Positioned Like Penguin */
+.statue-container {
+    position: absolute; /* Matches the positioning style of #animated-images */
+    bottom: 150px; /* Adjust height to place it above #animated-images */
+    left: 10%; /* Align horizontally, similar to #animated-images */
+    z-index: 3; /* Ensure it stays above the #animated-images */
+    transform: scale(0.8); /* Adjust size for balance */
+    pointer-events: none; /* Avoid interaction issues */
+}
 
-        /* The Engraved Statue */
-        .statue-container img {
-            height: 100vh;
-            max-width: 28vw;
-            object-fit: cover;
-            filter: drop-shadow(-10px 0px 10px rgba(0, 0, 0, 0.7)); /* Deep shadow */
-            opacity: 0.8; /* Starts slightly faded */
-            transition: opacity 0.3s ease, filter 0.3s ease;
-        }
+/* The Engraved Statue */
+.statue-container img {
+    height: auto; /* Allow flexibility */
+    max-height: 80vh; /* Prevent it from being too large */
+    max-width: 20vw; /* Adjust width for balance */
+    object-fit: contain;
+    filter: drop-shadow(-10px 0px 10px rgba(0, 0, 0, 0.7)); /* Deep shadow */
+    opacity: 0.8; /* Starts slightly faded */
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
 
-        /* Engraving Effect - Shadow Changes on Scroll */
-        .statue-engraved {
-            filter: drop-shadow(-15px 0px 20px rgba(0, 0, 0, 1)) grayscale(40%);
-            opacity: 1 !important;
-        }
+/* Engraving Effect - Shadow Changes on Scroll */
+.statue-engraved {
+    filter: drop-shadow(-15px 0px 20px rgba(0, 0, 0, 1)) grayscale(40%);
+    opacity: 1 !important;
+}
 
-        /* Content Sections */
-        .content {
-            padding: 20px;
-        }
+/* Content Sections */
+.content {
+    padding: 20px;
+}
 
 /* Floating Shadow Elements for Extra Flair */
 section::after {
@@ -1427,13 +1423,7 @@ nav a:hover {
     padding-top: 100px;
     filter: brightness(0.9) contrast(1.1);
 }
-.penguin-container {
-    position: absolute; /* Matches the positioning style of #animated-images */
-    bottom: 150px; /* Adjust height to place it above #animated-images */
-    left: 10%; /* Align horizontally, similar to #animated-images */
-    z-index: 3; /* Ensure it stays above the #animated-images */
-    transform: scale(0.8); /* Adjust size for balance */
-}
+
 
 .head {
   background-color: black;
@@ -2455,10 +2445,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     </style>
 </head>
 <body>
-
-    <div class="statue-container">
-        <img src="Man.png" alt="Statue">
-    </div>
 
 
 
