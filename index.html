@@ -167,6 +167,22 @@ section {
     overflow: hidden;
     animation: shadowPulse 3s infinite ease-in-out;
 }
+.statue-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.statue-container img {
+    max-height: 100%;
+    width: auto;
+    filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+}
+
 
 /* Floating Shadow Elements for Extra Flair */
 section::after {
@@ -2428,6 +2444,10 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 <section id="home" class="home-section">
+    <div class="statue-container">
+    <img src="Man.png" alt="Statue">
+</div>
+
     <div id="wheel"></div> <!-- Background wheel -->
 
     <!-- Center container with car button only -->
