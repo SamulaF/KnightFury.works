@@ -244,19 +244,31 @@ body {
     pointer-events: none;
 }
 
-/* Statue Image - Themed Coloring */
+/* Statue Image - Enhanced Aesthetics */
 .statue-container img {
     height: 100%;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(-15px 5px 20px rgba(0, 0, 0, 1)) 
-            grayscale(30%) 
-            sepia(50%) 
-            hue-rotate(270deg) 
-            brightness(90%) 
-            contrast(110%);
+    
+    /* Cleaner, more dynamic shadow */
+    filter: drop-shadow(-10px 10px 25px rgba(0, 0, 0, 0.8)) 
+            grayscale(20%) 
+            contrast(105%) 
+            brightness(95%);
+    
     opacity: 1;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
+
+/* Hover Effect - A Subtle Lift & Glow */
+.statue-container img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(-12px 12px 30px rgba(0, 0, 0, 0.9)) 
+            grayscale(0%) 
+            contrast(115%) 
+            brightness(100%);
+}
+
 
 
 /* Engraving Effect - Extra Depth */
