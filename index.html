@@ -1773,38 +1773,59 @@ header {
 
 
         
-        .about-section {
-            background: url('https://www.aramcolife.com/-/media/aramco-life/publications/the-arabian-sun/articles/2021/week-24/f1-in-schools/20210609-f1-in-schools-main.jpg') no-repeat center center;
-            background-size: cover;
-            padding: 90px 20px;
-            color: white; /* Optional for contrast */
-            background-color: rgba(49, 1, 77, 0.8); /* Glassmorphism effect */
-            backdrop-filter: blur(8px);
-            padding: 60px;
-            border-radius: 20px;
-            margin: 20px;
-            box-shadow: 0 4px 10px rgba(102, 6, 121, 0.5);
-            transition: transform 0.8s ease;
-        }
+       /* Ensuring .about-section stays separate */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
-        .about-section:hover {
-            transform: translateY(-10px);
-        }
+.about-section {
+    background: url('https://www.aramcolife.com/-/media/aramco-life/publications/the-arabian-sun/articles/2021/week-24/f1-in-schools/20210609-f1-in-schools-main.jpg') 
+                no-repeat center center;
+    background-size: cover;
+    position: relative; /* Keeps effects inside */
+    
+    padding: 60px 20px;
+    color: white;
+    border-radius: 20px;
+    margin: 20px;
+    
+    /* Glassmorphism Effect */
+    background-color: rgba(49, 1, 77, 0.85); 
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 10px rgba(102, 6, 121, 0.5);
+    
+    /* Ensuring no interference from other sections */
+    max-width: 1000px;
+    transition: transform 0.6s ease;
+}
 
-        .about-text {
-            text-align: left;
-        }
+.about-section:hover {
+    transform: translateY(-8px);
+}
 
-        .about-img img {
-            max-width: 100%;
-            border-radius: 10px;
-            transition: transform 0.4s ease, filter 0.4s ease;
-        }
+/* Left-Aligned Text */
+.about-text {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 600px;
+}
 
-        .about-img img:hover {
-            transform: scale(1.1);
-            filter: brightness(1.3);
-        }
+/* Image Styling */
+.about-img img {
+    max-width: 100%;
+    border-radius: 12px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.about-img img:hover {
+    transform: scale(1.08);
+    filter: brightness(1.2);
+}
+
 
         .team-section img {
             background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0WBCYzE5EVPSRhEzpI0MmaBpiRYbRQ4WXhQ&s') no-repeat center center;
