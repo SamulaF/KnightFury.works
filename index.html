@@ -160,16 +160,17 @@ p, a {
 
 /* General styling for content sections */
 .section {
-    min-height: 100vh; /* Ensures each section covers full screen height */
+    min-height: 100vh; /* Full screen height */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
     color: white;
     font-family: Arial, sans-serif;
+    position: relative;
 }
 
-/* Different colors for visibility */
+/* Different background shades for alternating sections */
 .section:nth-child(odd) {
     background: rgba(0, 0, 0, 0.7);
 }
@@ -177,11 +178,26 @@ p, a {
     background: rgba(100, 100, 100, 0.7);
 }
 
+/* Background Fade Effect */
+.section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
 
+/* Keeps content above fade effect */
+.section * {
+    position: relative;
+    z-index: 2;
+}
 
-
-        
-/* Updated Section Styles with Shadow Animation */
+/* Section Styling */
 section {
     padding: 100px 30px 80px;
     text-align: center;
@@ -202,7 +218,7 @@ section {
     animation: shadowPulse 3s infinite ease-in-out;
 }
 
-/* Floating Shadow Elements for Extra Flair */
+/* Floating Shadow Elements */
 section::after {
     content: '';
     position: absolute;
@@ -219,50 +235,8 @@ section::after {
     pointer-events: none;
     transform: translate(-50%, -50%);
 }
-/* Floating Glow Animation */
-@keyframes floatGlow {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-}
-/* Animated Wave Background Overlay */
-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 150%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-    opacity: 0.3;
-    animation: wave 8s infinite linear;
-    z-index: 0;
-    pointer-events: none; /* Prevent interaction */
-}
 
-/* Beautiful Holiday-Themed Mountains */
-section .mountains {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.9) 0%,
-        rgba(200, 230, 255, 0.8) 50%,
-        rgba(150, 200, 255, 0.7) 100%
-    );
-    clip-path: polygon(0% 100%, 15% 60%, 30% 90%, 50% 50%, 70% 90%, 85% 60%, 100% 100%);
-    z-index: 2;
-    box-shadow: 0px -5px 15px rgba(255, 255, 255, 0.5);
-    animation: snowfall 10s infinite linear;
-}
-
-/* Text Styling (Relative to Animated Glow) */
+/* Text Styling */
 section h1, section p {
     position: relative;
     z-index: 3;
@@ -283,11 +257,11 @@ section p {
     font-size: 1.3rem;
     line-height: 2;
     margin-bottom: 30px;
-    color: rgba(255, 255, 255, 0.9); /* Increased opacity for better visibility */
+    color: rgba(255, 255, 255, 0.9);
     animation: fadeInText 2.5s ease-in-out;
 }
 
-/* Buttons */
+/* Button Styles */
 section button {
     padding: 15px 30px;
     background: linear-gradient(90deg, #ff0040, #ff8008, #ffc837);
@@ -306,102 +280,12 @@ section button:hover {
 }
 
 /* Animations */
-@keyframes wave {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(-360deg); /* Counter-clockwise */
-    }
-}
-
-@keyframes snowfall {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 200px;
-    }
-}
-
-@keyframes fadeInText {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    section h1 {
-        font-size: 2rem;
-    }
-    section p {
-        font-size: 1rem;
-    }
-    section {
-        padding: 80px 15px;
-    }
-}
-
-
-section h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    background: linear-gradient(90deg, #ff8008, #ffc837, #ff0040);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: fadeInText 2s ease-in-out;
-}
-
-section p {
-    font-size: 1.3rem;
-    line-height: 2;
-    margin-bottom: 30px;
-    color: rgba(255, 255, 255, 0.9); /* Increased opacity for better visibility */
-    animation: fadeInText 2.5s ease-in-out;
-}
-
-/* Buttons */
-section button {
-    padding: 15px 30px;
-    background: linear-gradient(90deg, #ff0040, #ff8008, #ffc837);
-    border: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    color: #fff;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-section button:hover {
-    background: linear-gradient(90deg, #ffc837, #ff0040);
-    transform: scale(1.1);
-}
-
-/* Animations */
-@keyframes wave {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(-360deg); /* Counter-clockwise */
-    }
-}
-
 @keyframes floatGlow {
     0%, 100% {
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        transform: translate(-50%, -50%) scale(1);
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.2) rotate(-180deg); /* Counter-clockwise */
+        transform: translate(-50%, -50%) scale(1.2);
     }
 }
 
