@@ -167,6 +167,50 @@ section {
     overflow: hidden;
     animation: shadowPulse 3s infinite ease-in-out;
 }
+body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #30023b57;
+            color: white;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+
+        /* Statue Container - Fixed to the Right */
+        .statue-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: auto;
+            z-index: 999;
+            pointer-events: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+        }
+
+        /* The Engraved Statue */
+        .statue-container img {
+            height: 100vh;
+            max-width: 28vw;
+            object-fit: cover;
+            filter: drop-shadow(-10px 0px 10px rgba(0, 0, 0, 0.7)); /* Deep shadow */
+            opacity: 0.8; /* Starts slightly faded */
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        /* Engraving Effect - Shadow Changes on Scroll */
+        .statue-engraved {
+            filter: drop-shadow(-15px 0px 20px rgba(0, 0, 0, 1)) grayscale(40%);
+            opacity: 1 !important;
+        }
+
+        /* Content Sections */
+        .content {
+            padding: 20px;
+        }
 
 /* Floating Shadow Elements for Extra Flair */
 section::after {
