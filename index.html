@@ -780,60 +780,64 @@ body, html {
         margin: 5px;
     }
 }
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background-color: #30023b57;
-            color: white;
-            font-family: 'Nunito Sans', sans-serif;
-        }
+ body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #30023b; /* Stronger, serious background */
+    color: white;
+    font-family: 'Nunito Sans', sans-serif;
+}
 
- /* 🌟 Statue Container - Monumental and Grounded */
+/* 🏛️ Statue Container - Grounded and Serious */
 .statue-container {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    height: 90vh;
+    height: 85vh; /* Properly scaled */
     width: auto;
     z-index: 5;
     pointer-events: none;
-    transition: filter 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease;
+    transition: opacity 0.5s ease-out, transform 0.5s ease;
 }
 
-/* 🌌 Statue Image - A Glowing & Deep Engraved Look */
+/* 🗿 Statue Image - Serious, No Glow, Deeply Engraved */
 .statue-container img {
     height: 100%;
-    max-width: 30vw;
+    max-width: 28vw;
     object-fit: contain;
-    filter: drop-shadow(0px 15px 40px rgba(255, 223, 186, 0.8)) 
-            drop-shadow(0px -10px 30px rgba(48, 2, 59, 0.9));
-    opacity: 0.9;
+    filter: grayscale(85%) contrast(1.3); /* More stone-like */
+    opacity: 1;
     transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
 }
 
-/* 🏛️ Engraving Effect - Activated on Scroll */
+/* 🏗️ Slight Engraving Effect (Subtle) */
 .statue-engraved {
-    filter: drop-shadow(0px 30px 50px rgba(0, 0, 0, 1)) 
-            grayscale(50%) 
-            contrast(1.2);
+    filter: grayscale(90%) contrast(1.5) brightness(0.9);
     opacity: 1 !important;
     transform: scale(1.02);
 }
 
-        /* Responsive adjustments */
-        @media screen and (max-width: 768px) {
-            .statue-container img {
-                max-width: 40vw;
-            }
-        }
+/* 📱 Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .statue-container {
+        height: 70vh;
+    }
+    .statue-container img {
+        max-width: 40vw;
+    }
+}
 
-        @media screen and (max-width: 480px) {
-            .statue-container img {
-                max-width: 50vw;
-            }
-        }
+@media screen and (max-width: 480px) {
+    .statue-container {
+        height: 60vh;
+    }
+    .statue-container img {
+        max-width: 50vw;
+    }
+}
+
         .btn {
             background-color: #9400ff;
             color: #ffffff;
@@ -2414,11 +2418,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 </head>
 <body>
 
-    <!-- Statue on the Right Side -->
-    <div class="statue-container">
-        <img src="Man.png" alt="Statue" id="statue">
-    </div>
-
 
 
 
@@ -3257,17 +3256,6 @@ document.addEventListener('scroll', () => {
     });
 });
 
-
-window.addEventListener("scroll", function() {
-    let statue = document.getElementById("statue");
-    let scrollPos = window.scrollY;
-
-    if (scrollPos > 70) {  // Deepens effect smoothly
-        statue.classList.add("statue-engraved");
-    } else {
-        statue.classList.remove("statue-engraved");
-    }
-});
 
 
 </script>
