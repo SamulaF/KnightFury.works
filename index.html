@@ -327,9 +327,11 @@ section::before {
 section .mountains {
     position: absolute;
     bottom: -15px; /* Slightly buried */
-    left: -5%;
-    width: 110%;
+    left: 0;
+    width: 100%;
     height: 220px;
+    
+    /* Gradient for depth */
     background: linear-gradient(
         180deg,
         rgba(80, 50, 30, 0.95) 0%,
@@ -337,14 +339,23 @@ section .mountains {
         rgba(160, 120, 70, 0.8) 70%,
         rgba(190, 150, 90, 0.75) 100%
     );
+
+    /* Mountain Shape */
     clip-path: polygon(0% 100%, 8% 90%, 18% 92%, 28% 85%, 40% 87%, 55% 75%, 70% 80%, 82% 65%, 95% 78%, 100% 100%);
-    transform: skewX(-3deg) rotate(-4deg); /* Subtle, realistic tilt */
+    
+    /* Removed Tilt */
+    transform: none;
+
+    /* Depth & Visual Refinement */
     z-index: 2;
-    box-shadow: -15px -10px 30px rgba(0, 0, 0, 0.6);
-    filter: contrast(1.3) brightness(0.9);
+    box-shadow: -10px -5px 20px rgba(0, 0, 0, 0.5);
+    filter: contrast(1.2) brightness(0.92);
     opacity: 0.95;
+
+    /* Soft Wavy Animation */
     animation: soft-dust-wave 6s infinite ease-in-out alternate;
 }
+
 
 /* Soft Settling Dust Effect */
 @keyframes soft-dust-wave {
