@@ -789,46 +789,15 @@ body, html {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-        /* Statue Container - Fixed to the Right */
-        .statue-container {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100vh;
-            width: auto;
-            z-index: 999;
-            pointer-events: none;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            transition: filter 0.5s ease-out, opacity 0.5s ease-out;
-        }
-
-        /* The Engraved Statue */
-        .statue-container img {
-            height: 100vh;
-            max-width: 28vw;
-            object-fit: cover;
-            filter: drop-shadow(-10px 0px 10px rgba(0, 0, 0, 0.7)); /* Deep shadow */
-            opacity: 0.8; /* Starts slightly faded */
-            transition: opacity 0.3s ease, filter 0.3s ease;
-        }
-
-        /* Engraving Effect - Shadow Changes on Scroll */
-        .statue-engraved {
-            filter: drop-shadow(-15px 0px 20px rgba(0, 0, 0, 1)) grayscale(40%);
-            opacity: 1 !important;
-        }
-
- /* 🌟 Statue Container - Monumental and Centered */
+ /* 🌟 Statue Container - Monumental and Grounded */
 .statue-container {
-    position: fixed;
-    top: 50%;
+    position: absolute;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
-    height: 85vh; /* Balanced height */
+    transform: translateX(-50%);
+    height: 90vh;
     width: auto;
-    z-index: 999;
+    z-index: 5;
     pointer-events: none;
     transition: filter 0.5s ease-out, opacity 0.5s ease-out, transform 0.5s ease;
 }
@@ -836,11 +805,11 @@ body, html {
 /* 🌌 Statue Image - A Glowing & Deep Engraved Look */
 .statue-container img {
     height: 100%;
-    max-width: 35vw;
+    max-width: 30vw;
     object-fit: contain;
-    filter: drop-shadow(0px 20px 40px rgba(255, 223, 186, 0.8)) 
+    filter: drop-shadow(0px 15px 40px rgba(255, 223, 186, 0.8)) 
             drop-shadow(0px -10px 30px rgba(48, 2, 59, 0.9));
-    opacity: 0.85;
+    opacity: 0.9;
     transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
 }
 
@@ -851,17 +820,6 @@ body, html {
             contrast(1.2);
     opacity: 1 !important;
     transform: scale(1.02);
-}
-
-/* 🔥 Soft Golden Glow Effect */
-@keyframes statueGlow {
-    0% { filter: drop-shadow(0px 15px 30px rgba(255, 223, 186, 0.6)); }
-    50% { filter: drop-shadow(0px 18px 35px rgba(255, 223, 186, 0.8)); }
-    100% { filter: drop-shadow(0px 15px 30px rgba(255, 223, 186, 0.6)); }
-}
-
-.statue-container img:hover {
-    animation: statueGlow 2s infinite alternate ease-in-out;
 }
 
         /* Responsive adjustments */
@@ -2547,6 +2505,11 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     <!-- Right section with race flag and animated images -->
     <div class="right-section">
         <!-- Background flag image -->
+        
+    <!-- 🏛️ The Serious Statue (Properly Integrated) -->
+    <div class="statue-container">
+        <img id="statue" src="image.png" alt="Engraved Statue">
+    </div>
         
         <!-- Animated images positioned as part of the flag/car overlay -->
         <div id="animated-images">
