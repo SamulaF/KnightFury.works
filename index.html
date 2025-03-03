@@ -187,14 +187,20 @@ body {
     pointer-events: none;
 }
 
-/* Statue Image - Proper Sizing */
+/* Statue Image - Themed Coloring */
 .statue-container img {
-    height: 100%; /* Makes it fill the container */
-    width: auto; /* Keeps aspect ratio */
+    height: 100%;
+    width: auto;
     object-fit: contain;
-    filter: drop-shadow(-15px 5px 20px rgba(0, 0, 0, 1)); /* Stronger shadow */
+    filter: drop-shadow(-15px 5px 20px rgba(0, 0, 0, 1)) 
+            grayscale(30%) 
+            sepia(50%) 
+            hue-rotate(270deg) 
+            brightness(90%) 
+            contrast(110%);
     opacity: 1;
 }
+
 
 /* Engraving Effect - Extra Depth */
 .statue-engraved {
