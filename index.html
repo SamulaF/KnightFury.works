@@ -147,26 +147,42 @@ p, a {
 
 
         
-/* Updated Section Styles with Shadow Animation */
+/* Updated Section Styles with Themed Colors */
 section {
     padding: 100px 30px 80px;
     text-align: center;
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s ease, transform 1s ease, filter 0.8s ease;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+    
+    background: linear-gradient(to bottom, rgba(255, 153, 51, 0.8), rgba(15, 15, 50, 0.9)), 
                 url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') 
                 no-repeat center center;
     background-size: cover;
-    color: #fff;
+    
+    color: #d4d4d4; /* Light Iron Gray for text */
     position: relative;
-    filter: brightness(0.8) contrast(1.2) saturate(1.1);
+    filter: brightness(0.9) contrast(1.2) saturate(1.15);
     border-radius: 20px;
     margin: 50px 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(15, 15, 50, 0.6); /* Deep Blue Shadow */
     overflow: hidden;
     animation: shadowPulse 3s infinite ease-in-out;
 }
+
+/* Animated Shadow Effect */
+@keyframes shadowPulse {
+    0% {
+        box-shadow: 0 10px 30px rgba(15, 15, 50, 0.6);
+    }
+    50% {
+        box-shadow: 0 15px 40px rgba(255, 153, 51, 0.5); /* Saffron Highlight */
+    }
+    100% {
+        box-shadow: 0 10px 30px rgba(15, 15, 50, 0.6);
+    }
+}
+
 body {
             margin: 0;
             padding: 0;
