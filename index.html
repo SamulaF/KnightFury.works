@@ -176,26 +176,26 @@ body {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-/* Statue Container - Replacing Penguin */
+/* Statue Container - Proper Grounding */
 .statue-container {
-    position: absolute; /* Matches the positioning style of #animated-images */
-    bottom: 150px; /* Same as penguin */
-    left: 10%; /* Align horizontally, just like the penguin */
-    z-index: 3; /* Ensure it's above the #animated-images */
-    transform: scale(1.8); /* Increase size, but keep it balanced */
+    position: absolute;
+    bottom: 20px; /* Adjusted to sit on the ground */
+    left: 8%; /* Centered slightly under the wheel */
+    z-index: 4; /* Keeps it above the background */
+    transform: scale(1.4); /* Adjusted to be slightly smaller than the wheel */
     pointer-events: none;
 }
 
-/* Statue Image - Proper Sizing */
+/* Statue Image - Correct Sizing */
 .statue-container img {
-    height: auto; /* Allow flexibility */
-    max-height: 85vh; /* Tall but controlled */
-    max-width: 25vw; /* Keeps width in proportion */
+    height: auto;
+    max-height: 65vh; /* Large but controlled */
+    max-width: 20vw; /* Adjusted width for balance */
     object-fit: contain;
-    filter: drop-shadow(-10px 0px 15px rgba(0, 0, 0, 0.8)); /* Deep shadow */
-    opacity: 1; /* Fully visible */
-    transition: opacity 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(-12px 0px 12px rgba(0, 0, 0, 0.8)); /* Deep shadow */
+    opacity: 1;
 }
+
 
 /* Engraving Effect - Extra Depth */
 .statue-engraved {
