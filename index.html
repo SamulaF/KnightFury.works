@@ -154,20 +154,20 @@ section {
     opacity: 1;
     transform: none;
     
-    background: linear-gradient(to bottom, #FF8C00 10%, #121824 90%), 
+    background: linear-gradient(to bottom, rgba(255, 140, 0, 0.85) 10%, rgba(18, 24, 36, 0.95) 90%), 
                 url('https://www.si.com/.image/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/MjA0ODA0MjE5NzcxODIzNzEw/qiddiya-city-track-rendering.jpg') 
                 no-repeat center center;
     background-size: cover;
     background-blend-mode: overlay;
     
-    color: #D1D1D1; /* Soft Iron Gray for text */
+    color: #ECECEC; /* Softer, high-contrast text */
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 400;
     
     position: relative;
-    border-radius: 12px;
+    border-radius: 14px;
     margin: 50px 15px;
-    box-shadow: 0 12px 50px rgba(10, 10, 30, 0.7);
+    box-shadow: 0 12px 50px rgba(10, 10, 30, 0.8);
     overflow: hidden;
 }
 
@@ -179,46 +179,52 @@ section::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     mix-blend-mode: multiply;
 }
 
 /* Headings with Authority */
 section h2 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     font-weight: 700;
-    color: #FF8C00; /* Bold Saffron */
+    color: #FFD700; /* Gold tone for premium feel */
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+    text-shadow: 0px 4px 12px rgba(255, 140, 0, 0.6);
 }
 
 /* Text for Professional Readability */
 section p {
-    font-size: 1.1rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #C4C4C4;
+    font-size: 1.15rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #F5F5F5;
     max-width: 900px;
     margin: 0 auto;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Refined Button Styling */
 .section-button {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
+    margin-top: 25px;
+    padding: 14px 30px;
     font-size: 1rem;
     font-weight: 600;
-    color: #FFFFFF;
-    background: linear-gradient(to right, #FF8C00, #B35900);
+    color: #121824;
+    background: linear-gradient(to right, #FFD700, #FF8C00);
     border-radius: 8px;
     text-decoration: none;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 6px 15px rgba(255, 140, 0, 0.4);
 }
 
 .section-button:hover {
-    background: linear-gradient(to right, #B35900, #8A2E00);
+    background: linear-gradient(to right, #FF8C00, #B35900);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(255, 140, 0, 0.6);
 }
 
 
