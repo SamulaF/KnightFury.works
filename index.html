@@ -176,35 +176,33 @@ body {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-/* Statue Container - Properly Positioned */
+/* Statue Container - Replacing Penguin */
 .statue-container {
-    position: absolute;
-    bottom: 20px; /* Ensure it's touching the ground */
-    left: 5%; /* Adjust left alignment */
-    z-index: 10; /* Keep it on top */
-    transform: scale(2.2); /* Make it HUGE */
+    position: absolute; /* Matches the positioning style of #animated-images */
+    bottom: 150px; /* Same as penguin */
+    left: 10%; /* Align horizontally, just like the penguin */
+    z-index: 3; /* Ensure it's above the #animated-images */
+    transform: scale(1.8); /* Increase size, but keep it balanced */
     pointer-events: none;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
 }
 
-/* Statue Image - Perfect Size & Appearance */
+/* Statue Image - Proper Sizing */
 .statue-container img {
     height: auto; /* Allow flexibility */
-    max-height: 80vh; /* Maintain balance */
-    max-width: 20vw; /* Prevent excessive width */
+    max-height: 85vh; /* Tall but controlled */
+    max-width: 25vw; /* Keeps width in proportion */
     object-fit: contain;
-    filter: drop-shadow(-15px 0px 15px rgba(0, 0, 0, 0.8)); /* Strong shadow */
-    opacity: 0.8; /* Slight fade effect */
+    filter: drop-shadow(-10px 0px 15px rgba(0, 0, 0, 0.8)); /* Deep shadow */
+    opacity: 1; /* Fully visible */
     transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
-/* Engraving Effect - More Depth on Scroll */
+/* Engraving Effect - Extra Depth */
 .statue-engraved {
     filter: drop-shadow(-15px 0px 20px rgba(0, 0, 0, 1)) grayscale(40%);
     opacity: 1 !important;
 }
+
 
 /* Content Sections */
 .content {
