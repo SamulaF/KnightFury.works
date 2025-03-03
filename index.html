@@ -176,37 +176,35 @@ body {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-/* Statue Container - Enlarged to Wheel Size */
+/* Statue Container - Proper Grounding */
 .statue-container {
     position: absolute;
-    bottom: 20px; /* Keeps it grounded */
-    left: 8%; /* Perfect placement under the wheel */
-    z-index: 4; /* Ensures visibility */
-    transform: scale(2); /* Increased to match the wheel size */
+    bottom: 0px; /* Keeps it firmly on the ground */
+    left: 10%; /* Adjusted for better alignment */
+    z-index: 5; /* Ensures it stays above other elements */
+    transform: scale(2); /* Enlarged to match the wheel */
     pointer-events: none;
 }
 
-/* Statue Image - Bigger & Balanced */
+/* Statue Image - Correct Sizing */
 .statue-container img {
     height: auto;
-    max-height: 80vh; /* Now as tall as the wheel */
-    max-width: 25vw; /* Wider to keep proportions */
+    max-height: 90vh; /* Allows it to be very large */
+    max-width: 35vw; /* Balanced width */
     object-fit: contain;
-    filter: drop-shadow(-12px 0px 12px rgba(0, 0, 0, 0.8)); /* Deep shadow */
+    filter: drop-shadow(-15px 5px 20px rgba(0, 0, 0, 1)); /* Stronger shadow */
     opacity: 1;
 }
 
-
 /* Engraving Effect - Extra Depth */
 .statue-engraved {
-    filter: drop-shadow(-15px 0px 20px rgba(0, 0, 0, 1)) grayscale(40%);
+    filter: drop-shadow(-20px 5px 25px rgba(0, 0, 0, 1)) grayscale(50%);
     opacity: 1 !important;
 }
 
-
 /* Content Sections */
 .content {
-    padding: 20px;
+    padding: 30px; /* Slightly increased for spacing */
 }
 
 /* Floating Shadow Elements for Extra Flair */
