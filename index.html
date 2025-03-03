@@ -780,64 +780,63 @@ body, html {
         margin: 5px;
     }
 }
- body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background-color: #30023b; /* Stronger, serious background */
-    color: white;
-    font-family: 'Nunito Sans', sans-serif;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #30023b57;
+            color: white;
+            font-family: 'Nunito Sans', sans-serif;
+        }
 
-/* 🏛️ Statue Container - Grounded and Serious */
-.statue-container {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 85vh; /* Properly scaled */
-    width: auto;
-    z-index: 5;
-    pointer-events: none;
-    transition: opacity 0.5s ease-out, transform 0.5s ease;
-}
+        /* Statue Container - Fixed to the Right */
+        .statue-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: auto;
+            z-index: 999;
+            pointer-events: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+        }
 
-/* 🗿 Statue Image - Serious, No Glow, Deeply Engraved */
-.statue-container img {
-    height: 100%;
-    max-width: 28vw;
-    object-fit: contain;
-    filter: grayscale(85%) contrast(1.3); /* More stone-like */
-    opacity: 1;
-    transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
-}
+        /* The Engraved Statue */
+        .statue-container img {
+            height: 100vh;
+            max-width: 28vw;
+            object-fit: cover;
+            filter: drop-shadow(-10px 0px 10px rgba(0, 0, 0, 0.7)); /* Deep shadow */
+            opacity: 0.8; /* Starts slightly faded */
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
 
-/* 🏗️ Slight Engraving Effect (Subtle) */
-.statue-engraved {
-    filter: grayscale(90%) contrast(1.5) brightness(0.9);
-    opacity: 1 !important;
-    transform: scale(1.02);
-}
+        /* Engraving Effect - Shadow Changes on Scroll */
+        .statue-engraved {
+            filter: drop-shadow(-15px 0px 20px rgba(0, 0, 0, 1)) grayscale(40%);
+            opacity: 1 !important;
+        }
 
-/* 📱 Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .statue-container {
-        height: 70vh;
-    }
-    .statue-container img {
-        max-width: 40vw;
-    }
-}
+        /* Content Sections */
+        .content {
+            padding: 20px;
+        }
 
-@media screen and (max-width: 480px) {
-    .statue-container {
-        height: 60vh;
-    }
-    .statue-container img {
-        max-width: 50vw;
-    }
-}
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .statue-container img {
+                max-width: 40vw;
+            }
+        }
 
+        @media screen and (max-width: 480px) {
+            .statue-container img {
+                max-width: 50vw;
+            }
+        }
         .btn {
             background-color: #9400ff;
             color: #ffffff;
@@ -2418,6 +2417,11 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 </head>
 <body>
 
+    <!-- Statue on the Right Side -->
+    <div class="statue-container">
+        <img src="Man.png" alt="Statue" id="statue">
+    </div>
+
 
 
 
@@ -2504,11 +2508,6 @@ NOT HOME WHEEEEELLLLLLLLLLLLLLLLLLL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     <!-- Right section with race flag and animated images -->
     <div class="right-section">
         <!-- Background flag image -->
-        
-    <!-- 🏛️ The Serious Statue (Properly Integrated) -->
-    <div class="statue-container">
-        <img id="statue" src="Man.png" alt="Engraved Statue">
-    </div>
         
         <!-- Animated images positioned as part of the flag/car overlay -->
         <div id="animated-images">
@@ -3255,6 +3254,7 @@ document.addEventListener('scroll', () => {
         }
     });
 });
+
 
 
 
