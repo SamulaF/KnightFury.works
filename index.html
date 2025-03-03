@@ -179,19 +179,18 @@ body {
 /* Statue Container - Proper Grounding */
 .statue-container {
     position: absolute;
-    bottom: 0; /* Keeps it on the ground */
+    bottom: 0; /* Ensures it stays at the bottom */
     left: 5%; /* Adjust for alignment */
-    z-index: 5; /* Ensures visibility */
-    transform-origin: bottom left; /* Ensures scaling doesn't push it down */
-    transform: scale(2.5); /* Large enough to match the wheel */
+    z-index: 5; /* Keeps it visible */
+    height: 600px; /* Ensures the exact height */
+    width: auto; /* Maintains aspect ratio */
     pointer-events: none;
 }
 
-/* Statue Image - Correct Sizing */
+/* Statue Image - Proper Sizing */
 .statue-container img {
-    height: auto;
-    max-height: none; /* Removes height limit */
-    width: 30vw; /* Ensures proper scaling */
+    height: 100%; /* Makes it fill the container */
+    width: auto; /* Keeps aspect ratio */
     object-fit: contain;
     filter: drop-shadow(-15px 5px 20px rgba(0, 0, 0, 1)); /* Stronger shadow */
     opacity: 1;
