@@ -176,15 +176,23 @@ body {
             font-family: 'Nunito Sans', sans-serif;
         }
 
-/* Statue - Positioned Like Penguin */
 .statue-container {
-    position: absolute; /* Matches the positioning style of #animated-images */
-    bottom: 150px; /* Adjust height to place it above #animated-images */
-    left: 10%; /* Align horizontally, similar to #animated-images */
-    z-index: 3; /* Ensure it stays above the #animated-images */
-    transform: scale(0.8); /* Adjust size for balance */
-    pointer-events: none; /* Avoid interaction issues */
+    position: absolute;
+    bottom: 50px; /* Bring it closer to the ground */
+    left: 8%; /* Align with the penguin’s original position */
+    z-index: 5; /* Ensure it's in front of the wheel */
+    transform: scale(1.5); /* Make it bigger */
+    pointer-events: none;
 }
+
+.statue-container img {
+    max-height: 400px; /* Adjust size manually */
+    max-width: auto;
+    object-fit: contain;
+    filter: drop-shadow(-10px 0px 10px rgba(0, 0, 0, 0.7));
+    opacity: 1;
+}
+
 
 /* The Engraved Statue */
 .statue-container img {
